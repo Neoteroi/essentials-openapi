@@ -31,7 +31,7 @@ setup(
     install_requires=[
         "PyYAML==5.3.1",
         "essentials==1.1.3",
-        "dataclasses-0.7;python_version<'3.7'"
+        "dataclasses==0.7;python_version<'3.7'"
     ],
     include_package_data=True,
     zip_safe=False,
