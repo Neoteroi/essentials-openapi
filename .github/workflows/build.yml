@@ -58,15 +58,15 @@ jobs:
 
       - name: Install distribution dependencies
         run: pip install --upgrade twine setuptools wheel
-        if: matrix.python-version == 3.8
+        if: matrix.python-version == 3.8 || matrix.python-version == 3.9
 
       - name: Create distribution package
         run: python setup.py sdist bdist_wheel
-        if: matrix.python-version == 3.8
+        if: matrix.python-version == 3.8 || matrix.python-version == 3.9
 
       - name: Upload distribution package
         uses: actions/upload-artifact@master
         with:
           name: dist-package-${{ matrix.python-version }}
           path: dist
-        if: matrix.python-version == 3.8
+        if: matrix.python-version == 3.8 || matrix.python-version == 3.9

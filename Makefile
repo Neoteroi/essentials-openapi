@@ -17,7 +17,7 @@ testrelease:
 	twine upload --repository-url https://test.pypi.org/legacy/ dist/*
 
 
-release: clean compile artifacts
+release: artifacts
 	twine upload --repository-url https://upload.pypi.org/legacy/ dist/*
 
 

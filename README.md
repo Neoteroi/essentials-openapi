@@ -1,4 +1,9 @@
-# Introduction
+![Build](https://github.com/Neoteroi/essentials-openapi/workflows/Build/badge.svg)
+[![pypi](https://img.shields.io/pypi/v/essentials-openapi.svg)](https://pypi.python.org/pypi/essentials-openapi)
+[![versions](https://img.shields.io/pypi/pyversions/pydantic.svg)](https://github.com/samuelcolvin/pydantic)
+[![license](https://img.shields.io/github/license/samuelcolvin/pydantic.svg)](https://github.com/samuelcolvin/pydantic/blob/master/LICENSE)
+
+# essentials-openapi
 
 Classes to generate OpenAPI Documentation v3 and v2, in JSON and YAML.
 
