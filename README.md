@@ -1,7 +1,7 @@
 ![Build](https://github.com/Neoteroi/essentials-openapi/workflows/Build/badge.svg)
 [![pypi](https://img.shields.io/pypi/v/essentials-openapi.svg)](https://pypi.python.org/pypi/essentials-openapi)
-[![versions](https://img.shields.io/pypi/pyversions/pydantic.svg)](https://github.com/samuelcolvin/pydantic)
-[![license](https://img.shields.io/github/license/samuelcolvin/pydantic.svg)](https://github.com/samuelcolvin/pydantic/blob/master/LICENSE)
+[![versions](https://img.shields.io/pypi/pyversions/essentials-openapi.svg)](https://github.com/neoteroi/essentials-openapi)
+[![license](https://img.shields.io/github/license/neoteroi/essentials-openapi.svg)](https://github.com/neoteroi/essentials-openapi/blob/master/LICENSE)
 
 # essentials-openapi
 
