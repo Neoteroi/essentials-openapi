@@ -83,6 +83,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: dist-package-3.9
+          path: dist
       - name: Publish distribution 📦 to Test PyPI
         uses: pypa/gh-action-pypi-publish@master
         with:
@@ -90,10 +91,8 @@ jobs:
           user: __token__
           password: ${{ secrets.test_pypi_password }}
           repository_url: https://test.pypi.org/legacy/
-          packages_dir: dist-package-3.9/
       - name: Publish distribution 📦 to PyPI
         uses: pypa/gh-action-pypi-publish@master
         with:
           user: __token__
           password: ${{ secrets.pypi_password }}
-          packages_dir: dist-package-3.9/
