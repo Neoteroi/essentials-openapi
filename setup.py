@@ -8,7 +8,7 @@ def readme():
 
 setup(
     name="essentials-openapi",
-    version="0.0.3",
+    version="0.0.4",
     description="Classes to generate OpenAPI Documentation v3 and v2, in JSON and YAML",
     long_description=readme(),
     long_description_content_type="text/markdown",
