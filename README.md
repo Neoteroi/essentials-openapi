@@ -24,10 +24,8 @@ and can be reused for other applications.
 
 ## Limitations
 
-1. Partial support for Parameter properties: `style` , `allow_reserved` ,
+* Partial support for Parameter properties: `style` , `allow_reserved` ,
    `explode` are not handled
-2. Doesn't implement an API to handle specification extensions out of the box,
-   however it enables modifying generated objects before they are serialized
-3. Doesn't implement validation of values, currently it is only concerned in
+* Doesn't implement validation of values, currently it is only concerned in
    generating code from a higher level API (it might be extended in the future
    with classes for validation)
