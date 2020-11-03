@@ -1,26 +1,16 @@
 import copy
 import json
-from essentials.json import FriendlyEncoder
-from dataclasses import asdict, fields, is_dataclass
+from dataclasses import fields, is_dataclass
 from enum import Enum
 from typing import Any, List, Tuple
 
 import yaml
+from essentials.json import FriendlyEncoder
 
 
 class Format(Enum):
     YAML = "YAML"
     JSON = "JSON"
-
-
-class EntitiesJSONEncoder(FriendlyEncoder):
-    def default(self, obj: Any) -> Any:
-        try:
-            return super().default(obj)
-        except TypeError:
-            if is_dataclass(obj):
-                return {k: v for k, v in asdict(obj).items() if v is not None}
-            raise
 
 
 class OpenAPIRoot:
@@ -104,7 +94,7 @@ class Serializer:
 
     def to_json(self, item: Any) -> str:
         return json.dumps(
-            self.to_obj(item), indent=4, ensure_ascii=False, cls=EntitiesJSONEncoder
+            self.to_obj(item), indent=4, ensure_ascii=False, cls=FriendlyEncoder
         )
 
     def to_yaml(self, item: Any) -> str:

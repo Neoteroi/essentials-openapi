@@ -4,7 +4,7 @@ on:
   release:
     types: [published]
   push:
-    tags: "v[1-9]+.[0-9]+.[0-9]+"
+    tags: "v[0-9]+.[0-9]+.[0-9]+"
     branches:
       - main
       - ci
@@ -58,6 +58,10 @@ jobs:
           name: pytest-results-${{ matrix.python-version }}
           path: junit/pytest-results-${{ matrix.python-version }}.xml
         if: always()
+
+      - name: Codecov
+        run: |
+          bash <(curl -s https://codecov.io/bash)
 
       - name: Install distribution dependencies
         run: pip install --upgrade twine setuptools wheel
