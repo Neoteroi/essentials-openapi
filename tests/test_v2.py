@@ -1257,3 +1257,11 @@ def test_equality(example_type: Type[TestItem]) -> None:
     one = example.get_instance()
     two = example.get_instance()
     assert one == two
+
+
+@pytest.mark.parametrize(
+    "value,expected_result",
+    [("one", "#/definitions/one"), (Contact, "#/definitions/Contact")],
+)
+def test_get_ref(value, expected_result):
+    assert get_ref(value) == expected_result
