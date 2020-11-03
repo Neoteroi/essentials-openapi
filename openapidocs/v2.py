@@ -6,7 +6,7 @@ https://swagger.io/specification/v2/
 from abc import ABC
 from enum import Enum
 from dataclasses import dataclass
-from openapidocs.common import OpenAPIRoot, normalize_dict
+from openapidocs.common import OpenAPIRoot
 from typing import Any, List, Optional, Dict, Type, Union
 
 
@@ -337,18 +337,6 @@ class Tag:
     name: str
     description: Optional[str] = None
     external_docs: Optional[ExternalDocs] = None
-
-
-@dataclass
-class Security:
-    requirements: List[SecurityRequirement]
-    optional: bool = False
-
-    def to_obj(self):
-        items = [normalize_dict(item) for item in self.requirements]
-        if self.optional:
-            items.insert(0, {})
-        return items
 
 
 @dataclass

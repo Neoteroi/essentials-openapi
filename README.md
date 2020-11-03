@@ -2,6 +2,7 @@
 [![pypi](https://img.shields.io/pypi/v/essentials-openapi.svg)](https://pypi.python.org/pypi/essentials-openapi)
 [![versions](https://img.shields.io/pypi/pyversions/essentials-openapi.svg)](https://github.com/neoteroi/essentials-openapi)
 [![license](https://img.shields.io/github/license/neoteroi/essentials-openapi.svg)](https://github.com/neoteroi/essentials-openapi/blob/master/LICENSE)
+[![codecov](https://codecov.io/gh/Neoteroi/essentials-openapi/branch/main/graph/badge.svg?token=WEZ8YECJDF)](https://codecov.io/gh/Neoteroi/essentials-openapi)
 
 # essentials-openapi
 
