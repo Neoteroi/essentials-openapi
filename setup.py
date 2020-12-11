@@ -8,7 +8,7 @@ def readme():
 
 setup(
     name="essentials-openapi",
-    version="0.1.0",
+    version="0.1.1",
     description="Classes to generate OpenAPI Documentation v3 and v2, in JSON and YAML",
     long_description=readme(),
     long_description_content_type="text/markdown",
@@ -30,7 +30,7 @@ setup(
     packages=["openapidocs"],
     install_requires=[
         "PyYAML==5.3.1",
-        "essentials==1.1.3",
+        "essentials>=1.1.4",
         "dataclasses==0.7;python_version<'3.7'",
     ],
     include_package_data=True,
