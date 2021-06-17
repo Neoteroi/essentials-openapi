@@ -1,6 +1,6 @@
 import copy
 import json
-from dataclasses import fields, is_dataclass
+from dataclasses import fields, is_dataclass, asdict
 from enum import Enum
 from typing import Any, List, Tuple
 
@@ -13,7 +13,11 @@ class Format(Enum):
     JSON = "JSON"
 
 
-class OpenAPIRoot:
+class OpenAPIElement:
+    """Base class for all OpenAPI Elements"""
+
+
+class OpenAPIRoot(OpenAPIElement):
     """Base class for a root OpenAPI Documentation"""
 
 
@@ -51,12 +55,14 @@ def normalize_dict_factory(items: List[Tuple[Any, Any]]) -> Any:
 def _asdict_inner(obj, dict_factory):
     if hasattr(obj, "to_obj"):
         return obj.to_obj()
-    if is_dataclass(obj):
+    if isinstance(obj, OpenAPIElement):
         result = []
         for f in fields(obj):
             value = _asdict_inner(getattr(obj, f.name), dict_factory)
             result.append((f.name, value))
         return dict_factory(result)
+    if is_dataclass(obj):
+        return asdict(obj)
     elif isinstance(obj, (list, tuple)):
         return type(obj)(_asdict_inner(v, dict_factory) for v in obj)
     elif isinstance(obj, dict):
@@ -71,7 +77,9 @@ def _asdict_inner(obj, dict_factory):
 def normalize_dict(obj):
     if hasattr(obj, "to_obj"):
         return obj.to_obj()
-    return _asdict_inner(obj, dict_factory=normalize_dict_factory)
+    if isinstance(obj, OpenAPIElement):
+        return _asdict_inner(obj, dict_factory=normalize_dict_factory)
+    return asdict(obj)
 
 
 class Serializer:
