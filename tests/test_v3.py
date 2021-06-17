@@ -1506,7 +1506,6 @@ def test_yaml_serialization(
     expected_yaml = example.expected_yaml()
     instance = example.get_instance()
     result = serializer.to_yaml(instance)
-
     try:
         assert result.strip() == expected_yaml
     except AssertionError as ae:
@@ -1522,7 +1521,6 @@ def test_json_serialization(
     expected_json = example.expected_json()
     instance = example.get_instance()
     result = serializer.to_json(instance)
-
     try:
         assert result.strip() == expected_json
     except AssertionError as ae:
