@@ -8,6 +8,7 @@ from enum import Enum
 from dataclasses import dataclass
 from openapidocs.common import OpenAPIRoot
 from typing import Any, List, Optional, Dict, Type, Union
+from .common import OpenAPIElement
 
 
 def get_ref(ref_type: Union[str, Type]) -> str:
@@ -90,26 +91,26 @@ class OAuthFlowType(Enum):
 
 
 @dataclass
-class Contact:
+class Contact(OpenAPIElement):
     name: Optional[str] = None
     url: Optional[str] = None
     email: Optional[str] = None
 
 
 @dataclass
-class ExternalDocs:
+class ExternalDocs(OpenAPIElement):
     url: str
     description: Optional[str] = None
 
 
 @dataclass
-class License:
+class License(OpenAPIElement):
     name: str
     url: Optional[str] = None
 
 
 @dataclass
-class Info:
+class Info(OpenAPIElement):
     title: str
     version: str
     description: Optional[str] = None
@@ -119,7 +120,7 @@ class Info:
 
 
 @dataclass
-class XML:
+class XML(OpenAPIElement):
     name: Optional[str] = None
     namespace: Optional[str] = None
     prefix: Optional[str] = None
@@ -128,13 +129,13 @@ class XML:
 
 
 @dataclass
-class Discriminator:
+class Discriminator(OpenAPIElement):
     property_name: str
     mapping: Optional[Dict[str, str]] = None
 
 
 @dataclass
-class Schema:
+class Schema(OpenAPIElement):
     type: Union[None, str, ValueType] = None
     format: Union[None, str, ValueFormat] = None
     required: Optional[List[str]] = None
@@ -162,7 +163,7 @@ class Schema:
 
 
 @dataclass
-class Header:
+class Header(OpenAPIElement):
     type: HeaderType
     description: Optional[str] = None
     format: Optional[str] = None
@@ -184,7 +185,7 @@ class Header:
 
 
 @dataclass
-class Example:
+class Example(OpenAPIElement):
     summary: Optional[str] = None
     description: Optional[str] = None
     value: Any = None
@@ -192,7 +193,7 @@ class Example:
 
 
 @dataclass
-class Reference:
+class Reference(OpenAPIElement):
     ref: str
 
     def to_obj(self) -> Dict[str, str]:
@@ -200,7 +201,7 @@ class Reference:
 
 
 @dataclass
-class Encoding:
+class Encoding(OpenAPIElement):
     content_type: Optional[str] = None
     headers: Optional[Dict[str, Union[Header, Reference]]] = None
     style: Optional[str] = None
@@ -209,7 +210,7 @@ class Encoding:
 
 
 @dataclass
-class Response:
+class Response(OpenAPIElement):
     description: str
     headers: Optional[Dict[str, Union[Header, Reference]]] = None
     schema: Optional[Schema] = None
@@ -217,7 +218,7 @@ class Response:
 
 
 @dataclass
-class Items:
+class Items(OpenAPIElement):
     type: ValueItemType
     format: Optional[ValueFormat] = None
     items: Optional["Items"] = None
@@ -238,7 +239,7 @@ class Items:
 
 
 @dataclass
-class Parameter:
+class Parameter(OpenAPIElement):
     name: str
     in_: ParameterLocation
     type: Optional[ValueType] = None
@@ -267,7 +268,7 @@ class Parameter:
 
 
 @dataclass
-class SecurityRequirement:
+class SecurityRequirement(OpenAPIElement):
     name: str
     value: List[str]
 
@@ -276,7 +277,7 @@ class SecurityRequirement:
 
 
 @dataclass
-class Operation:
+class Operation(OpenAPIElement):
     responses: Dict[str, Response]
     tags: Optional[List[str]] = None
     operation_id: Optional[str] = None
@@ -292,7 +293,7 @@ class Operation:
 
 
 @dataclass
-class PathItem:
+class PathItem(OpenAPIElement):
     ref: Optional[str] = None
     get: Optional[Operation] = None
     put: Optional[Operation] = None
@@ -304,7 +305,7 @@ class PathItem:
     parameters: Optional[List[Union[Parameter, Reference]]] = None
 
 
-class SecurityScheme(ABC):
+class SecurityScheme(OpenAPIElement, ABC):
     """Abstract security scheme"""
 
 
@@ -333,7 +334,7 @@ class OAuth2Security(SecurityScheme):
 
 
 @dataclass
-class Tag:
+class Tag(OpenAPIElement):
     name: str
     description: Optional[str] = None
     external_docs: Optional[ExternalDocs] = None

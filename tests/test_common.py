@@ -1,6 +1,13 @@
-import pytest
+from dataclasses import dataclass
 from enum import Enum
-from openapidocs.common import Serializer, normalize_key, normalize_dict_factory
+
+import pytest
+from openapidocs.common import (
+    Serializer,
+    normalize_dict,
+    normalize_dict_factory,
+    normalize_key,
+)
 
 
 class ExampleType(Enum):
@@ -38,3 +45,15 @@ def test_normalize_dict_factory():
     values = [("a", A())]
 
     assert normalize_dict_factory(values) == {"a": {"x": 1}}
+
+
+def test_normalize_dict_normal_dataclass():
+    @dataclass
+    class Foo:
+        snake_case: str
+        camelCase: int
+
+    assert normalize_dict(Foo(snake_case="Python", camelCase=-1)) == {
+        "snake_case": "Python",
+        "camelCase": -1,
+    }

@@ -1,4 +1,5 @@
 from abc import abstractmethod
+from dataclasses import dataclass
 from textwrap import dedent
 
 from tests.common import debug_result
@@ -33,6 +34,12 @@ from openapidocs.v2 import (
     SecurityRequirement,
     get_ref,
 )
+
+
+@dataclass
+class ExampleOne:
+    snake_case: str
+    ner_label: str
 
 
 class TestItem:
@@ -105,6 +112,50 @@ class ParameterExample2(TestItem):
                 "type": "array",
                 "items": {
                     "type": "string"
+                }
+            },
+            "description": "user to add to the system",
+            "required": true
+        }
+        """
+
+
+class ParameterExample3(TestItem):
+    def get_instance(self) -> Parameter:
+        return Parameter(
+            "name",
+            ParameterLocation.BODY,
+            description="user to add to the system",
+            required=True,
+            schema=Schema(
+                type=ValueType.OBJECT,
+                example=ExampleOne(snake_case="Lorem ipsum", ner_label="Foo"),
+            ),
+        )
+
+    def yaml(self) -> str:
+        return """
+        name: name
+        in: body
+        schema:
+            type: object
+            example:
+                snake_case: Lorem ipsum
+                ner_label: Foo
+        description: user to add to the system
+        required: true
+        """
+
+    def json(self) -> str:
+        return """
+        {
+            "name": "name",
+            "in": "body",
+            "schema": {
+                "type": "object",
+                "example": {
+                    "snake_case": "Lorem ipsum",
+                    "ner_label": "Foo"
                 }
             },
             "description": "user to add to the system",
