@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Restores support for enums on examples `@dataclasses`, after the fix
   implemented in `0.1.3`
 - Adds support for built-in `UUID`, `time`, `date`, `datetime`, `bytes`,
-  handling in examples
+  handling in examples for `YAML` format
 - Adds `partial-time` ValueFormat for `time` (see
   https://xml2rfc.tools.ietf.org/public/rfc/html/rfc3339.html#anchor14)
 
