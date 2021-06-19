@@ -40,6 +40,7 @@ class ValueFormat(Enum):
     PASSWORD = "password"
     EMAIL = "email"
     UUID = "uuid"
+    PARTIALTIME = "partial-time"
 
 
 class SecuritySchemeType(Enum):

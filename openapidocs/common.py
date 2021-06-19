@@ -1,8 +1,12 @@
+import base64
 import copy
 import json
-from dataclasses import fields, is_dataclass, asdict
+from abc import ABC, abstractmethod
+from dataclasses import asdict, fields, is_dataclass
+from datetime import date, datetime, time
 from enum import Enum
 from typing import Any, List, Tuple
+from uuid import UUID
 
 import yaml
 from essentials.json import FriendlyEncoder
@@ -19,6 +23,38 @@ class OpenAPIElement:
 
 class OpenAPIRoot(OpenAPIElement):
     """Base class for a root OpenAPI Documentation"""
+
+
+class ValueTypeHandler(ABC):
+    @abstractmethod
+    def normalize(self, value: Any) -> Any:
+        """Normalizes a value of the given type into another type."""
+
+
+class CommonBuiltInTypesHandler(ValueTypeHandler):
+    def normalize(self, value: Any) -> Any:
+        if isinstance(value, UUID):
+            return str(value)
+
+        if isinstance(value, Enum):
+            return value.value
+
+        if isinstance(value, time):
+            return value.strftime("%H:%M:%S")
+
+        if isinstance(value, datetime):
+            return value.isoformat()
+
+        if isinstance(value, date):
+            return value.strftime("%Y-%m-%d")
+
+        if isinstance(value, bytes):
+            return base64.urlsafe_b64encode(value).decode("utf8")
+
+        return value
+
+
+TYPES_HANDLERS = [CommonBuiltInTypesHandler()]
 
 
 def normalize_key(key: Any) -> str:
@@ -43,9 +79,20 @@ def normalize_dict_factory(items: List[Tuple[Any, Any]]) -> Any:
             data["$ref"] = value
             continue
 
-        if isinstance(value, Enum):
-            value = value.value
+        for handler in TYPES_HANDLERS:
+            value = handler.normalize(value)
+
         data[normalize_key(key)] = value
+    return data
+
+
+def regular_dict_factory(items: List[Tuple[Any, Any]]) -> Any:
+    data = {}
+    for key, value in items:
+        for handler in TYPES_HANDLERS:
+            value = handler.normalize(value)
+
+        data[key] = value
     return data
 
 
@@ -62,7 +109,7 @@ def _asdict_inner(obj, dict_factory):
             result.append((f.name, value))
         return dict_factory(result)
     if is_dataclass(obj):
-        return asdict(obj)
+        return asdict(obj, dict_factory=regular_dict_factory)
     elif isinstance(obj, (list, tuple)):
         return type(obj)(_asdict_inner(v, dict_factory) for v in obj)
     elif isinstance(obj, dict):
@@ -79,7 +126,7 @@ def normalize_dict(obj):
         return obj.to_obj()
     if isinstance(obj, OpenAPIElement):
         return _asdict_inner(obj, dict_factory=normalize_dict_factory)
-    return asdict(obj)
+    return asdict(obj, dict_factory=regular_dict_factory)
 
 
 class Serializer:
