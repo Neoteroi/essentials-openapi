@@ -2083,10 +2083,6 @@ def test_yaml_serialization(
     expected_yaml = example.expected_yaml()
     instance = example.get_instance()
     result = serializer.to_yaml(instance)
-
-    if isinstance(example, OpenAPIExample7):
-        with open("foo.yaml", encoding="utf8", mode="wt") as f:
-            f.write(result)
     try:
         assert result.strip() == expected_yaml
     except AssertionError as ae:
@@ -2102,10 +2098,6 @@ def test_json_serialization(
     expected_json = example.expected_json()
     instance = example.get_instance()
     result = serializer.to_json(instance)
-
-    if isinstance(example, OpenAPIExample7):
-        with open("foo.json", encoding="utf8", mode="wt") as f:
-            f.write(result)
     try:
         assert result.strip() == expected_json
     except AssertionError as ae:
