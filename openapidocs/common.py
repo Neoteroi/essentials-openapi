@@ -89,9 +89,6 @@ def normalize_dict_factory(items: List[Tuple[Any, Any]]) -> Any:
 def regular_dict_factory(items: List[Tuple[Any, Any]]) -> Any:
     data = {}
     for key, value in items:
-        if hasattr(value, "to_obj"):
-            value = value.to_obj()
-
         for handler in TYPES_HANDLERS:
             value = handler.normalize(value)
 

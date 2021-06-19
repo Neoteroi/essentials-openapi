@@ -67,10 +67,11 @@ class Foo:
 
 
 @dataclass
-class TimeExample:
+class BuiltInsExample:
     one: time
     two: date
     three: datetime
+    four: bytes
 
 
 @dataclass
@@ -1334,10 +1335,11 @@ class OpenAPIExample7(TestItem):
                                                     ValueFormat.DATETIME,
                                                 ),
                                             },
-                                            example=TimeExample(
+                                            example=BuiltInsExample(
                                                 one=time(10, 30, 15),
                                                 two=date(2016, 3, 26),
                                                 three=datetime(2016, 3, 26, 3, 0, 0),
+                                                four=b"Lorem ipsum dolor",
                                             ),
                                         ),
                                     )
@@ -1356,6 +1358,7 @@ class OpenAPIExample7(TestItem):
                             "id": Schema(ValueType.INTEGER),
                             "hello": Schema(ValueType.STRING),
                             "foo": Schema(ValueType.NUMBER, ValueFormat.FLOAT),
+                            "four": Schema(ValueType.STRING, ValueFormat.BASE64),
                         },
                     )
                 }
@@ -1434,6 +1437,7 @@ paths:
                                     one: '10:30:15'
                                     two: '2016-03-26'
                                     three: '2016-03-26T03:00:00'
+                                    four: TG9yZW0gaXBzdW0gZG9sb3I=
                                 title: sample
             tags:
             - Example
@@ -1453,6 +1457,9 @@ components:
                 foo:
                     type: number
                     format: float
+                four:
+                    type: string
+                    format: base64
     """
 
     def json(self) -> str:
@@ -1551,7 +1558,8 @@ components:
                                     "example": {
                                         "one": "10:30:15",
                                         "two": "2016-03-26",
-                                        "three": "2016-03-26T03:00:00"
+                                        "three": "2016-03-26T03:00:00",
+                                        "four": "TG9yZW0gaXBzdW0gZG9sb3I="
                                     },
                                     "title": "sample"
                                 }
@@ -1584,6 +1592,10 @@ components:
                     "foo": {
                         "type": "number",
                         "format": "float"
+                    },
+                    "four": {
+                        "type": "string",
+                        "format": "base64"
                     }
                 }
             }
