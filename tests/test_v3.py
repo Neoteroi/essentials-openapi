@@ -1,8 +1,11 @@
 from abc import abstractmethod
 from dataclasses import dataclass
+from datetime import date, datetime, time
+from enum import Enum
 from textwrap import dedent
 from tests.common import debug_result
-from typing import Any, Type
+from typing import Any, Optional, Type
+from uuid import UUID
 
 import pytest
 from openapidocs.common import Format, Serializer
@@ -20,6 +23,7 @@ from openapidocs.v3 import (
     OAuthFlow,
     OAuthFlows,
     OpenAPI,
+    ValueFormat,
     ValueType,
     OpenIdConnectSecurity,
     Operation,
@@ -41,6 +45,38 @@ from openapidocs.v3 import (
 class ExampleOne:
     snake_case: str
     ner_label: str
+
+
+class CatType(Enum):
+    EUROPEAN = "european"
+    PERSIAN = "persian"
+
+
+@dataclass
+class Cat:
+    id: int
+    name: str
+    type: CatType
+
+
+@dataclass
+class Foo:
+    id: int
+    hello: Optional[str]
+    foo: Optional[float]
+
+
+@dataclass
+class TimeExample:
+    one: time
+    two: date
+    three: datetime
+
+
+@dataclass
+class FooParent:
+    id: UUID
+    foo: Foo
 
 
 class TestItem:
@@ -1016,6 +1052,547 @@ paths:
     """
 
 
+class OpenAPIExample6(TestItem):
+    """
+    This tests proper handling of Python Enums in dataclasses.
+    """
+
+    def get_instance(self) -> Any:
+        return OpenAPI(
+            info=Info("Example API", version="0.0.0-alpha"),
+            paths={
+                "/": PathItem(
+                    summary="Test the example snake_case properness",
+                    description="Lorem ipsum dolor sit amet",
+                    get=Operation(
+                        tags=["Example"],
+                        operation_id="example",
+                        parameters=[],
+                        responses={
+                            "200": Response(
+                                "Successful response",
+                                content={
+                                    "application/json": MediaType(
+                                        schema=Schema(
+                                            ValueType.OBJECT,
+                                            title="sample",
+                                            required=["id", "name", "type"],
+                                            properties={
+                                                "id": Schema(
+                                                    ValueType.INTEGER,
+                                                    "Placeholder description",
+                                                ),
+                                                "name": Schema(
+                                                    ValueType.STRING,
+                                                    "Placeholder description",
+                                                ),
+                                                "type": Schema(
+                                                    ValueType.STRING,
+                                                    enum=[
+                                                        CatType.EUROPEAN.value,
+                                                        CatType.PERSIAN.value,
+                                                    ],
+                                                ),
+                                            },
+                                        ),
+                                        examples={
+                                            "fat_cat": Example(
+                                                value=Cat(
+                                                    id=1,
+                                                    name="Fatty",
+                                                    type=CatType.EUROPEAN,
+                                                )
+                                            ),
+                                            "thin_cat": Example(
+                                                value=Cat(
+                                                    id=2,
+                                                    name="Thinny",
+                                                    type=CatType.PERSIAN,
+                                                )
+                                            ),
+                                        },
+                                    )
+                                },
+                            ),
+                        },
+                    ),
+                )
+            },
+        )
+
+    def yaml(self) -> str:
+        return """
+openapi: 3.0.3
+info:
+    title: Example API
+    version: 0.0.0-alpha
+paths:
+    /:
+        summary: Test the example snake_case properness
+        description: Lorem ipsum dolor sit amet
+        get:
+            responses:
+                '200':
+                    description: Successful response
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                required:
+                                - id
+                                - name
+                                - type
+                                properties:
+                                    id:
+                                        type: integer
+                                        format: Placeholder description
+                                    name:
+                                        type: string
+                                        format: Placeholder description
+                                    type:
+                                        type: string
+                                        enum:
+                                        - european
+                                        - persian
+                                title: sample
+                            examples:
+                                fat_cat:
+                                    value:
+                                        id: 1
+                                        name: Fatty
+                                        type: european
+                                thin_cat:
+                                    value:
+                                        id: 2
+                                        name: Thinny
+                                        type: persian
+            tags:
+            - Example
+            operationId: example
+            parameters: []
+    """
+
+    def json(self) -> str:
+        return """
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "Example API",
+        "version": "0.0.0-alpha"
+    },
+    "paths": {
+        "/": {
+            "summary": "Test the example snake_case properness",
+            "description": "Lorem ipsum dolor sit amet",
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "required": [
+                                        "id",
+                                        "name",
+                                        "type"
+                                    ],
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "format": "Placeholder description"
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "format": "Placeholder description"
+                                        },
+                                        "type": {
+                                            "type": "string",
+                                            "enum": [
+                                                "european",
+                                                "persian"
+                                            ]
+                                        }
+                                    },
+                                    "title": "sample"
+                                },
+                                "examples": {
+                                    "fat_cat": {
+                                        "value": {
+                                            "id": 1,
+                                            "name": "Fatty",
+                                            "type": "european"
+                                        }
+                                    },
+                                    "thin_cat": {
+                                        "value": {
+                                            "id": 2,
+                                            "name": "Thinny",
+                                            "type": "persian"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Example"
+                ],
+                "operationId": "example",
+                "parameters": []
+            }
+        }
+    }
+}
+    """
+
+
+class OpenAPIExample7(TestItem):
+    """
+    This tests support for UUIDs, times and dates.
+    """
+
+    def get_instance(self) -> Any:
+        return OpenAPI(
+            info=Info("Example API", version="0.0.0-alpha"),
+            paths={
+                "/": PathItem(
+                    description="Lorem ipsum dolor sit amet",
+                    get=Operation(
+                        tags=["Example"],
+                        operation_id="example",
+                        parameters=[],
+                        responses={
+                            "200": Response(
+                                "Successful response",
+                                content={
+                                    "application/json": MediaType(
+                                        schema=Schema(
+                                            ValueType.OBJECT,
+                                            title="sample",
+                                            required=["id", "name", "type"],
+                                            properties={
+                                                "id": Schema(
+                                                    ValueType.STRING,
+                                                    format=ValueFormat.UUID,
+                                                    title="FooParent ID",
+                                                ),
+                                                "foo": Reference(
+                                                    "#/components/schemas/Foo"
+                                                ),
+                                            },
+                                        ),
+                                        examples={
+                                            "one": Example(
+                                                value=FooParent(
+                                                    id=UUID(
+                                                        "a475c8d9-232f-4b65-ab2a-f3ccfdd3e26a"
+                                                    ),
+                                                    foo=Foo(1, "World", 0.6),
+                                                )
+                                            ),
+                                            "two": Example(
+                                                value=FooParent(
+                                                    id=UUID(
+                                                        "5a68f798-0492-4a54-8bd8-aa3c0026b341"
+                                                    ),
+                                                    foo=Foo(2, None, None),
+                                                )
+                                            ),
+                                        },
+                                    )
+                                },
+                            ),
+                        },
+                    ),
+                ),
+                "/times": PathItem(
+                    description="Lorem ipsum dolor sit amet",
+                    get=Operation(
+                        tags=["Example"],
+                        operation_id="example2",
+                        parameters=[],
+                        responses={
+                            "200": Response(
+                                "Successful response",
+                                content={
+                                    "application/json": MediaType(
+                                        schema=Schema(
+                                            ValueType.OBJECT,
+                                            title="sample",
+                                            properties={
+                                                "one": Schema(
+                                                    ValueType.STRING,
+                                                    ValueFormat.PARTIALTIME,
+                                                ),
+                                                "two": Schema(
+                                                    ValueType.STRING, ValueFormat.DATE
+                                                ),
+                                                "three": Schema(
+                                                    ValueType.STRING,
+                                                    ValueFormat.DATETIME,
+                                                ),
+                                            },
+                                            example=TimeExample(
+                                                one=time(10, 30, 15),
+                                                two=date(2016, 3, 26),
+                                                three=datetime(2016, 3, 26, 3, 0, 0),
+                                            ),
+                                        ),
+                                    )
+                                },
+                            ),
+                        },
+                    ),
+                ),
+            },
+            components=Components(
+                schemas={
+                    "Foo": Schema(
+                        ValueType.OBJECT,
+                        required=["id"],
+                        properties={
+                            "id": Schema(ValueType.INTEGER),
+                            "hello": Schema(ValueType.STRING),
+                            "foo": Schema(ValueType.NUMBER, ValueFormat.FLOAT),
+                        },
+                    )
+                }
+            ),
+        )
+
+    def yaml(self) -> str:
+        return """
+openapi: 3.0.3
+info:
+    title: Example API
+    version: 0.0.0-alpha
+paths:
+    /:
+        description: Lorem ipsum dolor sit amet
+        get:
+            responses:
+                '200':
+                    description: Successful response
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                required:
+                                - id
+                                - name
+                                - type
+                                properties:
+                                    id:
+                                        type: string
+                                        format: uuid
+                                        title: FooParent ID
+                                    foo:
+                                        $ref: '#/components/schemas/Foo'
+                                title: sample
+                            examples:
+                                one:
+                                    value:
+                                        id: a475c8d9-232f-4b65-ab2a-f3ccfdd3e26a
+                                        foo:
+                                            id: 1
+                                            hello: World
+                                            foo: 0.6
+                                two:
+                                    value:
+                                        id: 5a68f798-0492-4a54-8bd8-aa3c0026b341
+                                        foo:
+                                            id: 2
+                                            hello: null
+                                            foo: null
+            tags:
+            - Example
+            operationId: example
+            parameters: []
+    /times:
+        description: Lorem ipsum dolor sit amet
+        get:
+            responses:
+                '200':
+                    description: Successful response
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    one:
+                                        type: string
+                                        format: partial-time
+                                    two:
+                                        type: string
+                                        format: date
+                                    three:
+                                        type: string
+                                        format: date-time
+                                example:
+                                    one: '10:30:15'
+                                    two: '2016-03-26'
+                                    three: '2016-03-26T03:00:00'
+                                title: sample
+            tags:
+            - Example
+            operationId: example2
+            parameters: []
+components:
+    schemas:
+        Foo:
+            type: object
+            required:
+            - id
+            properties:
+                id:
+                    type: integer
+                hello:
+                    type: string
+                foo:
+                    type: number
+                    format: float
+    """
+
+    def json(self) -> str:
+        return """
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "Example API",
+        "version": "0.0.0-alpha"
+    },
+    "paths": {
+        "/": {
+            "description": "Lorem ipsum dolor sit amet",
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "required": [
+                                        "id",
+                                        "name",
+                                        "type"
+                                    ],
+                                    "properties": {
+                                        "id": {
+                                            "type": "string",
+                                            "format": "uuid",
+                                            "title": "FooParent ID"
+                                        },
+                                        "foo": {
+                                            "$ref": "#/components/schemas/Foo"
+                                        }
+                                    },
+                                    "title": "sample"
+                                },
+                                "examples": {
+                                    "one": {
+                                        "value": {
+                                            "id": "a475c8d9-232f-4b65-ab2a-f3ccfdd3e26a",
+                                            "foo": {
+                                                "id": 1,
+                                                "hello": "World",
+                                                "foo": 0.6
+                                            }
+                                        }
+                                    },
+                                    "two": {
+                                        "value": {
+                                            "id": "5a68f798-0492-4a54-8bd8-aa3c0026b341",
+                                            "foo": {
+                                                "id": 2,
+                                                "hello": null,
+                                                "foo": null
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Example"
+                ],
+                "operationId": "example",
+                "parameters": []
+            }
+        },
+        "/times": {
+            "description": "Lorem ipsum dolor sit amet",
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "one": {
+                                            "type": "string",
+                                            "format": "partial-time"
+                                        },
+                                        "two": {
+                                            "type": "string",
+                                            "format": "date"
+                                        },
+                                        "three": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        }
+                                    },
+                                    "example": {
+                                        "one": "10:30:15",
+                                        "two": "2016-03-26",
+                                        "three": "2016-03-26T03:00:00"
+                                    },
+                                    "title": "sample"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Example"
+                ],
+                "operationId": "example2",
+                "parameters": []
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Foo": {
+                "type": "object",
+                "required": [
+                    "id"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "hello": {
+                        "type": "string"
+                    },
+                    "foo": {
+                        "type": "number",
+                        "format": "float"
+                    }
+                }
+            }
+        }
+    }
+}
+    """
+
+
 class SchemaExample1(TestItem):
     def get_instance(self) -> Any:
         return Schema(
@@ -1506,6 +2083,10 @@ def test_yaml_serialization(
     expected_yaml = example.expected_yaml()
     instance = example.get_instance()
     result = serializer.to_yaml(instance)
+
+    if isinstance(example, OpenAPIExample7):
+        with open("foo.yaml", encoding="utf8", mode="wt") as f:
+            f.write(result)
     try:
         assert result.strip() == expected_yaml
     except AssertionError as ae:
@@ -1521,6 +2102,10 @@ def test_json_serialization(
     expected_json = example.expected_json()
     instance = example.get_instance()
     result = serializer.to_json(instance)
+
+    if isinstance(example, OpenAPIExample7):
+        with open("foo.json", encoding="utf8", mode="wt") as f:
+            f.write(result)
     try:
         assert result.strip() == expected_json
     except AssertionError as ae:
