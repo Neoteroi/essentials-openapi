@@ -7,6 +7,7 @@ from typing import Any, Optional, Type
 from uuid import UUID
 
 import pytest
+from pydantic import BaseModel
 
 from openapidocs.common import Format, Serializer
 from openapidocs.v3 import (
@@ -44,6 +45,11 @@ from tests.common import debug_result
 
 @dataclass
 class ExampleOne:
+    snake_case: str
+    ner_label: str
+
+
+class ExampleOneAlt(BaseModel):
     snake_case: str
     ner_label: str
 
@@ -1599,6 +1605,169 @@ components:
                         "format": "base64"
                     }
                 }
+            }
+        }
+    }
+}
+    """
+
+
+class OpenAPIExamplesDefinedWithPydantic(TestItem):
+    def get_instance(self) -> Any:
+        return OpenAPI(
+            info=Info("Example API", version="0.0.0-alpha"),
+            paths={
+                "/": PathItem(
+                    summary="Test the example snake_case properness",
+                    description="Lorem ipsum dolor sit amet",
+                    get=Operation(
+                        tags=["Example"],
+                        operation_id="example",
+                        parameters=[],
+                        responses={
+                            "200": Response(
+                                "Successful response",
+                                content={
+                                    "application/json": MediaType(
+                                        schema=Schema(
+                                            ValueType.OBJECT,
+                                            title="sample",
+                                            properties={
+                                                "snake_case": Schema(
+                                                    ValueType.STRING,
+                                                    "Placeholder description",
+                                                ),
+                                                "ner_label": Schema(
+                                                    ValueType.STRING,
+                                                    "Placeholder description",
+                                                ),
+                                            },
+                                        ),
+                                        examples={
+                                            "one": Example(
+                                                summary="First example",
+                                                value=ExampleOneAlt(
+                                                    snake_case="ABC",
+                                                    ner_label="Lorem Ipsum 1",
+                                                ),
+                                            ),
+                                            "two": Example(
+                                                summary="Second example",
+                                                value=ExampleOneAlt(
+                                                    snake_case="DEF",
+                                                    ner_label="Lorem Ipsum 2",
+                                                ),
+                                            ),
+                                        },
+                                    )
+                                },
+                            ),
+                        },
+                    ),
+                )
+            },
+        )
+
+    def yaml(self) -> str:
+        return """
+openapi: 3.0.3
+info:
+    title: Example API
+    version: 0.0.0-alpha
+paths:
+    /:
+        summary: Test the example snake_case properness
+        description: Lorem ipsum dolor sit amet
+        get:
+            responses:
+                '200':
+                    description: Successful response
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    snake_case:
+                                        type: string
+                                        format: Placeholder description
+                                    ner_label:
+                                        type: string
+                                        format: Placeholder description
+                                title: sample
+                            examples:
+                                one:
+                                    summary: First example
+                                    value:
+                                        snake_case: ABC
+                                        ner_label: Lorem Ipsum 1
+                                two:
+                                    summary: Second example
+                                    value:
+                                        snake_case: DEF
+                                        ner_label: Lorem Ipsum 2
+            tags:
+            - Example
+            operationId: example
+            parameters: []
+    """
+
+    def json(self) -> str:
+        return """
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "Example API",
+        "version": "0.0.0-alpha"
+    },
+    "paths": {
+        "/": {
+            "summary": "Test the example snake_case properness",
+            "description": "Lorem ipsum dolor sit amet",
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "snake_case": {
+                                            "type": "string",
+                                            "format": "Placeholder description"
+                                        },
+                                        "ner_label": {
+                                            "type": "string",
+                                            "format": "Placeholder description"
+                                        }
+                                    },
+                                    "title": "sample"
+                                },
+                                "examples": {
+                                    "one": {
+                                        "summary": "First example",
+                                        "value": {
+                                            "snake_case": "ABC",
+                                            "ner_label": "Lorem Ipsum 1"
+                                        }
+                                    },
+                                    "two": {
+                                        "summary": "Second example",
+                                        "value": {
+                                            "snake_case": "DEF",
+                                            "ner_label": "Lorem Ipsum 2"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Example"
+                ],
+                "operationId": "example",
+                "parameters": []
             }
         }
     }
