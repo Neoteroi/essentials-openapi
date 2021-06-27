@@ -4,10 +4,12 @@ version 2.
 https://swagger.io/specification/v2/
 """
 from abc import ABC
-from enum import Enum
 from dataclasses import dataclass
+from enum import Enum
+from typing import Any, Dict, List, Optional, Type, Union
+
 from openapidocs.common import OpenAPIRoot
-from typing import Any, List, Optional, Dict, Type, Union
+
 from .common import OpenAPIElement
 
 

@@ -3,11 +3,11 @@ from dataclasses import dataclass
 from datetime import date, datetime, time
 from enum import Enum
 from textwrap import dedent
-from tests.common import debug_result
 from typing import Any, Optional, Type
 from uuid import UUID
 
 import pytest
+
 from openapidocs.common import Format, Serializer
 from openapidocs.v3 import (
     APIKeySecurity,
@@ -23,8 +23,6 @@ from openapidocs.v3 import (
     OAuthFlow,
     OAuthFlows,
     OpenAPI,
-    ValueFormat,
-    ValueType,
     OpenIdConnectSecurity,
     Operation,
     Parameter,
@@ -38,7 +36,10 @@ from openapidocs.v3 import (
     SecurityRequirement,
     Server,
     ServerVariable,
+    ValueFormat,
+    ValueType,
 )
+from tests.common import debug_result
 
 
 @dataclass
