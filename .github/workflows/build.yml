@@ -46,10 +46,22 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -U --no-index --find-links=deps deps/*
+          pip install black==20.8b1 isort==5.9.1
 
       - name: Run tests
         run: |
           flake8 && pytest --doctest-modules --junitxml=junit/pytest-results-${{ matrix.python-version }}.xml --cov=$PROJECT_NAME --cov-report=xml tests/
+
+      - name: Run linters
+        run: |
+          echo "Running linters - if build fails here, please be patient!"
+
+          flake8 openapidocs
+          flake8 tests
+          isort --check-only openapidocs 2>&1
+          isort --check-only tests 2>&1
+          black --check openapidocs 2>&1
+          black --check tests 2>&1
 
       - name: Upload pytest test results
         uses: actions/upload-artifact@master

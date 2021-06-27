@@ -1,11 +1,10 @@
 from abc import abstractmethod
 from dataclasses import dataclass
 from textwrap import dedent
-
-from tests.common import debug_result
 from typing import Any, Type
 
 import pytest
+
 from openapidocs.common import Format, Serializer
 from openapidocs.v2 import (
     APIKeyLocation,
@@ -21,19 +20,20 @@ from openapidocs.v2 import (
     OAuth2Security,
     OAuthFlowType,
     OpenAPI,
-    Reference,
-    ValueFormat,
-    ValueItemType,
-    ValueType,
     Operation,
     Parameter,
     ParameterLocation,
     PathItem,
+    Reference,
     Response,
     Schema,
     SecurityRequirement,
+    ValueFormat,
+    ValueItemType,
+    ValueType,
     get_ref,
 )
+from tests.common import debug_result
 
 
 @dataclass

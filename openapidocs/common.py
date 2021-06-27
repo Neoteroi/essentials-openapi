@@ -100,6 +100,8 @@ def regular_dict_factory(items: List[Tuple[Any, Any]]) -> Any:
 # bypassing "asdict" on child properties when they implement a `to_obj`
 # method: some entities require a specific shape when represented
 def _asdict_inner(obj, dict_factory):
+    if hasattr(obj, "dict") and callable(obj.dict):
+        return obj.dict()
     if hasattr(obj, "to_obj"):
         return obj.to_obj()
     if isinstance(obj, OpenAPIElement):
@@ -122,6 +124,8 @@ def _asdict_inner(obj, dict_factory):
 
 
 def normalize_dict(obj):
+    if hasattr(obj, "dict") and callable(obj.dict):
+        return obj.dict()
     if hasattr(obj, "to_obj"):
         return obj.to_obj()
     if isinstance(obj, OpenAPIElement):

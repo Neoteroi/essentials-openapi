@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from enum import Enum
 
 import pytest
+
 from openapidocs.common import (
     Serializer,
     normalize_dict,
@@ -57,3 +58,11 @@ def test_normalize_dict_normal_dataclass():
         "snake_case": "Python",
         "camelCase": -1,
     }
+
+
+def test_normalize_dict_class_with_dict_method():
+    class Foo:
+        def dict(self):
+            return {"a": "Foo", "b": 500}
+
+    assert normalize_dict(Foo()) == Foo().dict()

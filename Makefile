@@ -39,3 +39,10 @@ test-cov-unit:
 
 test-cov:
 	pytest --cov-report html --cov=openapidocs
+
+
+format:
+	isort openapidocs
+	isort tests
+	black openapidocs
+	black tests

@@ -1,5 +1,6 @@
 import os
 from typing import Any
+
 from openapidocs.common import Format
 
 
