@@ -33,6 +33,9 @@ setup(
         "essentials>=1.1.4",
         "dataclasses==0.7;python_version<'3.7'",
     ],
+    package_data={
+        "openapidocs": ["py.typed"]
+    },
     include_package_data=True,
     zip_safe=False,
 )
