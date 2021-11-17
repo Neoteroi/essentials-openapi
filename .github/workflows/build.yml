@@ -20,6 +20,7 @@ jobs:
     strategy:
       matrix:
         python-version: [3.6, 3.7, 3.8, 3.9, "3.10"]
+        fail-fast: false
 
     steps:
       - uses: actions/checkout@v1
@@ -45,7 +46,14 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install -U --no-index --find-links=deps deps/*
+          PYVER=`python -V 2>&1`
+
+          if [ "$PYVER" == "Python 3.10.0" ]; then
+            pip install -r requirements.txt
+          else
+            pip install -U --no-index --find-links=deps deps/*
+          fi
+
           pip install black==21.11b0 isort==5.10.1
 
       - name: Run tests
