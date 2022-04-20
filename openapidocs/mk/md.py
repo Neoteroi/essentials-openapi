@@ -2,11 +2,7 @@
 This module provides common functions to handle Markdown.
 These functions apply to any kind of Markdown work.
 """
-import json
-import re
 from typing import Dict, Iterable
-
-import markupsafe
 
 
 def write_row(
