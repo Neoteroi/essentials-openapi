@@ -50,15 +50,6 @@ def style_from_value(value: Union[int, str]) -> OutputStyle:
         raise ValueError(f"Invalid style: {value}")
 
 
-def _validate_version(doc):
-    if not doc.get("openapi", "").startswith("3"):
-        raise ValueError(
-            "Unsupported OpenAPI Documentation: missing 'openapi' "
-            "property or its value does not start with '3'. "
-            "This class only supports OpenAPI Documentation version 3."
-        )
-
-
 class OpenAPIV3DocumentationHandler:
     """
     Class that produces documentation from OpenAPI Documentation V3.
@@ -83,7 +74,6 @@ class OpenAPIV3DocumentationHandler:
         writer: Optional[DocumentsWriter] = None,
         style: Union[int, str] = 1,
     ) -> None:
-        _validate_version(doc)
         self.doc = copy.deepcopy(doc)
         self.texts = texts or EnglishTexts()
         self._writer = writer or Jinja2DocumentsWriter(
