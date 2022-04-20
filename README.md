@@ -40,14 +40,14 @@ These require the full package: install it using `pip install essentials-openapi
 To generate output for [MkDocs](https://www.mkdocs.org) and [PyMdown extentions](https://facelessuser.github.io/pymdown-extensions/):
 
 ```bash
-openapidocs gen-docs -s example1-openapi.json -d output.md
+oad gen-docs -s example1-openapi.json -d output.md
 ```
 
 To generate a [PlantUML](https://plantuml.com) [class
 diagram](https://plantuml.com/class-diagram) of the components schemas:
 
 ```bash
-openapidocs gen-docs -s source-openapi.json -d schemas.wsd --style "PLANTUML_SCHEMAS"
+oad gen-docs -s source-openapi.json -d schemas.wsd --style "PLANTUML_SCHEMAS"
 ```
 
 ### Styles
@@ -58,6 +58,15 @@ openapidocs gen-docs -s source-openapi.json -d schemas.wsd --style "PLANTUML_SCH
 | MARKDOWN         | 2         | Basic Markdown.                              |
 | HTML             | 3         | Plain HTML _(planned, not yet implemented)_. |
 | PLANTUML_SCHEMAS | 100       | PlantUML schema for components schemas.      |
+
+### Supported sources for OpenAPI Documentation
+
+| Source                         | Example                                              |
+| ------------------------------ | ---------------------------------------------------- |
+| YAML file                      | `./docs/swagger.yaml`                                |
+| JSON file                      | `./docs/swagger.json`                                |
+| URL returning YAML on HTTP GET | `https://example-domain.net/swagger/v1/swagger.json` |
+| URL returning JSON on HTTP GET | `https://example-domain.net/swagger/v1/swagger.json` |
 
 ### Goals
 
