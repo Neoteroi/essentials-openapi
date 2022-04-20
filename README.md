@@ -59,15 +59,6 @@ oad gen-docs -s source-openapi.json -d schemas.wsd --style "PLANTUML_SCHEMAS"
 | HTML             | 3         | Plain HTML _(planned, not yet implemented)_. |
 | PLANTUML_SCHEMAS | 100       | PlantUML schema for components schemas.      |
 
-### Supported sources for OpenAPI Documentation
-
-| Source                         | Example                                              |
-| ------------------------------ | ---------------------------------------------------- |
-| YAML file                      | `./docs/swagger.yaml`                                |
-| JSON file                      | `./docs/swagger.json`                                |
-| URL returning YAML on HTTP GET | `https://example-domain.net/swagger/v1/swagger.json` |
-| URL returning JSON on HTTP GET | `https://example-domain.net/swagger/v1/swagger.json` |
-
 ### Goals
 
 * Provide an API to generate OpenAPI Documentation files.
@@ -86,10 +77,19 @@ oad gen-docs -s source-openapi.json -d schemas.wsd --style "PLANTUML_SCHEMAS"
 
 ## Limitations
 
-* Partial support for Parameter properties: `style`, `allow_reserved`, `explode`
-  are not handled.
+* Partial support for Parameter properties: `style`, `allow_reserved`, `explode` are not
+  handled.
 * Doesn't implement validation of values, currently it is only concerned in generating
   code from a higher level API (it might be extended in the future with classes for
   validation).
-* The features to generate artifacts from OpenAPI Documentation currently
-  support only Version 3 of the specification.
+* The features to generate artifacts from OpenAPI Documentation currently support only
+  Version 3 of the specification.
+
+### Supported sources for OpenAPI Documentation
+
+| Source                         | Example                                              |
+| ------------------------------ | ---------------------------------------------------- |
+| YAML file                      | `./docs/swagger.yaml`                                |
+| JSON file                      | `./docs/swagger.json`                                |
+| URL returning YAML on HTTP GET | `https://example-domain.net/swagger/v1/swagger.yaml` |
+| URL returning JSON on HTTP GET | `https://example-domain.net/swagger/v1/swagger.json` |
