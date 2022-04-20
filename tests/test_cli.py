@@ -27,6 +27,13 @@ def read_file(file_path):
         return source.read()
 
 
+def remove_file(file_path: Path):
+    try:
+        file_path.unlink()
+    except FileNotFoundError:
+        return
+
+
 def contents_equals(file_path_1, file_path_2):
     assert read_file(file_path_1) == read_file(file_path_2)
 
@@ -69,7 +76,7 @@ def test_failed_request_wrong_url():
 
 def test_generate_docs_command_from_url():
     test_output = Path("test_write1.md")
-    test_output.unlink(missing_ok=True)
+    remove_file(test_output)
 
     runner = CliRunner()
     result = runner.invoke(
@@ -78,6 +85,7 @@ def test_generate_docs_command_from_url():
     )
     assert result.exit_code == 0
     assert test_output.exists()
+    remove_file(test_output)
 
 
 def test_generate_docs_command_invalid_source():
@@ -110,7 +118,7 @@ def test_main_command_gen_mkdocs_docs(valid_source):
     assert result.exit_code == 0
     assert test_output.exists()
     contents_equals(test_output, "tests/res/example1-output.md")
-    test_output.unlink(missing_ok=True)
+    remove_file(test_output)
 
 
 @pytest.mark.parametrize(
@@ -142,7 +150,7 @@ def test_main_command_gen_plantuml_schema_docs(valid_source):
     assert result.exit_code == 0
     assert test_output.exists()
     contents_equals(test_output, "tests/res/example1-schemas-output.wsd")
-    test_output.unlink(missing_ok=True)
+    remove_file(test_output)
 
 
 def test_main_command_gen_plain_markdown_docs():
@@ -167,7 +175,7 @@ def test_main_command_gen_plain_markdown_docs():
     assert test_output.exists()
 
     contents_equals(test_output, "tests/res/example1-output-plain.md")
-    test_output.unlink(missing_ok=True)
+    remove_file(test_output)
 
 
 def test_main_command_list_styles():
