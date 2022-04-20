@@ -43,6 +43,12 @@ To generate output for [MkDocs](https://www.mkdocs.org) and [PyMdown extentions]
 oad gen-docs -s example1-openapi.json -d output.md
 ```
 
+![Example MkDocs documentation](./docs/example-1.png)
+
+_Example of MkDocs documentation generated using [Neoteroi/mkdocs-plugins](https://github.com/Neoteroi/mkdocs-plugins)._
+
+---
+
 To generate a [PlantUML](https://plantuml.com) [class
 diagram](https://plantuml.com/class-diagram) of the components schemas:
 
@@ -50,14 +56,9 @@ diagram](https://plantuml.com/class-diagram) of the components schemas:
 oad gen-docs -s source-openapi.json -d schemas.wsd --style "PLANTUML_SCHEMAS"
 ```
 
-### Styles
+![Example schemas](./docs/example-schemas.png)
 
-| Style            | Int value | Description                                  |
-| ---------------- | --------- | -------------------------------------------- |
-| MKDOCS           | 1         | Markdown for MkDocs and PyMdown extensions.  |
-| MARKDOWN         | 2         | Basic Markdown.                              |
-| HTML             | 3         | Plain HTML _(planned, not yet implemented)_. |
-| PLANTUML_SCHEMAS | 100       | PlantUML schema for components schemas.      |
+_Example of PlantUML diagram generated from components schemas._
 
 ### Goals
 
@@ -84,6 +85,15 @@ oad gen-docs -s source-openapi.json -d schemas.wsd --style "PLANTUML_SCHEMAS"
   validation).
 * The features to generate artifacts from OpenAPI Documentation currently support only
   Version 3 of the specification.
+
+### Styles
+
+| Style            | Int value | Description                                  |
+| ---------------- | --------- | -------------------------------------------- |
+| MKDOCS           | 1         | Markdown for MkDocs and PyMdown extensions.  |
+| MARKDOWN         | 2         | Basic Markdown.                              |
+| HTML             | 3         | Plain HTML _(planned, not yet implemented)_. |
+| PLANTUML_SCHEMAS | 100       | PlantUML schema for components schemas.      |
 
 ### Supported sources for OpenAPI Documentation
 
