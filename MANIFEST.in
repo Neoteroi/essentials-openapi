@@ -1,0 +1,6 @@
+include LICENSE
+include README.md
+recursive-include openapidocs *.html *.md
+
+# Stubs
+include openapidocs/py.typed

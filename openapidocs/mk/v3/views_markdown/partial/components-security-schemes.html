@@ -1,0 +1,8 @@
+## {{texts.security_schemes}}
+
+{% with rows = [[texts.name, texts.type, texts.scheme, texts.description]] %}
+{%- for name, definition in components.securitySchemes.items() -%}
+{%- set _ = rows.append([name, definition.type, definition.scheme, definition.description]) -%}
+{%- endfor -%}
+{{ rows | table }}
+{%- endwith -%}

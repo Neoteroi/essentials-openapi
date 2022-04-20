@@ -1,0 +1,23 @@
+# {{info.title}} {{info.version}}
+
+{% if info.description -%}
+{{info.description | wordwrap(80)}}
+
+---
+{% endif -%}
+
+{%- if info.termsOfService %}
+**{{texts.terms_of_service}}:** [{{info.termsOfService}}]({{info.termsOfService}})
+{% endif -%}
+
+{%- if info.contact %}
+**{{texts.contact}}:** {{info.contact.name}} {{info.contact.email}}
+{% endif -%}
+
+{%- if info.license %}
+{%- if info.license.url %}
+**{{texts.license}}:** [{{info.license.name or info.license.url}}]({{info.license.url}})
+{%- else %}
+**{{texts.license}}:** {{info.license.name}}
+{% endif -%}
+{% endif -%}

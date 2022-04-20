@@ -1,0 +1,35 @@
+{% for code, definition in operation.responses.items() %}
+
+### {% if code == "default" -%}{{texts.other_responses}}{%- else -%}Response {{code}}{%- with phrase = get_http_status_phrase(code) %}{%- if phrase %}{{ " " + phrase }}{%- endif -%}{%- endwith -%}{%- endif %}
+
+{%- if is_reference(definition) -%}
+{%- with type_name = definition["$ref"].replace("#/components/responses/", "") %}
+Refer to the common response description: [{{type_name}}](#{{type_name.lower()}})
+{%- endwith -%}
+{%- endif -%}
+{%- if definition.content %}
+{%- with content = handler.simplify_content(definition.content) %}
+{% for content_type, definition in content.items() %}
+**{{content_type}}**
+{%- include "partial/content-examples.html" %}
+{% if "alt_types" in definition %}_{{texts.other_possible_types}}: {{definition.alt_types | join(", ")}}_{% endif %}
+
+**{{texts.schema_of_the_response_body}}**
+
+```json
+{{handler.write_content_schema(definition) | safe}}
+```
+{% endfor %}
+{% endwith -%}
+{% endif -%}
+{%- if definition.headers %}
+
+{% with rows = [[texts.name, texts.description, texts.schema]] %}
+{%- for header_name, header_definition in definition.headers.items() -%}
+{%- set _ = rows.append([header_name, header_definition.description, header_definition.schema.type]) -%}
+{%- endfor -%}
+{{ rows | table }}
+{%- endwith -%}
+
+{% endif -%}
+{%- endfor %}

@@ -1,0 +1,12 @@
+{% if definition.type == "object" %}
+| {{texts.name}} | {{texts.type}} |
+| -- | -- |
+{%- for name, schema in handler.get_properties(definition) %}
+| {{name}} | {% include "partial/schema-repr.html" %} |
+{%- endfor -%}
+{%- else -%}
+{%- with schema = definition -%}
+Type:&nbsp;
+{%- include "partial/schema-repr.html" -%}
+{%- endwith -%}
+{%- endif %}

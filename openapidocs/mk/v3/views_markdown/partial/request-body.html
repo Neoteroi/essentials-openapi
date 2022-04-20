@@ -1,0 +1,14 @@
+**{{texts.request_body}}**
+{% with content = handler.simplify_content(operation.requestBody.content) -%}
+{% for content_type, definition in content.items() %}
+**{{content_type}}**
+{%- include "partial/content-examples.html" -%}
+{%- if "alt_types" in definition %}_{{texts.other_accepted_types}}: {{definition.alt_types | join(", ")}}_{% endif %}
+
+**{{texts.schema_of_the_request_body}}**
+
+```json
+{{handler.write_content_schema(definition) | safe}}
+```
+{% endfor %}
+{% endwith %}
