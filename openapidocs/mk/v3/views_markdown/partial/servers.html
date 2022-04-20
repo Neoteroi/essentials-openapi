@@ -1,0 +1,9 @@
+
+## {{texts.servers}}
+
+{% with rows = [[texts.description, texts.url]] %}
+{%- for server in servers -%}
+{%- set _ = rows.append([server.description, server.description]) -%}
+{%- endfor -%}
+{{ rows | table }}
+{%- endwith -%}

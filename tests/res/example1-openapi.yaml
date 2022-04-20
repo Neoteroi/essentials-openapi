@@ -1,0 +1,1432 @@
+openapi: 3.0.1
+info:
+  title: Software Platform API
+  description: Optional multiline or single-line description in [CommonMark](http://commonmark.org/help/) or HTML.
+  version: v1
+  termsOfService: http://example.com/terms/
+  contact:
+    name: API Support
+    url: http://www.example.com/support
+    email: support@example.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - url: https://www.neoteroi.xyz/software-center/v1
+    description: Production server
+paths:
+  /api/blobs/initialize-upload:
+    post:
+      tags:
+        - Blobs
+      summary: Initializes a file upload operation.
+      description: The client receives a Shared Access Signature that can be used to upload a file directly to the Azure Storage Blob Service.
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: "#/components/schemas/InitializeUploadInput"
+            examples:
+              svgInput:
+                $ref: "#/components/examples/InitializeUploadInputExample"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InitializeUploadInput"
+            examples:
+              svgInput:
+                $ref: "#/components/examples/InitializeUploadInputExample"
+          text/json:
+            schema:
+              $ref: "#/components/schemas/InitializeUploadInput"
+            examples:
+              svgInput:
+                $ref: "#/components/examples/InitializeUploadInputExample"
+          application/*+json:
+            schema:
+              $ref: "#/components/schemas/InitializeUploadInput"
+            examples:
+              svgInput:
+                $ref: "#/components/examples/InitializeUploadInputExample"
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/InitializeUploadOutput"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InitializeUploadOutput"
+            text/json:
+              schema:
+                $ref: "#/components/schemas/InitializeUploadOutput"
+          headers:
+            X-Rate-Limit-Limit:
+              description: The number of allowed requests in the current period
+              schema:
+                type: integer
+            X-Rate-Limit-Remaining:
+              description: The number of remaining requests in the current period
+              schema:
+                type: integer
+            X-Rate-Limit-Reset:
+              description: The number of seconds left in the current period
+              schema:
+                type: integer
+        "400":
+          $ref: "#/components/responses/IllegalInput"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+      security:
+        - AAD: []
+  /api/categories:
+    get:
+      tags:
+        - Categories
+      summary: Gets the list of categories supported by the system.
+      description: ""
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Category"
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Category"
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Category"
+  /api/countries:
+    get:
+      tags:
+        - Countries
+      summary: Gets a list of countries of the World with English dislay names and ISO country codes.
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Country"
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Country"
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Country"
+  /api/system-countries:
+    get:
+      tags:
+        - Countries
+      summary: Gets a list of countries supported by the system, with English dislay names and ISO country codes.
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Country"
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Country"
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Country"
+  /api/downloads:
+    get:
+      tags:
+        - Downloads
+      summary: Gets a paginated set of downloads records.
+      parameters:
+        - name: category
+          in: query
+          schema:
+            type: string
+            nullable: true
+        - $ref: "#/components/parameters/PageNumber"
+        - name: size
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 30
+            nullable: true
+        - name: country
+          in: query
+          schema:
+            type: string
+            nullable: true
+        - name: search
+          in: query
+          schema:
+            type: string
+            nullable: true
+        - name: sortBy
+          in: query
+          schema:
+            type: string
+            nullable: true
+        - name: organizationId
+          in: query
+          schema:
+            type: string
+            nullable: true
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/ReleaseNodeDownloadPaginatedSet"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReleaseNodeDownloadPaginatedSet"
+            text/json:
+              schema:
+                $ref: "#/components/schemas/ReleaseNodeDownloadPaginatedSet"
+  /api/health:
+    get:
+      tags:
+        - Health
+      summary: API health check
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/HealthCheck"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthCheck"
+            text/json:
+              schema:
+                $ref: "#/components/schemas/HealthCheck"
+  /api/pro/own-context:
+    get:
+      tags:
+        - Professionals
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/ProfessionalContext"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProfessionalContext"
+            text/json:
+              schema:
+                $ref: "#/components/schemas/ProfessionalContext"
+  /api/info:
+    get:
+      tags:
+        - Info
+      summary: Returns information about the API itself.
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/MetaData"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetaData"
+            text/json:
+              schema:
+                $ref: "#/components/schemas/MetaData"
+  /api/releases/{releaseId}:
+    get:
+      tags:
+        - Releases
+      summary: Returns details about a release by id.
+      parameters:
+        - name: releaseId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/Release"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Release"
+            text/json:
+              schema:
+                $ref: "#/components/schemas/Release"
+    delete:
+      tags:
+        - Releases
+      summary: Deletes a release by id.
+      parameters:
+        - name: releaseId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Success
+    patch:
+      tags:
+        - Releases
+      parameters:
+        - name: releaseId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: "#/components/schemas/UpdateReleaseInput"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateReleaseInput"
+          text/json:
+            schema:
+              $ref: "#/components/schemas/UpdateReleaseInput"
+          application/*+json:
+            schema:
+              $ref: "#/components/schemas/UpdateReleaseInput"
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/Release"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Release"
+            text/json:
+              schema:
+                $ref: "#/components/schemas/Release"
+  /api/releases:
+    get:
+      tags:
+        - Releases
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 1
+            nullable: true
+        - name: size
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 30
+            nullable: true
+        - name: category
+          in: query
+          schema:
+            type: string
+            nullable: true
+        - name: country
+          in: query
+          schema:
+            type: string
+            nullable: true
+        - name: search
+          in: query
+          schema:
+            type: string
+            nullable: true
+        - name: sortBy
+          in: query
+          schema:
+            type: string
+            nullable: true
+        - name: draft
+          in: query
+          schema:
+            type: boolean
+            nullable: true
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/ReleasePaginatedSet"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReleasePaginatedSet"
+            text/json:
+              schema:
+                $ref: "#/components/schemas/ReleasePaginatedSet"
+    post:
+      tags:
+        - Releases
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: "#/components/schemas/CreateReleaseInput"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateReleaseInput"
+          text/json:
+            schema:
+              $ref: "#/components/schemas/CreateReleaseInput"
+          application/*+json:
+            schema:
+              $ref: "#/components/schemas/CreateReleaseInput"
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/CreateReleaseOutput"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreateReleaseOutput"
+            text/json:
+              schema:
+                $ref: "#/components/schemas/CreateReleaseOutput"
+  /api/current-releases:
+    get:
+      tags:
+        - Releases
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/CurrentRelease"
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/CurrentRelease"
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/CurrentRelease"
+  /api/orgs/current-releases:
+    get:
+      tags:
+        - Releases
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/CurrentRelease"
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/CurrentRelease"
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/CurrentRelease"
+  /api/releases/{releaseId}/history:
+    get:
+      tags:
+        - Releases
+      parameters:
+        - name: releaseId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ReleaseHistory"
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ReleaseHistory"
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ReleaseHistory"
+  /api/releases/{releaseId}/file/{nodeId}:
+    get:
+      tags:
+        - Releases
+      parameters:
+        - name: releaseId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: nodeId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/FileUrl"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FileUrl"
+            text/json:
+              schema:
+                $ref: "#/components/schemas/FileUrl"
+  /api/releases/{releaseId}/file/{nodeId}/downloads:
+    get:
+      tags:
+        - Releases
+      parameters:
+        - name: releaseId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: nodeId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/FileDownloadStats"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FileDownloadStats"
+            text/json:
+              schema:
+                $ref: "#/components/schemas/FileDownloadStats"
+  /api/releases/{releaseId}/files:
+    put:
+      tags:
+        - Releases
+      parameters:
+        - name: releaseId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/CreateReleaseNodeInput"
+              nullable: true
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/CreateReleaseNodeInput"
+              nullable: true
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/CreateReleaseNodeInput"
+              nullable: true
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/CreateReleaseNodeInput"
+              nullable: true
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/Release"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Release"
+            text/json:
+              schema:
+                $ref: "#/components/schemas/Release"
+    delete:
+      tags:
+        - Releases
+      parameters:
+        - name: releaseId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/DeleteReleaseNodeInput"
+              nullable: true
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/DeleteReleaseNodeInput"
+              nullable: true
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/DeleteReleaseNodeInput"
+              nullable: true
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/DeleteReleaseNodeInput"
+              nullable: true
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/Release"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Release"
+            text/json:
+              schema:
+                $ref: "#/components/schemas/Release"
+  /api/releases/{releaseId}/orgs:
+    put:
+      tags:
+        - Releases
+      parameters:
+        - name: releaseId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: "#/components/schemas/CreateOrganizationsBoundInput"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateOrganizationsBoundInput"
+          text/json:
+            schema:
+              $ref: "#/components/schemas/CreateOrganizationsBoundInput"
+          application/*+json:
+            schema:
+              $ref: "#/components/schemas/CreateOrganizationsBoundInput"
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/Release"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Release"
+            text/json:
+              schema:
+                $ref: "#/components/schemas/Release"
+    delete:
+      tags:
+        - Releases
+      parameters:
+        - name: releaseId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              type: array
+              items:
+                type: string
+                format: uuid
+              nullable: true
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+                format: uuid
+              nullable: true
+          text/json:
+            schema:
+              type: array
+              items:
+                type: string
+                format: uuid
+              nullable: true
+          application/*+json:
+            schema:
+              type: array
+              items:
+                type: string
+                format: uuid
+              nullable: true
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/Release"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Release"
+            text/json:
+              schema:
+                $ref: "#/components/schemas/Release"
+  /api/releases/{releaseId}/clone:
+    post:
+      tags:
+        - Releases
+      parameters:
+        - name: releaseId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/Release"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Release"
+            text/json:
+              schema:
+                $ref: "#/components/schemas/Release"
+  /api/releases/{releaseId}/publish:
+    post:
+      tags:
+        - Releases
+      parameters:
+        - name: releaseId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: "#/components/schemas/PublishReleaseInput"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PublishReleaseInput"
+          text/json:
+            schema:
+              $ref: "#/components/schemas/PublishReleaseInput"
+          application/*+json:
+            schema:
+              $ref: "#/components/schemas/PublishReleaseInput"
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/Release"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Release"
+            text/json:
+              schema:
+                $ref: "#/components/schemas/Release"
+components:
+  schemas:
+    InitializeUploadInput:
+      type: object
+      properties:
+        releaseId:
+          type: string
+          format: uuid
+        fileName:
+          type: string
+          nullable: true
+        fileSize:
+          type: integer
+          format: int32
+        fileType:
+          type: string
+          nullable: true
+      additionalProperties: false
+    InitializeUploadOutput:
+      type: object
+      properties:
+        baseURL:
+          type: string
+          nullable: true
+        fileId:
+          type: string
+          nullable: true
+        fileName:
+          type: string
+          nullable: true
+        token:
+          type: string
+          nullable: true
+      additionalProperties: false
+    NodeInfo:
+      required:
+        - creationTime
+        - eTag
+        - extension
+        - icon
+        - name
+        - size
+        - type
+        - updateTime
+      type: object
+      properties:
+        eTag:
+          maxLength: 50
+          minLength: 0
+          type: string
+        creationTime:
+          type: string
+          format: date-time
+        updateTime:
+          type: string
+          format: date-time
+        id:
+          type: string
+          format: uuid
+        name:
+          maxLength: 300
+          type: string
+        extension:
+          maxLength: 20
+          type: string
+        type:
+          maxLength: 255
+          type: string
+        icon:
+          maxLength: 300
+          type: string
+        size:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ReleaseNode:
+      required:
+        - nodeId
+        - releaseId
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        nodeId:
+          type: string
+          format: uuid
+        releaseId:
+          type: string
+          format: uuid
+        node:
+          $ref: "#/components/schemas/NodeInfo"
+        release:
+          $ref: "#/components/schemas/Release"
+      additionalProperties: false
+    Country:
+      required:
+        - name
+      type: object
+      properties:
+        id:
+          maxLength: 2
+          minLength: 0
+          type: string
+          nullable: true
+        name:
+          maxLength: 255
+          type: string
+        countryCode:
+          type: string
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+    ReleaseCountry:
+      type: object
+      properties:
+        countryId:
+          type: string
+          nullable: true
+        releaseId:
+          type: string
+          format: uuid
+        country:
+          $ref: "#/components/schemas/Country"
+        release:
+          $ref: "#/components/schemas/Release"
+      additionalProperties: false
+    ReleaseHistory:
+      required:
+        - description
+        - releaseId
+        - timeStamp
+        - user
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        user:
+          maxLength: 50
+          type: string
+        description:
+          maxLength: 4000
+          type: string
+        data:
+          type: string
+          nullable: true
+        timeStamp:
+          type: string
+          format: date-time
+        releaseId:
+          type: string
+          format: uuid
+        release:
+          $ref: "#/components/schemas/Release"
+      additionalProperties: false
+    ReleaseOrganization:
+      type: object
+      properties:
+        organizationId:
+          type: string
+          format: uuid
+        releaseId:
+          type: string
+          format: uuid
+        displayName:
+          type: string
+          nullable: true
+        release:
+          $ref: "#/components/schemas/Release"
+      additionalProperties: false
+    Release:
+      required:
+        - creationTime
+        - draft
+        - eTag
+        - name
+        - updateTime
+      type: object
+      properties:
+        eTag:
+          maxLength: 50
+          minLength: 0
+          type: string
+        creationTime:
+          type: string
+          format: date-time
+        updateTime:
+          type: string
+          format: date-time
+        id:
+          type: string
+          format: uuid
+        name:
+          maxLength: 250
+          type: string
+        description:
+          type: string
+          nullable: true
+        draft:
+          type: boolean
+        requestedNotification:
+          type: boolean
+        categoryId:
+          type: string
+          nullable: true
+        category:
+          $ref: "#/components/schemas/Category"
+        nodes:
+          type: array
+          items:
+            $ref: "#/components/schemas/ReleaseNode"
+          nullable: true
+        countries:
+          type: array
+          items:
+            $ref: "#/components/schemas/ReleaseCountry"
+          nullable: true
+        history:
+          type: array
+          items:
+            $ref: "#/components/schemas/ReleaseHistory"
+          nullable: true
+        organizations:
+          type: array
+          items:
+            $ref: "#/components/schemas/ReleaseOrganization"
+          nullable: true
+      additionalProperties: false
+    Category:
+      required:
+        - creationTime
+        - eTag
+        - name
+        - updateTime
+      type: object
+      properties:
+        eTag:
+          maxLength: 50
+          minLength: 0
+          type: string
+        creationTime:
+          type: string
+          format: date-time
+        updateTime:
+          type: string
+          format: date-time
+        id:
+          maxLength: 20
+          type: string
+          nullable: true
+        name:
+          maxLength: 250
+          type: string
+        description:
+          type: string
+          nullable: true
+        releases:
+          type: array
+          items:
+            $ref: "#/components/schemas/Release"
+          nullable: true
+      additionalProperties: false
+    ReleaseNodeDownload:
+      required:
+        - nodeId
+        - releaseId
+        - timeStamp
+        - userEmail
+        - userId
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        nodeId:
+          type: string
+          format: uuid
+        releaseId:
+          type: string
+          format: uuid
+        userEmail:
+          maxLength: 300
+          type: string
+        userId:
+          maxLength: 50
+          type: string
+        node:
+          $ref: "#/components/schemas/NodeInfo"
+        release:
+          $ref: "#/components/schemas/Release"
+        timeStamp:
+          type: string
+          format: date-time
+        accessGrantedByOrganizationId:
+          type: string
+          format: uuid
+          nullable: true
+      additionalProperties: false
+    ReleaseNodeDownloadPaginatedSet:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ReleaseNodeDownload"
+          nullable: true
+        total:
+          type: integer
+          format: int64
+      additionalProperties: false
+    HealthCheck:
+      type: object
+      properties:
+        alive:
+          type: boolean
+        timestamp:
+          type: string
+          format: date-time
+        regionName:
+          type: string
+          nullable: true
+      additionalProperties: false
+    ProfessionalMembership:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        organizationName:
+          type: string
+          nullable: true
+        organizationNumber:
+          type: string
+          nullable: true
+        organizationId:
+          type: string
+          format: uuid
+        categoryId:
+          type: string
+          nullable: true
+        role:
+          type: string
+          nullable: true
+        organizationBrands:
+          type: array
+          items:
+            type: string
+            format: uuid
+          nullable: true
+        organizationMarkets:
+          type: array
+          items:
+            type: string
+            format: uuid
+          nullable: true
+        brandNames:
+          type: array
+          items:
+            type: string
+          nullable: true
+        marketCodes:
+          type: array
+          items:
+            type: string
+          nullable: true
+        scope:
+          type: string
+          nullable: true
+      additionalProperties: false
+    ProfessionalContext:
+      type: object
+      properties:
+        membership:
+          type: array
+          items:
+            $ref: "#/components/schemas/ProfessionalMembership"
+          nullable: true
+        signature:
+          type: string
+          nullable: true
+      additionalProperties: false
+    MetaData:
+      type: object
+      properties:
+        version:
+          type: string
+          nullable: true
+        buildNumber:
+          type: string
+          nullable: true
+        contactEmail:
+          type: string
+          nullable: true
+      additionalProperties: false
+    UpdateReleaseInput:
+      required:
+        - categoryId
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        categoryId:
+          maxLength: 20
+          type: string
+        name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        eTag:
+          type: string
+          nullable: true
+        countries:
+          type: array
+          items:
+            type: string
+          nullable: true
+      additionalProperties: false
+    ReleasePaginatedSet:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/Release"
+          nullable: true
+        total:
+          type: integer
+          format: int64
+      additionalProperties: false
+    CreateReleaseInput:
+      required:
+        - categoryId
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        categoryId:
+          maxLength: 20
+          type: string
+        countries:
+          type: array
+          items:
+            type: string
+          nullable: true
+      additionalProperties: false
+    CreateReleaseOutput:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+      additionalProperties: false
+    CurrentRelease:
+      type: object
+      properties:
+        releaseId:
+          type: string
+          format: uuid
+        releaseName:
+          type: string
+          nullable: true
+        publishTime:
+          type: string
+          format: date-time
+        countryCode:
+          type: string
+          nullable: true
+        countryName:
+          type: string
+          nullable: true
+        categoryId:
+          type: string
+          nullable: true
+      additionalProperties: false
+    FileUrl:
+      type: object
+      properties:
+        url:
+          type: string
+          nullable: true
+      additionalProperties: false
+    FileDownloadStats:
+      type: object
+      properties:
+        uniqueDownloads:
+          type: integer
+          format: int32
+      additionalProperties: false
+    CreateReleaseNodeInput:
+      required:
+        - fileId
+        - fileName
+        - fileType
+      type: object
+      properties:
+        fileId:
+          type: string
+          format: uuid
+        fileName:
+          maxLength: 250
+          type: string
+        fileSize:
+          type: integer
+          format: int32
+        fileType:
+          maxLength: 50
+          type: string
+      additionalProperties: false
+    DeleteReleaseNodeInput:
+      required:
+        - id
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+      additionalProperties: false
+    OrganizationBoundInput:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          nullable: true
+      additionalProperties: false
+    CreateOrganizationsBoundInput:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/OrganizationBoundInput"
+          nullable: true
+      additionalProperties: false
+    PublishReleaseInput:
+      type: object
+      properties:
+        eTag:
+          type: string
+          nullable: true
+        sendEmailNotifications:
+          type: boolean
+      additionalProperties: false
+    GenericError:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+  parameters:
+    PageNumber:
+      name: page
+      in: query
+      schema:
+        type: integer
+        format: int32
+        default: 1
+        nullable: true
+  responses:
+    NotFound:
+      description: Entity not found.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/GenericError"
+          example:
+            code: 404
+            message: Entity not found
+    IllegalInput:
+      description: Illegal input for operation.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/GenericError"
+          example:
+            code: 400
+            message: Illegal Input
+    Unauthorized:
+      description: The user is not authorized.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/GenericError"
+          example:
+            code: 401
+            message: Unauthorized
+    GenericError:
+      description: This base error type is used for all raised exceptions.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/GenericError"
+  securitySchemes:
+    AAD:
+      type: http
+      scheme: bearer
+      description: Access token issued by Azure Active Directory.
+      bearerFormat: JWT
+    AADB2C:
+      type: http
+      scheme: bearer
+      description: Access token issued by Azure Active Directory B2C.
+      bearerFormat: JWT
+  examples:
+    InitializeUploadInputExample:
+      containerId: c53a1cd7-8b31-401b-aacc-15d5befbb26d
+      fileName: like_a_sir.svg
+      fileType: image/svg+xml
+      fileSize: 23307
+security:
+  - AAD: []
