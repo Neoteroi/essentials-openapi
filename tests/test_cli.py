@@ -153,6 +153,35 @@ def test_main_command_gen_plantuml_schema_docs(valid_source):
     remove_file(test_output)
 
 
+@pytest.mark.parametrize(
+    "valid_source",
+    [
+        "tests/res/example1-openapi.yaml",
+    ],
+)
+def test_main_command_gen_plantuml_api_docs(valid_source):
+    test_output = Path(f"{uuid4()}.wsd")
+    assert test_output.exists() is False
+
+    runner = CliRunner()
+    result = runner.invoke(
+        main,
+        [
+            "gen-docs",
+            "-s",
+            valid_source,
+            "-d",
+            str(test_output),
+            "-t",
+            "PLANTUML_API",
+        ],
+    )
+    assert result.exit_code == 0
+    assert test_output.exists()
+    contents_equals(test_output, "tests/res/example1-api-output.wsd")
+    remove_file(test_output)
+
+
 def test_main_command_gen_plain_markdown_docs():
     valid_source = "tests/res/example1-openapi.json"
     test_output = Path(f"{uuid4()}.md")
