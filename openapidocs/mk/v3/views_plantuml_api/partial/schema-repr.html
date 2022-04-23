@@ -1,0 +1,26 @@
+{%- if is_reference(schema) -%}
+{%- with type_name = schema["$ref"].replace("#/components/schemas/", "") -%}
+{{type_name}}
+{%- endwith -%}
+{%- endif -%}
+
+{%- if schema.type -%}
+{%- with type_name = schema["type"], nullable = schema.get("nullable") -%}
+{# Scalar types #}
+{%- if type_name in scalar_types -%}
+{{type_name}}
+{%- if schema.format -%}
+({{schema.format}})
+{%- endif -%}
+{%- if nullable %} &#124; null{%- endif -%}
+{%- endif -%}
+{%- if type_name == "array" -%}
+{%- with schema = schema["items"] -%}
+Array of {% include "partial/schema-repr.html" -%}
+{%- endwith -%}
+{%- endif -%}
+{%- if type_name == "null" -%}
+null
+{%- endif -%}
+{%- endwith -%}
+{%- endif -%}

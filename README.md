@@ -43,7 +43,7 @@ To generate output for [MkDocs](https://www.mkdocs.org) and [PyMdown extentions]
 oad gen-docs -s example1-openapi.json -d output.md
 ```
 
-![Example MkDocs documentation](./docs/example-1.png)
+![Example MkDocs documentation](https://gist.githubusercontent.com/RobertoPrevato/38a0598b515a2f7257c614938843b99b/raw/06e157c4f49e27a7e488d72d36d199194e28e952/oad-example-1.png)
 
 _Example of MkDocs documentation generated using [Neoteroi/mkdocs-plugins](https://github.com/Neoteroi/mkdocs-plugins)._
 
@@ -56,9 +56,22 @@ diagram](https://plantuml.com/class-diagram) of the components schemas:
 oad gen-docs -s source-openapi.json -d schemas.wsd --style "PLANTUML_SCHEMAS"
 ```
 
-![Example schemas](./docs/example-schemas.png)
+![Example schemas](https://gist.githubusercontent.com/RobertoPrevato/38a0598b515a2f7257c614938843b99b/raw/06e157c4f49e27a7e488d72d36d199194e28e952/oad-example-schemas.png)
 
 _Example of PlantUML diagram generated from components schemas._
+
+---
+
+To generate a [PlantUML](https://plantuml.com) [class
+diagram](https://plantuml.com/class-diagram) with an overview of API endpoints:
+
+```bash
+oad gen-docs -s source-openapi.json -d schemas.wsd --style "PLANTUML_API"
+```
+
+![Example api overview](https://gist.githubusercontent.com/RobertoPrevato/38a0598b515a2f7257c614938843b99b/raw/3c6fdf85f6dd1a99ba1bd0486707dff557ff4ac4/oad-api-example.png)
+
+_Example of PlantUML diagram generated from path items._
 
 ### Goals
 
@@ -94,6 +107,7 @@ _Example of PlantUML diagram generated from components schemas._
 | MARKDOWN         | 2         | Basic Markdown.                              |
 | HTML             | 3         | Plain HTML _(planned, not yet implemented)_. |
 | PLANTUML_SCHEMAS | 100       | PlantUML schema for components schemas.      |
+| PLANTUML_API     | 101       | PlantUML schema for API endpoints.           |
 
 ### Supported sources for OpenAPI Documentation
 

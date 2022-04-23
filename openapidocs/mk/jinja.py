@@ -39,7 +39,10 @@ class OutputStyle(Enum):
     """Basic Markdown"""
 
     PLANTUML_SCHEMAS = 100
-    """PlantUML schema for components schemas."""
+    """PlantUML class diagram for components schemas."""
+
+    PLANTUML_API = 101
+    """PlantUML diagram of the API with request and response bodies."""
 
 
 class PackageLoadingError(ValueError):
