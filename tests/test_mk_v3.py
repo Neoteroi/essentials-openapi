@@ -222,3 +222,31 @@ def test_iter_bindings_arrays():
 def test_style_from_value_raises_value_error():
     with pytest.raises(ValueError):
         style_from_value("WRONG")
+
+
+def test_v3_markdown_gen_handles_missing_components():
+    data = {
+        "openapi": "3.0.0",
+        "info": {
+            "version": "1.0.0",
+            "title": "Example",
+        },
+        "paths": {
+            "/foo": {
+                "get": {
+                    "responses": {
+                        "200": {
+                            "description": "Foo",
+                            "content": {"text/plain": {"schema": {"type": "string"}}},
+                        },
+                    },
+                },
+            },
+        },
+    }
+    handler = OpenAPIV3DocumentationHandler(data)
+
+    html = handler.write(data)
+    with open("___a.html", encoding="utf8", mode="wt") as f:
+        f.write(html)
+    assert html is not None

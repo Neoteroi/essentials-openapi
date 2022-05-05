@@ -74,11 +74,20 @@ class OpenAPIV3DocumentationHandler:
         writer: Optional[DocumentsWriter] = None,
         style: Union[int, str] = 1,
     ) -> None:
-        self.doc = copy.deepcopy(doc)
+        self.doc = self.normalize_data(copy.deepcopy(doc))
         self.texts = texts or EnglishTexts()
         self._writer = writer or Jinja2DocumentsWriter(
             __name__, views_style=style_from_value(style)
         )
+
+    def normalize_data(self, data):
+        """
+        Applies corrections to the OpenAPI specification, to simplify its handling.
+        """
+        if "components" not in data:
+            data["components"] = {}
+
+        return data
 
     def get_operations(self):
         """
