@@ -1,0 +1,37 @@
+get:
+  x-eov-operation-id: getUser
+  x-eov-operation-handler: v1/handlers/users
+  tags:
+    - User
+  summary: Get user by ID/Email
+  description: Retrieve a user from your instance. Only available for the instance owner.
+  parameters:
+    - $ref: "#/components/parameters/UserIdentifier"
+    - $ref: "#/components/parameters/IncludeRole"
+  responses:
+    "200":
+      $ref: "#/components/responses/UserInformation"
+    "401":
+      $ref: "#/components/responses/Unauthorized"
+delete:
+  x-eov-operation-id: deleteUser
+  x-eov-operation-handler: v1/handlers/users
+  tags:
+    - User
+  summary: Delete user by ID/Email
+  description: Deletes a user from your instance. Only available for the instance owner.
+  operationId: deleteUser
+  parameters:
+    - $ref: "#/components/parameters/UserIdentifier"
+    - $ref: "#/components/parameters/IncludeRole"
+    - name: transferId
+      in: query
+      description: ID of the user to transfer workflows and credentials to. Must not be equal to the to-be-deleted user.
+      required: false
+      schema:
+        type: string
+  responses:
+    "200":
+      $ref: "#/components/responses/UserInformation"
+    "401":
+      $ref: "#/components/responses/Unauthorized"

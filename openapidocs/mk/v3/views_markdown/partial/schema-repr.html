@@ -6,6 +6,13 @@
 
 {%- if schema.type -%}
 {%- with type_name = schema["type"], nullable = schema.get("nullable") -%}
+{%- if type_name == "object" -%}
+{%- if schema.example -%}
+_{{texts.example}}: _`{{schema.example}}`
+{%- elif schema.properties -%}
+_{{texts.properties}}: _`{{", ".join(schema.properties.keys())}}`
+{%- endif -%}
+{%- endif -%}
 {# Scalar types #}
 {%- if type_name in scalar_types -%}
 {{type_name}}

@@ -2,11 +2,14 @@
 This module provides functions to generate Markdown for OpenAPI Version 3.
 """
 import copy
+import os
 import warnings
 from collections import defaultdict
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Any, Iterable, List, Optional, Union
 
+from openapidocs.logs import logger
 from openapidocs.mk import read_dict, sort_dict
 from openapidocs.mk.common import (
     DocumentsWriter,
@@ -19,6 +22,7 @@ from openapidocs.mk.contents import ContentWriter, FormContentWriter, JSONConten
 from openapidocs.mk.jinja import Jinja2DocumentsWriter, OutputStyle
 from openapidocs.mk.texts import EnglishTexts, Texts
 from openapidocs.mk.v3.examples import get_example_from_schema
+from openapidocs.utils.source import read_from_source
 
 
 def _can_simplify_json(content_type) -> bool:
@@ -50,6 +54,23 @@ def style_from_value(value: Union[int, str]) -> OutputStyle:
         raise ValueError(f"Invalid style: {value}")
 
 
+class OpenAPIDocumentationHandlerError(Exception):
+    """Base type for exceptions raised by the handler generating documentation."""
+
+
+class OpenAPIFileNotFoundError(OpenAPIDocumentationHandlerError, FileNotFoundError):
+    """
+    Exception raised when a $ref property pointing to a file (to split OAD specification
+    into multiple files) is not found.
+    """
+
+    def __init__(self, reference: str, attempted_path: Path) -> None:
+        super().__init__(
+            f"Cannot resolve the $ref source {reference} "
+            f"Tried to read from path: {attempted_path}"
+        )
+
+
 class OpenAPIV3DocumentationHandler:
     """
     Class that produces documentation from OpenAPI Documentation V3.
@@ -73,21 +94,80 @@ class OpenAPIV3DocumentationHandler:
         texts: Optional[Texts] = None,
         writer: Optional[DocumentsWriter] = None,
         style: Union[int, str] = 1,
+        source: str = "",
     ) -> None:
-        self.doc = self.normalize_data(copy.deepcopy(doc))
+        self._source = source
         self.texts = texts or EnglishTexts()
         self._writer = writer or Jinja2DocumentsWriter(
             __name__, views_style=style_from_value(style)
         )
+        self.doc = self.normalize_data(copy.deepcopy(doc))
+
+    @property
+    def source(self) -> str:
+        return self._source
 
     def normalize_data(self, data):
         """
         Applies corrections to the OpenAPI specification, to simplify its handling.
+
+        This method also resolves references to different files, if the root is split
+        into multiple files.
+
+        ---
+        Ref.
+        An OpenAPI document MAY be made up of a single document or be divided into
+        multiple, connected parts at the discretion of the user. In the latter case,
+        $ref fields MUST be used in the specification to reference those parts as
+        follows from the JSON Schema definitions.
         """
         if "components" not in data:
             data["components"] = {}
 
-        return data
+        return self._transform_data(
+            data, Path(self.source).parent if self.source else Path.cwd()
+        )
+
+    def _transform_data(self, obj, source_path):
+        if not isinstance(obj, dict):
+            return obj
+
+        if "$ref" in obj:
+            return self._handle_obj_ref(obj, source_path)
+
+        clone = {}
+
+        for key, value in obj.items():
+            if isinstance(value, list):
+                clone[key] = [self._transform_data(item, source_path) for item in value]
+            elif isinstance(value, dict):
+                clone[key] = self._handle_obj_ref(value, source_path)
+            else:
+                clone[key] = self._transform_data(value, source_path)
+
+        return clone
+
+    def _handle_obj_ref(self, obj, source_path):
+        """
+        Handles a dictionary containing a $ref property, resolving the reference if it
+        is to a file. This is used to read specification files when they are split into
+        multiple items.
+        """
+        assert isinstance(obj, dict)
+        if "$ref" in obj:
+            reference = obj["$ref"]
+            if isinstance(reference, str) and not reference.startswith("#/"):
+                referred_file = Path(os.path.abspath(source_path / reference))
+
+                if referred_file.exists():
+                    logger.debug("Handling $ref source: %s", reference)
+                else:
+                    raise OpenAPIFileNotFoundError(reference, referred_file)
+                sub_fragment = read_from_source(str(referred_file))
+                return self._transform_data(sub_fragment, referred_file.parent)
+            else:
+                return obj
+        return self._transform_data(obj, source_path)
 
     def get_operations(self):
         """
@@ -308,8 +388,10 @@ class OpenAPIV3DocumentationHandler:
         results = [
             param
             for param in sorted(
-                parameters, key=lambda x: x["name"].lower() if "name" in x else ""
+                parameters,
+                key=lambda x: x["name"].lower() if (x and "name" in x) else "",
             )
+            if param
         ]
 
         security_options = self.get_operation_security(operation)
@@ -331,9 +413,12 @@ class OpenAPIV3DocumentationHandler:
 
         return results
 
-    def write(self, data) -> str:
+    def write(self) -> str:
         return self._writer.write(
-            data, operations=self.get_operations(), texts=self.texts, handler=self
+            self.doc,
+            operations=self.get_operations(),
+            texts=self.texts,
+            handler=self,
         )
 
     def get_content_examples(self, data) -> Iterable[ContentExample]:
@@ -463,9 +548,17 @@ class OpenAPIV3DocumentationHandler:
                 else:
                     context.expanded_refs.add(ref)
 
-                    clone[key] = self.expand_references(
-                        self.resolve_reference(value), context
-                    )
+                    resolved_ref = self.resolve_reference(value)
+
+                    if resolved_ref is None:  # pragma: no cover
+                        logger.warning(
+                            "Cannot resolve the reference %s. "
+                            "Is a fragment missing from `components` object?",
+                            value,
+                        )
+                        clone[key] = {}
+                    else:
+                        clone[key] = self.expand_references(resolved_ref, context)
             elif isinstance(value, dict):
                 if is_array_schema(value) and is_reference(value["items"]):
                     ref = value["items"]["$ref"]

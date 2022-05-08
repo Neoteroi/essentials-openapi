@@ -1,0 +1,35 @@
+---
+openapi: 3.0.0
+info:
+  title: Split Public API
+  description: split Public API
+  termsOfService: https://split.io/legal/terms
+  version: v1
+externalDocs:
+  description: split API documentation
+  url: https://www.neoteroi.xyz/
+servers:
+  - url: https://www.neoteroi.xyz/split/api/v1
+tags:
+  - name: User
+    description: Operations about users.
+paths:
+  /users:
+    $ref: "./spec/paths/Users.yml"
+  /users/{identifier}:
+    $ref: "./spec/paths/UserById.yml"
+components:
+  schemas:
+    $ref: "./spec/schemas/_index.yml"
+  responses:
+    $ref: "./spec/responses/_index.yml"
+  parameters:
+    $ref: "./spec/parameters/_index.yml"
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+
+security:
+  - ApiKeyAuth: []

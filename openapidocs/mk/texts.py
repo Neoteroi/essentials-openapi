@@ -28,6 +28,7 @@ class Texts:
     schemas: str
     about_schemas: str
     details: str
+    external_docs: str
     required: str
     properties: str
     yes: str
@@ -46,6 +47,8 @@ class Texts:
     common_parameters_about: str
     scheme: str
     response_headers: str
+    for_more_information: str
+    tags: str
 
     def get_yes_no(self, value: bool) -> str:
         return self.yes if value else self.no
@@ -103,3 +106,6 @@ class EnglishTexts(Texts):
     security_schemes = "Security schemes"
     scheme = "Scheme"
     response_headers = "Response headers"
+    external_docs = "More documentation"
+    for_more_information = "For more information"
+    tags = "Tags"

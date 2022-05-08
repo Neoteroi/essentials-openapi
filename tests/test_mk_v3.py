@@ -1,7 +1,17 @@
 import pytest
 
-from openapidocs.mk.v3 import OpenAPIV3DocumentationHandler, style_from_value
-from tests.common import get_file_json, get_resource_file_content
+from openapidocs.mk.v3 import (
+    OpenAPIFileNotFoundError,
+    OpenAPIV3DocumentationHandler,
+    style_from_value,
+)
+from openapidocs.mk.v3.examples import ObjectExampleHandler
+from tests.common import (
+    get_file_json,
+    get_file_yaml,
+    get_resource_file_content,
+    get_resource_file_path,
+)
 
 
 @pytest.mark.parametrize("example_file", ["example1", "example2", "example3"])
@@ -11,9 +21,34 @@ def test_v3_markdown_gen(example_file):
 
     handler = OpenAPIV3DocumentationHandler(data)
 
-    html = handler.write(data)
+    html = handler.write()
+    assert html == expected_result
+
+
+def test_v3_markdown_gen_split_file():
+    example_file = "example4-split"
+    example_file_name = f"{example_file}-openapi.yaml"
+    data = get_file_yaml(example_file_name)
+    expected_result = get_resource_file_content(f"{example_file}-output.md")
+
+    handler = OpenAPIV3DocumentationHandler(
+        data, source=get_resource_file_path(example_file_name)
+    )
+
+    html = handler.write()
 
     assert html == expected_result
+
+
+def test_file_ref_raises_for_missing_file():
+    with pytest.raises(OpenAPIFileNotFoundError):
+        OpenAPIV3DocumentationHandler(
+            {
+                "openapi": "3.0.0",
+                "info": {"title": "Split Public API"},
+                "components": {"schemas": {"$ref": "./not-existing.yml"}},
+            }
+        )
 
 
 @pytest.mark.parametrize(
@@ -246,7 +281,11 @@ def test_v3_markdown_gen_handles_missing_components():
     }
     handler = OpenAPIV3DocumentationHandler(data)
 
-    html = handler.write(data)
-    with open("___a.html", encoding="utf8", mode="wt") as f:
-        f.write(html)
+    html = handler.write()
     assert html is not None
+
+
+def test_object_example_handler_handles_missing_pros():
+    handler = ObjectExampleHandler()
+
+    assert handler.get_example({}) == {}

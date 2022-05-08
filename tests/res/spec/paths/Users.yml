@@ -1,0 +1,48 @@
+post:
+  x-eov-operation-id: createUsers
+  x-eov-operation-handler: v1/handlers/users
+  tags:
+    - User
+  summary: Invite a user
+  description: Invites a user to your instance. Only available for the instance owner.
+  operationId: createUser
+  requestBody:
+    description: Created user object.
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            $ref: "#/components/schemas/UserInformation"
+    required: true
+  responses:
+    "200":
+      description: A User object
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: "#/components/schemas/UserInformation"
+    "401":
+      $ref: "#/components/responses/Unauthorized"
+get:
+  x-eov-operation-id: getUsers
+  x-eov-operation-handler: v1/handlers/users
+  tags:
+    - User
+  summary: Retrieve all users
+  description: Retrieve all users from your instance. Only available for the instance owner.
+  parameters:
+    - $ref: "#/components/parameters/Limit"
+    - $ref: "#/components/parameters/Cursor"
+    - $ref: "#/components/parameters/IncludeRole"
+  responses:
+    "200":
+      description: Operation successful.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/UserDetailsResponse"
+    "401":
+      $ref: "#/components/responses/Unauthorized"

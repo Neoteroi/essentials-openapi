@@ -31,3 +31,11 @@ Most likely, it is not desirable to edit this file by hand!
 {% include "partial/components-security-schemes.html" %}
 {% endif -%}
 {% endif -%}
+
+{%- if tags %}
+{% include "partial/tags.html" %}
+{% endif -%}
+
+{%- if externalDocs %}
+{% include "partial/external-docs.html" %}
+{% endif -%}

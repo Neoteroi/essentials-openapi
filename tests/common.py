@@ -3,6 +3,7 @@ import os
 from typing import Any
 
 import pkg_resources
+import yaml
 
 from openapidocs.common import Format
 
@@ -24,9 +25,15 @@ def debug_result(version: str, instance: Any, result: str, format: Format) -> No
         debug_file.write(result)
 
 
+def get_resource_file_path(file_name: str) -> str:
+    return pkg_resources.resource_filename(
+        __name__, os.path.join(".", "res", file_name)
+    )
+
+
 def get_resource_file_content(file_name: str) -> str:
     with open(
-        pkg_resources.resource_filename(__name__, os.path.join(".", "res", file_name)),
+        get_resource_file_path(file_name),
         mode="rt",
         encoding="utf8",
     ) as source:
@@ -35,3 +42,7 @@ def get_resource_file_content(file_name: str) -> str:
 
 def get_file_json(file_name) -> Any:
     return json.loads(get_resource_file_content(file_name))
+
+
+def get_file_yaml(file_name) -> Any:
+    return yaml.safe_load(get_resource_file_content(file_name))
