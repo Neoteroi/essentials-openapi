@@ -94,7 +94,8 @@ class ObjectExampleHandler(SchemaExampleHandler):
         """
         Returns an example value for a property with the given name and schema.
         """
-        properties = schema["properties"]
+        properties = schema.get("properties") or {}
+
         example = {}
 
         for key in properties:
@@ -129,6 +130,9 @@ def get_subclasses(cls) -> Iterable[Type]:
 def get_example_from_schema(schema) -> Any:
     if schema is None:
         return None
+
+    if "example" in schema:
+        return schema["example"]
 
     # does it have a type?
     handlers_types: List[Type[SchemaExampleHandler]] = list(

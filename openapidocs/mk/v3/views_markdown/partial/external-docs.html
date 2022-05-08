@@ -1,0 +1,9 @@
+## {{texts.external_docs}}
+
+{% if externalDocs.description -%}
+{{externalDocs.description | wordwrap(80)}}
+
+---
+{% endif -%}
+
+**{{texts.for_more_information}}:** [{{externalDocs.url}}]({{externalDocs.url}})

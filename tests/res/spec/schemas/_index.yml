@@ -1,0 +1,8 @@
+Error:
+  $ref: "./Error.yml"
+UserInformation:
+  $ref: "./UserInformation.yml"
+UserDetailsResponse:
+  $ref: "./UserDetailsResponse.yml"
+RoleInformation:
+  $ref: "./RoleInformation.yml"

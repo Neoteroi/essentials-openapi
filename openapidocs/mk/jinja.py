@@ -19,7 +19,7 @@ def configure_functions(env: Environment):
         "read_dict": read_dict,
         "sort_dict": sort_dict,
         "is_reference": is_reference,
-        "scalar_types": {"string", "integer", "boolean"},
+        "scalar_types": {"string", "integer", "boolean", "number"},
         "get_http_status_phrase": get_http_status_phrase,
         "write_md_table": write_table,
     }

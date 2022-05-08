@@ -65,9 +65,8 @@ def read_from_url(url: str):
 
 def read_from_source(source: str):
     """
-    Tries to read OpenAPI Documentation from a given source.
-    The source can be a path to a file, or a URL. This method will try to fetch
-    JSON or YAML from the given source.
+    Tries to read a JSON or YAML file from a given source.
+    The source can be a path to a file, or a URL.
     """
     source_path = Path(source)
 
