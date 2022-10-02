@@ -42,7 +42,7 @@ setup(
         "dataclasses==0.7;python_version<'3.7'",
     ],
     extras_require={
-        "full": ["click~=8.0.3", "Jinja2~=3.0.2", "rich~=12.2.0", "httpx~=0.22.0"]
+        "full": ["click~=8.0.3", "Jinja2~=3.0.2", "rich~=12.2.0", "httpx<1"]
     },
     entry_points={
         "console_scripts": [
