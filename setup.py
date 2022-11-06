@@ -37,12 +37,12 @@ setup(
         "openapidocs.utils",
     ],
     install_requires=[
-        "PyYAML>=5.4.1",
-        "essentials>=1.1.4",
+        "PyYAML>=6",
+        "essentials>=1.1.5",
         "dataclasses==0.7;python_version<'3.7'",
     ],
     extras_require={
-        "full": ["click~=8.0.3", "Jinja2~=3.0.2", "rich~=12.2.0", "httpx<1"]
+        "full": ["click~=8.1.3", "Jinja2~=3.1.2", "rich~=12.6.0", "httpx<1"]
     },
     entry_points={
         "console_scripts": [

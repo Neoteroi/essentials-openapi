@@ -593,7 +593,8 @@ class OpenAPIV3DocumentationHandler:
 
             if not schema:
                 return []
-        return [[key, value] for key, value in sort_dict(schema.get("properties"))]
+
+        return [[key, value] for key, value in sort_dict(schema.get("properties", {}))]
 
     def iter_schemas_bindings(self):
         """
