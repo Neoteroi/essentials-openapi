@@ -11,7 +11,9 @@ from .md import normalize_link, write_table
 
 
 def configure_filters(env: Environment):
-    env.filters.update({"route": highlight_params, "table": write_table, "link": normalize_link})
+    env.filters.update(
+        {"route": highlight_params, "table": write_table, "link": normalize_link}
+    )
 
 
 def configure_functions(env: Environment):
