@@ -66,3 +66,9 @@ def write_table(
     Writes a Markdown table from a matrix (iterable of string records).
     """
     return "\n".join((write_table_lines(matrix, write_headers, padding)))
+
+
+def normalize_link(value: str) -> str:
+    if not value:
+        raise ValueError("Missing value")
+    return value.replace(".", "")

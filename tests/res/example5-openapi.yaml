@@ -1,0 +1,112 @@
+# Example with empty scheme, see https://github.com/Neoteroi/essentials-openapi/issues/18
+openapi: 3.0.1
+info:
+  title: Software Platform API
+  description: Optional multiline or single-line description in [CommonMark](http://commonmark.org/help/) or HTML.
+  version: v1
+paths:
+  /api/blobs/initialize-upload:
+    post:
+      tags:
+        - Blobs
+      summary: Initializes a file upload operation.
+      description: The client receives a Shared Access Signature that can be used to upload a file directly to the Azure Storage Blob Service.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InitializeUploadInput"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InitializeUploadOutput"
+        "400":
+          $ref: "#/components/responses/IllegalInput"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+components:
+  schemas:
+    InitializeUploadInput:
+      type: object
+      properties:
+        releaseId:
+          type: string
+          format: uuid
+        fileName:
+          type: string
+          nullable: true
+        fileSize:
+          type: integer
+          format: int32
+        fileType:
+          type: string
+          nullable: true
+      additionalProperties: false
+    InitializeUploadOutput:
+      type: object
+    HealthCheck:
+      type: object
+      properties:
+        alive:
+          type: boolean
+        timestamp:
+          type: string
+          format: date-time
+        regionName:
+          type: string
+          nullable: true
+      additionalProperties: false
+    GenericError:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+  parameters:
+    PageNumber:
+      name: page
+      in: query
+      schema:
+        type: integer
+        format: int32
+        default: 1
+        nullable: true
+  responses:
+    NotFound:
+      description: Entity not found.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/GenericError"
+          example:
+            code: 404
+            message: Entity not found
+    IllegalInput:
+      description: Illegal input for operation.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/GenericError"
+          example:
+            code: 400
+            message: Illegal Input
+    Unauthorized:
+      description: The user is not authorized.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/GenericError"
+          example:
+            code: 401
+            message: Unauthorized
+    GenericError:
+      description: This base error type is used for all raised exceptions.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/GenericError"

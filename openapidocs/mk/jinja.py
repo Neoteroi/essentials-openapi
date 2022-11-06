@@ -7,11 +7,13 @@ from jinja2 import Environment, PackageLoader, Template, select_autoescape
 
 from . import get_http_status_phrase, highlight_params, read_dict, sort_dict
 from .common import DocumentsWriter, is_reference
-from .md import write_table
+from .md import normalize_link, write_table
 
 
 def configure_filters(env: Environment):
-    env.filters.update({"route": highlight_params, "table": write_table})
+    env.filters.update(
+        {"route": highlight_params, "table": write_table, "link": normalize_link}
+    )
 
 
 def configure_functions(env: Environment):

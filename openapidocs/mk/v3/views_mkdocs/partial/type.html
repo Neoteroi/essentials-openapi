@@ -1,4 +1,6 @@
 {% if definition.type == "object" %}
+{%- with props = handler.get_properties(definition) -%}
+{% if props %}
 <table>
     <thead>
         <tr>
@@ -7,7 +9,7 @@
         </tr>
     </thead>
     <tbody>
-{%- for name, schema in handler.get_properties(definition) %}
+{%- for name, schema in props %}
         <tr>
             <td><code>{{name}}</code></td>
             <td>{% include "partial/schema-repr.html" %}</td>
@@ -15,9 +17,11 @@
         {%- endfor %}
     </tbody>
 </table>
+{%- endif %}
+{%- endwith -%}
 {%- else -%}
 {%- with schema = definition -%}
-<span>Type: </span>
+<span>{{texts.type}}: </span>
 {%- include "partial/schema-repr.html" -%}
 {%- endwith -%}
 {%- endif %}

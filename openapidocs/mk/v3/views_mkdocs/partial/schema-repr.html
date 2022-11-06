@@ -1,6 +1,6 @@
 {%- if is_reference(schema) -%}
 {%- with type_name = schema["$ref"].replace("#/components/schemas/", "") -%}
-<a href="#{{type_name.lower()}}" class="ref-link">{{type_name}}</a>
+<a href="#{{type_name.lower() | link}}" class="ref-link">{{type_name}}</a>
 {%- endwith -%}
 {%- endif -%}
 
