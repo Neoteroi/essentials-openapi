@@ -54,7 +54,7 @@ jobs:
             pip install -U --no-index --find-links=deps deps/*
           fi
 
-          pip install black==21.11b0 isort==5.10.1
+          pip install black isort
 
       - name: Run tests
         run: |
