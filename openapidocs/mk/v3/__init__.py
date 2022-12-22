@@ -184,7 +184,7 @@ class OpenAPIV3DocumentationHandler:
         return groups
 
     def get_schemas(self):
-        schemas = read_dict(self.doc, "components schemas")
+        schemas = read_dict(self.doc, "components", "schemas")
 
         if not schemas:
             return
@@ -287,7 +287,7 @@ class OpenAPIV3DocumentationHandler:
         """
         Gets a security scheme from the components section, by name.
         """
-        security_scheme = read_dict(self.doc, "components securitySchemes")
+        security_scheme = read_dict(self.doc, "components", "securitySchemes")
 
         if not security_scheme:  # pragma: no cover
             warnings.warn(
@@ -535,6 +535,10 @@ class OpenAPIV3DocumentationHandler:
 
         if is_reference(schema):
             return self.expand_references(self.resolve_reference(schema))
+
+        if schema is None:
+            # this should not happen, but we don't want the whole build to fail
+            return None
 
         clone = copy.deepcopy(schema)
 
