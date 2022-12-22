@@ -26,15 +26,14 @@ def read_dict(obj, *args, default=None):
     assert isinstance(obj, dict)
 
     value = obj
-    for part in args:
-        for key in part.split():
-            if not isinstance(value, dict):
-                raise ValueError(f"Invalid sub-path: {repr(args)}")
+    for key in args:
+        if not isinstance(value, dict):
+            raise ValueError(f"Invalid sub-path: {repr(args)}")
 
-            value = value.get(key)
+        value = value.get(key)
 
-            if value is None:
-                return default
+        if value is None:
+            return default
 
     if value is None or value is obj:
         return default
