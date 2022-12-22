@@ -19,7 +19,7 @@ def test_is_array_schema():
 
 def test_read_dict_raises_for_non_dict_property():
     with pytest.raises(ValueError):
-        read_dict({"x": 1}, "x a")
+        read_dict({"x": 1}, "x", "a")
 
 
 def test_read_dict_default():
