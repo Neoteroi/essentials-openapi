@@ -1,6 +1,5 @@
 import base64
 import copy
-import json
 from abc import ABC, abstractmethod
 from dataclasses import asdict, fields, is_dataclass
 from datetime import date, datetime, time
@@ -9,7 +8,9 @@ from typing import Any, List, Tuple
 from uuid import UUID
 
 import yaml
-from essentials.json import FriendlyEncoder
+from essentials.json import dumps
+
+from openapidocs.mk.contents import OADJSONEncoder
 
 
 class Format(Enum):
@@ -150,9 +151,7 @@ class Serializer:
         return self._get_item_dictionary(item)
 
     def to_json(self, item: Any) -> str:
-        return json.dumps(
-            self.to_obj(item), indent=4, ensure_ascii=False, cls=FriendlyEncoder
-        )
+        return dumps(self.to_obj(item), indent=4, cls=OADJSONEncoder)
 
     def to_yaml(self, item: Any) -> str:
         rep = yaml.dump(

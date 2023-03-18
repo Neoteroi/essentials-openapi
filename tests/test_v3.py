@@ -1,3 +1,4 @@
+import os
 from abc import abstractmethod
 from dataclasses import dataclass
 from datetime import date, datetime, time
@@ -7,9 +8,11 @@ from typing import Any, Optional, Type
 from uuid import UUID
 
 import pytest
+import yaml
 from pydantic import BaseModel
 
 from openapidocs.common import Format, Serializer
+from openapidocs.mk.contents import JSONContentWriter
 from openapidocs.v3 import (
     APIKeySecurity,
     Callback,
@@ -2293,3 +2296,110 @@ def test_equality(example_type: Type[TestItem]) -> None:
     one = example.get_instance()
     two = example.get_instance()
     assert one == two
+
+
+def test_serialize_datetimes_examples():
+    """
+    Tests serialization using the default formatter for datetime.
+    """
+    writer = JSONContentWriter()
+
+    yaml_text = """
+description: Start time stamp of the returned data interval
+example: 2022-08-17T18:00:00Z
+in: query
+name: fromInstant
+required: false
+schema:
+    format: date-time
+    type: string
+    """
+    data = yaml.safe_load(yaml_text)
+    json_text = writer.write(data)
+
+    expected_json = """
+{
+    "description": "Start time stamp of the returned data interval",
+    "example": "2022-08-17T18:00:00+00:00",
+    "in": "query",
+    "name": "fromInstant",
+    "required": false,
+    "schema": {
+        "format": "date-time",
+        "type": "string"
+    }
+}
+    """.strip()
+
+    assert json_text == expected_json
+
+
+def test_serialize_datetimes_examples_exact_format():
+    writer = JSONContentWriter()
+
+    yaml_text = """
+description: Start time stamp of the returned data interval
+example: '2022-08-17T18:00:00Z'
+in: query
+name: fromInstant
+required: false
+schema:
+    format: date-time
+    type: string
+    """
+    data = yaml.safe_load(yaml_text)
+    json_text = writer.write(data)
+
+    expected_json = """
+{
+    "description": "Start time stamp of the returned data interval",
+    "example": "2022-08-17T18:00:00Z",
+    "in": "query",
+    "name": "fromInstant",
+    "required": false,
+    "schema": {
+        "format": "date-time",
+        "type": "string"
+    }
+}
+    """.strip()
+
+    assert json_text == expected_json
+
+
+def test_serialize_datetimes_examples_exact_format_env():
+    os.environ["OPENAPI_DATETIME_FORMAT"] = "%Y-%m-%dT%H:%M:%SZ"
+
+    try:
+        writer = JSONContentWriter()
+
+        yaml_text = """
+    description: Start time stamp of the returned data interval
+    example: 2022-08-17T18:00:00Z
+    in: query
+    name: fromInstant
+    required: false
+    schema:
+        format: date-time
+        type: string
+        """
+        data = yaml.safe_load(yaml_text)
+        json_text = writer.write(data)
+
+        expected_json = """
+{
+    "description": "Start time stamp of the returned data interval",
+    "example": "2022-08-17T18:00:00Z",
+    "in": "query",
+    "name": "fromInstant",
+    "required": false,
+    "schema": {
+        "format": "date-time",
+        "type": "string"
+    }
+}
+        """.strip()
+
+        assert json_text == expected_json
+    finally:
+        os.environ["OPENAPI_DATETIME_FORMAT"] = ""
