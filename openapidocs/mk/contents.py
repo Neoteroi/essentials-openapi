@@ -1,9 +1,27 @@
 """
 This module contains classes to generate representations of content types by mime type.
 """
-import json
+import os
 from abc import ABC, abstractmethod
+from datetime import datetime
+from json import JSONEncoder
 from urllib.parse import urlencode
+
+from essentials.json import FriendlyEncoder, dumps
+
+
+class OADJSONEncoder(JSONEncoder):
+    def default(self, obj):
+        try:
+            return JSONEncoder.default(self, obj)
+        except TypeError:
+            if isinstance(obj, datetime):
+                datetime_format = os.environ.get("OPENAPI_DATETIME_FORMAT")
+                if datetime_format:
+                    return obj.strftime(datetime_format)
+                else:
+                    return obj.isoformat()
+            return FriendlyEncoder.default(self, obj)  # type: ignore
 
 
 class ContentWriter(ABC):
@@ -30,7 +48,7 @@ class JSONContentWriter(ContentWriter):
         return "json" in content_type.lower()
 
     def write(self, value) -> str:
-        return json.dumps(value, ensure_ascii=False, indent=4)
+        return dumps(value, indent=4, cls=OADJSONEncoder)
 
 
 class FormContentWriter(ContentWriter):
