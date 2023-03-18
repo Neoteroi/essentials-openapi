@@ -289,3 +289,23 @@ def test_object_example_handler_handles_missing_pros():
     handler = ObjectExampleHandler()
 
     assert handler.get_example({}) == {}
+
+
+@pytest.mark.parametrize("example_file", ["example6", "example7"])
+def test_v3_markdown_yaml(example_file):
+    # example6
+    # https://github.com/Neoteroi/essentials-openapi/issues/21
+
+    # example7
+    # https://github.com/Neoteroi/essentials-openapi/issues/24
+    example_file_name = f"{example_file}-openapi.yaml"
+    data = get_file_yaml(example_file_name)
+    expected_result = get_resource_file_content(f"{example_file}-output.md")
+
+    handler = OpenAPIV3DocumentationHandler(
+        data, source=get_resource_file_path(example_file_name)
+    )
+
+    html = handler.write()
+
+    assert html == expected_result

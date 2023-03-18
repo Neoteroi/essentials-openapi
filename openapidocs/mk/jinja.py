@@ -1,6 +1,7 @@
 """
-This module provides a Jinja2 environment to
+This module provides a Jinja2 environment.
 """
+import os
 from enum import Enum
 
 from jinja2 import Environment, PackageLoader, Template, select_autoescape
@@ -74,7 +75,9 @@ def get_environment(
     else:
         env = Environment(
             loader=loader,
-            autoescape=select_autoescape(["html", "xml"]),
+            autoescape=select_autoescape(["html", "xml"])
+            if os.environ.get("SELECT_AUTOESCAPE") in {"YES", "Y", "1"}
+            else False,
             auto_reload=True,
             enable_async=False,
         )

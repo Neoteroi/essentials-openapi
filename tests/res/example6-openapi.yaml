@@ -1,0 +1,22 @@
+# Example with requestBody component, see https://github.com/Neoteroi/essentials-openapi/issues/21
+openapi: 3.0.1
+info:
+  title: Test
+  version: v1
+paths:
+  "/something":
+    post:
+      requestBody:
+        $ref: "#/components/requestBodies/SomeBody"
+components:
+  requestBodies:
+    SomeBody:
+      description: Foo Bar.
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              a:
+                type: string

@@ -26,7 +26,9 @@
 {% include "partial/request-body.html" %}
 {%- endif %}
 
+{%- if operation.responses %}
 {%- include "partial/request-responses.html" %}
+{%- endif %}
 {% endfor %}
 {% endfor %}
 {% endfor %}

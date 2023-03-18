@@ -195,7 +195,7 @@ Retrieve all users
             <td>string</td>
             <td></td>
             <td>No</td>
-            <td>Paginate through users by setting the cursor parameter to a nextCursor attribute returned by a previous request&#39;s response. Default value fetches the first &#34;page&#34; of the collection. See pagination for more detail.</td>
+            <td>Paginate through users by setting the cursor parameter to a nextCursor attribute returned by a previous request's response. Default value fetches the first "page" of the collection. See pagination for more detail.</td>
         </tr>
         <tr>
             <td class="parameter-name"><code>limit</code></td>

@@ -5,10 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.6] - 2023-03-18
+## [1.0.6] - 2023-03-19 :snail:
 - Fixes a bug happening when trying to serialize examples in JSON, when they
-  contain datetimes and are provided in YAML.
+  contain datetimes and are provided in YAML;
   ([bug report](https://github.com/Neoteroi/mkdocs-plugins/issues/35)).
+- Fixes a bug related to missing resolution of references for `requestBody`;
+  ([bug report](https://github.com/Neoteroi/essentials-openapi/issues/21)).
+- Fixes support for code fences (disables by default `autoescape`, since the
+  source of OpenAPI Specification files is supposed to be trusted anyway.
+  Those who still wants to have `autoescape` enabled with `Jinja` can do so
+  setting an environment variable: `SELECT_AUTOESCAPE=1`.
+  ([bug report](https://github.com/Neoteroi/essentials-openapi/issues/24)).
 
 ## [1.0.5] - 2022-12-22 :santa:
 - Fixes [#22](https://github.com/Neoteroi/essentials-openapi/issues/22)
