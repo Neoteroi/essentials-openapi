@@ -7,8 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.6] - 2023-03-18
 - Fixes a bug happening when trying to serialize examples in JSON, when they
-  contain datetimes and are provided in YAML.
+  contain datetimes and are provided in YAML;
   ([bug report](https://github.com/Neoteroi/mkdocs-plugins/issues/35)).
+- Fixes a bug related to missing resolution of references for `requestBody`;
+  ([bug report](https://github.com/Neoteroi/essentials-openapi/issues/21)).
 
 ## [1.0.5] - 2022-12-22 :santa:
 - Fixes [#22](https://github.com/Neoteroi/essentials-openapi/issues/22)

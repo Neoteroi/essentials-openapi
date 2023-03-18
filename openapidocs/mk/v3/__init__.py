@@ -179,6 +179,14 @@ class OpenAPIV3DocumentationHandler:
 
         for path, path_item in paths.items():
             tag = self.get_tag(path_item) or ""
+
+            for operation in path_item.values():
+                # need to resolve possible references for requestBody
+                if "requestBody" in operation:
+                    operation["requestBody"] = self._resolve_opt_ref(
+                        operation["requestBody"]
+                    )
+
             groups[tag].append((path, path_item))
 
         return groups
