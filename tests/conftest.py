@@ -1,4 +1,7 @@
+import shutil
 from uuid import UUID
+
+from essentials.folders import ensure_folder
 
 from openapidocs.mk.v3.examples import IntegerExampleHandler, StringExampleHandler
 
@@ -12,3 +15,10 @@ IntegerExampleHandler.formats = {
     "int32": lambda: 26,
     "int64": lambda: 26,
 }
+
+try:
+    shutil.rmtree("_test_files")
+except OSError:
+    pass
+
+ensure_folder("_test_files")

@@ -39,7 +39,7 @@ Most likely, it is not desirable to edit this file by hand!
     </tbody>
 </table>
 
-## <span class="api-tag"></span>
+## <span class="api-tag">Endpoints</span>
 
 <hr class="operation-separator" />
 

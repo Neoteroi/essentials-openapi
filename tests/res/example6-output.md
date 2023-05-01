@@ -8,7 +8,7 @@ Most likely, it is not desirable to edit this file by hand!
 # Test <span class="api-version">v1</span>
 
 
-## <span class="api-tag"></span>
+## <span class="api-tag">Endpoints</span>
 
 <hr class="operation-separator" />
 

@@ -1,5 +1,6 @@
 import json
 import os
+import re
 from typing import Any
 
 import pkg_resources
@@ -46,3 +47,21 @@ def get_file_json(file_name) -> Any:
 
 def get_file_yaml(file_name) -> Any:
     return yaml.safe_load(get_resource_file_content(file_name))
+
+
+def normalize_str(value: str) -> str:
+    return re.sub("\r?\n{2,}", "\n", value.strip())
+
+
+def compatible_str(value_one: str, value_two: str) -> bool:
+    """
+    Compares two strings ignoring multiple carriage returns and trailing carriage
+    returns. In HTML or Markdown it does not matter if you have multiple carriage
+    returns.
+    """
+    # first check if the two strings are equals: there is no point in stripping carriage
+    # returns otherwise
+    if value_one == value_two:
+        return True
+
+    return normalize_str(value_one) == normalize_str(value_two)

@@ -1,9 +1,9 @@
 {% for tag, operations in handler.get_operations().items() %}
 
-## {{tag}}
+## {{tag or "Endpoints"}}
 
 {% for path, definition in operations %}
-{%- for http_method, operation in definition.items() -%}
+{%- for http_method, operation in definition.items() %}
 
 ### {{http_method.upper()}} {{path | safe}}
 {% if "summary" in operation -%}

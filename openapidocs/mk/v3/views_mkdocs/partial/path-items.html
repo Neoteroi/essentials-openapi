@@ -1,8 +1,8 @@
 {% for tag, operations in handler.get_operations().items() %}
-## <span class="api-tag">{{tag}}</span>
+## <span class="api-tag">{{tag or "Endpoints"}}</span>
 
 {% for path, definition in operations %}
-{%- for http_method, operation in definition.items() -%}
+{%- for http_method, operation in definition.items() %}
 <hr class="operation-separator" />
 
 ### <span class="http-{{http_method.lower()}}">{{http_method.upper()}}</span> {{path | route | safe}}

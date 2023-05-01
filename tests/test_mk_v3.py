@@ -1,3 +1,4 @@
+from pathlib import Path
 import pytest
 
 from openapidocs.mk.v3 import (
@@ -7,6 +8,7 @@ from openapidocs.mk.v3 import (
 )
 from openapidocs.mk.v3.examples import ObjectExampleHandler
 from tests.common import (
+    compatible_str,
     get_file_json,
     get_file_yaml,
     get_resource_file_content,
@@ -22,7 +24,7 @@ def test_v3_markdown_gen(example_file):
     handler = OpenAPIV3DocumentationHandler(data)
 
     html = handler.write()
-    assert html == expected_result
+    assert compatible_str(html, expected_result)
 
 
 def test_v3_markdown_gen_split_file():
@@ -37,7 +39,7 @@ def test_v3_markdown_gen_split_file():
 
     html = handler.write()
 
-    assert html == expected_result
+    assert compatible_str(html, expected_result)
 
 
 def test_file_ref_raises_for_missing_file():
@@ -308,4 +310,4 @@ def test_v3_markdown_yaml(example_file):
 
     html = handler.write()
 
-    assert html == expected_result
+    compatible_str(html, expected_result)

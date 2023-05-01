@@ -27,6 +27,8 @@ Optional multiline or single-line description in
 
 ## Blobs
 
+
+
 ### POST /api/blobs/initialize-upload
 Initializes a file upload operation.
 
@@ -144,6 +146,8 @@ Refer to the common response description: [Unauthorized](#unauthorized)
 
 ## Categories
 
+
+
 ### GET /api/categories
 Gets the list of categories supported by the system.
 
@@ -253,6 +257,8 @@ _Other possible types: text/json, text/plain_
 
 ## Countries
 
+
+
 ### GET /api/countries
 Gets a list of countries of the World with English dislay names and ISO country
 codes.
@@ -291,6 +297,8 @@ _Other possible types: text/json, text/plain_
     }
 }
 ```
+
+
 
 ### GET /api/system-countries
 Gets a list of countries supported by the system, with English dislay names and
@@ -334,6 +342,8 @@ _Other possible types: text/json, text/plain_
 
 
 ## Downloads
+
+
 
 ### GET /api/downloads
 Gets a paginated set of downloads records.
@@ -473,6 +483,8 @@ _Other possible types: text/json, text/plain_
 
 ## Health
 
+
+
 ### GET /api/health
 API health check
 
@@ -523,6 +535,8 @@ _Other possible types: text/json, text/plain_
 
 
 ## Professionals
+
+
 
 ### GET /api/pro/own-context
 
@@ -596,6 +610,8 @@ _Other possible types: text/json, text/plain_
 
 ## Info
 
+
+
 ### GET /api/info
 Returns information about the API itself.
 
@@ -647,6 +663,8 @@ _Other possible types: text/json, text/plain_
 
 
 ## Releases
+
+
 
 ### GET /api/releases/{releaseId}
 Returns details about a release by id.
@@ -840,6 +858,8 @@ _Other possible types: text/json, text/plain_
 }
 ```
 
+
+
 ### DELETE /api/releases/{releaseId}
 Deletes a release by id.
 
@@ -850,7 +870,9 @@ Deletes a release by id.
 | AAD       | header | string | N/A     | No       | Access token issued by Azure Active Directory. |
 | releaseId | path   | string |         | No       |                                                |
 
-### Response 200 OK### PATCH /api/releases/{releaseId}
+### Response 200 OK
+
+### PATCH /api/releases/{releaseId}
 
 
 **Input parameters**
@@ -1105,6 +1127,8 @@ _Other possible types: text/json, text/plain_
 }
 ```
 
+
+
 ### GET /api/releases
 
 
@@ -1229,6 +1253,8 @@ _Other possible types: text/json, text/plain_
 }
 ```
 
+
+
 ### POST /api/releases
 
 
@@ -1320,6 +1346,8 @@ _Other possible types: text/json, text/plain_
 }
 ```
 
+
+
 ### GET /api/current-releases
 
 
@@ -1361,6 +1389,8 @@ _Other possible types: text/json, text/plain_
 }
 ```
 
+
+
 ### GET /api/orgs/current-releases
 
 
@@ -1401,6 +1431,8 @@ _Other possible types: text/json, text/plain_
     }
 }
 ```
+
+
 
 ### GET /api/releases/{releaseId}/history
 
@@ -1504,6 +1536,8 @@ _Other possible types: text/json, text/plain_
 }
 ```
 
+
+
 ### GET /api/releases/{releaseId}/file/{nodeId}
 
 
@@ -1544,6 +1578,8 @@ _Other possible types: text/json, text/plain_
 }
 ```
 
+
+
 ### GET /api/releases/{releaseId}/file/{nodeId}/downloads
 
 
@@ -1583,6 +1619,8 @@ _Other possible types: text/json, text/plain_
     "additionalProperties": false
 }
 ```
+
+
 
 ### PUT /api/releases/{releaseId}/files
 
@@ -1808,6 +1846,8 @@ _Other possible types: text/json, text/plain_
 }
 ```
 
+
+
 ### DELETE /api/releases/{releaseId}/files
 
 
@@ -2028,6 +2068,8 @@ _Other possible types: text/json, text/plain_
     "additionalProperties": false
 }
 ```
+
+
 
 ### PUT /api/releases/{releaseId}/orgs
 
@@ -2259,6 +2301,8 @@ _Other possible types: text/json, text/plain_
 }
 ```
 
+
+
 ### DELETE /api/releases/{releaseId}/orgs
 
 
@@ -2479,6 +2523,8 @@ _Other possible types: text/json, text/plain_
 }
 ```
 
+
+
 ### POST /api/releases/{releaseId}/clone
 
 
@@ -2670,6 +2716,8 @@ _Other possible types: text/json, text/plain_
     "additionalProperties": false
 }
 ```
+
+
 
 ### POST /api/releases/{releaseId}/publish
 
