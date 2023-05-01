@@ -27,7 +27,7 @@ dependencies = ["PyYAML>=6", "essentials>=1.1.5"]
 path = "openapidocs/__init__.py"
 
 [project.optional-dependencies]
-full = ["click~=8.1.3", "Jinja2~=3.1.2", "rich~=12.6.0", "httpx<1"]
+full = ["click~=8.1.3", "Jinja2~=3.1.2", "MarkupSafe==2.1.2", "rich~=12.6.0", "httpx<1"]
 
 [project.scripts]
 openapidocs = "openapidocs.main:main"
