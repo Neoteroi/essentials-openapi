@@ -83,19 +83,19 @@ jobs:
           bash <(curl -s https://codecov.io/bash)
 
       - name: Install distribution dependencies
-        run: pip install --upgrade twine setuptools wheel
-        if: matrix.python-version == 3.10
+        run: pip install build
+        if: matrix.python-version == 3.11
 
       - name: Create distribution package
-        run: python setup.py sdist bdist_wheel
-        if: matrix.python-version == 3.10
+        run: python -m build
+        if: matrix.python-version == 3.11
 
       - name: Upload distribution package
         uses: actions/upload-artifact@master
         with:
-          name: dist-package-${{ matrix.python-version }}
+          name: dist
           path: dist
-        if: matrix.python-version == 3.10
+        if: matrix.python-version == 3.11
 
   publish:
     runs-on: ubuntu-latest
@@ -105,17 +105,28 @@ jobs:
       - name: Download a distribution artifact
         uses: actions/download-artifact@v2
         with:
-          name: dist-package-3.10
+          name: dist
           path: dist
+
+      - name: Use Python 3.11
+        uses: actions/setup-python@v1
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install twine
+
       - name: Publish distribution 📦 to Test PyPI
-        uses: pypa/gh-action-pypi-publish@master
-        with:
-          skip_existing: true
-          user: __token__
-          password: ${{ secrets.test_pypi_password }}
-          repository_url: https://test.pypi.org/legacy/
+        run: |
+          twine upload -r testpypi dist/*
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.test_pypi_password }}
+
       - name: Publish distribution 📦 to PyPI
-        uses: pypa/gh-action-pypi-publish@master
-        with:
-          user: __token__
-          password: ${{ secrets.pypi_password }}
+        run: |
+          twine upload -r pypi dist/*
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.pypi_password }}

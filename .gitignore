@@ -5,3 +5,5 @@ htmlcov
 __pycache__
 *.egg-info
 *.tar.gz
+_test_files/
+dist/

@@ -11,7 +11,7 @@ from openapidocs.main import main
 from openapidocs.mk.jinja import OutputStyle
 from openapidocs.utils.source import SourceError, read_from_source, read_from_url
 from openapidocs.utils.web import FailedRequestError, ensure_success, http_get
-from tests.common import get_file_json
+from tests.common import compatible_str, get_file_json
 
 from .serverfixtures import *  # noqa
 from .serverfixtures import BASE_URL
@@ -35,7 +35,7 @@ def remove_file(file_path: Path):
 
 
 def contents_equals(file_path_1, file_path_2):
-    assert read_file(file_path_1) == read_file(file_path_2)
+    assert compatible_str(read_file(file_path_1), read_file(file_path_2))
 
 
 def test_fetch_json(example_1_data):
@@ -107,7 +107,7 @@ def test_generate_docs_command_invalid_source():
     ],
 )
 def test_main_command_gen_mkdocs_docs(valid_source):
-    test_output = Path(f"{uuid4()}.md")
+    test_output = Path(f"_test_files/{uuid4()}.md")
     assert test_output.exists() is False
 
     runner = CliRunner()
@@ -184,7 +184,7 @@ def test_main_command_gen_plantuml_api_docs(valid_source):
 
 def test_main_command_gen_plain_markdown_docs():
     valid_source = "tests/res/example1-openapi.json"
-    test_output = Path(f"{uuid4()}.md")
+    test_output = Path(f"_test_files/{uuid4()}.md")
     assert test_output.exists() is False
 
     runner = CliRunner()

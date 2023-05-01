@@ -6,19 +6,23 @@ test-debug:
 
 
 artifacts: test
-	python setup.py sdist
+	python -m build
 
 
 prepforbuild:
-	pip install --upgrade twine setuptools wheel
+	pip install build
 
 
-testrelease:
-	twine upload --repository-url https://test.pypi.org/legacy/ dist/*
+build:
+	python -m build
 
 
-release: artifacts
-	twine upload --repository-url https://upload.pypi.org/legacy/ dist/*
+test-release:
+	twine upload --repository testpypi dist/*
+
+
+release:
+	twine upload --repository pypi dist/*
 
 
 test:
@@ -41,8 +45,25 @@ test-cov:
 	pytest --cov-report html --cov=openapidocs
 
 
+lint: check-flake8 check-isort check-black
+
+
+check-flake8:
+	@echo "$(BOLD)Checking flake8$(RESET)"
+	@flake8 . 2>&1
+
+
+check-isort:
+	@echo "$(BOLD)Checking isort$(RESET)"
+	@isort --check-only . 2>&1
+
+
+check-black:
+	@echo "$(BOLD)Checking black$(RESET)"
+	@black --check . 2>&1
+
+
 format:
-	isort openapidocs
-	isort tests
-	black openapidocs
-	black tests
+	@echo "$(BOLD)Formatting code 🧹 🧼$(RESET)"
+	@black . 2>&1
+	@isort . 2>&1
