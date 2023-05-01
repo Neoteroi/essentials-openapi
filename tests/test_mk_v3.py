@@ -1,4 +1,3 @@
-from pathlib import Path
 import pytest
 
 from openapidocs.mk.v3 import (
