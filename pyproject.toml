@@ -41,6 +41,14 @@ exclude = ["tests"]
 
 [tool.hatch.build]
 only-packages = false
+include = [
+  "LICENSE",
+  "README.md",
+  "CHANGELOG.md",
+  "openapidocs/**/*.py",
+  "openapidocs/**/*.html",
+  "openapidocs/**/*.md",
+]
 
 [project.urls]
 "Homepage" = "https://github.com/Neoteroi/essentials-openapi"
