@@ -118,7 +118,11 @@ class ArrayExampleHandler(SchemaExampleHandler):
           nullable: true
         """
         items = schema["items"]
-        return [get_example_from_schema(items) for _ in range(1)]
+
+        if not isinstance(items, list):
+            items = [items]
+
+        return [get_example_from_schema(item) for item in items]
 
 
 def get_subclasses(cls) -> Iterable[Type]:
