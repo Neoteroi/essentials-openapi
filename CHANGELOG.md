@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.8] - 2023-07-19 :cat:
+- Fixes example generation breaks on explicitly enumerated array elements #31,
+  by @jjedele.
+
 ## [1.0.7] - 2023-05-01 :toolbox:
 - Fixes [Markdown missing a newline after simple response types](https://github.com/Neoteroi/essentials-openapi/issues/27).
 - Fixes [Empty header when operations don't have any tag.](https://github.com/Neoteroi/essentials-openapi/issues/28).
