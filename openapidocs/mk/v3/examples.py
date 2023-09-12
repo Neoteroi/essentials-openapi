@@ -117,7 +117,7 @@ class ArrayExampleHandler(SchemaExampleHandler):
             $ref: '#/components/schemas/ReleaseNodeDownload'
           nullable: true
         """
-        items = schema["items"]
+        items = schema.get("items", [])
 
         if not isinstance(items, list):
             items = [items]
