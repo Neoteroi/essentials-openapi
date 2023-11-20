@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Adds support for latest function `model_dump` in Pydantic 2 (for examples
   defined using Pydantic models).
 - Upgrades development dependencies.
+- Fix bug with missing items entry #36 by @mh7d and @mh-at-fujitsu
 
 ## [1.0.8] - 2023-07-19 :cat:
 - Fixes example generation breaks on explicitly enumerated array elements #31,

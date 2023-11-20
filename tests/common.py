@@ -11,7 +11,7 @@ try:
     from importlib.resources import files
 
     def get_resource_file_path(file_name: str) -> str:
-        return str(files(__name__) / "res" / file_name)
+        return str(files("tests") / "res" / file_name)
 
 except ImportError:
     # Python 3.8
