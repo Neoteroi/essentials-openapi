@@ -86,7 +86,6 @@ def read_from_source(source: str):
 
         raise ValueError("Unsupported source file.")
     else:
-
         source_lower = source.lower()
 
         if source_lower.startswith("http://") or source_lower.startswith("https://"):
