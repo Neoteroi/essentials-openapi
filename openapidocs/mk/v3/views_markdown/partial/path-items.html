@@ -6,9 +6,6 @@
 {%- for http_method, operation in definition.items() %}
 
 ### {{http_method.upper()}} {{path | safe}}
-{%- if "operationId" in operation -%}
-<a id='{{operation.operationId}}'></a>
-{%- endif -%}
 {% if "summary" in operation -%}
 {{operation.summary | wordwrap(80)}}
 {%- endif -%}

@@ -101,8 +101,6 @@ def regular_dict_factory(items: List[Tuple[Any, Any]]) -> Any:
 # bypassing "asdict" on child properties when they implement a `to_obj`
 # method: some entities require a specific shape when represented
 def _asdict_inner(obj, dict_factory):
-    if hasattr(obj, "dict") and callable(obj.dict):
-        return obj.dict()
     if hasattr(obj, "to_obj"):
         return obj.to_obj()
     if isinstance(obj, OpenAPIElement):
@@ -111,6 +109,12 @@ def _asdict_inner(obj, dict_factory):
             value = _asdict_inner(getattr(obj, f.name), dict_factory)
             result.append((f.name, value))
         return dict_factory(result)
+    if hasattr(obj, "model_dump") and callable(obj.model_dump):
+        # For Pydantic 2
+        return obj.model_dump()
+    if hasattr(obj, "dict") and callable(obj.dict):
+        # For Pydantic 1
+        return obj.dict()
     if is_dataclass(obj):
         return asdict(obj, dict_factory=regular_dict_factory)
     elif isinstance(obj, (list, tuple)):

@@ -6,9 +6,6 @@
 <hr class="operation-separator" />
 
 ### <span class="http-{{http_method.lower()}}">{{http_method.upper()}}</span> {{path | route | safe}}
-{%- if "operationId" in operation -%}
-<a id='{{operation.operationId}}'></a>
-{%- endif -%}
 {% if "summary" in operation -%}
 {{operation.summary | wordwrap(80)}}
 {%- endif -%}

@@ -3,10 +3,24 @@ import os
 import re
 from typing import Any
 
-import pkg_resources
 import yaml
 
 from openapidocs.common import Format
+
+try:
+    from importlib.resources import files
+
+    def get_resource_file_path(file_name: str) -> str:
+        return str(files("tests") / "res" / file_name)
+
+except ImportError:
+    # Python 3.8
+    import pkg_resources  # type: ignore
+
+    def get_resource_file_path(file_name: str) -> str:
+        return pkg_resources.resource_filename(
+            __name__, os.path.join(".", "res", file_name)
+        )
 
 
 def debug() -> bool:
@@ -24,12 +38,6 @@ def debug_result(version: str, instance: Any, result: str, format: Format) -> No
         encoding="utf8",
     ) as debug_file:
         debug_file.write(result)
-
-
-def get_resource_file_path(file_name: str) -> str:
-    return pkg_resources.resource_filename(
-        __name__, os.path.join(".", "res", file_name)
-    )
 
 
 def get_resource_file_content(file_name: str) -> str:

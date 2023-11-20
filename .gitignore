@@ -7,3 +7,4 @@ __pycache__
 *.tar.gz
 _test_files/
 dist/
+venv312/
