@@ -136,7 +136,6 @@ class Schema(OpenAPIElement):
     format: Union[None, str, ValueFormat] = None
     required: Optional[List[str]] = None
     properties: Optional[Dict[str, Union["Schema", "Reference"]]] = None
-    pattern_properties: Optional[Dict[str, Union["Schema", "Reference"]]] = None
     default: Optional[Any] = None
     deprecated: Optional[bool] = None
     example: Any = None
