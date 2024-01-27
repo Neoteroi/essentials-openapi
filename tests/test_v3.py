@@ -2023,7 +2023,19 @@ class ResponseExample1(TestItem):
     def get_instance(self) -> Any:
         return Response(
             description="A simple string response",
-            content={"text/plain": MediaType(schema=Schema(type="string"))},
+            content={
+                "text/plain": MediaType(schema=Schema(type="string")),
+                "application/json": MediaType(
+                    schema=Schema(
+                        type="object",
+                        pattern_properties={
+                            "^[a-zA-Z0-9_]+$": Schema(
+                                type=ValueType.STRING,
+                            )
+                        },
+                    )
+                ),
+            },
         )
 
     def yaml(self) -> str:
@@ -2033,6 +2045,12 @@ class ResponseExample1(TestItem):
             text/plain:
                 schema:
                     type: string
+            application/json:
+                schema:
+                    type: object
+                    patternProperties:
+                        ^[a-zA-Z0-9_]+$:
+                            type: string
         """
 
     def json(self) -> str:
@@ -2043,6 +2061,16 @@ class ResponseExample1(TestItem):
                 "text/plain": {
                     "schema": {
                         "type": "string"
+                    }
+                },
+                "application/json": {
+                    "schema": {
+                        "type": "object",
+                        "patternProperties": {
+                            "^[a-zA-Z0-9_]+$": {
+                                "type": "string"
+                            }
+                        }
                     }
                 }
             }
