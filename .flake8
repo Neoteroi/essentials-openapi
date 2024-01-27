@@ -6,4 +6,5 @@ max-complexity = 18
 per-file-ignores =
     tests/test_v2.py: E501
     tests/test_v3.py: E501
+    tests/test_v31.py: E501
 select = B,C,E,F,W,T4,B9

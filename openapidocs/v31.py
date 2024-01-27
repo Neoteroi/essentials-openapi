@@ -1,6 +1,6 @@
 """
 This module defines classes that can be used to generate OpenAPI Documentation
-version 3.
+version 3.1.
 https://swagger.io/specification/
 """
 from abc import ABC
