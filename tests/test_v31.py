@@ -143,7 +143,7 @@ class OpenAPIExample1(TestItem):
                             Parameter(
                                 "page",
                                 ParameterLocation.QUERY,
-                                schema=Schema(type="integer"),
+                                schema=Schema(type=["integer", "null"]),
                             ),
                             Parameter(
                                 "size",
@@ -186,7 +186,9 @@ class OpenAPIExample1(TestItem):
                     -   name: page
                         in: query
                         schema:
-                            type: integer
+                            type:
+                            - integer
+                            - 'null'
                     -   name: size
                         in: query
                         schema:
@@ -230,7 +232,10 @@ class OpenAPIExample1(TestItem):
                                 "name": "page",
                                 "in": "query",
                                 "schema": {
-                                    "type": "integer"
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
                                 }
                             },
                             {

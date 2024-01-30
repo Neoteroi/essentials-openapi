@@ -27,6 +27,7 @@ class ValueType(Enum):
     NUMBER = "number"
     OBJECT = "object"
     STRING = "string"
+    NULL = "null"
 
 
 class ValueFormat(Enum):
@@ -132,7 +133,7 @@ class Discriminator(OpenAPIElement):
 
 @dataclass
 class Schema(OpenAPIElement):
-    type: Union[None, str, ValueType] = None
+    type: Union[None, str, ValueType, List[Union[None, str, ValueType]]] = None
     format: Union[None, str, ValueFormat] = None
     required: Optional[List[str]] = None
     properties: Optional[Dict[str, Union["Schema", "Reference"]]] = None
@@ -143,11 +144,12 @@ class Schema(OpenAPIElement):
     ref: Optional[str] = None
     title: Optional[str] = None
     description: Optional[str] = None
+    content_encoding: Optional[str] = None
+    content_media_type: Optional[str] = None
     max_length: Optional[float] = None
     min_length: Optional[float] = None
     maximum: Optional[float] = None
     minimum: Optional[float] = None
-    nullable: Optional[bool] = None
     xml: Optional[XML] = None
     items: Union[None, "Schema", "Reference"] = None
     enum: Optional[List[str]] = None
@@ -209,7 +211,6 @@ class Link(OpenAPIElement):
 @dataclass
 class MediaType(OpenAPIElement):
     schema: Union[None, Schema, Reference] = None
-    example: Any = None
     examples: Optional[Dict[str, Union[Example, Reference]]] = None
     encoding: Optional[Dict[str, Encoding]] = None
 
