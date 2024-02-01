@@ -92,8 +92,7 @@ class FooParent:
 
 class TestItem:
     @abstractmethod
-    def get_instance(self) -> Any:
-        ...
+    def get_instance(self) -> Any: ...
 
     def expected_yaml(self) -> str:
         return dedent(self.yaml()).strip()
@@ -102,12 +101,10 @@ class TestItem:
         return dedent(self.json()).strip()
 
     @abstractmethod
-    def json(self) -> str:
-        ...
+    def json(self) -> str: ...
 
     @abstractmethod
-    def yaml(self) -> str:
-        ...
+    def yaml(self) -> str: ...
 
 
 class ParameterExample1(TestItem):
@@ -2043,6 +2040,49 @@ class ResponseExample1(TestItem):
                 "text/plain": {
                     "schema": {
                         "type": "string"
+                    }
+                }
+            }
+        }
+        """
+
+
+class ResponseExample2(TestItem):
+    def get_instance(self) -> Any:
+        return Response(
+            description="A simple string response",
+            content={
+                "text/plain": MediaType(
+                    schema=Schema(
+                        type="object",
+                        additional_properties=Schema(type="string"),
+                    )
+                )
+            },
+        )
+
+    def yaml(self) -> str:
+        return """
+        description: A simple string response
+        content:
+            text/plain:
+                schema:
+                    type: object
+                    additionalProperties:
+                        type: string
+        """
+
+    def json(self) -> str:
+        return """
+        {
+            "description": "A simple string response",
+            "content": {
+                "text/plain": {
+                    "schema": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
                     }
                 }
             }
