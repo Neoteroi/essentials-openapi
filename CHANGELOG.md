@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.10] - 2024-04-14
 - Fixes `MARKDOWN` style not creating tables using the minimum 3 hyphens,
   reported by @michael-nok.
+- Adds support for displaying descriptions of schema
+  properties, requested by @Maia-Everett.
 
 ## [1.0.9] - 2023-11-20
 - Adds support for Python 3.12.
