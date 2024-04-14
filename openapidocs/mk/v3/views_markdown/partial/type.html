@@ -1,10 +1,10 @@
 {% if definition.type == "object" %}
 {%- with props = handler.get_properties(definition) -%}
 {% if props %}
-| {{texts.name}} | {{texts.type}} |
-| --- | --- |
+| {{texts.name}} | {{texts.type}} | {{texts.description}} |
+| --- | --- | --- |
 {%- for name, schema in props %}
-| {{name}} | {% include "partial/schema-repr.html" %} |
+| {{name}} | {% include "partial/schema-repr.html" %} | {{schema.description}} |
 {%- endfor -%}
 {%- endif %}
 {%- endwith -%}

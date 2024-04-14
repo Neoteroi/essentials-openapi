@@ -6,6 +6,7 @@
         <tr>
             <th>{{texts.name}}</th>
             <th>{{texts.type}}</th>
+            <th>{{texts.description}}</th>
         </tr>
     </thead>
     <tbody>
@@ -13,6 +14,7 @@
         <tr>
             <td><code>{{name}}</code></td>
             <td>{% include "partial/schema-repr.html" %}</td>
+            <td>{{schema.description}}</td>
         </tr>
         {%- endfor %}
     </tbody>
