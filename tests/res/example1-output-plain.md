@@ -2954,7 +2954,7 @@ _Other possible types: text/json, text/plain_
 ### Category
 
 | Name | Type |
-| -- | -- |
+| --- | --- |
 | creationTime | string(date-time) |
 | description | string&#124; null |
 | eTag | string |
@@ -2968,7 +2968,7 @@ _Other possible types: text/json, text/plain_
 ### Country
 
 | Name | Type |
-| -- | -- |
+| --- | --- |
 | countryCode | string&#124; null |
 | id | string&#124; null |
 | name | string |
@@ -2978,7 +2978,7 @@ _Other possible types: text/json, text/plain_
 ### CreateOrganizationsBoundInput
 
 | Name | Type |
-| -- | -- |
+| --- | --- |
 | items | Array&lt;[OrganizationBoundInput](#organizationboundinput)&gt; |
 
 
@@ -2986,7 +2986,7 @@ _Other possible types: text/json, text/plain_
 ### CreateReleaseInput
 
 | Name | Type |
-| -- | -- |
+| --- | --- |
 | categoryId | string |
 | countries | Array&lt;string&gt; |
 | description | string&#124; null |
@@ -2997,7 +2997,7 @@ _Other possible types: text/json, text/plain_
 ### CreateReleaseNodeInput
 
 | Name | Type |
-| -- | -- |
+| --- | --- |
 | fileId | string(uuid) |
 | fileName | string |
 | fileSize | integer(int32) |
@@ -3008,7 +3008,7 @@ _Other possible types: text/json, text/plain_
 ### CreateReleaseOutput
 
 | Name | Type |
-| -- | -- |
+| --- | --- |
 | id | string(uuid) |
 
 
@@ -3016,7 +3016,7 @@ _Other possible types: text/json, text/plain_
 ### CurrentRelease
 
 | Name | Type |
-| -- | -- |
+| --- | --- |
 | categoryId | string&#124; null |
 | countryCode | string&#124; null |
 | countryName | string&#124; null |
@@ -3029,7 +3029,7 @@ _Other possible types: text/json, text/plain_
 ### DeleteReleaseNodeInput
 
 | Name | Type |
-| -- | -- |
+| --- | --- |
 | id | string(uuid) |
 
 
@@ -3037,7 +3037,7 @@ _Other possible types: text/json, text/plain_
 ### FileDownloadStats
 
 | Name | Type |
-| -- | -- |
+| --- | --- |
 | uniqueDownloads | integer(int32) |
 
 
@@ -3045,7 +3045,7 @@ _Other possible types: text/json, text/plain_
 ### FileUrl
 
 | Name | Type |
-| -- | -- |
+| --- | --- |
 | url | string&#124; null |
 
 
@@ -3053,7 +3053,7 @@ _Other possible types: text/json, text/plain_
 ### GenericError
 
 | Name | Type |
-| -- | -- |
+| --- | --- |
 | code | integer(int32) |
 | message | string |
 
@@ -3062,7 +3062,7 @@ _Other possible types: text/json, text/plain_
 ### HealthCheck
 
 | Name | Type |
-| -- | -- |
+| --- | --- |
 | alive | boolean |
 | regionName | string&#124; null |
 | timestamp | string(date-time) |
@@ -3072,7 +3072,7 @@ _Other possible types: text/json, text/plain_
 ### InitializeUploadInput
 
 | Name | Type |
-| -- | -- |
+| --- | --- |
 | fileName | string&#124; null |
 | fileSize | integer(int32) |
 | fileType | string&#124; null |
@@ -3083,7 +3083,7 @@ _Other possible types: text/json, text/plain_
 ### InitializeUploadOutput
 
 | Name | Type |
-| -- | -- |
+| --- | --- |
 | baseURL | string&#124; null |
 | fileId | string&#124; null |
 | fileName | string&#124; null |
@@ -3094,7 +3094,7 @@ _Other possible types: text/json, text/plain_
 ### MetaData
 
 | Name | Type |
-| -- | -- |
+| --- | --- |
 | buildNumber | string&#124; null |
 | contactEmail | string&#124; null |
 | version | string&#124; null |
@@ -3104,7 +3104,7 @@ _Other possible types: text/json, text/plain_
 ### NodeInfo
 
 | Name | Type |
-| -- | -- |
+| --- | --- |
 | creationTime | string(date-time) |
 | eTag | string |
 | extension | string |
@@ -3120,7 +3120,7 @@ _Other possible types: text/json, text/plain_
 ### OrganizationBoundInput
 
 | Name | Type |
-| -- | -- |
+| --- | --- |
 | id | string(uuid) |
 | name | string&#124; null |
 
@@ -3129,7 +3129,7 @@ _Other possible types: text/json, text/plain_
 ### ProfessionalContext
 
 | Name | Type |
-| -- | -- |
+| --- | --- |
 | membership | Array&lt;[ProfessionalMembership](#professionalmembership)&gt; |
 | signature | string&#124; null |
 
@@ -3138,7 +3138,7 @@ _Other possible types: text/json, text/plain_
 ### ProfessionalMembership
 
 | Name | Type |
-| -- | -- |
+| --- | --- |
 | brandNames | Array&lt;string&gt; |
 | categoryId | string&#124; null |
 | id | string(uuid) |
@@ -3156,7 +3156,7 @@ _Other possible types: text/json, text/plain_
 ### PublishReleaseInput
 
 | Name | Type |
-| -- | -- |
+| --- | --- |
 | eTag | string&#124; null |
 | sendEmailNotifications | boolean |
 
@@ -3165,7 +3165,7 @@ _Other possible types: text/json, text/plain_
 ### Release
 
 | Name | Type |
-| -- | -- |
+| --- | --- |
 | category | [Category](#category) |
 | categoryId | string&#124; null |
 | countries | Array&lt;[ReleaseCountry](#releasecountry)&gt; |
@@ -3186,7 +3186,7 @@ _Other possible types: text/json, text/plain_
 ### ReleaseCountry
 
 | Name | Type |
-| -- | -- |
+| --- | --- |
 | country | [Country](#country) |
 | countryId | string&#124; null |
 | release | [Release](#release) |
@@ -3197,7 +3197,7 @@ _Other possible types: text/json, text/plain_
 ### ReleaseHistory
 
 | Name | Type |
-| -- | -- |
+| --- | --- |
 | data | string&#124; null |
 | description | string |
 | id | string(uuid) |
@@ -3211,7 +3211,7 @@ _Other possible types: text/json, text/plain_
 ### ReleaseNode
 
 | Name | Type |
-| -- | -- |
+| --- | --- |
 | id | string(uuid) |
 | node | [NodeInfo](#nodeinfo) |
 | nodeId | string(uuid) |
@@ -3223,7 +3223,7 @@ _Other possible types: text/json, text/plain_
 ### ReleaseNodeDownload
 
 | Name | Type |
-| -- | -- |
+| --- | --- |
 | accessGrantedByOrganizationId | string(uuid)&#124; null |
 | id | string(uuid) |
 | node | [NodeInfo](#nodeinfo) |
@@ -3239,7 +3239,7 @@ _Other possible types: text/json, text/plain_
 ### ReleaseNodeDownloadPaginatedSet
 
 | Name | Type |
-| -- | -- |
+| --- | --- |
 | items | Array&lt;[ReleaseNodeDownload](#releasenodedownload)&gt; |
 | total | integer(int64) |
 
@@ -3248,7 +3248,7 @@ _Other possible types: text/json, text/plain_
 ### ReleaseOrganization
 
 | Name | Type |
-| -- | -- |
+| --- | --- |
 | displayName | string&#124; null |
 | organizationId | string(uuid) |
 | release | [Release](#release) |
@@ -3259,7 +3259,7 @@ _Other possible types: text/json, text/plain_
 ### ReleasePaginatedSet
 
 | Name | Type |
-| -- | -- |
+| --- | --- |
 | items | Array&lt;[Release](#release)&gt; |
 | total | integer(int64) |
 
@@ -3268,7 +3268,7 @@ _Other possible types: text/json, text/plain_
 ### UpdateReleaseInput
 
 | Name | Type |
-| -- | -- |
+| --- | --- |
 | categoryId | string |
 | countries | Array&lt;string&gt; |
 | description | string&#124; null |
