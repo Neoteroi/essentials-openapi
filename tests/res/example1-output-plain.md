@@ -2953,328 +2953,328 @@ _Other possible types: text/json, text/plain_
 
 ### Category
 
-| Name | Type |
-| --- | --- |
-| creationTime | string(date-time) |
-| description | string &#124; null |
-| eTag | string |
-| id | string &#124; null |
-| name | string |
-| releases | Array&lt;[Release](#release)&gt; |
-| updateTime | string(date-time) |
+| Name         | Type                             |
+| ------------ | -------------------------------- |
+| creationTime | string(date-time)                |
+| description  | string &#124; null               |
+| eTag         | string                           |
+| id           | string &#124; null               |
+| name         | string                           |
+| releases     | Array&lt;[Release](#release)&gt; |
+| updateTime   | string(date-time)                |
 
 
 
 ### Country
 
-| Name | Type |
-| --- | --- |
+| Name        | Type               |
+| ----------- | ------------------ |
 | countryCode | string &#124; null |
-| id | string &#124; null |
-| name | string |
+| id          | string &#124; null |
+| name        | string             |
 
 
 
 ### CreateOrganizationsBoundInput
 
-| Name | Type |
-| --- | --- |
+| Name  | Type                                                           |
+| ----- | -------------------------------------------------------------- |
 | items | Array&lt;[OrganizationBoundInput](#organizationboundinput)&gt; |
 
 
 
 ### CreateReleaseInput
 
-| Name | Type |
-| --- | --- |
-| categoryId | string |
-| countries | Array&lt;string&gt; |
-| description | string &#124; null |
-| name | string &#124; null |
+| Name        | Type                |
+| ----------- | ------------------- |
+| categoryId  | string              |
+| countries   | Array&lt;string&gt; |
+| description | string &#124; null  |
+| name        | string &#124; null  |
 
 
 
 ### CreateReleaseNodeInput
 
-| Name | Type |
-| --- | --- |
-| fileId | string(uuid) |
-| fileName | string |
+| Name     | Type           |
+| -------- | -------------- |
+| fileId   | string(uuid)   |
+| fileName | string         |
 | fileSize | integer(int32) |
-| fileType | string |
+| fileType | string         |
 
 
 
 ### CreateReleaseOutput
 
-| Name | Type |
-| --- | --- |
-| id | string(uuid) |
+| Name | Type         |
+| ---- | ------------ |
+| id   | string(uuid) |
 
 
 
 ### CurrentRelease
 
-| Name | Type |
-| --- | --- |
-| categoryId | string &#124; null |
+| Name        | Type               |
+| ----------- | ------------------ |
+| categoryId  | string &#124; null |
 | countryCode | string &#124; null |
 | countryName | string &#124; null |
-| publishTime | string(date-time) |
-| releaseId | string(uuid) |
+| publishTime | string(date-time)  |
+| releaseId   | string(uuid)       |
 | releaseName | string &#124; null |
 
 
 
 ### DeleteReleaseNodeInput
 
-| Name | Type |
-| --- | --- |
-| id | string(uuid) |
+| Name | Type         |
+| ---- | ------------ |
+| id   | string(uuid) |
 
 
 
 ### FileDownloadStats
 
-| Name | Type |
-| --- | --- |
+| Name            | Type           |
+| --------------- | -------------- |
 | uniqueDownloads | integer(int32) |
 
 
 
 ### FileUrl
 
-| Name | Type |
-| --- | --- |
-| url | string &#124; null |
+| Name | Type               |
+| ---- | ------------------ |
+| url  | string &#124; null |
 
 
 
 ### GenericError
 
-| Name | Type |
-| --- | --- |
-| code | integer(int32) |
-| message | string |
+| Name    | Type           |
+| ------- | -------------- |
+| code    | integer(int32) |
+| message | string         |
 
 
 
 ### HealthCheck
 
-| Name | Type |
-| --- | --- |
-| alive | boolean |
+| Name       | Type               |
+| ---------- | ------------------ |
+| alive      | boolean            |
 | regionName | string &#124; null |
-| timestamp | string(date-time) |
+| timestamp  | string(date-time)  |
 
 
 
 ### InitializeUploadInput
 
-| Name | Type |
-| --- | --- |
-| fileName | string &#124; null |
-| fileSize | integer(int32) |
-| fileType | string &#124; null |
-| releaseId | string(uuid) |
+| Name      | Type               |
+| --------- | ------------------ |
+| fileName  | string &#124; null |
+| fileSize  | integer(int32)     |
+| fileType  | string &#124; null |
+| releaseId | string(uuid)       |
 
 
 
 ### InitializeUploadOutput
 
-| Name | Type |
-| --- | --- |
-| baseURL | string &#124; null |
-| fileId | string &#124; null |
+| Name     | Type               |
+| -------- | ------------------ |
+| baseURL  | string &#124; null |
+| fileId   | string &#124; null |
 | fileName | string &#124; null |
-| token | string &#124; null |
+| token    | string &#124; null |
 
 
 
 ### MetaData
 
-| Name | Type |
-| --- | --- |
-| buildNumber | string &#124; null |
+| Name         | Type               |
+| ------------ | ------------------ |
+| buildNumber  | string &#124; null |
 | contactEmail | string &#124; null |
-| version | string &#124; null |
+| version      | string &#124; null |
 
 
 
 ### NodeInfo
 
-| Name | Type |
-| --- | --- |
+| Name         | Type              |
+| ------------ | ----------------- |
 | creationTime | string(date-time) |
-| eTag | string |
-| extension | string |
-| icon | string |
-| id | string(uuid) |
-| name | string |
-| size | integer(int32) |
-| type | string |
-| updateTime | string(date-time) |
+| eTag         | string            |
+| extension    | string            |
+| icon         | string            |
+| id           | string(uuid)      |
+| name         | string            |
+| size         | integer(int32)    |
+| type         | string            |
+| updateTime   | string(date-time) |
 
 
 
 ### OrganizationBoundInput
 
-| Name | Type |
-| --- | --- |
-| id | string(uuid) |
+| Name | Type               |
+| ---- | ------------------ |
+| id   | string(uuid)       |
 | name | string &#124; null |
 
 
 
 ### ProfessionalContext
 
-| Name | Type |
-| --- | --- |
+| Name       | Type                                                           |
+| ---------- | -------------------------------------------------------------- |
 | membership | Array&lt;[ProfessionalMembership](#professionalmembership)&gt; |
-| signature | string &#124; null |
+| signature  | string &#124; null                                             |
 
 
 
 ### ProfessionalMembership
 
-| Name | Type |
-| --- | --- |
-| brandNames | Array&lt;string&gt; |
-| categoryId | string &#124; null |
-| id | string(uuid) |
-| marketCodes | Array&lt;string&gt; |
-| organizationBrands | Array&lt;string(uuid)&gt; |
-| organizationId | string(uuid) |
+| Name                | Type                      |
+| ------------------- | ------------------------- |
+| brandNames          | Array&lt;string&gt;       |
+| categoryId          | string &#124; null        |
+| id                  | string(uuid)              |
+| marketCodes         | Array&lt;string&gt;       |
+| organizationBrands  | Array&lt;string(uuid)&gt; |
+| organizationId      | string(uuid)              |
 | organizationMarkets | Array&lt;string(uuid)&gt; |
-| organizationName | string &#124; null |
-| organizationNumber | string &#124; null |
-| role | string &#124; null |
-| scope | string &#124; null |
+| organizationName    | string &#124; null        |
+| organizationNumber  | string &#124; null        |
+| role                | string &#124; null        |
+| scope               | string &#124; null        |
 
 
 
 ### PublishReleaseInput
 
-| Name | Type |
-| --- | --- |
-| eTag | string &#124; null |
-| sendEmailNotifications | boolean |
+| Name                   | Type              |
+| ---------------------- | ----------------- |
+| eTag                   | string&#124; null |
+| sendEmailNotifications | boolean           |
 
 
 
 ### Release
 
-| Name | Type |
-| --- | --- |
-| category | [Category](#category) |
-| categoryId | string &#124; null |
-| countries | Array&lt;[ReleaseCountry](#releasecountry)&gt; |
-| creationTime | string(date-time) |
-| description | string &#124; null |
-| draft | boolean |
-| eTag | string |
-| history | Array&lt;[ReleaseHistory](#releasehistory)&gt; |
-| id | string(uuid) |
-| name | string |
-| nodes | Array&lt;[ReleaseNode](#releasenode)&gt; |
-| organizations | Array&lt;[ReleaseOrganization](#releaseorganization)&gt; |
-| requestedNotification | boolean |
-| updateTime | string(date-time) |
+| Name                  | Type                                                     |
+| --------------------- | -------------------------------------------------------- |
+| category              | [Category](#category)                                    |
+| categoryId            | string &#124; null                                       |
+| countries             | Array&lt;[ReleaseCountry](#releasecountry)&gt;           |
+| creationTime          | string(date-time)                                        |
+| description           | string &#124; null                                       |
+| draft                 | boolean                                                  |
+| eTag                  | string                                                   |
+| history               | Array&lt;[ReleaseHistory](#releasehistory)&gt;           |
+| id                    | string(uuid)                                             |
+| name                  | string                                                   |
+| nodes                 | Array&lt;[ReleaseNode](#releasenode)&gt;                 |
+| organizations         | Array&lt;[ReleaseOrganization](#releaseorganization)&gt; |
+| requestedNotification | boolean                                                  |
+| updateTime            | string(date-time)                                        |
 
 
 
 ### ReleaseCountry
 
-| Name | Type |
-| --- | --- |
-| country | [Country](#country) |
-| countryId | string &#124; null |
-| release | [Release](#release) |
-| releaseId | string(uuid) |
+| Name      | Type                |
+| --------- | ------------------- |
+| country   | [Country](#country) |
+| countryId | string &#124; null  |
+| release   | [Release](#release) |
+| releaseId | string(uuid)        |
 
 
 
 ### ReleaseHistory
 
-| Name | Type |
-| --- | --- |
-| data | string &#124; null |
-| description | string |
-| id | string(uuid) |
-| release | [Release](#release) |
-| releaseId | string(uuid) |
-| timeStamp | string(date-time) |
-| user | string |
+| Name        | Type                |
+| ----------- | ------------------- |
+| data        | string &#124; null  |
+| description | string              |
+| id          | string(uuid)        |
+| release     | [Release](#release) |
+| releaseId   | string(uuid)        |
+| timeStamp   | string(date-time)   |
+| user        | string              |
 
 
 
 ### ReleaseNode
 
-| Name | Type |
-| --- | --- |
-| id | string(uuid) |
-| node | [NodeInfo](#nodeinfo) |
-| nodeId | string(uuid) |
-| release | [Release](#release) |
-| releaseId | string(uuid) |
+| Name      | Type                  |
+| --------- | --------------------- |
+| id        | string(uuid)          |
+| node      | [NodeInfo](#nodeinfo) |
+| nodeId    | string(uuid)          |
+| release   | [Release](#release)   |
+| releaseId | string(uuid)          |
 
 
 
 ### ReleaseNodeDownload
 
-| Name | Type |
-| --- | --- |
+| Name                          | Type                     |
+| ----------------------------- | ------------------------ |
 | accessGrantedByOrganizationId | string(uuid) &#124; null |
-| id | string(uuid) |
-| node | [NodeInfo](#nodeinfo) |
-| nodeId | string(uuid) |
-| release | [Release](#release) |
-| releaseId | string(uuid) |
-| timeStamp | string(date-time) |
-| userEmail | string |
-| userId | string |
+| id                            | string(uuid)             |
+| node                          | [NodeInfo](#nodeinfo)    |
+| nodeId                        | string(uuid)             |
+| release                       | [Release](#release)      |
+| releaseId                     | string(uuid)             |
+| timeStamp                     | string(date-time)        |
+| userEmail                     | string                   |
+| userId                        | string                   |
 
 
 
 ### ReleaseNodeDownloadPaginatedSet
 
-| Name | Type |
-| --- | --- |
+| Name  | Type                                                     |
+| ----- | -------------------------------------------------------- |
 | items | Array&lt;[ReleaseNodeDownload](#releasenodedownload)&gt; |
-| total | integer(int64) |
+| total | integer(int64)                                           |
 
 
 
 ### ReleaseOrganization
 
-| Name | Type |
-| --- | --- |
-| displayName | string &#124; null |
-| organizationId | string(uuid) |
-| release | [Release](#release) |
-| releaseId | string(uuid) |
+| Name           | Type                |
+| -------------- | ------------------- |
+| displayName    | string &#124; null  |
+| organizationId | string(uuid)        |
+| release        | [Release](#release) |
+| releaseId      | string(uuid)        |
 
 
 
 ### ReleasePaginatedSet
 
-| Name | Type |
-| --- | --- |
+| Name  | Type                             |
+| ----- | -------------------------------- |
 | items | Array&lt;[Release](#release)&gt; |
-| total | integer(int64) |
+| total | integer(int64)                   |
 
 
 
 ### UpdateReleaseInput
 
-| Name | Type |
-| --- | --- |
-| categoryId | string |
-| countries | Array&lt;string&gt; |
-| description | string &#124; null |
-| eTag | string &#124; null |
-| id | string(uuid) |
-| name | string &#124; null |
+| Name        | Type                |
+| ----------- | ------------------- |
+| categoryId  | string              |
+| countries   | Array&lt;string&gt; |
+| description | string &#124; null  |
+| eTag        | string &#124; null  |
+| id          | string(uuid)        |
+| name        | string &#124; null  |
 
 
 
@@ -3417,7 +3417,7 @@ This section describes common parameters that are reused across operations.
 
 ### PageNumber
 
-| Name | In | Type | Default | Nullable | Description |
+| Name | In  | Type | Default | Nullable | Description |
 | ---- | --- | ---- | ------- | -------- | ----------- |
 
 
