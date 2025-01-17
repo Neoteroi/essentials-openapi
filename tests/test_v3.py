@@ -92,7 +92,8 @@ class FooParent:
 
 class TestItem:
     @abstractmethod
-    def get_instance(self) -> Any: ...
+    def get_instance(self) -> Any:
+        ...
 
     def expected_yaml(self) -> str:
         return dedent(self.yaml()).strip()
@@ -101,10 +102,12 @@ class TestItem:
         return dedent(self.json()).strip()
 
     @abstractmethod
-    def json(self) -> str: ...
+    def json(self) -> str:
+        ...
 
     @abstractmethod
-    def yaml(self) -> str: ...
+    def yaml(self) -> str:
+        ...
 
 
 class ParameterExample1(TestItem):
