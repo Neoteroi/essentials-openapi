@@ -3,6 +3,7 @@ This module defines classes that can be used to generate OpenAPI Documentation
 version 3.
 https://swagger.io/specification/
 """
+
 from abc import ABC
 from dataclasses import dataclass
 from enum import Enum
@@ -118,6 +119,7 @@ class Schema(OpenAPIElement):
     format: Union[None, str, ValueFormat] = None
     required: Optional[List[str]] = None
     properties: Optional[Dict[str, Union["Schema", "Reference"]]] = None
+    additional_properties: Union[None, bool, "Schema", "Reference"] = None
     default: Optional[Any] = None
     deprecated: Optional[bool] = None
     example: Any = None
