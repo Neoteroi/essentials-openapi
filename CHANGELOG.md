@@ -10,7 +10,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add additionalProperties to Schema object, by @tyzhnenko.
 - Upgrade package MarkupSafe to 3.0.1, by @stollero.
 - Remove Python 3.8 from the build matrix (EOF at the end of 2024).
-- Add Python 3.13 to the build matrix.
 
 ## [1.0.9] - 2023-11-20
 - Adds support for Python 3.12.
