@@ -107,6 +107,7 @@ jobs:
 
       - name: Publish distribution 📦 to Test PyPI
         run: |
+          tree
           twine upload -r testpypi dist/*
         env:
           TWINE_USERNAME: __token__
