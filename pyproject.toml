@@ -33,7 +33,7 @@ keywords = [
     "Markdown",
 ]
 
-dependencies = ["PyYAML>=6", "essentials>=1.1.5", "MarkupSafe~=2.1.2"]
+dependencies = ["PyYAML>=6", "essentials>=1.1.5", "MarkupSafe>=3.0.0"]
 
 [tool.hatch.version]
 path = "openapidocs/__init__.py"
