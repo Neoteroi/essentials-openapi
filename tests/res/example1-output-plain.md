@@ -20,9 +20,9 @@ Optional multiline or single-line description in
 
 ## Servers
 
-| Description       | URL               |
-| ----------------- | ----------------- |
-| Production server | Production server |
+| Description       | URL                                         |
+| ----------------- | ------------------------------------------- |
+| Production server | https://www.neoteroi.xyz/software-center/v1 |
 
 
 ## Blobs
