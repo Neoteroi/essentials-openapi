@@ -178,6 +178,8 @@ class OpenAPIV3DocumentationHandler:
         paths = data["paths"]
 
         for path, path_item in paths.items():
+            if not isinstance(path_item, dict):
+                continue
             tag = self.get_tag(path_item) or ""
 
             for operation in path_item.values():
@@ -186,10 +188,31 @@ class OpenAPIV3DocumentationHandler:
                     operation["requestBody"] = self._resolve_opt_ref(
                         operation["requestBody"]
                     )
-
-            groups[tag].append((path, path_item))
+            groups[tag].append((path, self._keep_operations(path_item)))
 
         return groups
+
+    def _keep_operations(self, path_item):
+        # discard dictionary keys that are not of dict type
+
+        # if the path item defines common parameters, merge them into each operation:
+        # https://swagger.io/specification/#path-item-object
+        common_parameters = path_item.get("parameters", [])
+        # Note: we don't need to resolve $ref here, because they are resolved in
+        # get_parameters
+
+        return {
+            key: self._merge_common_parameters(value, common_parameters)
+            for key, value in path_item.items()
+            if isinstance(value, dict)
+        }
+
+    def _merge_common_parameters(self, operation, common_parameters):
+        if not common_parameters:
+            return operation
+        data = copy.deepcopy(operation)
+        data["parameters"] = common_parameters + data.get("parameters", [])
+        return data
 
     def get_schemas(self):
         schemas = read_dict(self.doc, "components", "schemas")
@@ -215,8 +238,12 @@ class OpenAPIV3DocumentationHandler:
         """
         single_tag: Optional[str] = None
 
-        for operation in path_item.values():
-            tags = operation.get("tags")
+        for prop in path_item.values():
+            if not isinstance(prop, dict):
+                # This property is not an operation; in this context we ignore it.
+                # See Path Item Object here: https://swagger.io/specification/
+                continue
+            tags = prop.get("tags")
 
             if not tags:
                 continue
