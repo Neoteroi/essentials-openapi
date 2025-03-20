@@ -410,6 +410,11 @@ class OpenAPIV3DocumentationHandler:
             return self.resolve_reference(obj)
         return obj
 
+    def _lower(self, obj):
+        if isinstance(obj, str):
+            return obj.lower()
+        return str(obj)
+
     def get_parameters(self, operation) -> List[dict]:
         """
         Returns a list of objects describing the input parameters for a given operation.
@@ -424,7 +429,7 @@ class OpenAPIV3DocumentationHandler:
             param
             for param in sorted(
                 parameters,
-                key=lambda x: x["name"].lower() if (x and "name" in x) else "",
+                key=lambda x: self._lower(x["name"]) if (x and "name" in x) else "",
             )
             if param
         ]

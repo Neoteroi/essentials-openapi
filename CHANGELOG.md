@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add support for handling `parameters` defined on `path items` (common
   parameters for all operation under a certain path).
   Refer to the [`Path Item` specification](https://swagger.io/specification/#path-item-object).
+- Fix bug happening when a parameter has a non-str `name` property.
 
 ## [1.1.0] - 2025-01-18
 
