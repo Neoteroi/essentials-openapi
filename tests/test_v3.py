@@ -143,7 +143,7 @@ class OpenAPIExample1(TestItem):
                             Parameter(
                                 "page",
                                 ParameterLocation.QUERY,
-                                schema=Schema(type="integer"),
+                                schema=Schema(type=["integer", "null"]),
                             ),
                             Parameter(
                                 "size",
@@ -168,10 +168,11 @@ class OpenAPIExample1(TestItem):
 
     def yaml(self) -> str:
         return """
-        openapi: 3.0.3
+        openapi: 3.1.0
         info:
             title: Cats API
             version: 1.0.0
+        jsonSchemaDialect: https://json-schema.org/draft/2020-12/schema
         paths:
             /:
                 summary: summary
@@ -185,7 +186,9 @@ class OpenAPIExample1(TestItem):
                     -   name: page
                         in: query
                         schema:
-                            type: integer
+                            type:
+                            - integer
+                            - 'null'
                     -   name: size
                         in: query
                         schema:
@@ -206,11 +209,12 @@ class OpenAPIExample1(TestItem):
     def json(self) -> str:
         return """
         {
-            "openapi": "3.0.3",
+            "openapi": "3.1.0",
             "info": {
                 "title": "Cats API",
                 "version": "1.0.0"
             },
+            "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
             "paths": {
                 "/": {
                     "summary": "summary"
@@ -228,7 +232,10 @@ class OpenAPIExample1(TestItem):
                                 "name": "page",
                                 "in": "query",
                                 "schema": {
-                                    "type": "integer"
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
                                 }
                             },
                             {
@@ -271,6 +278,7 @@ class OpenAPIExample2(TestItem):
     def get_instance(self) -> Any:
         return OpenAPI(
             info=Info("Cats API", version="1.0.0"),
+            json_schema_dialect="https://json-schema.org/draft/2020-12/schema",
             paths={
                 "/": PathItem("summary"),
                 "/api/v1/cats": PathItem(
@@ -339,10 +347,11 @@ class OpenAPIExample2(TestItem):
 
     def yaml(self) -> str:
         return """
-        openapi: 3.0.3
+        openapi: 3.1.0
         info:
             title: Cats API
             version: 1.0.0
+        jsonSchemaDialect: https://json-schema.org/draft/2020-12/schema
         paths:
             /:
                 summary: summary
@@ -408,11 +417,12 @@ class OpenAPIExample2(TestItem):
     def json(self) -> str:
         return """
         {
-            "openapi": "3.0.3",
+            "openapi": "3.1.0",
             "info": {
                 "title": "Cats API",
                 "version": "1.0.0"
             },
+            "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
             "paths": {
                 "/": {
                     "summary": "summary"
@@ -599,10 +609,11 @@ class OpenAPIExample3(TestItem):
 
     def yaml(self) -> str:
         return """
-        openapi: 3.0.3
+        openapi: 3.1.0
         info:
             title: Weather API
             version: 0.0.0-alpha
+        jsonSchemaDialect: https://json-schema.org/draft/2020-12/schema
         paths:
             /weather:
                 summary: Call current weather data for one location
@@ -667,11 +678,12 @@ class OpenAPIExample3(TestItem):
     def json(self) -> str:
         return """
         {
-            "openapi": "3.0.3",
+            "openapi": "3.1.0",
             "info": {
                 "title": "Weather API",
                 "version": "0.0.0-alpha"
             },
+            "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
             "paths": {
                 "/weather": {
                     "summary": "Call current weather data for one location",
@@ -815,10 +827,11 @@ class OpenAPIExample4(TestItem):
 
     def yaml(self) -> str:
         return """
-openapi: 3.0.3
+openapi: 3.1.0
 info:
     title: Example API
     version: 0.0.0-alpha
+jsonSchemaDialect: https://json-schema.org/draft/2020-12/schema
 paths:
     /:
         summary: Test the example snake_case properness
@@ -851,11 +864,12 @@ paths:
     def json(self) -> str:
         return """
 {
-    "openapi": "3.0.3",
+    "openapi": "3.1.0",
     "info": {
         "title": "Example API",
         "version": "0.0.0-alpha"
     },
+    "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
     "paths": {
         "/": {
             "summary": "Test the example snake_case properness",
@@ -958,10 +972,11 @@ class OpenAPIExample5(TestItem):
 
     def yaml(self) -> str:
         return """
-openapi: 3.0.3
+openapi: 3.1.0
 info:
     title: Example API
     version: 0.0.0-alpha
+jsonSchemaDialect: https://json-schema.org/draft/2020-12/schema
 paths:
     /:
         summary: Test the example snake_case properness
@@ -1002,11 +1017,12 @@ paths:
     def json(self) -> str:
         return """
 {
-    "openapi": "3.0.3",
+    "openapi": "3.1.0",
     "info": {
         "title": "Example API",
         "version": "0.0.0-alpha"
     },
+    "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
     "paths": {
         "/": {
             "summary": "Test the example snake_case properness",
@@ -1133,10 +1149,11 @@ class OpenAPIExample6(TestItem):
 
     def yaml(self) -> str:
         return """
-openapi: 3.0.3
+openapi: 3.1.0
 info:
     title: Example API
     version: 0.0.0-alpha
+jsonSchemaDialect: https://json-schema.org/draft/2020-12/schema
 paths:
     /:
         summary: Test the example snake_case properness
@@ -1186,11 +1203,12 @@ paths:
     def json(self) -> str:
         return """
 {
-    "openapi": "3.0.3",
+    "openapi": "3.1.0",
     "info": {
         "title": "Example API",
         "version": "0.0.0-alpha"
     },
+    "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
     "paths": {
         "/": {
             "summary": "Test the example snake_case properness",
@@ -1377,10 +1395,11 @@ class OpenAPIExample7(TestItem):
 
     def yaml(self) -> str:
         return """
-openapi: 3.0.3
+openapi: 3.1.0
 info:
     title: Example API
     version: 0.0.0-alpha
+jsonSchemaDialect: https://json-schema.org/draft/2020-12/schema
 paths:
     /:
         description: Lorem ipsum dolor sit amet
@@ -1475,11 +1494,12 @@ components:
     def json(self) -> str:
         return """
 {
-    "openapi": "3.0.3",
+    "openapi": "3.1.0",
     "info": {
         "title": "Example API",
         "version": "0.0.0-alpha"
     },
+    "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
     "paths": {
         "/": {
             "description": "Lorem ipsum dolor sit amet",
@@ -1673,10 +1693,11 @@ class OpenAPIExamplesDefinedWithPydantic(TestItem):
 
     def yaml(self) -> str:
         return """
-openapi: 3.0.3
+openapi: 3.1.0
 info:
     title: Example API
     version: 0.0.0-alpha
+jsonSchemaDialect: https://json-schema.org/draft/2020-12/schema
 paths:
     /:
         summary: Test the example snake_case properness
@@ -1717,11 +1738,12 @@ paths:
     def json(self) -> str:
         return """
 {
-    "openapi": "3.0.3",
+    "openapi": "3.1.0",
     "info": {
         "title": "Example API",
         "version": "0.0.0-alpha"
     },
+    "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
     "paths": {
         "/": {
             "summary": "Test the example snake_case properness",
@@ -1857,7 +1879,8 @@ class ServerExample1(TestItem):
 
     def yaml(self) -> str:
         return """
-        openapi: 3.0.3
+        openapi: 3.1.0
+        jsonSchemaDialect: https://json-schema.org/draft/2020-12/schema
         servers:
         -   url: https://{username}.gigantic-server.com:{port}/{basePath}
             description: The production API server
@@ -1878,7 +1901,8 @@ class ServerExample1(TestItem):
     def json(self) -> str:
         return """
         {
-            "openapi": "3.0.3",
+            "openapi": "3.1.0",
+            "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
             "servers": [
                 {
                     "url": "https://{username}.gigantic-server.com:{port}/{basePath}",
