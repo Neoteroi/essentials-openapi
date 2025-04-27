@@ -282,6 +282,9 @@ class Schema(OpenAPIElement):
             A list of required property names.
         properties (Optional[Dict[str, Union["Schema", "Reference"]]]):
             A dictionary of property names to their schemas or references.
+        additional_properties (Union[None, bool, "Schema", "Reference"]):
+            Indicates whether additional properties are allowed. If a schema or reference
+            is provided, it defines the schema of the additional properties.
         default (Optional[Any]):
             The default value for the schema.
         deprecated (Optional[bool]):
@@ -329,6 +332,7 @@ class Schema(OpenAPIElement):
     format: Union[None, str, ValueFormat] = None
     required: Optional[List[str]] = None
     properties: Optional[Dict[str, Union["Schema", "Reference"]]] = None
+    additional_properties: Union[None, bool, "Schema", "Reference"] = None
     default: Optional[Any] = None
     deprecated: Optional[bool] = None
     example: Any = None

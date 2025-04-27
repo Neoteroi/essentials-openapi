@@ -2074,6 +2074,49 @@ class ResponseExample1(TestItem):
         """
 
 
+class ResponseExample2(TestItem):
+    def get_instance(self) -> Any:
+        return Response(
+            description="A simple string response",
+            content={
+                "text/plain": MediaType(
+                    schema=Schema(
+                        type="object",
+                        additional_properties=Schema(type="string"),
+                    )
+                )
+            },
+        )
+
+    def yaml(self) -> str:
+        return """
+        description: A simple string response
+        content:
+            text/plain:
+                schema:
+                    type: object
+                    additionalProperties:
+                        type: string
+        """
+
+    def json(self) -> str:
+        return """
+        {
+            "description": "A simple string response",
+            "content": {
+                "text/plain": {
+                    "schema": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+        """
+
+
 class RequestBodyExample1(TestItem):
     def get_instance(self) -> Any:
         return RequestBody(
