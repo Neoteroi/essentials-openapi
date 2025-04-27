@@ -23,6 +23,7 @@ class ParameterLocation(Enum):
         PATH: Parameter is part of the URL path.
         COOKIE: Parameter is passed as a cookie.
     """
+
     QUERY = "query"
     HEADER = "header"
     PATH = "path"
@@ -42,6 +43,7 @@ class ValueType(Enum):
         STRING: Represents a string type.
         NULL: Represents a null value.
     """
+
     ARRAY = "array"
     BOOLEAN = "boolean"
     INTEGER = "integer"
@@ -88,6 +90,7 @@ class ValueFormat(Enum):
         RELATIVEJSONPOINTER: Relative JSON pointer.
         REGEX: Regular expression.
     """
+
     BASE64 = "base64"
     BINARY = "binary"
     BYTE = "byte"
@@ -131,6 +134,7 @@ class SecuritySchemeType(Enum):
         OPENIDCONNECT: Alternative name for OpenID Connect security scheme.
         MUTUALTLS: Security scheme using mutual TLS authentication.
     """
+
     APIKEY = "apiKey"
     HTTP = "http"
     OAUTH = "oauth2"
@@ -150,6 +154,7 @@ class Contact(OpenAPIElement):
         url (Optional[str]): The URL pointing to the contact information.
         email (Optional[str]): The email address of the contact person/organization.
     """
+
     name: Optional[str] = None
     url: Optional[str] = None
     email: Optional[str] = None
@@ -164,6 +169,7 @@ class ExternalDocs(OpenAPIElement):
         url (str): The URL for the external documentation.
         description (Optional[str]): A description of the external documentation.
     """
+
     url: str
     description: Optional[str] = None
 
@@ -178,6 +184,7 @@ class License(OpenAPIElement):
         identifier (Optional[str]): An SPDX license identifier.
         url (Optional[str]): A URL to the license used for the API.
     """
+
     name: str
     identifier: Optional[str] = None
     url: Optional[str] = None
@@ -197,6 +204,7 @@ class Info(OpenAPIElement):
         contact (Optional[Contact]): Contact information for the API.
         license (Optional[License]): License information for the API.
     """
+
     title: str
     version: str
     summary: Optional[str] = None
@@ -216,6 +224,7 @@ class ServerVariable(OpenAPIElement):
         description (Optional[str]): An optional description for the server variable.
         enum (Optional[List[str]]): An enumeration of string values to be used if the substitution options are limited to a specific set.
     """
+
     default: str
     description: Optional[str] = None
     enum: Optional[List[str]] = None
@@ -231,6 +240,7 @@ class Server(OpenAPIElement):
         description (Optional[str]): An optional string describing the host designated by the URL.
         variables (Optional[Dict[str, ServerVariable]]): A map between variable names and their definitions.
     """
+
     url: str
     description: Optional[str] = None
     variables: Optional[Dict[str, ServerVariable]] = None
@@ -248,6 +258,7 @@ class XML(OpenAPIElement):
         attribute (Optional[bool]): Whether the property is an attribute.
         wrapped (Optional[bool]): Whether the array is wrapped.
     """
+
     name: Optional[str] = None
     namespace: Optional[str] = None
     prefix: Optional[str] = None
@@ -264,6 +275,7 @@ class Discriminator(OpenAPIElement):
         property_name (str): The name of the property in the payload that will hold the discriminator value.
         mapping (Optional[Dict[str, str]]): An optional mapping from payload values to schema names or references.
     """
+
     property_name: str
     mapping: Optional[Dict[str, str]] = None
 
@@ -340,6 +352,7 @@ class Schema(OpenAPIElement):
         not_ (Optional[List[Union["Schema", "Reference"]]]):
             A schema that must not apply.
     """
+
     type: Union[None, str, ValueType, List[Union[None, str, ValueType]]] = None
     format: Union[None, str, ValueFormat] = None
     required: Optional[List[str]] = None
@@ -382,6 +395,7 @@ class Header(OpenAPIElement):
         description (Optional[str]): A description of the header.
         schema (Union[None, Schema, "Reference"]): The schema defining the type used for the header.
     """
+
     description: Optional[str] = None
     schema: Union[None, Schema, "Reference"] = None
 
@@ -397,6 +411,7 @@ class Example(OpenAPIElement):
         value (Any): The embedded literal example. This field and external_value are mutually exclusive.
         external_value (Optional[str]): A URL that points to the literal example. This field and value are mutually exclusive.
     """
+
     summary: Optional[str] = None
     description: Optional[str] = None
     value: Any = None
@@ -416,6 +431,7 @@ class Reference(OpenAPIElement):
         description (Optional[str]): A description which by default should override that of the
                                     referenced component.
     """
+
     ref: str
     summary: Optional[str] = None
     description: Optional[str] = None
@@ -441,6 +457,7 @@ class Encoding(OpenAPIElement):
         explode (Optional[bool]): When style is form, the default value is true, otherwise the default value is false.
         allow_reserved (Optional[bool]): Determines whether the parameter value should allow reserved characters.
     """
+
     content_type: Optional[str] = None
     headers: Optional[Dict[str, Union[Header, Reference]]] = None
     style: Optional[str] = None
@@ -461,6 +478,7 @@ class Link(OpenAPIElement):
         description (Optional[str]): A description of the link.
         server (Optional[Server]): A server object to be used by the target operation.
     """
+
     operation_ref: Optional[str] = None
     operation_id: Optional[str] = None
     parameters: Optional[Dict[str, Any]] = None
@@ -479,6 +497,7 @@ class MediaType(OpenAPIElement):
         examples (Optional[Dict[str, Union[Example, Reference]]]): Examples of the media type with their values.
         encoding (Optional[Dict[str, Encoding]]): A map between property names and their encoding information.
     """
+
     schema: Union[None, Schema, Reference] = None
     examples: Optional[Dict[str, Union[Example, Reference]]] = None
     encoding: Optional[Dict[str, Encoding]] = None
@@ -495,6 +514,7 @@ class Response(OpenAPIElement):
         content (Optional[Dict[str, Union[MediaType, Reference]]]): A map containing descriptions of potential response payloads.
         links (Optional[Dict[str, Union[Link, Reference]]]): A map of operations that can be called from the response.
     """
+
     description: Optional[str] = None
     headers: Optional[Dict[str, Union[Header, Reference]]] = None
     content: Optional[Dict[str, Union[MediaType, Reference]]] = None
@@ -518,6 +538,7 @@ class Parameter(OpenAPIElement):
         example (Optional[Any]): Example of the parameter's potential value.
         examples (Optional[Dict[str, Union[Example, Reference]]]): Examples of the parameter's potential value.
     """
+
     name: str
     in_: ParameterLocation
     schema: Union[None, Schema, Reference] = None
@@ -540,6 +561,7 @@ class RequestBody(OpenAPIElement):
         description (Optional[str]): A brief description of the request body.
         required (Optional[bool]): Determines whether the request body is required in the API call.
     """
+
     content: Dict[str, MediaType]
     description: Optional[str] = None
     required: Optional[bool] = None
@@ -554,6 +576,7 @@ class SecurityRequirement(OpenAPIElement):
         name (str): The name of the security scheme to use.
         value (List[str]): List of scope names required for the execution. Empty list means no scopes.
     """
+
     name: str
     value: List[str]
 
@@ -580,6 +603,7 @@ class Operation(OpenAPIElement):
         security (Optional[List[SecurityRequirement]]): Security requirements for this operation.
         servers (Optional[List[Server]]): Servers that provide this operation.
     """
+
     responses: Dict[str, Response]
     tags: Optional[List[str]] = None
     summary: Optional[str] = None
@@ -617,6 +641,7 @@ class PathItem(OpenAPIElement):
         servers (Optional[List[Server]]): Servers overriding the global servers for this path.
         parameters (Optional[List[Union[Parameter, Reference]]]): Parameters common to all operations on this path.
     """
+
     summary: Optional[str] = None
     ref: Optional[str] = None
     description: Optional[str] = None
@@ -646,6 +671,7 @@ class Callback(OpenAPIElement):
         path (Union[PathItem, Reference]): The path item object or reference that defines
                                           the operations available on the callback destination.
     """
+
     expression: str
     path: Union[PathItem, Reference]
 
@@ -669,6 +695,7 @@ class OAuthFlow(OpenAPIElement):
                                   Required for password, clientCredentials, and authorizationCode flows.
         refresh_url (Optional[str]): The URL to be used for obtaining refresh tokens.
     """
+
     scopes: Dict[str, str]
     authorization_url: Optional[str] = None
     token_url: Optional[str] = None
@@ -689,6 +716,7 @@ class OAuthFlows(OpenAPIElement):
         client_credentials (Optional[OAuthFlow]): Configuration for the OAuth Client Credentials flow.
         authorization_code (Optional[OAuthFlow]): Configuration for the OAuth Authorization Code flow.
     """
+
     implicit: Optional[OAuthFlow] = None
     password: Optional[OAuthFlow] = None
     client_credentials: Optional[OAuthFlow] = None
@@ -714,6 +742,7 @@ class HTTPSecurity(SecurityScheme):
         bearer_format (Optional[str]): A hint to the client to identify how the bearer token is formatted.
                                       For example, "JWT" for JSON Web Tokens.
     """
+
     scheme: str
     type: SecuritySchemeType = SecuritySchemeType.HTTP
     description: Optional[str] = None
@@ -735,6 +764,7 @@ class APIKeySecurity(SecurityScheme):
         type (SecuritySchemeType): The type of the security scheme, always APIKEY for this class.
         description (Optional[str]): A description of the security scheme.
     """
+
     name: str
     in_: ParameterLocation
     type: SecuritySchemeType = SecuritySchemeType.APIKEY
@@ -755,6 +785,7 @@ class OAuth2Security(SecurityScheme):
         type (SecuritySchemeType): The type of the security scheme, always OAUTH2 for this class.
         description (Optional[str]): A description of the security scheme.
     """
+
     flows: OAuthFlows
     type: SecuritySchemeType = SecuritySchemeType.OAUTH2
     description: Optional[str] = None
@@ -774,6 +805,7 @@ class OpenIdConnectSecurity(SecurityScheme):
         type (SecuritySchemeType): The type of the security scheme, always OPENIDCONNECT for this class.
         description (Optional[str]): A description of the security scheme.
     """
+
     open_id_connect_url: str
     type: SecuritySchemeType = SecuritySchemeType.OPENIDCONNECT
     description: Optional[str] = None
@@ -791,6 +823,7 @@ class MutualTLSSecurity(SecurityScheme):
         type (SecuritySchemeType): The type of the security scheme, always MUTUALTLS for this class.
         description (Optional[str]): A description of the security scheme.
     """
+
     type: SecuritySchemeType = SecuritySchemeType.MUTUALTLS
     description: Optional[str] = None
 
@@ -822,6 +855,7 @@ class Components(OpenAPIElement):
         path_items (Optional[Dict[str, Union[PathItem, Reference]]]):
             A dictionary of reusable PathItem Objects or references to them.
     """
+
     schemas: Optional[Dict[str, Union[Schema, Reference]]] = None
     responses: Optional[Dict[str, Union[Response, Reference]]] = None
     parameters: Optional[Dict[str, Union[Parameter, Reference]]] = None
@@ -847,6 +881,7 @@ class Tag(OpenAPIElement):
         description (Optional[str]): A short description of the tag.
         external_docs (Optional[ExternalDocs]): Additional external documentation for this tag.
     """
+
     name: str
     description: Optional[str] = None
     external_docs: Optional[ExternalDocs] = None
@@ -866,6 +901,7 @@ class Security(OpenAPIElement):
         optional (bool): When set to True, indicates that security is optional by adding an
                          empty security requirement at the beginning of the list.
     """
+
     requirements: List[SecurityRequirement]
     optional: bool = False
 
@@ -898,6 +934,7 @@ class OpenAPI(OpenAPIRoot):
         external_docs (Optional[ExternalDocs]): Additional external documentation.
         webhooks (Optional[Dict[str, Union[PathItem, Reference]]]): Webhook definitions that MAY be called by the API provider.
     """
+
     openapi: str = "3.1.0"
     info: Optional[Info] = None
     json_schema_dialect: str = "https://json-schema.org/draft/2020-12/schema"
