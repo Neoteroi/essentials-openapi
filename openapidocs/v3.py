@@ -283,8 +283,10 @@ class Schema(OpenAPIElement):
         properties (Optional[Dict[str, Union["Schema", "Reference"]]]):
             A dictionary of property names to their schemas or references.
         additional_properties (Union[None, bool, "Schema", "Reference"]):
-            Indicates whether additional properties are allowed. If a schema or reference
-            is provided, it defines the schema of the additional properties.
+            Used to describe dictionaries. The additionalProperties keyword specifies
+            the type of values in the dictionary. Values can be primitives (strings,
+            numbers or boolean values), arrays or objects.
+            https://swagger.io/docs/specification/v3_0/data-models/dictionaries/
         default (Optional[Any]):
             The default value for the schema.
         deprecated (Optional[bool]):
@@ -307,10 +309,20 @@ class Schema(OpenAPIElement):
             The maximum length for string values.
         min_length (Optional[float]):
             The minimum length for string values.
+        max_items (Optional[int]):
+            The maximum number of items in an array.
+        min_items (Optional[int]):
+            The minimum number of items in an array.
+        unique_items (Optional[bool]):
+            Indicates if all items in an array must be unique.
         maximum (Optional[float]):
             The maximum value for numeric values.
         minimum (Optional[float]):
             The minimum value for numeric values.
+        nullable (Optional[bool]):
+            Indicates if the value can be null.
+        pattern (Optional[str]):
+            A regular expression pattern for string values.
         xml (Optional[XML]):
             Additional metadata for XML representation.
         items (Union[None, "Schema", "Reference"]):
@@ -342,10 +354,15 @@ class Schema(OpenAPIElement):
     description: Optional[str] = None
     content_encoding: Optional[str] = None
     content_media_type: Optional[str] = None
+    pattern: Optional[str] = None
     max_length: Optional[float] = None
     min_length: Optional[float] = None
+    max_items: Optional[int] = None
+    min_items: Optional[int] = None
+    unique_items: Optional[bool] = None
     maximum: Optional[float] = None
     minimum: Optional[float] = None
+    nullable: Optional[bool] = None
     xml: Optional[XML] = None
     items: Union[None, "Schema", "Reference"] = None
     enum: Optional[List[str]] = None
