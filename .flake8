@@ -1,10 +1,9 @@
 [flake8]
 exclude = __pycache__,built,build,venv
-ignore = E203, E266, W503
+ignore = E203, E266, W503, E501
 max-line-length = 88
 max-complexity = 18
 per-file-ignores =
     tests/test_v2.py: E501
     tests/test_v3.py: E501
-    tests/test_v31.py: E501
 select = B,C,E,F,W,T4,B9

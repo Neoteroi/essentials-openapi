@@ -9,3 +9,4 @@ _test_files/
 dist/
 venv312/
 .local
+v3_debug_*
