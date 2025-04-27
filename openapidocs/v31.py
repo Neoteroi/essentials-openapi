@@ -1,9 +1,8 @@
 """
 This module defines classes that can be used to generate OpenAPI Documentation
-version 3.
-https://swagger.io/specification/v3/
+version 3.1.
+https://swagger.io/specification/
 """
-
 from abc import ABC
 from dataclasses import dataclass
 from enum import Enum
@@ -28,6 +27,7 @@ class ValueType(Enum):
     NUMBER = "number"
     OBJECT = "object"
     STRING = "string"
+    NULL = "null"
 
 
 class ValueFormat(Enum):
@@ -36,14 +36,29 @@ class ValueFormat(Enum):
     BYTE = "byte"
     DATE = "date"
     DATETIME = "date-time"
+    TIME = "time"
+    DURATION = "duration"
     DOUBLE = "double"
     FLOAT = "float"
     INT32 = "int32"
     INT64 = "int64"
     PASSWORD = "password"
     EMAIL = "email"
+    IDNEMAIL = "idn-email"
     UUID = "uuid"
     PARTIALTIME = "partial-time"
+    HOSTNAME = "hostname"
+    IDNHOSTNAME = "idn-hostname"
+    IPV4 = "ipv4"
+    IPV6 = "ipv6"
+    URI = "uri"
+    URIREFERENCE = "uri-reference"
+    IRI = "iri"
+    IRIREFERENCE = "iri-reference"
+    URITEMPLATE = "uri-template"
+    JSONPOINTER = "json-pointer"
+    RELATIVEJSONPOINTER = "relative-json-pointer"
+    REGEX = "regex"
 
 
 class SecuritySchemeType(Enum):
@@ -53,6 +68,7 @@ class SecuritySchemeType(Enum):
     OAUTH2 = "oauth2"
     OIDC = "openIdConnect"
     OPENIDCONNECT = "openIdConnect"
+    MUTUALTLS = "mutualTLS"
 
 
 @dataclass
@@ -71,6 +87,7 @@ class ExternalDocs(OpenAPIElement):
 @dataclass
 class License(OpenAPIElement):
     name: str
+    identifier: Optional[str] = None
     url: Optional[str] = None
 
 
@@ -78,6 +95,7 @@ class License(OpenAPIElement):
 class Info(OpenAPIElement):
     title: str
     version: str
+    summary: Optional[str] = None
     description: Optional[str] = None
     terms_of_service: Optional[str] = None
     contact: Optional[Contact] = None
@@ -115,22 +133,23 @@ class Discriminator(OpenAPIElement):
 
 @dataclass
 class Schema(OpenAPIElement):
-    type: Union[None, str, ValueType] = None
+    type: Union[None, str, ValueType, List[Union[None, str, ValueType]]] = None
     format: Union[None, str, ValueFormat] = None
     required: Optional[List[str]] = None
     properties: Optional[Dict[str, Union["Schema", "Reference"]]] = None
-    additional_properties: Union[None, bool, "Schema", "Reference"] = None
     default: Optional[Any] = None
     deprecated: Optional[bool] = None
     example: Any = None
     external_docs: Optional[ExternalDocs] = None
     ref: Optional[str] = None
     title: Optional[str] = None
+    description: Optional[str] = None
+    content_encoding: Optional[str] = None
+    content_media_type: Optional[str] = None
     max_length: Optional[float] = None
     min_length: Optional[float] = None
     maximum: Optional[float] = None
     minimum: Optional[float] = None
-    nullable: Optional[bool] = None
     xml: Optional[XML] = None
     items: Union[None, "Schema", "Reference"] = None
     enum: Optional[List[str]] = None
@@ -158,9 +177,16 @@ class Example(OpenAPIElement):
 @dataclass
 class Reference(OpenAPIElement):
     ref: str
+    summary: Optional[str] = None
+    description: Optional[str] = None
 
     def to_obj(self) -> Dict[str, str]:
-        return {"$ref": self.ref}
+        obj = {"$ref": self.ref}
+        if self.summary:
+            obj["summary"] = self.summary
+        if self.description:
+            obj["description"] = self.description
+        return obj
 
 
 @dataclass
@@ -185,7 +211,6 @@ class Link(OpenAPIElement):
 @dataclass
 class MediaType(OpenAPIElement):
     schema: Union[None, Schema, Reference] = None
-    example: Any = None
     examples: Optional[Dict[str, Union[Example, Reference]]] = None
     encoding: Optional[Dict[str, Encoding]] = None
 
@@ -215,8 +240,8 @@ class Parameter(OpenAPIElement):
 @dataclass
 class RequestBody(OpenAPIElement):
     content: Dict[str, MediaType]
-    required: Optional[bool] = None
     description: Optional[str] = None
+    required: Optional[bool] = None
 
 
 @dataclass
@@ -232,10 +257,10 @@ class SecurityRequirement(OpenAPIElement):
 class Operation(OpenAPIElement):
     responses: Dict[str, Response]
     tags: Optional[List[str]] = None
-    operation_id: Optional[str] = None
     summary: Optional[str] = None
     description: Optional[str] = None
     external_docs: Optional[ExternalDocs] = None
+    operation_id: Optional[str] = None
     parameters: Optional[List[Union[Parameter, Reference]]] = None
     request_body: Union[None, RequestBody, Reference] = None
     callbacks: Optional[Dict[str, Union["Callback", Reference]]] = None
@@ -264,7 +289,7 @@ class PathItem(OpenAPIElement):
 @dataclass
 class Callback(OpenAPIElement):
     expression: str
-    path: PathItem
+    path: Union[PathItem, Reference]
 
     def to_obj(self):
         return {self.expression: normalize_dict(self.path)}
@@ -331,6 +356,7 @@ class Components(OpenAPIElement):
     security_schemes: Optional[Dict[str, Union[SecurityScheme, Reference]]] = None
     links: Optional[Dict[str, Union[Link, Reference]]] = None
     callbacks: Optional[Dict[str, Union[Callback, Reference]]] = None
+    path_items: Optional[Dict[str, Union[PathItem, Reference]]] = None
 
 
 @dataclass
@@ -354,11 +380,13 @@ class Security(OpenAPIElement):
 
 @dataclass
 class OpenAPI(OpenAPIRoot):
-    openapi: str = "3.0.3"
+    openapi: str = "3.1.0"
     info: Optional[Info] = None
+    json_schema_dialect: str = "https://json-schema.org/draft/2020-12/schema"
     paths: Optional[Dict[str, PathItem]] = None
     servers: Optional[List[Server]] = None
     components: Optional[Components] = None
     tags: Optional[List[Tag]] = None
     security: Optional[Security] = None
     external_docs: Optional[ExternalDocs] = None
+    webhooks: Optional[Dict[str, Union[PathItem, Reference]]] = None
