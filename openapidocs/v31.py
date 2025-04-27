@@ -73,6 +73,14 @@ class SecuritySchemeType(Enum):
 
 @dataclass
 class Contact(OpenAPIElement):
+    """
+    Represents a Contact object in OpenAPI.
+
+    Attributes:
+        name (Optional[str]): The identifying name of the contact person/organization.
+        url (Optional[str]): The URL pointing to the contact information.
+        email (Optional[str]): The email address of the contact person/organization.
+    """
     name: Optional[str] = None
     url: Optional[str] = None
     email: Optional[str] = None
@@ -93,6 +101,18 @@ class License(OpenAPIElement):
 
 @dataclass
 class Info(OpenAPIElement):
+    """
+    Represents the Info object in OpenAPI.
+
+    Attributes:
+        title (str): The title of the API.
+        version (str): The version of the API.
+        summary (Optional[str]): A short summary of the API.
+        description (Optional[str]): A detailed description of the API.
+        terms_of_service (Optional[str]): A URL to the terms of service for the API.
+        contact (Optional[Contact]): Contact information for the API.
+        license (Optional[License]): License information for the API.
+    """
     title: str
     version: str
     summary: Optional[str] = None
@@ -118,6 +138,16 @@ class Server(OpenAPIElement):
 
 @dataclass
 class XML(OpenAPIElement):
+    """
+    Represents an XML object in OpenAPI.
+
+    Attributes:
+        name (Optional[str]): The name of the XML element.
+        namespace (Optional[str]): The namespace of the XML element.
+        prefix (Optional[str]): The prefix to be used for the XML element.
+        attribute (Optional[bool]): Whether the property is an attribute.
+        wrapped (Optional[bool]): Whether the array is wrapped.
+    """
     name: Optional[str] = None
     namespace: Optional[str] = None
     prefix: Optional[str] = None
@@ -133,6 +163,61 @@ class Discriminator(OpenAPIElement):
 
 @dataclass
 class Schema(OpenAPIElement):
+    """
+    Represents a Schema object in OpenAPI.
+
+    Attributes:
+        type (Union[None, str, ValueType, List[Union[None, str, ValueType]]]):
+            The type of the schema (e.g., string, object, array).
+        format (Union[None, str, ValueFormat]):
+            The format of the schema (e.g., date-time, uuid).
+        required (Optional[List[str]]):
+            A list of required property names.
+        properties (Optional[Dict[str, Union["Schema", "Reference"]]]):
+            A dictionary of property names to their schemas or references.
+        default (Optional[Any]):
+            The default value for the schema.
+        deprecated (Optional[bool]):
+            Indicates if the schema is deprecated.
+        example (Any):
+            An example value for the schema.
+        external_docs (Optional[ExternalDocs]):
+            Additional external documentation for the schema.
+        ref (Optional[str]):
+            A reference to another schema.
+        title (Optional[str]):
+            The title of the schema.
+        description (Optional[str]):
+            A description of the schema.
+        content_encoding (Optional[str]):
+            The content encoding for the schema.
+        content_media_type (Optional[str]):
+            The content media type for the schema.
+        max_length (Optional[float]):
+            The maximum length for string values.
+        min_length (Optional[float]):
+            The minimum length for string values.
+        maximum (Optional[float]):
+            The maximum value for numeric values.
+        minimum (Optional[float]):
+            The minimum value for numeric values.
+        xml (Optional[XML]):
+            Additional metadata for XML representation.
+        items (Union[None, "Schema", "Reference"]):
+            The schema for items in an array.
+        enum (Optional[List[str]]):
+            A list of allowed values for the schema.
+        discriminator (Optional[Discriminator]):
+            The discriminator for polymorphism.
+        all_of (Optional[List[Union["Schema", "Reference"]]]):
+            A list of schemas that must all apply.
+        any_of (Optional[List[Union["Schema", "Reference"]]]):
+            A list of schemas where at least one must apply.
+        one_of (Optional[List[Union["Schema", "Reference"]]]):
+            A list of schemas where exactly one must apply.
+        not_ (Optional[List[Union["Schema", "Reference"]]]):
+            A schema that must not apply.
+    """
     type: Union[None, str, ValueType, List[Union[None, str, ValueType]]] = None
     format: Union[None, str, ValueFormat] = None
     required: Optional[List[str]] = None
@@ -346,7 +431,38 @@ class OpenIdConnectSecurity(SecurityScheme):
 
 
 @dataclass
+class MutualTLSSecurity(SecurityScheme):
+    type: SecuritySchemeType = SecuritySchemeType.MUTUALTLS
+    description: Optional[str] = None
+
+
+@dataclass
 class Components(OpenAPIElement):
+    """
+    Represents the reusable components of an OpenAPI document.
+
+    Attributes:
+        schemas (Optional[Dict[str, Union[Schema, Reference]]]):
+            A dictionary of reusable Schema Objects or references to them.
+        responses (Optional[Dict[str, Union[Response, Reference]]]):
+            A dictionary of reusable Response Objects or references to them.
+        parameters (Optional[Dict[str, Union[Parameter, Reference]]]):
+            A dictionary of reusable Parameter Objects or references to them.
+        examples (Optional[Dict[str, Union[Example, Reference]]]):
+            A dictionary of reusable Example Objects or references to them.
+        request_bodies (Optional[Dict[str, Union[RequestBody, Reference]]]):
+            A dictionary of reusable RequestBody Objects or references to them.
+        headers (Optional[Dict[str, Union[Header, Reference]]]):
+            A dictionary of reusable Header Objects or references to them.
+        security_schemes (Optional[Dict[str, Union[SecurityScheme, Reference]]]):
+            A dictionary of reusable SecurityScheme Objects or references to them.
+        links (Optional[Dict[str, Union[Link, Reference]]]):
+            A dictionary of reusable Link Objects or references to them.
+        callbacks (Optional[Dict[str, Union[Callback, Reference]]]):
+            A dictionary of reusable Callback Objects or references to them.
+        path_items (Optional[Dict[str, Union[PathItem, Reference]]]):
+            A dictionary of reusable PathItem Objects or references to them.
+    """
     schemas: Optional[Dict[str, Union[Schema, Reference]]] = None
     responses: Optional[Dict[str, Union[Response, Reference]]] = None
     parameters: Optional[Dict[str, Union[Parameter, Reference]]] = None
@@ -380,7 +496,7 @@ class Security(OpenAPIElement):
 
 @dataclass
 class OpenAPI(OpenAPIRoot):
-    openapi: str = "3.1.0"
+    openapi: str = "3.1.1"
     info: Optional[Info] = None
     json_schema_dialect: str = "https://json-schema.org/draft/2020-12/schema"
     paths: Optional[Dict[str, PathItem]] = None
