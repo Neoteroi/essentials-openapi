@@ -168,7 +168,7 @@ class OpenAPIExample1(TestItem):
 
     def yaml(self) -> str:
         return """
-        openapi: 3.1.0
+        openapi: 3.1.1
         info:
             title: Cats API
             version: 1.0.0
@@ -209,7 +209,7 @@ class OpenAPIExample1(TestItem):
     def json(self) -> str:
         return """
         {
-            "openapi": "3.1.0",
+            "openapi": "3.1.1",
             "info": {
                 "title": "Cats API",
                 "version": "1.0.0"
@@ -347,7 +347,7 @@ class OpenAPIExample2(TestItem):
 
     def yaml(self) -> str:
         return """
-        openapi: 3.1.0
+        openapi: 3.1.1
         info:
             title: Cats API
             version: 1.0.0
@@ -417,7 +417,7 @@ class OpenAPIExample2(TestItem):
     def json(self) -> str:
         return """
         {
-            "openapi": "3.1.0",
+            "openapi": "3.1.1",
             "info": {
                 "title": "Cats API",
                 "version": "1.0.0"
@@ -609,7 +609,7 @@ class OpenAPIExample3(TestItem):
 
     def yaml(self) -> str:
         return """
-        openapi: 3.1.0
+        openapi: 3.1.1
         info:
             title: Weather API
             version: 0.0.0-alpha
@@ -678,7 +678,7 @@ class OpenAPIExample3(TestItem):
     def json(self) -> str:
         return """
         {
-            "openapi": "3.1.0",
+            "openapi": "3.1.1",
             "info": {
                 "title": "Weather API",
                 "version": "0.0.0-alpha"
@@ -827,7 +827,7 @@ class OpenAPIExample4(TestItem):
 
     def yaml(self) -> str:
         return """
-openapi: 3.1.0
+openapi: 3.1.1
 info:
     title: Example API
     version: 0.0.0-alpha
@@ -864,7 +864,7 @@ paths:
     def json(self) -> str:
         return """
 {
-    "openapi": "3.1.0",
+    "openapi": "3.1.1",
     "info": {
         "title": "Example API",
         "version": "0.0.0-alpha"
@@ -972,7 +972,7 @@ class OpenAPIExample5(TestItem):
 
     def yaml(self) -> str:
         return """
-openapi: 3.1.0
+openapi: 3.1.1
 info:
     title: Example API
     version: 0.0.0-alpha
@@ -1017,7 +1017,7 @@ paths:
     def json(self) -> str:
         return """
 {
-    "openapi": "3.1.0",
+    "openapi": "3.1.1",
     "info": {
         "title": "Example API",
         "version": "0.0.0-alpha"
@@ -1149,7 +1149,7 @@ class OpenAPIExample6(TestItem):
 
     def yaml(self) -> str:
         return """
-openapi: 3.1.0
+openapi: 3.1.1
 info:
     title: Example API
     version: 0.0.0-alpha
@@ -1203,7 +1203,7 @@ paths:
     def json(self) -> str:
         return """
 {
-    "openapi": "3.1.0",
+    "openapi": "3.1.1",
     "info": {
         "title": "Example API",
         "version": "0.0.0-alpha"
@@ -1395,7 +1395,7 @@ class OpenAPIExample7(TestItem):
 
     def yaml(self) -> str:
         return """
-openapi: 3.1.0
+openapi: 3.1.1
 info:
     title: Example API
     version: 0.0.0-alpha
@@ -1494,7 +1494,7 @@ components:
     def json(self) -> str:
         return """
 {
-    "openapi": "3.1.0",
+    "openapi": "3.1.1",
     "info": {
         "title": "Example API",
         "version": "0.0.0-alpha"
@@ -1693,7 +1693,7 @@ class OpenAPIExamplesDefinedWithPydantic(TestItem):
 
     def yaml(self) -> str:
         return """
-openapi: 3.1.0
+openapi: 3.1.1
 info:
     title: Example API
     version: 0.0.0-alpha
@@ -1738,7 +1738,7 @@ paths:
     def json(self) -> str:
         return """
 {
-    "openapi": "3.1.0",
+    "openapi": "3.1.1",
     "info": {
         "title": "Example API",
         "version": "0.0.0-alpha"
@@ -1879,7 +1879,7 @@ class ServerExample1(TestItem):
 
     def yaml(self) -> str:
         return """
-        openapi: 3.1.0
+        openapi: 3.1.1
         jsonSchemaDialect: https://json-schema.org/draft/2020-12/schema
         servers:
         -   url: https://{username}.gigantic-server.com:{port}/{basePath}
@@ -1901,7 +1901,7 @@ class ServerExample1(TestItem):
     def json(self) -> str:
         return """
         {
-            "openapi": "3.1.0",
+            "openapi": "3.1.1",
             "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
             "servers": [
                 {
