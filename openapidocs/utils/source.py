@@ -63,36 +63,44 @@ def read_from_url(url: str):
             )
 
 
-def read_from_source(source: str):
+def read_from_source(source: str, cwd: Path = None):
     """
     Tries to read a JSON or YAML file from a given source.
     The source can be a path to a file, or a URL.
+
+    Attempts to take from a relative path if `cwd` is provided.
     """
-    source_path = Path(source)
+    potential_paths = [Path(source)]
 
-    if source_path.exists():
-        if not source_path.is_file():
-            raise ValueError("The given path is not a file path.")
+    if cwd:
+        potential_paths.append(cwd / source)
 
-        logger.debug("Reading from file %s", source)
+    for source_path in potential_paths:
+      if source_path.exists():
+          if not source_path.is_file():
+              raise ValueError("The given path is not a file path.")
 
-        file_path = source.lower()
+          logger.debug("Reading from file %s", source)
 
-        if file_path.endswith(".json"):
-            return read_from_json_file(source_path)
+          file_path = source.lower()
 
-        if file_path.endswith(".yaml") or file_path.endswith(".yml"):
-            return read_from_yaml_file(source_path)
+          if file_path.endswith(".json"):
+              return read_from_json_file(source_path)
 
-        raise ValueError("Unsupported source file.")
+          if file_path.endswith(".yaml") or file_path.endswith(".yml"):
+              return read_from_yaml_file(source_path)
+          else:
+              raise ValueError("Unsupported source file.")
+      else:
+          logger.debug("Path %s does not exist, trying next.", source)
+
+    source_lower = source.lower()
+
+    if source_lower.startswith("http://") or source_lower.startswith("https://"):
+        # fetch with a web request, read - ensure that it's JSON or YAML!
+        return read_from_url(source)
     else:
-        source_lower = source.lower()
-
-        if source_lower.startswith("http://") or source_lower.startswith("https://"):
-            # fetch with a web request, read - ensure that it's JSON or YAML!
-            return read_from_url(source)
-        else:
-            raise ValueError(
-                "Invalid source: it must be either a path to a "
-                ".json or .yaml file, or a valid URL."
-            )
+        raise ValueError(
+            "Invalid source: it must be either a path to a "
+            ".json or .yaml file, or a valid URL."
+        )
