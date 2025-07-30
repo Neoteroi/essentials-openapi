@@ -76,23 +76,23 @@ def read_from_source(source: str, cwd: Path = None):
         potential_paths.append(cwd / source)
 
     for source_path in potential_paths:
-      if source_path.exists():
-          if not source_path.is_file():
-              raise ValueError("The given path is not a file path.")
+        if source_path.exists():
+            if not source_path.is_file():
+                raise ValueError("The given path is not a file path.")
 
-          logger.debug("Reading from file %s", source)
+            logger.debug("Reading from file %s", source)
 
-          file_path = source.lower()
+            file_path = source.lower()
 
-          if file_path.endswith(".json"):
-              return read_from_json_file(source_path)
+            if file_path.endswith(".json"):
+                return read_from_json_file(source_path)
 
-          if file_path.endswith(".yaml") or file_path.endswith(".yml"):
-              return read_from_yaml_file(source_path)
-          else:
-              raise ValueError("Unsupported source file.")
-      else:
-          logger.debug("Path %s does not exist, trying next.", source)
+            if file_path.endswith(".yaml") or file_path.endswith(".yml"):
+                return read_from_yaml_file(source_path)
+            else:
+                raise ValueError("Unsupported source file.")
+        else:
+            logger.debug("Path %s does not exist, trying next.", source)
 
     source_lower = source.lower()
 
