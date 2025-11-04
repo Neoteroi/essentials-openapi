@@ -6,7 +6,7 @@ http_client = httpx.Client(verify=False, timeout=20)
 
 
 class FailedRequestError(Exception):
-    def __init__(self, message) -> None:
+    def __init__(self, message: str) -> None:
         super().__init__(
             f"Failed request: {message}. "
             "Inspect the inner exception (__context__) for more information."

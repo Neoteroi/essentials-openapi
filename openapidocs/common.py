@@ -1,10 +1,10 @@
 import base64
 import copy
 from abc import ABC, abstractmethod
-from dataclasses import asdict, fields, is_dataclass
+from dataclasses import asdict, dataclass, fields, is_dataclass
 from datetime import date, datetime, time
 from enum import Enum
-from typing import Any, List, Tuple
+from typing import Any, Callable, Iterable, cast
 from uuid import UUID
 
 import yaml
@@ -18,10 +18,12 @@ class Format(Enum):
     JSON = "JSON"
 
 
+@dataclass
 class OpenAPIElement:
     """Base class for all OpenAPI Elements"""
 
 
+@dataclass
 class OpenAPIRoot(OpenAPIElement):
     """Base class for a root OpenAPI Documentation"""
 
@@ -67,8 +69,8 @@ def normalize_key(key: Any) -> str:
     return "".join([first.lower(), *map(str.title, others)])
 
 
-def normalize_dict_factory(items: List[Tuple[Any, Any]]) -> Any:
-    data = {}
+def normalize_dict_factory(items: list[tuple[Any, Any]]) -> dict[str, Any]:
+    data: dict[str, Any] = {}
     for key, value in items:
         if value is None:
             continue
@@ -87,8 +89,8 @@ def normalize_dict_factory(items: List[Tuple[Any, Any]]) -> Any:
     return data
 
 
-def regular_dict_factory(items: List[Tuple[Any, Any]]) -> Any:
-    data = {}
+def regular_dict_factory(items: list[tuple[Any, Any]]) -> dict[Any, Any]:
+    data: dict[Any, Any] = {}
     for key, value in items:
         for handler in TYPES_HANDLERS:
             value = handler.normalize(value)
@@ -100,11 +102,11 @@ def regular_dict_factory(items: List[Tuple[Any, Any]]) -> Any:
 # replicates the asdict method from dataclasses module, to support
 # bypassing "asdict" on child properties when they implement a `to_obj`
 # method: some entities require a specific shape when represented
-def _asdict_inner(obj, dict_factory):
+def _asdict_inner(obj: Any, dict_factory: Callable[[Any], Any]) -> Any:
     if hasattr(obj, "to_obj"):
         return obj.to_obj()
     if isinstance(obj, OpenAPIElement):
-        result = []
+        result: list[tuple[str, Any]] = []
         for f in fields(obj):
             value = _asdict_inner(getattr(obj, f.name), dict_factory)
             result.append((f.name, value))
@@ -115,11 +117,13 @@ def _asdict_inner(obj, dict_factory):
     if hasattr(obj, "dict") and callable(obj.dict):
         # For Pydantic 1
         return obj.dict()
-    if is_dataclass(obj):
+    if is_dataclass(obj) and not isinstance(obj, type):
         return asdict(obj, dict_factory=regular_dict_factory)
     elif isinstance(obj, (list, tuple)):
+        obj = cast(Iterable[Any], obj)
         return type(obj)(_asdict_inner(v, dict_factory) for v in obj)
     elif isinstance(obj, dict):
+        obj = cast(dict[Any, Any], obj)
         return type(obj)(
             (_asdict_inner(k, dict_factory), _asdict_inner(v, dict_factory))
             for k, v in obj.items()
@@ -128,7 +132,7 @@ def _asdict_inner(obj, dict_factory):
         return copy.deepcopy(obj)
 
 
-def normalize_dict(obj):
+def normalize_dict(obj: Any) -> Any:
     if hasattr(obj, "dict") and callable(obj.dict):
         return obj.dict()
     if hasattr(obj, "to_obj"):

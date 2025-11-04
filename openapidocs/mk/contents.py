@@ -1,27 +1,29 @@
 """
 This module contains classes to generate representations of content types by mime type.
 """
+
 import os
 from abc import ABC, abstractmethod
 from datetime import datetime
 from json import JSONEncoder
+from typing import Any, Mapping, Sequence
 from urllib.parse import urlencode
 
 from essentials.json import FriendlyEncoder, dumps
 
 
 class OADJSONEncoder(JSONEncoder):
-    def default(self, obj):
+    def default(self, o: object) -> Any:
         try:
-            return JSONEncoder.default(self, obj)
+            return JSONEncoder.default(self, o)
         except TypeError:
-            if isinstance(obj, datetime):
+            if isinstance(o, datetime):
                 datetime_format = os.environ.get("OPENAPI_DATETIME_FORMAT")
                 if datetime_format:
-                    return obj.strftime(datetime_format)
+                    return o.strftime(datetime_format)
                 else:
-                    return obj.isoformat()
-            return FriendlyEncoder.default(self, obj)  # type: ignore
+                    return o.isoformat()
+            return FriendlyEncoder.default(self, o)  # type: ignore
 
 
 class ContentWriter(ABC):
@@ -37,7 +39,7 @@ class ContentWriter(ABC):
         """
 
     @abstractmethod
-    def write(self, value) -> str:
+    def write(self, value: Any) -> str:
         """
         Writes markdown to represent a value in a certain type of content.
         """
@@ -47,7 +49,7 @@ class JSONContentWriter(ContentWriter):
     def handle_content_type(self, content_type: str) -> bool:
         return "json" in content_type.lower()
 
-    def write(self, value) -> str:
+    def write(self, value: object) -> str:
         return dumps(value, indent=4, cls=OADJSONEncoder)
 
 
@@ -56,5 +58,5 @@ class FormContentWriter(ContentWriter):
         # multipart/form-data. Otherwise, use application/x-www-form-urlencoded.
         return "x-www-form-urlencoded" == content_type.lower()
 
-    def write(self, value) -> str:
+    def write(self, value: Mapping[Any, Any] | Sequence[tuple[Any, Any]]) -> str:
         return urlencode(value)

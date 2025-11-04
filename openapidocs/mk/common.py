@@ -5,6 +5,7 @@ from source OAD files.
 """
 
 from abc import ABC, abstractmethod
+from typing import Any, cast
 
 
 class DocumentsWriter(ABC):
@@ -14,13 +15,13 @@ class DocumentsWriter(ABC):
     """
 
     @abstractmethod
-    def write(self, data, **kwargs) -> str:
+    def write(self, data: object, **kwargs: dict[str, Any]) -> str:
         """
         Writes markdown.
         """
 
 
-def is_reference(data) -> bool:
+def is_reference(data: object) -> bool:
     """
     Returns a value indicating whether the given dictionary represents
     a reference.
@@ -32,7 +33,7 @@ def is_reference(data) -> bool:
     return "$ref" in data
 
 
-def is_object_schema(data) -> bool:
+def is_object_schema(data: object) -> bool:
     """
     Returns a value indicating whether the given schema dictionary represents
     an object schema.
@@ -41,10 +42,11 @@ def is_object_schema(data) -> bool:
     """
     if not isinstance(data, dict):
         return False
+    data = cast(dict[str, object], data)
     return data.get("type") == "object" and isinstance(data.get("properties"), dict)
 
 
-def is_array_schema(data) -> bool:
+def is_array_schema(data: object) -> bool:
     """
     Returns a value indicating whether the given schema dictionary represents
     an array schema.
@@ -53,10 +55,11 @@ def is_array_schema(data) -> bool:
     """
     if not isinstance(data, dict):
         return False
+    data = cast(dict[str, object], data)
     return data.get("type") == "array" and isinstance(data.get("items"), dict)
 
 
-def get_ref_type_name(reference) -> str:
+def get_ref_type_name(reference: dict[str, str] | str) -> str:
     """
     Returns the type name of a reference.
 

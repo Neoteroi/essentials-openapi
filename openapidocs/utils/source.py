@@ -1,8 +1,10 @@
 """
 This module provides methods to obtain OpenAPI Documentation from file or web sources.
 """
+
 import json
 from pathlib import Path
+from typing import Any
 
 import yaml
 
@@ -11,7 +13,7 @@ from openapidocs.logs import logger
 from .web import ensure_success, http_get
 
 
-def read_from_json_file(file_path: Path):
+def read_from_json_file(file_path: Path) -> dict[Any, Any] | list[Any]:
     """
     Reads JSON from a given file by path.
     """
@@ -19,7 +21,7 @@ def read_from_json_file(file_path: Path):
         return json.loads(source_file.read())
 
 
-def read_from_yaml_file(file_path: Path):
+def read_from_yaml_file(file_path: Path) -> dict[Any, Any] | list[Any]:
     """
     Reads YAML from a given file by path.
     """
@@ -32,7 +34,7 @@ class SourceError(Exception):
         super().__init__(message)
 
 
-def read_from_url(url: str):
+def read_from_url(url: str) -> dict[Any, Any] | list[Any]:
     """
     Tries to read OpenAPI Documentation from the given source URL.
     This method will try to fetch JSON or YAML from the given source, in case of
@@ -63,7 +65,10 @@ def read_from_url(url: str):
             )
 
 
-def read_from_source(source: str, cwd: Path = None):
+def read_from_source(
+    source: str,
+    cwd: Path | None = None,
+) -> dict[Any, Any] | list[Any]:
     """
     Tries to read a JSON or YAML file from a given source.
     The source can be a path to a file, or a URL.

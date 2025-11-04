@@ -2,12 +2,13 @@
 This module provides common functions to handle Markdown.
 These functions apply to any kind of Markdown work.
 """
-from typing import Dict, Iterable
+
+from typing import Iterable
 
 
 def write_row(
     row: Iterable[str],
-    columns_widths: Dict[int, int],
+    columns_widths: dict[int, int],
     padding: int = 1,
     indent: int = 0,
 ) -> str:
