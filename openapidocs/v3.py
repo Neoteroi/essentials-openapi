@@ -358,7 +358,7 @@ class Schema(OpenAPIElement):
     format: None | str | ValueFormat = None
     required: list[str] | None = None
     properties: dict[str, "Schema | Reference"] | None = None
-    additional_properties: None | bool | "Schema | Reference" = None
+    additional_properties: "None | bool | Schema | Reference" = None
     default: Any | None = None
     deprecated: bool | None = None
     example: Any | None = None
@@ -398,7 +398,7 @@ class Header(OpenAPIElement):
     """
 
     description: str | None = None
-    schema: None | Schema | "Reference" = None
+    schema: "None | Schema | Reference" = None
 
 
 @dataclass
