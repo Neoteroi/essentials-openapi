@@ -3,17 +3,18 @@ This module defines classes that can be used to generate OpenAPI Documentation
 version 2.
 https://swagger.io/specification/v2/
 """
+
 from abc import ABC
 from dataclasses import dataclass
 from enum import Enum
-from typing import Any, Dict, List, Optional, Type, Union
+from typing import Any, Type
 
 from openapidocs.common import OpenAPIRoot
 
 from .common import OpenAPIElement
 
 
-def get_ref(ref_type: Union[str, Type]) -> str:
+def get_ref(ref_type: str | Type[Any]) -> str:
     if isinstance(ref_type, str):
         return f"#/definitions/{ref_type}"
     return f"#/definitions/{ref_type.__name__}"
@@ -94,185 +95,185 @@ class OAuthFlowType(Enum):
 
 @dataclass
 class Contact(OpenAPIElement):
-    name: Optional[str] = None
-    url: Optional[str] = None
-    email: Optional[str] = None
+    name: str | None = None
+    url: str | None = None
+    email: str | None = None
 
 
 @dataclass
 class ExternalDocs(OpenAPIElement):
     url: str
-    description: Optional[str] = None
+    description: str | None = None
 
 
 @dataclass
 class License(OpenAPIElement):
     name: str
-    url: Optional[str] = None
+    url: str | None = None
 
 
 @dataclass
 class Info(OpenAPIElement):
     title: str
     version: str
-    description: Optional[str] = None
-    terms_of_service: Optional[str] = None
-    contact: Optional[Contact] = None
-    license: Optional[License] = None
+    description: str | None = None
+    terms_of_service: str | None = None
+    contact: Contact | None = None
+    license: License | None = None
 
 
 @dataclass
 class XML(OpenAPIElement):
-    name: Optional[str] = None
-    namespace: Optional[str] = None
-    prefix: Optional[str] = None
-    attribute: Optional[bool] = None
-    wrapped: Optional[bool] = None
+    name: str | None = None
+    namespace: str | None = None
+    prefix: str | None = None
+    attribute: bool | None = None
+    wrapped: bool | None = None
 
 
 @dataclass
 class Discriminator(OpenAPIElement):
     property_name: str
-    mapping: Optional[Dict[str, str]] = None
+    mapping: dict[str, str] | None = None
 
 
 @dataclass
 class Schema(OpenAPIElement):
-    type: Union[None, str, ValueType] = None
-    format: Union[None, str, ValueFormat] = None
-    required: Optional[List[str]] = None
-    properties: Optional[Dict[str, "Schema"]] = None
-    default: Optional[Any] = None
-    deprecated: Optional[bool] = None
+    type: None | str | ValueType = None
+    format: None | str | ValueFormat = None
+    required: list[str] | None = None
+    properties: dict[str, "Schema"] | None = None
+    default: Any | None = None
+    deprecated: bool | None = None
     example: Any = None
-    external_docs: Optional[ExternalDocs] = None
-    ref: Optional[str] = None
-    title: Optional[str] = None
-    description: Optional[str] = None
-    max_length: Optional[float] = None
-    min_length: Optional[float] = None
-    maximum: Optional[float] = None
-    minimum: Optional[float] = None
-    nullable: Optional[bool] = None
-    xml: Optional[XML] = None
-    items: Optional["Schema"] = None
-    enum: Optional[List[str]] = None
-    discriminator: Optional[Discriminator] = None
-    all_of: Optional[List[Union["Schema", "Reference"]]] = None
-    any_of: Optional[List[Union["Schema", "Reference"]]] = None
-    one_of: Optional[List[Union["Schema", "Reference"]]] = None
-    not_: Optional[List[Union["Schema", "Reference"]]] = None
+    external_docs: ExternalDocs | None = None
+    ref: str | None = None
+    title: str | None = None
+    description: str | None = None
+    max_length: float | None = None
+    min_length: float | None = None
+    maximum: float | None = None
+    minimum: float | None = None
+    nullable: bool | None = None
+    xml: XML | None = None
+    items: "Schema | None" = None
+    enum: list[str] | None = None
+    discriminator: Discriminator | None = None
+    all_of: list["Schema | Reference"] | None = None
+    any_of: list["Schema | Reference"] | None = None
+    one_of: list["Schema | Reference"] | None = None
+    not_: list["Schema | Reference"] | None = None
 
 
 @dataclass
 class Header(OpenAPIElement):
     type: HeaderType
-    description: Optional[str] = None
-    format: Optional[str] = None
-    items: Optional["Items"] = None
-    collection_format: Optional[CollectionFormat] = None
+    description: str | None = None
+    format: str | None = None
+    items: "Items | None" = None
+    collection_format: CollectionFormat | None = None
     default: Any = None
-    maximum: Optional[float] = None
-    minimum: Optional[float] = None
-    exclusive_maximum: Optional[bool] = None
-    exclusive_minimum: Optional[bool] = None
-    enum: Optional[List[str]] = None
-    max_length: Optional[int] = None
-    min_length: Optional[int] = None
-    pattern: Optional[str] = None
-    max_items: Optional[int] = None
-    min_items: Optional[int] = None
-    unique_items: Optional[bool] = None
-    multiple_of: Optional[float] = None
+    maximum: float | None = None
+    minimum: float | None = None
+    exclusive_maximum: bool | None = None
+    exclusive_minimum: bool | None = None
+    enum: list[str] | None = None
+    max_length: int | None = None
+    min_length: int | None = None
+    pattern: str | None = None
+    max_items: int | None = None
+    min_items: int | None = None
+    unique_items: bool | None = None
+    multiple_of: float | None = None
 
 
 @dataclass
 class Example(OpenAPIElement):
-    summary: Optional[str] = None
-    description: Optional[str] = None
-    value: Any = None
-    external_value: Optional[str] = None
+    summary: str | None = None
+    description: str | None = None
+    value: Any | None = None
+    external_value: str | None = None
 
 
 @dataclass
 class Reference(OpenAPIElement):
     ref: str
 
-    def to_obj(self) -> Dict[str, str]:
+    def to_obj(self) -> dict[str, str]:
         return {"$ref": self.ref}
 
 
 @dataclass
 class Encoding(OpenAPIElement):
-    content_type: Optional[str] = None
-    headers: Optional[Dict[str, Union[Header, Reference]]] = None
-    style: Optional[str] = None
-    explode: Optional[bool] = None
-    allow_reserved: Optional[bool] = None
+    content_type: str | None = None
+    headers: dict[str, Header | Reference] | None = None
+    style: str | None = None
+    explode: bool | None = None
+    allow_reserved: bool | None = None
 
 
 @dataclass
 class Response(OpenAPIElement):
     description: str
-    headers: Optional[Dict[str, Union[Header, Reference]]] = None
-    schema: Optional[Schema] = None
-    examples: Optional[Dict[str, Any]] = None
+    headers: dict[str, Header | Reference] | None = None
+    schema: Schema | None = None
+    examples: dict[str, Any] | None = None
 
 
 @dataclass
 class Items(OpenAPIElement):
     type: ValueItemType
-    format: Optional[ValueFormat] = None
-    items: Optional["Items"] = None
-    collection_format: Optional[CollectionFormat] = None
-    default: Optional[str] = None
-    maximum: Optional[float] = None
-    minimum: Optional[float] = None
-    exclusive_maximum: Optional[bool] = None
-    exclusive_minimum: Optional[bool] = None
-    enum: Optional[List[str]] = None
-    max_length: Optional[int] = None
-    min_length: Optional[int] = None
-    pattern: Optional[str] = None
-    max_items: Optional[int] = None
-    min_items: Optional[int] = None
-    unique_items: Optional[bool] = None
-    multiple_of: Optional[float] = None
+    format: ValueFormat | None = None
+    items: "Items | None" = None
+    collection_format: CollectionFormat | None = None
+    default: str | None = None
+    maximum: float | None = None
+    minimum: float | None = None
+    exclusive_maximum: bool | None = None
+    exclusive_minimum: bool | None = None
+    enum: list[str] | None = None
+    max_length: int | None = None
+    min_length: int | None = None
+    pattern: str | None = None
+    max_items: int | None = None
+    min_items: int | None = None
+    unique_items: bool | None = None
+    multiple_of: float | None = None
 
 
 @dataclass
 class Parameter(OpenAPIElement):
     name: str
     in_: ParameterLocation
-    type: Optional[ValueType] = None
-    format: Optional[ValueFormat] = None
-    items: Optional[Items] = None
-    collection_format: Optional[CollectionFormat] = None
-    schema: Optional[Schema] = None
-    description: Optional[str] = None
-    allow_empty_value: Optional[bool] = None
-    example: Optional[Any] = None
-    examples: Optional[Dict[str, Union[Example, Reference]]] = None
-    default: Optional[str] = None
-    maximum: Optional[float] = None
-    minimum: Optional[float] = None
-    exclusive_maximum: Optional[bool] = None
-    exclusive_minimum: Optional[bool] = None
-    enum: Optional[List[str]] = None
-    max_length: Optional[int] = None
-    min_length: Optional[int] = None
-    pattern: Optional[str] = None
-    max_items: Optional[int] = None
-    min_items: Optional[int] = None
-    unique_items: Optional[bool] = None
-    multiple_of: Optional[float] = None
-    required: Optional[bool] = None
+    type: ValueType | None = None
+    format: ValueFormat | None = None
+    items: Items | None = None
+    collection_format: CollectionFormat | None = None
+    schema: Schema | None = None
+    description: str | None = None
+    allow_empty_value: bool | None = None
+    example: Any | None = None
+    examples: dict[str, Example | Reference] | None = None
+    default: str | None = None
+    maximum: float | None = None
+    minimum: float | None = None
+    exclusive_maximum: bool | None = None
+    exclusive_minimum: bool | None = None
+    enum: list[str] | None = None
+    max_length: int | None = None
+    min_length: int | None = None
+    pattern: str | None = None
+    max_items: int | None = None
+    min_items: int | None = None
+    unique_items: bool | None = None
+    multiple_of: float | None = None
+    required: bool | None = None
 
 
 @dataclass
 class SecurityRequirement(OpenAPIElement):
     name: str
-    value: List[str]
+    value: list[str]
 
     def to_obj(self):
         return {self.name: self.value}
@@ -280,31 +281,31 @@ class SecurityRequirement(OpenAPIElement):
 
 @dataclass
 class Operation(OpenAPIElement):
-    responses: Dict[str, Response]
-    tags: Optional[List[str]] = None
-    operation_id: Optional[str] = None
-    summary: Optional[str] = None
-    consumes: Optional[List[str]] = None
-    produces: Optional[List[str]] = None
-    schemes: Optional[List[str]] = None
-    description: Optional[str] = None
-    external_docs: Optional[ExternalDocs] = None
-    parameters: Optional[List[Union[Parameter, Reference]]] = None
-    deprecated: Optional[bool] = None
-    security: Optional[List[SecurityRequirement]] = None
+    responses: dict[str, Response]
+    tags: list[str] | None = None
+    operation_id: str | None = None
+    summary: str | None = None
+    consumes: list[str] | None = None
+    produces: list[str] | None = None
+    schemes: list[str] | None = None
+    description: str | None = None
+    external_docs: ExternalDocs | None = None
+    parameters: list[Parameter | Reference] | None = None
+    deprecated: bool | None = None
+    security: list[SecurityRequirement] | None = None
 
 
 @dataclass
 class PathItem(OpenAPIElement):
-    ref: Optional[str] = None
-    get: Optional[Operation] = None
-    put: Optional[Operation] = None
-    post: Optional[Operation] = None
-    delete: Optional[Operation] = None
-    options: Optional[Operation] = None
-    head: Optional[Operation] = None
-    patch: Optional[Operation] = None
-    parameters: Optional[List[Union[Parameter, Reference]]] = None
+    ref: str | None = None
+    get: Operation | None = None
+    put: Operation | None = None
+    post: Operation | None = None
+    delete: Operation | None = None
+    options: Operation | None = None
+    head: Operation | None = None
+    patch: Operation | None = None
+    parameters: list[Parameter | Reference] | None = None
 
 
 class SecurityScheme(OpenAPIElement, ABC):
@@ -314,7 +315,7 @@ class SecurityScheme(OpenAPIElement, ABC):
 @dataclass
 class BasicSecurity(SecurityScheme):
     type: SecuritySchemeType = SecuritySchemeType.BASIC
-    description: Optional[str] = None
+    description: str | None = None
 
 
 @dataclass
@@ -322,40 +323,40 @@ class APIKeySecurity(SecurityScheme):
     name: str
     in_: APIKeyLocation
     type: SecuritySchemeType = SecuritySchemeType.APIKEY
-    description: Optional[str] = None
+    description: str | None = None
 
 
 @dataclass
 class OAuth2Security(SecurityScheme):
     flow: OAuthFlowType
-    scopes: Dict[str, str]
-    authorization_url: Optional[str] = None
-    token_url: Optional[str] = None
+    scopes: dict[str, str]
+    authorization_url: str | None = None
+    token_url: str | None = None
     type: SecuritySchemeType = SecuritySchemeType.OAUTH2
-    description: Optional[str] = None
+    description: str | None = None
 
 
 @dataclass
 class Tag(OpenAPIElement):
     name: str
-    description: Optional[str] = None
-    external_docs: Optional[ExternalDocs] = None
+    description: str | None = None
+    external_docs: ExternalDocs | None = None
 
 
 @dataclass
 class OpenAPI(OpenAPIRoot):
     swagger: str = "2.0"
-    info: Optional[Info] = None
-    host: Optional[str] = None
-    base_path: Optional[str] = None
-    schemes: Optional[List[str]] = None
-    consumes: Optional[List[str]] = None
-    produces: Optional[List[str]] = None
-    paths: Optional[Dict[str, PathItem]] = None
-    definitions: Optional[Dict[str, Schema]] = None
-    parameters: Optional[Dict[str, Parameter]] = None
-    responses: Optional[Dict[str, Response]] = None
-    security_definitions: Optional[Dict[str, SecurityScheme]] = None
-    security: Optional[List[SecurityRequirement]] = None
-    tags: Optional[List[Tag]] = None
-    external_docs: Optional[ExternalDocs] = None
+    info: Info | None = None
+    host: str | None = None
+    base_path: str | None = None
+    schemes: list[str] | None = None
+    consumes: list[str] | None = None
+    produces: list[str] | None = None
+    paths: dict[str, PathItem] | None = None
+    definitions: dict[str, Schema] | None = None
+    parameters: dict[str, Parameter] | None = None
+    responses: dict[str, Response] | None = None
+    security_definitions: dict[str, SecurityScheme] | None = None
+    security: list[SecurityRequirement] | None = None
+    tags: list[Tag] | None = None
+    external_docs: ExternalDocs | None = None
