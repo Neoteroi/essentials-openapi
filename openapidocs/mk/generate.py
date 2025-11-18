@@ -1,13 +1,22 @@
+from typing import Optional
+
 from openapidocs.mk.v3 import OpenAPIV3DocumentationHandler
 from openapidocs.utils.source import read_from_source
 
 
-def generate_document(source: str, destination: str, style: int | str):
+def generate_document(
+    source: str,
+    destination: str,
+    style: int | str,
+    templates_path: Optional[str] = None,
+):
     # Note: if support for more kinds of OAD versions will be added, handle a version
     # parameter in this function
 
     data = read_from_source(source)
-    handler = OpenAPIV3DocumentationHandler(data, style=style, source=source)
+    handler = OpenAPIV3DocumentationHandler(
+        data, style=style, source=source, templates_path=templates_path
+    )
 
     html = handler.write()
 
