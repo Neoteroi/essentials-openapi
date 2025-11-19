@@ -73,6 +73,34 @@ oad gen-docs -s source-openapi.json -d schemas.wsd --style "PLANTUML_API"
 
 _Example of PlantUML diagram generated from path items._
 
+#### Using custom templates
+
+You can override the default templates by providing a custom templates directory:
+
+```bash
+oad gen-docs -s source-openapi.json -d output.md -T ./my-templates/
+```
+
+The custom templates directory should contain template files with the same names as the built-in templates. Any template file found in the custom directory will override the corresponding default template, while non-overridden templates will use the defaults. This follows the same pattern as [MkDocs template customization](https://www.mkdocs.org/user-guide/customizing-your-theme/#overriding-template-blocks).
+
+**Important:** The custom templates directory must match the output style being rendered. Each style (MKDOCS, MARKDOWN, PLANTUML_SCHEMAS, PLANTUML_API) has its own template structure. You need to provide templates appropriate for the `--style` parameter you're using.
+
+**Template structure:**
+- `layout.html` - Main layout template
+- `partial/` - Directory containing reusable template components
+
+**Example custom template directory structure:**
+```
+my-templates/
+├── layout.html          # Overrides main layout
+└── partial/
+    ├── info.html       # Overrides info section
+    └── path-items.html # Overrides path items section
+```
+
+All templates use [Jinja2](https://jinja.palletsprojects.com/) syntax and have access to the same filters, functions, and context variables as the built-in templates.
+
+
 ### Goals
 
 * Provide an API to generate OpenAPI Documentation files.

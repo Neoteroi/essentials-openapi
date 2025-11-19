@@ -31,7 +31,20 @@ from openapidocs.mk.jinja import OutputStyle
     default="MKDOCS",
     show_default=True,
 )
-def generate_documents_command(source: str, destination: str, style: Union[int, str]):
+@click.option(
+    "-T",
+    "--templates",
+    help=(
+        "Path to a custom templates directory. "
+        "Templates in this directory will override default templates with matching names. "
+        "Unspecified templates will use defaults."
+    ),
+    required=False,
+    default=None,
+)
+def generate_documents_command(
+    source: str, destination: str, style: Union[int, str], templates: Union[str, None]
+):
     """
     Generates other kinds of documents from source OpenAPI Documentation files.
 
@@ -48,7 +61,7 @@ def generate_documents_command(source: str, destination: str, style: Union[int, 
     https://github.com/Neoteroi/essentials-openapi
     """
     try:
-        generate_document(source, destination, style)
+        generate_document(source, destination, style, templates)
     except KeyboardInterrupt:  # pragma: nocover
         logger.info("User interrupted")
         exit(1)

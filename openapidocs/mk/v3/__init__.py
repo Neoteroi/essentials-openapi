@@ -1,6 +1,7 @@
 """
 This module provides functions to generate Markdown for OpenAPI Version 3.
 """
+
 import copy
 import os
 import warnings
@@ -95,11 +96,14 @@ class OpenAPIV3DocumentationHandler:
         writer: Optional[DocumentsWriter] = None,
         style: Union[int, str] = 1,
         source: str = "",
+        templates_path: Optional[str] = None,
     ) -> None:
         self._source = source
         self.texts = texts or EnglishTexts()
         self._writer = writer or Jinja2DocumentsWriter(
-            __name__, views_style=style_from_value(style)
+            __name__,
+            views_style=style_from_value(style),
+            custom_templates_path=templates_path,
         )
         self.doc = self.normalize_data(copy.deepcopy(doc))
 

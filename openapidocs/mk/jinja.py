@@ -1,10 +1,20 @@
 """
 This module provides a Jinja2 environment.
 """
+
 import os
 from enum import Enum
+from pathlib import Path
+from typing import Optional
 
-from jinja2 import Environment, PackageLoader, Template, select_autoescape
+from jinja2 import (
+    ChoiceLoader,
+    Environment,
+    FileSystemLoader,
+    PackageLoader,
+    Template,
+    select_autoescape,
+)
 
 from . import get_http_status_phrase, highlight_params, read_dict, sort_dict
 from .common import DocumentsWriter, is_reference
@@ -62,29 +72,50 @@ class PackageLoadingError(ValueError):
 
 
 def get_environment(
-    package_name: str, views_style: OutputStyle = OutputStyle.MKDOCS
+    package_name: str,
+    views_style: OutputStyle = OutputStyle.MKDOCS,
+    custom_templates_path: Optional[str] = None,
 ) -> Environment:
     templates_folder = f"views_{views_style.name}".lower()
 
-    try:
-        loader = PackageLoader(package_name, templates_folder)
-    except ValueError as package_loading_error:  # pragma: no cover
-        raise PackageLoadingError(
-            views_style, templates_folder
-        ) from package_loading_error
-    else:
-        env = Environment(
-            loader=loader,
-            autoescape=select_autoescape(["html", "xml"])
-            if os.environ.get("SELECT_AUTOESCAPE") in {"YES", "Y", "1"}
-            else False,
-            auto_reload=True,
-            enable_async=False,
-        )
-        configure_filters(env)
-        configure_functions(env)
+    loaders = []
 
-        return env
+    # If custom templates path is provided, validate and add FileSystemLoader first
+    if custom_templates_path:
+        custom_path = Path(custom_templates_path)
+        if not custom_path.exists():
+            raise ValueError(
+                f"Custom templates path does not exist: {custom_templates_path}"
+            )
+        if not custom_path.is_dir():
+            raise ValueError(
+                f"Custom templates path is not a directory: {custom_templates_path}"
+            )
+        loaders.append(FileSystemLoader(str(custom_path)))
+
+    # Always add the package loader as fallback
+    try:
+        loaders.append(PackageLoader(package_name, templates_folder))
+    except ValueError as package_loading_error:  # pragma: no cover
+        if not custom_templates_path:
+            raise PackageLoadingError(
+                views_style, templates_folder
+            ) from package_loading_error
+
+    loader = ChoiceLoader(loaders)
+
+    env = Environment(
+        loader=loader,
+        autoescape=select_autoescape(["html", "xml"])
+        if os.environ.get("SELECT_AUTOESCAPE") in {"YES", "Y", "1"}
+        else False,
+        auto_reload=True,
+        enable_async=False,
+    )
+    configure_filters(env)
+    configure_functions(env)
+
+    return env
 
 
 class Jinja2DocumentsWriter(DocumentsWriter):
@@ -97,8 +128,9 @@ class Jinja2DocumentsWriter(DocumentsWriter):
         self,
         package_name: str,
         views_style: OutputStyle = OutputStyle.MKDOCS,
+        custom_templates_path: Optional[str] = None,
     ) -> None:
-        self._env = get_environment(package_name, views_style)
+        self._env = get_environment(package_name, views_style, custom_templates_path)
 
     @property
     def env(self) -> Environment:
