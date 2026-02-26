@@ -1,4 +1,4 @@
-{% if definition.type == "object" %}
+{% if get_primary_type(definition.type) == "object" %}
 {%- with props = handler.get_properties(definition) -%}
 {% if props %}
 <table>

@@ -3743,7 +3743,7 @@ Deletes a release by id.
         </tr>
         <tr>
             <td><code>description</code></td>
-            <td><span class="string-type">string</span>&#124; <span class="null-type">null</span></td>
+            <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
         </tr>
         <tr>
             <td><code>eTag</code></td>
@@ -3751,7 +3751,7 @@ Deletes a release by id.
         </tr>
         <tr>
             <td><code>id</code></td>
-            <td><span class="string-type">string</span>&#124; <span class="null-type">null</span></td>
+            <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
         </tr>
         <tr>
             <td><code>name</code></td>
@@ -3782,11 +3782,11 @@ Deletes a release by id.
     <tbody>
         <tr>
             <td><code>countryCode</code></td>
-            <td><span class="string-type">string</span>&#124; <span class="null-type">null</span></td>
+            <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
         </tr>
         <tr>
             <td><code>id</code></td>
-            <td><span class="string-type">string</span>&#124; <span class="null-type">null</span></td>
+            <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
         </tr>
         <tr>
             <td><code>name</code></td>
@@ -3836,11 +3836,11 @@ Deletes a release by id.
         </tr>
         <tr>
             <td><code>description</code></td>
-            <td><span class="string-type">string</span>&#124; <span class="null-type">null</span></td>
+            <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
         </tr>
         <tr>
             <td><code>name</code></td>
-            <td><span class="string-type">string</span>&#124; <span class="null-type">null</span></td>
+            <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
         </tr>
     </tbody>
 </table>
@@ -3909,15 +3909,15 @@ Deletes a release by id.
     <tbody>
         <tr>
             <td><code>categoryId</code></td>
-            <td><span class="string-type">string</span>&#124; <span class="null-type">null</span></td>
+            <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
         </tr>
         <tr>
             <td><code>countryCode</code></td>
-            <td><span class="string-type">string</span>&#124; <span class="null-type">null</span></td>
+            <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
         </tr>
         <tr>
             <td><code>countryName</code></td>
-            <td><span class="string-type">string</span>&#124; <span class="null-type">null</span></td>
+            <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
         </tr>
         <tr>
             <td><code>publishTime</code></td>
@@ -3929,7 +3929,7 @@ Deletes a release by id.
         </tr>
         <tr>
             <td><code>releaseName</code></td>
-            <td><span class="string-type">string</span>&#124; <span class="null-type">null</span></td>
+            <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
         </tr>
     </tbody>
 </table>
@@ -3986,7 +3986,7 @@ Deletes a release by id.
     <tbody>
         <tr>
             <td><code>url</code></td>
-            <td><span class="string-type">string</span>&#124; <span class="null-type">null</span></td>
+            <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
         </tr>
     </tbody>
 </table>
@@ -4032,7 +4032,7 @@ Deletes a release by id.
         </tr>
         <tr>
             <td><code>regionName</code></td>
-            <td><span class="string-type">string</span>&#124; <span class="null-type">null</span></td>
+            <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
         </tr>
         <tr>
             <td><code>timestamp</code></td>
@@ -4055,7 +4055,7 @@ Deletes a release by id.
     <tbody>
         <tr>
             <td><code>fileName</code></td>
-            <td><span class="string-type">string</span>&#124; <span class="null-type">null</span></td>
+            <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
         </tr>
         <tr>
             <td><code>fileSize</code></td>
@@ -4063,7 +4063,7 @@ Deletes a release by id.
         </tr>
         <tr>
             <td><code>fileType</code></td>
-            <td><span class="string-type">string</span>&#124; <span class="null-type">null</span></td>
+            <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
         </tr>
         <tr>
             <td><code>releaseId</code></td>
@@ -4086,19 +4086,19 @@ Deletes a release by id.
     <tbody>
         <tr>
             <td><code>baseURL</code></td>
-            <td><span class="string-type">string</span>&#124; <span class="null-type">null</span></td>
+            <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
         </tr>
         <tr>
             <td><code>fileId</code></td>
-            <td><span class="string-type">string</span>&#124; <span class="null-type">null</span></td>
+            <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
         </tr>
         <tr>
             <td><code>fileName</code></td>
-            <td><span class="string-type">string</span>&#124; <span class="null-type">null</span></td>
+            <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
         </tr>
         <tr>
             <td><code>token</code></td>
-            <td><span class="string-type">string</span>&#124; <span class="null-type">null</span></td>
+            <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
         </tr>
     </tbody>
 </table>
@@ -4117,15 +4117,15 @@ Deletes a release by id.
     <tbody>
         <tr>
             <td><code>buildNumber</code></td>
-            <td><span class="string-type">string</span>&#124; <span class="null-type">null</span></td>
+            <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
         </tr>
         <tr>
             <td><code>contactEmail</code></td>
-            <td><span class="string-type">string</span>&#124; <span class="null-type">null</span></td>
+            <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
         </tr>
         <tr>
             <td><code>version</code></td>
-            <td><span class="string-type">string</span>&#124; <span class="null-type">null</span></td>
+            <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
         </tr>
     </tbody>
 </table>
@@ -4199,7 +4199,7 @@ Deletes a release by id.
         </tr>
         <tr>
             <td><code>name</code></td>
-            <td><span class="string-type">string</span>&#124; <span class="null-type">null</span></td>
+            <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
         </tr>
     </tbody>
 </table>
@@ -4222,7 +4222,7 @@ Deletes a release by id.
         </tr>
         <tr>
             <td><code>signature</code></td>
-            <td><span class="string-type">string</span>&#124; <span class="null-type">null</span></td>
+            <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
         </tr>
     </tbody>
 </table>
@@ -4245,7 +4245,7 @@ Deletes a release by id.
         </tr>
         <tr>
             <td><code>categoryId</code></td>
-            <td><span class="string-type">string</span>&#124; <span class="null-type">null</span></td>
+            <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
         </tr>
         <tr>
             <td><code>id</code></td>
@@ -4269,19 +4269,19 @@ Deletes a release by id.
         </tr>
         <tr>
             <td><code>organizationName</code></td>
-            <td><span class="string-type">string</span>&#124; <span class="null-type">null</span></td>
+            <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
         </tr>
         <tr>
             <td><code>organizationNumber</code></td>
-            <td><span class="string-type">string</span>&#124; <span class="null-type">null</span></td>
+            <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
         </tr>
         <tr>
             <td><code>role</code></td>
-            <td><span class="string-type">string</span>&#124; <span class="null-type">null</span></td>
+            <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
         </tr>
         <tr>
             <td><code>scope</code></td>
-            <td><span class="string-type">string</span>&#124; <span class="null-type">null</span></td>
+            <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
         </tr>
     </tbody>
 </table>
@@ -4300,7 +4300,7 @@ Deletes a release by id.
     <tbody>
         <tr>
             <td><code>eTag</code></td>
-            <td><span class="string-type">string</span>&#124; <span class="null-type">null</span></td>
+            <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
         </tr>
         <tr>
             <td><code>sendEmailNotifications</code></td>
@@ -4327,7 +4327,7 @@ Deletes a release by id.
         </tr>
         <tr>
             <td><code>categoryId</code></td>
-            <td><span class="string-type">string</span>&#124; <span class="null-type">null</span></td>
+            <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
         </tr>
         <tr>
             <td><code>countries</code></td>
@@ -4339,7 +4339,7 @@ Deletes a release by id.
         </tr>
         <tr>
             <td><code>description</code></td>
-            <td><span class="string-type">string</span>&#124; <span class="null-type">null</span></td>
+            <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
         </tr>
         <tr>
             <td><code>draft</code></td>
@@ -4398,7 +4398,7 @@ Deletes a release by id.
         </tr>
         <tr>
             <td><code>countryId</code></td>
-            <td><span class="string-type">string</span>&#124; <span class="null-type">null</span></td>
+            <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
         </tr>
         <tr>
             <td><code>release</code></td>
@@ -4425,7 +4425,7 @@ Deletes a release by id.
     <tbody>
         <tr>
             <td><code>data</code></td>
-            <td><span class="string-type">string</span>&#124; <span class="null-type">null</span></td>
+            <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
         </tr>
         <tr>
             <td><code>description</code></td>
@@ -4503,7 +4503,7 @@ Deletes a release by id.
     <tbody>
         <tr>
             <td><code>accessGrantedByOrganizationId</code></td>
-            <td><span class="string-type">string</span>(<span class="uuid-format format">uuid</span>)&#124; <span class="null-type">null</span></td>
+            <td><span class="string-type">string</span>(<span class="uuid-format format">uuid</span>) &#124; <span class="null-type">null</span></td>
         </tr>
         <tr>
             <td><code>id</code></td>
@@ -4577,7 +4577,7 @@ Deletes a release by id.
     <tbody>
         <tr>
             <td><code>displayName</code></td>
-            <td><span class="string-type">string</span>&#124; <span class="null-type">null</span></td>
+            <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
         </tr>
         <tr>
             <td><code>organizationId</code></td>
@@ -4639,11 +4639,11 @@ Deletes a release by id.
         </tr>
         <tr>
             <td><code>description</code></td>
-            <td><span class="string-type">string</span>&#124; <span class="null-type">null</span></td>
+            <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
         </tr>
         <tr>
             <td><code>eTag</code></td>
-            <td><span class="string-type">string</span>&#124; <span class="null-type">null</span></td>
+            <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
         </tr>
         <tr>
             <td><code>id</code></td>
@@ -4651,7 +4651,7 @@ Deletes a release by id.
         </tr>
         <tr>
             <td><code>name</code></td>
-            <td><span class="string-type">string</span>&#124; <span class="null-type">null</span></td>
+            <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
         </tr>
     </tbody>
 </table>

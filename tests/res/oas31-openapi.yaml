@@ -1,0 +1,113 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: OAS 3.1 Test API
+  summary: API to exercise OpenAPI 3.1 features
+servers:
+  - url: https://api.example.com/v1
+
+paths:
+  /catalog:
+    get:
+      summary: List catalog items
+      operationId: listCatalog
+      tags:
+        - catalog
+      parameters:
+        - name: q
+          in: query
+          description: Filter query (nullable in OAS 3.1 style)
+          schema:
+            type: [string, "null"]
+        - name: limit
+          in: query
+          description: Max number of results
+          schema:
+            type: integer
+            format: int32
+            default: 20
+        - name: kind
+          in: query
+          description: Item kind (OAS 3.1 multi-type)
+          schema:
+            type: [string, integer, "null"]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CatalogPage"
+        "400":
+          description: Bad request
+
+  /catalog/{id}:
+    get:
+      summary: Get a catalog item
+      operationId: getCatalogItem
+      tags:
+        - catalog
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Item"
+        "404":
+          description: Not found
+
+components:
+  schemas:
+    Item:
+      type: [object, "null"]
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: [string, "null"]
+        score:
+          type: [number, "null"]
+          format: float
+        count:
+          type: [integer, "null"]
+          format: int32
+        active:
+          type: [boolean, "null"]
+        tags:
+          type: [array, "null"]
+          items:
+            type: string
+        metadata:
+          type: object
+          properties:
+            created:
+              type: string
+              format: date-time
+            source:
+              type: [string, "null"]
+      required:
+        - id
+        - name
+
+    CatalogPage:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/Item"
+        total:
+          type: integer
+        next_cursor:
+          type: [string, "null"]
+      required:
+        - items
+        - total

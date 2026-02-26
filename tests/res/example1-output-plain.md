@@ -2956,9 +2956,9 @@ _Other possible types: text/json, text/plain_
 | Name | Type |
 | -- | -- |
 | creationTime | string(date-time) |
-| description | string&#124; null |
+| description | string &#124; null |
 | eTag | string |
-| id | string&#124; null |
+| id | string &#124; null |
 | name | string |
 | releases | Array&lt;[Release](#release)&gt; |
 | updateTime | string(date-time) |
@@ -2969,8 +2969,8 @@ _Other possible types: text/json, text/plain_
 
 | Name | Type |
 | -- | -- |
-| countryCode | string&#124; null |
-| id | string&#124; null |
+| countryCode | string &#124; null |
+| id | string &#124; null |
 | name | string |
 
 
@@ -2989,8 +2989,8 @@ _Other possible types: text/json, text/plain_
 | -- | -- |
 | categoryId | string |
 | countries | Array&lt;string&gt; |
-| description | string&#124; null |
-| name | string&#124; null |
+| description | string &#124; null |
+| name | string &#124; null |
 
 
 
@@ -3017,12 +3017,12 @@ _Other possible types: text/json, text/plain_
 
 | Name | Type |
 | -- | -- |
-| categoryId | string&#124; null |
-| countryCode | string&#124; null |
-| countryName | string&#124; null |
+| categoryId | string &#124; null |
+| countryCode | string &#124; null |
+| countryName | string &#124; null |
 | publishTime | string(date-time) |
 | releaseId | string(uuid) |
-| releaseName | string&#124; null |
+| releaseName | string &#124; null |
 
 
 
@@ -3046,7 +3046,7 @@ _Other possible types: text/json, text/plain_
 
 | Name | Type |
 | -- | -- |
-| url | string&#124; null |
+| url | string &#124; null |
 
 
 
@@ -3064,7 +3064,7 @@ _Other possible types: text/json, text/plain_
 | Name | Type |
 | -- | -- |
 | alive | boolean |
-| regionName | string&#124; null |
+| regionName | string &#124; null |
 | timestamp | string(date-time) |
 
 
@@ -3073,9 +3073,9 @@ _Other possible types: text/json, text/plain_
 
 | Name | Type |
 | -- | -- |
-| fileName | string&#124; null |
+| fileName | string &#124; null |
 | fileSize | integer(int32) |
-| fileType | string&#124; null |
+| fileType | string &#124; null |
 | releaseId | string(uuid) |
 
 
@@ -3084,10 +3084,10 @@ _Other possible types: text/json, text/plain_
 
 | Name | Type |
 | -- | -- |
-| baseURL | string&#124; null |
-| fileId | string&#124; null |
-| fileName | string&#124; null |
-| token | string&#124; null |
+| baseURL | string &#124; null |
+| fileId | string &#124; null |
+| fileName | string &#124; null |
+| token | string &#124; null |
 
 
 
@@ -3095,9 +3095,9 @@ _Other possible types: text/json, text/plain_
 
 | Name | Type |
 | -- | -- |
-| buildNumber | string&#124; null |
-| contactEmail | string&#124; null |
-| version | string&#124; null |
+| buildNumber | string &#124; null |
+| contactEmail | string &#124; null |
+| version | string &#124; null |
 
 
 
@@ -3122,7 +3122,7 @@ _Other possible types: text/json, text/plain_
 | Name | Type |
 | -- | -- |
 | id | string(uuid) |
-| name | string&#124; null |
+| name | string &#124; null |
 
 
 
@@ -3131,7 +3131,7 @@ _Other possible types: text/json, text/plain_
 | Name | Type |
 | -- | -- |
 | membership | Array&lt;[ProfessionalMembership](#professionalmembership)&gt; |
-| signature | string&#124; null |
+| signature | string &#124; null |
 
 
 
@@ -3140,16 +3140,16 @@ _Other possible types: text/json, text/plain_
 | Name | Type |
 | -- | -- |
 | brandNames | Array&lt;string&gt; |
-| categoryId | string&#124; null |
+| categoryId | string &#124; null |
 | id | string(uuid) |
 | marketCodes | Array&lt;string&gt; |
 | organizationBrands | Array&lt;string(uuid)&gt; |
 | organizationId | string(uuid) |
 | organizationMarkets | Array&lt;string(uuid)&gt; |
-| organizationName | string&#124; null |
-| organizationNumber | string&#124; null |
-| role | string&#124; null |
-| scope | string&#124; null |
+| organizationName | string &#124; null |
+| organizationNumber | string &#124; null |
+| role | string &#124; null |
+| scope | string &#124; null |
 
 
 
@@ -3157,7 +3157,7 @@ _Other possible types: text/json, text/plain_
 
 | Name | Type |
 | -- | -- |
-| eTag | string&#124; null |
+| eTag | string &#124; null |
 | sendEmailNotifications | boolean |
 
 
@@ -3167,10 +3167,10 @@ _Other possible types: text/json, text/plain_
 | Name | Type |
 | -- | -- |
 | category | [Category](#category) |
-| categoryId | string&#124; null |
+| categoryId | string &#124; null |
 | countries | Array&lt;[ReleaseCountry](#releasecountry)&gt; |
 | creationTime | string(date-time) |
-| description | string&#124; null |
+| description | string &#124; null |
 | draft | boolean |
 | eTag | string |
 | history | Array&lt;[ReleaseHistory](#releasehistory)&gt; |
@@ -3188,7 +3188,7 @@ _Other possible types: text/json, text/plain_
 | Name | Type |
 | -- | -- |
 | country | [Country](#country) |
-| countryId | string&#124; null |
+| countryId | string &#124; null |
 | release | [Release](#release) |
 | releaseId | string(uuid) |
 
@@ -3198,7 +3198,7 @@ _Other possible types: text/json, text/plain_
 
 | Name | Type |
 | -- | -- |
-| data | string&#124; null |
+| data | string &#124; null |
 | description | string |
 | id | string(uuid) |
 | release | [Release](#release) |
@@ -3224,7 +3224,7 @@ _Other possible types: text/json, text/plain_
 
 | Name | Type |
 | -- | -- |
-| accessGrantedByOrganizationId | string(uuid)&#124; null |
+| accessGrantedByOrganizationId | string(uuid) &#124; null |
 | id | string(uuid) |
 | node | [NodeInfo](#nodeinfo) |
 | nodeId | string(uuid) |
@@ -3249,7 +3249,7 @@ _Other possible types: text/json, text/plain_
 
 | Name | Type |
 | -- | -- |
-| displayName | string&#124; null |
+| displayName | string &#124; null |
 | organizationId | string(uuid) |
 | release | [Release](#release) |
 | releaseId | string(uuid) |
@@ -3271,10 +3271,10 @@ _Other possible types: text/json, text/plain_
 | -- | -- |
 | categoryId | string |
 | countries | Array&lt;string&gt; |
-| description | string&#124; null |
-| eTag | string&#124; null |
+| description | string &#124; null |
+| eTag | string &#124; null |
 | id | string(uuid) |
-| name | string&#124; null |
+| name | string &#124; null |
 
 
 

@@ -141,7 +141,7 @@ Initializes a file upload operation.
         </tr>
         <tr>
             <td><code>regionName</code></td>
-            <td><span class="string-type">string</span>&#124; <span class="null-type">null</span></td>
+            <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
         </tr>
         <tr>
             <td><code>timestamp</code></td>
@@ -164,7 +164,7 @@ Initializes a file upload operation.
     <tbody>
         <tr>
             <td><code>fileName</code></td>
-            <td><span class="string-type">string</span>&#124; <span class="null-type">null</span></td>
+            <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
         </tr>
         <tr>
             <td><code>fileSize</code></td>
@@ -172,7 +172,7 @@ Initializes a file upload operation.
         </tr>
         <tr>
             <td><code>fileType</code></td>
-            <td><span class="string-type">string</span>&#124; <span class="null-type">null</span></td>
+            <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
         </tr>
         <tr>
             <td><code>releaseId</code></td>
