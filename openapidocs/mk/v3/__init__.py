@@ -25,7 +25,6 @@ from openapidocs.mk.texts import EnglishTexts, Texts
 from openapidocs.mk.v3.examples import get_example_from_schema
 from openapidocs.utils.source import read_from_source
 
-
 _OAS31_KEYWORDS = frozenset(
     {
         "const",
@@ -142,8 +141,10 @@ class OpenAPIV3DocumentationHandler:
 
         for kw in ("exclusiveMinimum", "exclusiveMaximum"):
             val = obj.get(kw)
-            if val is not None and isinstance(val, (int, float)) and not isinstance(
-                val, bool
+            if (
+                val is not None
+                and isinstance(val, (int, float))
+                and not isinstance(val, bool)
             ):
                 found.add(f"{kw} as number")
 

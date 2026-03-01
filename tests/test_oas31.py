@@ -16,15 +16,8 @@ from openapidocs.mk.common import is_array_schema, is_object_schema
 from openapidocs.mk.jinja import get_primary_type, get_type_display, is_nullable_schema
 from openapidocs.mk.v3 import OpenAPIV3DocumentationHandler
 from openapidocs.mk.v3.examples import get_example_from_schema
-from openapidocs.v3 import (
-    Components,
-    Info,
-    OpenAPI,
-    Schema,
-    ValueType,
-)
+from openapidocs.v3 import Components, Info, OpenAPI, Schema, ValueType
 from tests.common import get_file_yaml, get_resource_file_path
-
 
 # ---------------------------------------------------------------------------
 # Helper function unit tests
@@ -87,7 +80,9 @@ class TestGetTypeDisplay:
         assert get_type_display(["string", "integer"]) == "string | integer"
 
     def test_list_three_types(self):
-        assert get_type_display(["string", "integer", "null"]) == "string | integer | null"
+        assert (
+            get_type_display(["string", "integer", "null"]) == "string | integer | null"
+        )
 
     def test_none_returns_empty(self):
         assert get_type_display(None) == ""
@@ -106,9 +101,10 @@ class TestIsObjectSchema:
         assert is_object_schema({"type": "object", "properties": {"x": {}}}) is True
 
     def test_oas31_list_type(self):
-        assert is_object_schema(
-            {"type": ["object", "null"], "properties": {"x": {}}}
-        ) is True
+        assert (
+            is_object_schema({"type": ["object", "null"], "properties": {"x": {}}})
+            is True
+        )
 
     def test_no_properties(self):
         assert is_object_schema({"type": ["object", "null"]}) is False
@@ -122,9 +118,10 @@ class TestIsArraySchema:
         assert is_array_schema({"type": "array", "items": {"type": "string"}}) is True
 
     def test_oas31_list_type(self):
-        assert is_array_schema(
-            {"type": ["array", "null"], "items": {"type": "string"}}
-        ) is True
+        assert (
+            is_array_schema({"type": ["array", "null"], "items": {"type": "string"}})
+            is True
+        )
 
     def test_no_items(self):
         assert is_array_schema({"type": ["array", "null"]}) is False
@@ -192,9 +189,7 @@ class TestOas31DocumentationHandler:
                                 "description": "OK",
                                 "content": {
                                     "application/json": {
-                                        "schema": {
-                                            "$ref": "#/components/schemas/Item"
-                                        }
+                                        "schema": {"$ref": "#/components/schemas/Item"}
                                     }
                                 },
                             }
@@ -290,9 +285,7 @@ class TestOas31DocumentationHandler:
                 "newOrder": {
                     "post": {
                         "responses": {
-                            "200": {
-                                "description": "Webhook received successfully"
-                            }
+                            "200": {"description": "Webhook received successfully"}
                         }
                     }
                 }
@@ -438,9 +431,7 @@ class TestSchemaOas31Fields:
         from openapidocs.common import Serializer
 
         s = Serializer()
-        schema = Schema(
-            defs={"inner": Schema(type=ValueType.STRING)}
-        )
+        schema = Schema(defs={"inner": Schema(type=ValueType.STRING)})
         obj = s.to_obj(schema)
         assert "$defs" in obj
         assert "inner" in obj["$defs"]
@@ -465,7 +456,10 @@ class TestSchemaOas31Fields:
         s = Serializer()
         schema = Schema(
             type=ValueType.ARRAY,
-            prefix_items=[Schema(type=ValueType.STRING), Schema(type=ValueType.INTEGER)],
+            prefix_items=[
+                Schema(type=ValueType.STRING),
+                Schema(type=ValueType.INTEGER),
+            ],
         )
         obj = s.to_obj(schema)
         assert "prefixItems" in obj
@@ -528,9 +522,7 @@ class TestVersionMismatchWarning:
         with warnings.catch_warnings(record=True) as caught:
             warnings.simplefilter("always")
             OpenAPIV3DocumentationHandler(_base_doc("3.0.3"))
-        version_warnings = [
-            w for w in caught if "OAS 3.1-specific" in str(w.message)
-        ]
+        version_warnings = [w for w in caught if "OAS 3.1-specific" in str(w.message)]
         assert version_warnings == []
 
     def test_no_warning_for_31_doc_with_31_features(self):
@@ -542,9 +534,7 @@ class TestVersionMismatchWarning:
         with warnings.catch_warnings(record=True) as caught:
             warnings.simplefilter("always")
             OpenAPIV3DocumentationHandler(doc)
-        version_warnings = [
-            w for w in caught if "OAS 3.1-specific" in str(w.message)
-        ]
+        version_warnings = [w for w in caught if "OAS 3.1-specific" in str(w.message)]
         assert version_warnings == []
 
     def test_warning_for_list_type_in_30_doc(self):
@@ -558,7 +548,7 @@ class TestVersionMismatchWarning:
         """Warning message must name the detected 3.1 feature."""
         doc = _base_doc("3.0.3")
         doc["components"] = {"schemas": {"Foo": {"type": ["string", "null"]}}}
-        with pytest.warns(UserWarning, match='type as list'):
+        with pytest.warns(UserWarning, match="type as list"):
             OpenAPIV3DocumentationHandler(doc)
 
     def test_warning_for_const_in_30_doc(self):
@@ -569,9 +559,7 @@ class TestVersionMismatchWarning:
 
     def test_warning_for_defs_in_30_doc(self):
         doc = _base_doc("3.0.3")
-        doc["components"] = {
-            "schemas": {"Foo": {"$defs": {"Bar": {"type": "string"}}}}
-        }
+        doc["components"] = {"schemas": {"Foo": {"$defs": {"Bar": {"type": "string"}}}}}
         with pytest.warns(UserWarning, match=r"\$defs"):
             OpenAPIV3DocumentationHandler(doc)
 
@@ -643,9 +631,7 @@ class TestVersionMismatchWarning:
         with warnings.catch_warnings(record=True) as caught:
             warnings.simplefilter("always")
             OpenAPIV3DocumentationHandler(doc)
-        version_warnings = [
-            w for w in caught if "OAS 3.1-specific" in str(w.message)
-        ]
+        version_warnings = [w for w in caught if "OAS 3.1-specific" in str(w.message)]
         assert version_warnings == []
 
     def test_warning_mentions_openapi_version(self):
@@ -677,9 +663,7 @@ class TestOas30FeaturesIn31Doc:
         with warnings.catch_warnings(record=True) as caught:
             warnings.simplefilter("always")
             OpenAPIV3DocumentationHandler(doc)
-        version_warnings = [
-            w for w in caught if "OAS 3.0-specific" in str(w.message)
-        ]
+        version_warnings = [w for w in caught if "OAS 3.0-specific" in str(w.message)]
         assert version_warnings == []
 
     def test_no_warning_for_30_doc(self):
@@ -691,9 +675,7 @@ class TestOas30FeaturesIn31Doc:
         with warnings.catch_warnings(record=True) as caught:
             warnings.simplefilter("always")
             OpenAPIV3DocumentationHandler(doc)
-        oas30_in_31 = [
-            w for w in caught if "OAS 3.0-specific" in str(w.message)
-        ]
+        oas30_in_31 = [w for w in caught if "OAS 3.0-specific" in str(w.message)]
         assert oas30_in_31 == []
 
     def test_warning_for_nullable_true_in_31_doc(self):
@@ -714,7 +696,9 @@ class TestOas30FeaturesIn31Doc:
         """`exclusiveMaximum: true` (boolean) is a 3.0 pattern and must warn in 3.1."""
         doc = _base_doc("3.1.0")
         doc["components"] = {
-            "schemas": {"Score": {"type": "integer", "maximum": 100, "exclusiveMaximum": True}}
+            "schemas": {
+                "Score": {"type": "integer", "maximum": 100, "exclusiveMaximum": True}
+            }
         }
         with pytest.warns(UserWarning, match="exclusiveMaximum: true/false"):
             OpenAPIV3DocumentationHandler(doc)
@@ -723,7 +707,9 @@ class TestOas30FeaturesIn31Doc:
         """`exclusiveMinimum: true` (boolean) is a 3.0 pattern and must warn in 3.1."""
         doc = _base_doc("3.1.0")
         doc["components"] = {
-            "schemas": {"Score": {"type": "integer", "minimum": 0, "exclusiveMinimum": True}}
+            "schemas": {
+                "Score": {"type": "integer", "minimum": 0, "exclusiveMinimum": True}
+            }
         }
         with pytest.warns(UserWarning, match="exclusiveMinimum: true/false"):
             OpenAPIV3DocumentationHandler(doc)
@@ -739,9 +725,7 @@ class TestOas30FeaturesIn31Doc:
         with warnings.catch_warnings(record=True) as caught:
             warnings.simplefilter("always")
             OpenAPIV3DocumentationHandler(doc)
-        oas30_in_31 = [
-            w for w in caught if "OAS 3.0-specific" in str(w.message)
-        ]
+        oas30_in_31 = [w for w in caught if "OAS 3.0-specific" in str(w.message)]
         assert oas30_in_31 == []
 
     def test_warning_detects_nullable_nested_in_path(self):
