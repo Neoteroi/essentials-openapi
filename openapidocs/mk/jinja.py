@@ -21,6 +21,56 @@ from .common import DocumentsWriter, is_reference
 from .md import normalize_link, write_table
 
 
+def get_primary_type(type_val):
+    """
+    Returns the primary (first non-null) type from a schema type value.
+
+    Handles both OAS 3.0 (string) and OAS 3.1 (list) type representations:
+      - "string"             → "string"
+      - ["string", "null"]   → "string"
+      - ["null"]             → "null"
+      - ["string", "integer"] → "string"
+    """
+    if not type_val:
+        return None
+    if isinstance(type_val, list):
+        non_null = [t for t in type_val if t != "null"]
+        return non_null[0] if non_null else "null"
+    return type_val
+
+
+def is_nullable_schema(schema) -> bool:
+    """
+    Returns True if the given schema is nullable.
+
+    Handles both OAS 3.0 (nullable: true) and OAS 3.1 (type: [..., "null"]) patterns.
+    """
+    if not isinstance(schema, dict):
+        return False
+    if schema.get("nullable"):
+        return True
+    type_val = schema.get("type")
+    if isinstance(type_val, list):
+        return "null" in type_val
+    return False
+
+
+def get_type_display(type_val) -> str:
+    """
+    Returns a display string for a schema type value.
+
+    Handles both OAS 3.0 (string) and OAS 3.1 (list) type representations:
+      - "string"               → "string"
+      - ["string", "null"]     → "string | null"
+      - ["string", "integer"]  → "string | integer"
+    """
+    if not type_val:
+        return ""
+    if isinstance(type_val, list):
+        return " | ".join(str(t) for t in type_val)
+    return str(type_val)
+
+
 def configure_filters(env: Environment):
     env.filters.update(
         {"route": highlight_params, "table": write_table, "link": normalize_link}
@@ -35,6 +85,9 @@ def configure_functions(env: Environment):
         "scalar_types": {"string", "integer", "boolean", "number"},
         "get_http_status_phrase": get_http_status_phrase,
         "write_md_table": write_table,
+        "get_primary_type": get_primary_type,
+        "is_nullable_schema": is_nullable_schema,
+        "get_type_display": get_type_display,
     }
 
     env.globals.update(helpers)

@@ -5,7 +5,7 @@
 {%- endif -%}
 
 {%- if schema.type -%}
-{%- with type_name = schema["type"], nullable = schema.get("nullable") -%}
+{%- with type_name = get_primary_type(schema["type"]), nullable = is_nullable_schema(schema) -%}
 {%- if type_name == "object" -%}
 {%- if schema.example -%}
 _{{texts.example}}: _`{{schema.example}}`
@@ -19,9 +19,7 @@ _{{texts.properties}}: _`{{", ".join(schema.properties.keys())}}`
 {%- if schema.format -%}
 ({{schema.format}})
 {%- endif -%}
-{%- if nullable -%}
-&#124; null
-{%- endif -%}
+{%- if nullable %} &#124; null{%- endif -%}
 {%- endif -%}
 {%- if type_name == "array" -%}
 {%- with schema = schema["items"] -%}

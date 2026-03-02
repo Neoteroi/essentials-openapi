@@ -25,6 +25,19 @@ from openapidocs.mk.texts import EnglishTexts, Texts
 from openapidocs.mk.v3.examples import get_example_from_schema
 from openapidocs.utils.source import read_from_source
 
+_OAS31_KEYWORDS = frozenset(
+    {
+        "const",
+        "if",
+        "then",
+        "else",
+        "prefixItems",
+        "unevaluatedProperties",
+        "unevaluatedItems",
+        "$defs",
+    }
+)
+
 
 def _can_simplify_json(content_type) -> bool:
     return "json" in content_type or content_type == "text/plain"
@@ -106,10 +119,109 @@ class OpenAPIV3DocumentationHandler:
             custom_templates_path=templates_path,
         )
         self.doc = self.normalize_data(copy.deepcopy(doc))
+        self._warn_31_features_in_30_doc()
+        self._warn_30_features_in_31_doc()
 
     @property
     def source(self) -> str:
         return self._source
+
+    def _collect_31_features(self, obj: object, found: set) -> None:
+        """Recursively scans obj for OAS 3.1-specific features, collecting them in found."""
+        if not isinstance(obj, dict):
+            return
+
+        type_val = obj.get("type")
+        if isinstance(type_val, list):
+            found.add('type as list (e.g. ["string", "null"])')
+
+        for kw in _OAS31_KEYWORDS:
+            if kw in obj:
+                found.add(kw)
+
+        for kw in ("exclusiveMinimum", "exclusiveMaximum"):
+            val = obj.get(kw)
+            if (
+                val is not None
+                and isinstance(val, (int, float))
+                and not isinstance(val, bool)
+            ):
+                found.add(f"{kw} as number")
+
+        for value in obj.values():
+            if isinstance(value, dict):
+                self._collect_31_features(value, found)
+            elif isinstance(value, list):
+                for item in value:
+                    self._collect_31_features(item, found)
+
+    def _warn_31_features_in_30_doc(self) -> None:
+        """
+        Emits a warning if OAS 3.1-specific features are detected in a document
+        that declares an OAS 3.0.x version.
+        """
+        version = self.doc.get("openapi", "")
+        if not (isinstance(version, str) and version.startswith("3.0")):
+            return
+
+        found: set = set()
+
+        if "webhooks" in self.doc:
+            found.add("webhooks")
+
+        self._collect_31_features(self.doc, found)
+
+        if found:
+            feature_list = ", ".join(sorted(found))
+            warnings.warn(
+                f"OpenAPI document declares version {version!r} but uses "
+                f"OAS 3.1-specific features: {feature_list}. "
+                "Consider updating the `openapi` field to '3.1.0'.",
+                stacklevel=3,
+            )
+
+    def _collect_30_features(self, obj: object, found: set) -> None:
+        """Recursively scans obj for OAS 3.0-specific features, collecting them in found."""
+        if not isinstance(obj, dict):
+            return
+
+        # nullable: true is OAS 3.0 only — replaced by type: [..., "null"] in 3.1
+        if obj.get("nullable") is True:
+            found.add("nullable: true")
+
+        # boolean exclusiveMinimum/exclusiveMaximum are 3.0 semantics;
+        # in 3.1 they are numeric bounds
+        for kw in ("exclusiveMinimum", "exclusiveMaximum"):
+            if isinstance(obj.get(kw), bool):
+                found.add(f"{kw}: true/false (boolean)")
+
+        for value in obj.values():
+            if isinstance(value, dict):
+                self._collect_30_features(value, found)
+            elif isinstance(value, list):
+                for item in value:
+                    self._collect_30_features(item, found)
+
+    def _warn_30_features_in_31_doc(self) -> None:
+        """
+        Emits a warning if OAS 3.0-specific features are detected in a document
+        that declares an OAS 3.1.x version.
+        """
+        version = self.doc.get("openapi", "")
+        if not (isinstance(version, str) and version.startswith("3.1")):
+            return
+
+        found: set = set()
+        self._collect_30_features(self.doc, found)
+
+        if found:
+            feature_list = ", ".join(sorted(found))
+            warnings.warn(
+                f"OpenAPI document declares version {version!r} but uses "
+                f"OAS 3.0-specific features: {feature_list}. "
+                "These features are not valid in OAS 3.1 and may be ignored by tooling.",
+                stacklevel=3,
+            )
 
     def normalize_data(self, data):
         """
@@ -179,7 +291,10 @@ class OpenAPIV3DocumentationHandler:
         """
         data = self.doc
         groups = defaultdict(list)
-        paths = data["paths"]
+        paths = data.get("paths")  # paths is optional in OAS 3.1
+
+        if not paths:
+            return groups
 
         for path, path_item in paths.items():
             if not isinstance(path_item, dict):

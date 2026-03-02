@@ -82,6 +82,10 @@ def normalize_dict_factory(items: list[tuple[Any, Any]]) -> dict[str, Any]:
             data["$ref"] = value
             continue
 
+        if key == "defs":
+            data["$defs"] = value
+            continue
+
         for handler in TYPES_HANDLERS:
             value = handler.normalize(value)
 
@@ -129,6 +133,8 @@ def _asdict_inner(obj: Any, dict_factory: Callable[[Any], Any]) -> Any:
             for k, v in obj.items()
         )
     else:
+        for handler in TYPES_HANDLERS:
+            obj = handler.normalize(obj)
         return copy.deepcopy(obj)
 
 

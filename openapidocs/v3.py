@@ -350,8 +350,30 @@ class Schema(OpenAPIElement):
             A list of schemas where at least one must apply.
         one_of (list["Schema" | "Reference"] | None):
             A list of schemas where exactly one must apply.
-        not_ (list["Schema" | "Reference"] | None):
+        not_ (None | "Schema" | "Reference"):
             A schema that must not apply.
+        if_ (None | "Schema" | "Reference"):
+            If-then-else conditional schema (JSON Schema / OAS 3.1).
+        then_ (None | "Schema" | "Reference"):
+            Schema applied when if_ validates successfully.
+        else_ (None | "Schema" | "Reference"):
+            Schema applied when if_ fails to validate.
+        exclusive_maximum (float | None):
+            OAS 3.1 / JSON Schema: the exclusive upper bound for numeric values.
+        exclusive_minimum (float | None):
+            OAS 3.1 / JSON Schema: the exclusive lower bound for numeric values.
+        multiple_of (float | None):
+            The value must be a multiple of this number.
+        const (Any | None):
+            OAS 3.1 / JSON Schema: the value must be exactly this value.
+        prefix_items (list["Schema" | "Reference"] | None):
+            OAS 3.1 / JSON Schema: schemas for tuple validation of array items.
+        unevaluated_properties (None | bool | "Schema" | "Reference"):
+            OAS 3.1 / JSON Schema: controls handling of unevaluated properties.
+        unevaluated_items (None | bool | "Schema" | "Reference"):
+            OAS 3.1 / JSON Schema: controls handling of unevaluated array items.
+        defs (dict[str, "Schema" | "Reference"] | None):
+            OAS 3.1 / JSON Schema: locally-scoped schema definitions ($defs).
     """
 
     type: None | str | ValueType | list[None | str | ValueType] = None
@@ -376,15 +398,26 @@ class Schema(OpenAPIElement):
     unique_items: bool | None = None
     maximum: float | None = None
     minimum: float | None = None
+    exclusive_maximum: float | None = None
+    exclusive_minimum: float | None = None
+    multiple_of: float | None = None
     nullable: bool | None = None
     xml: XML | None = None
     items: "None | Schema | Reference" = None
-    enum: list[str] | None = None
+    prefix_items: list["Schema | Reference"] | None = None
+    enum: list[Any] | None = None
+    const: Any | None = None
     discriminator: Discriminator | None = None
     all_of: list["Schema | Reference"] | None = None
     any_of: list["Schema | Reference"] | None = None
     one_of: list["Schema | Reference"] | None = None
-    not_: list["Schema | Reference"] | None = None
+    not_: "None | Schema | Reference" = None
+    if_: "None | Schema | Reference" = None
+    then_: "None | Schema | Reference" = None
+    else_: "None | Schema | Reference" = None
+    unevaluated_properties: "None | bool | Schema | Reference" = None
+    unevaluated_items: "None | bool | Schema | Reference" = None
+    defs: dict[str, "Schema | Reference"] | None = None
 
 
 @dataclass

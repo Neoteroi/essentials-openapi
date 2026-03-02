@@ -145,6 +145,11 @@ def get_example_from_schema(schema) -> Any:
 
     schema_type = schema.get("type")
 
+    # OAS 3.1: type can be a list (e.g. ["string", "null"]). Use the first non-null type.
+    if isinstance(schema_type, list):
+        non_null = [t for t in schema_type if t != "null"]
+        schema_type = non_null[0] if non_null else None
+
     if schema_type:
         handler_type = next(
             (_type for _type in handlers_types if _type.type_name == schema_type), None

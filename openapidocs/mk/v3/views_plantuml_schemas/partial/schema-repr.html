@@ -5,7 +5,7 @@
 {%- endif -%}
 
 {%- if schema.type -%}
-{%- with type_name = schema["type"], nullable = schema.get("nullable") -%}
+{%- with type_name = get_primary_type(schema["type"]), nullable = is_nullable_schema(schema) -%}
 {# Scalar types #}
 {%- if type_name in scalar_types -%}
 {{type_name}}

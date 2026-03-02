@@ -466,7 +466,7 @@ Delete user by ID/Email
         </tr>
         <tr>
             <td><code>nextCursor</code></td>
-            <td><span class="string-type">string</span>&#124; <span class="null-type">null</span></td>
+            <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
         </tr>
     </tbody>
 </table>

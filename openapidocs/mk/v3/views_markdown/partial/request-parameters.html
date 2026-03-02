@@ -3,7 +3,7 @@
 
 {% with rows = [[texts.parameter, texts.parameter_location, texts.type, texts.default, texts.nullable, texts.description]] %}
 {%- for param in parameters -%}
-{%- set _ = rows.append([param.name, param.in, read_dict(param, "schema", "type"), read_dict(param, "schema", "default", default=""), texts.get_yes_no(read_dict(param, "schema", "nullable", default=False)), read_dict(param, "description", default="")]) -%}
+{%- set _ = rows.append([param.name, param.in, get_type_display(read_dict(param, "schema", "type")), read_dict(param, "schema", "default", default=""), texts.get_yes_no(is_nullable_schema(read_dict(param, "schema") or {})), read_dict(param, "description", default="")]) -%}
 {%- endfor -%}
 {{ rows | table }}
 {%- endwith -%}
