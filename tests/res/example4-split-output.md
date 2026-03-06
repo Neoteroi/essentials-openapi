@@ -110,13 +110,10 @@ Invite a user
         ```
 
 
-
-<p class="response-title">
-    <strong>Response <span class="response-code code-200">200</span>&nbsp;<span class="status-phrase">OK</span></strong>
-</p>
-
-=== "application/json"
+=== "200 OK"
     
+    === "application/json"
+        
     
     ```json
     [
@@ -140,24 +137,21 @@ Invite a user
     ```
     <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
 
-    
+        
 
-    ??? hint "Schema of the response body"
-        ```json
-        {
-            "type": "array",
-            "items": {
-                "$ref": "#/components/schemas/UserInformation"
+        ??? hint "Schema of the response body"
+            ```json
+            {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/UserInformation"
+                }
             }
-        }
-        ```
-
-
-
-<p class="response-title">
-    <strong>Response <span class="response-code code-401">401</span>&nbsp;<span class="status-phrase">Unauthorized</span></strong>
-</p>
-<div class="common-response"><p>Refer to the common response description: <a href="#unauthorized" class="ref-link">Unauthorized</a>.</p></div>
+            ```
+    
+    
+=== "401 Unauthorized"
+    <div class="common-response"><p>Refer to the common response description: <a href="#unauthorized" class="ref-link">Unauthorized</a>.</p></div>
 
 <hr class="operation-separator" />
 
@@ -209,13 +203,10 @@ Retrieve all users
         </tr>
     </tbody>
 </table>
-
-<p class="response-title">
-    <strong>Response <span class="response-code code-200">200</span>&nbsp;<span class="status-phrase">OK</span></strong>
-</p>
-
-=== "application/json"
+=== "200 OK"
     
+    === "application/json"
+        
     
     ```json
     {
@@ -242,35 +233,32 @@ Retrieve all users
     ```
     <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
 
-    
+        
 
-    ??? hint "Schema of the response body"
-        ```json
-        {
-            "type": "object",
-            "properties": {
-                "data": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/components/schemas/UserInformation"
+        ??? hint "Schema of the response body"
+            ```json
+            {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/UserInformation"
+                        }
+                    },
+                    "nextCursor": {
+                        "type": "string",
+                        "description": "Paginate through users by setting the cursor parameter to a nextCursor attribute returned by a previous request. Default value fetches the first \"page\" of the collection.",
+                        "nullable": true,
+                        "example": "MTIzZTQ1NjctZTg5Yi0xMmQzLWE0NTYtNDI2NjE0MTc0MDA"
                     }
-                },
-                "nextCursor": {
-                    "type": "string",
-                    "description": "Paginate through users by setting the cursor parameter to a nextCursor attribute returned by a previous request. Default value fetches the first \"page\" of the collection.",
-                    "nullable": true,
-                    "example": "MTIzZTQ1NjctZTg5Yi0xMmQzLWE0NTYtNDI2NjE0MTc0MDA"
                 }
             }
-        }
-        ```
-
-
-
-<p class="response-title">
-    <strong>Response <span class="response-code code-401">401</span>&nbsp;<span class="status-phrase">Unauthorized</span></strong>
-</p>
-<div class="common-response"><p>Refer to the common response description: <a href="#unauthorized" class="ref-link">Unauthorized</a>.</p></div>
+            ```
+    
+    
+=== "401 Unauthorized"
+    <div class="common-response"><p>Refer to the common response description: <a href="#unauthorized" class="ref-link">Unauthorized</a>.</p></div>
 
 
 <hr class="operation-separator" />
@@ -314,16 +302,10 @@ Get user by ID/Email
         </tr>
     </tbody>
 </table>
-
-<p class="response-title">
-    <strong>Response <span class="response-code code-200">200</span>&nbsp;<span class="status-phrase">OK</span></strong>
-</p>
-<div class="common-response"><p>Refer to the common response description: <a href="#userinformation" class="ref-link">UserInformation</a>.</p></div>
-
-<p class="response-title">
-    <strong>Response <span class="response-code code-401">401</span>&nbsp;<span class="status-phrase">Unauthorized</span></strong>
-</p>
-<div class="common-response"><p>Refer to the common response description: <a href="#unauthorized" class="ref-link">Unauthorized</a>.</p></div>
+=== "200 OK"
+    <div class="common-response"><p>Refer to the common response description: <a href="#userinformation" class="ref-link">UserInformation</a>.</p></div>
+=== "401 Unauthorized"
+    <div class="common-response"><p>Refer to the common response description: <a href="#unauthorized" class="ref-link">Unauthorized</a>.</p></div>
 
 <hr class="operation-separator" />
 
@@ -374,16 +356,10 @@ Delete user by ID/Email
         </tr>
     </tbody>
 </table>
-
-<p class="response-title">
-    <strong>Response <span class="response-code code-200">200</span>&nbsp;<span class="status-phrase">OK</span></strong>
-</p>
-<div class="common-response"><p>Refer to the common response description: <a href="#userinformation" class="ref-link">UserInformation</a>.</p></div>
-
-<p class="response-title">
-    <strong>Response <span class="response-code code-401">401</span>&nbsp;<span class="status-phrase">Unauthorized</span></strong>
-</p>
-<div class="common-response"><p>Refer to the common response description: <a href="#unauthorized" class="ref-link">Unauthorized</a>.</p></div>
+=== "200 OK"
+    <div class="common-response"><p>Refer to the common response description: <a href="#userinformation" class="ref-link">UserInformation</a>.</p></div>
+=== "401 Unauthorized"
+    <div class="common-response"><p>Refer to the common response description: <a href="#unauthorized" class="ref-link">Unauthorized</a>.</p></div>
 
 
 
