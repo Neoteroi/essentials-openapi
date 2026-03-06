@@ -49,7 +49,7 @@ def write_table_lines(
         if write_headers:
             # add separator line after headers
             yield write_row(
-                ["-" * column_len for column_len in columns_widths.values()],
+                ["-" * max(3, column_len) for column_len in columns_widths.values()],
                 columns_widths,
                 padding,
                 indent,
