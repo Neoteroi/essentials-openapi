@@ -5,7 +5,7 @@
 {% for name, definition in components.responses.items() %}
 
 ### {{name}}
-{% if definition.description %}{{definition.description | wordwrap(80)}}{% endif %}
+{% if definition.description %}{{definition.description}}{% endif %}
 
 {%- if definition.content %}
 {% with content = handler.simplify_content(definition.content) %}

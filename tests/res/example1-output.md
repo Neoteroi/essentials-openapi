@@ -7,8 +7,7 @@ Most likely, it is not desirable to edit this file by hand!
 
 # Software Platform API <span class="api-version">v1</span>
 
-Optional multiline or single-line description in
-[CommonMark](http://commonmark.org/help/) or HTML.
+Optional multiline or single-line description in [CommonMark](http://commonmark.org/help/) or HTML.
 <hr />
 <div class="terms-of-service info-data">
     <strong>Terms of service:</strong> <a href="http://example.com/terms/" target="_blank" rel="noopener noreferrer">http://example.com/terms/</a>
@@ -50,8 +49,7 @@ Optional multiline or single-line description in
 Initializes a file upload operation.
 
 ??? note "Description"
-    The client receives a Shared Access Signature that can be used to upload a
-    file directly to the Azure Storage Blob Service.
+    The client receives a Shared Access Signature that can be used to upload a file directly to the Azure Storage Blob Service.
 
 
 **Input parameters**
@@ -343,8 +341,7 @@ Gets the list of categories supported by the system.
 <hr class="operation-separator" />
 
 ### <span class="http-get">GET</span> /api/countries
-Gets a list of countries of the World with English dislay names and ISO country
-codes.
+Gets a list of countries of the World with English dislay names and ISO country codes.
 
 **Input parameters**
 
@@ -404,8 +401,7 @@ codes.
 <hr class="operation-separator" />
 
 ### <span class="http-get">GET</span> /api/system-countries
-Gets a list of countries supported by the system, with English dislay names and
-ISO country codes.
+Gets a list of countries supported by the system, with English dislay names and ISO country codes.
 
 **Input parameters**
 
