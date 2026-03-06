@@ -1,4 +1,5 @@
 import os
+import socket
 from multiprocessing import Process
 from time import sleep
 
@@ -16,18 +17,24 @@ def start_server():
     app.run(host="127.0.0.1", port=44777)
 
 
-def get_sleep_time():
-    # when starting a server process,
-    # a longer sleep time is necessary on Windows
-    if os.name == "nt":
-        return 1.5
-    return 0.5
+
+def _wait_for_server(host, port, timeout=10.0):
+    import time
+
+    deadline = time.monotonic() + timeout
+    while time.monotonic() < deadline:
+        try:
+            with socket.create_connection((host, port), timeout=0.1):
+                return
+        except OSError:
+            time.sleep(0.05)
+    raise RuntimeError(f"Server on {host}:{port} did not start within {timeout}s")
 
 
 def _start_server_process(target):
     server_process = Process(target=target)
     server_process.start()
-    sleep(get_sleep_time())
+    _wait_for_server("127.0.0.1", SERVER_PORT)
 
     if not server_process.is_alive():
         raise TypeError("The server process did not start!")
