@@ -52,6 +52,18 @@ def test_file_ref_raises_for_missing_file():
         )
 
 
+def test_swagger2_raises_not_supported():
+    """
+    Regression test for https://github.com/Neoteroi/essentials-openapi/issues/30
+    Swagger 2.0 specs should raise a clear ValueError instead of silently
+    producing empty output.
+    """
+    with pytest.raises(
+        ValueError, match="Swagger 2.0 specifications are not supported"
+    ):
+        OpenAPIV3DocumentationHandler({"swagger": "2.0", "info": {}, "paths": {}})
+
+
 @pytest.mark.parametrize(
     "input,expected_result",
     [
