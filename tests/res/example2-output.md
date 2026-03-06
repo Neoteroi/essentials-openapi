@@ -33,6 +33,7 @@ Most likely, it is not desirable to edit this file by hand!
 
 ## <span class="api-tag">pets</span>
 
+
 <hr class="operation-separator" />
 
 ### <span class="http-get">GET</span> /pets
@@ -171,6 +172,7 @@ List all pets
         ```
 
 
+
 <hr class="operation-separator" />
 
 ### <span class="http-post">POST</span> /pets
@@ -249,6 +251,7 @@ Create a pet
             }
         }
         ```
+
 
 
 
@@ -388,6 +391,7 @@ Info for a specific pet
         ```
 
 
+
 <hr class="operation-separator" />
 
 ### <span class="http-patch">PATCH</span> /pets/<span class="route-param">{petId}</span>
@@ -467,16 +471,19 @@ Info for a specific pet
         <tr>
             <th>Name</th>
             <th>Type</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td><code>age</code></td>
             <td><span class="integer-type">integer</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>hunts</code></td>
             <td><span class="boolean-type">boolean</span></td>
+            <td></td>
         </tr>
     </tbody>
 </table>
@@ -490,16 +497,19 @@ Info for a specific pet
         <tr>
             <th>Name</th>
             <th>Type</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td><code>bark</code></td>
             <td><span class="boolean-type">boolean</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>breed</code></td>
             <td><span class="string-type">string</span></td>
+            <td></td>
         </tr>
     </tbody>
 </table>
@@ -513,16 +523,19 @@ Info for a specific pet
         <tr>
             <th>Name</th>
             <th>Type</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td><code>code</code></td>
             <td><span class="integer-type">integer</span>(<span class="int32-format format">int32</span>)</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>message</code></td>
             <td><span class="string-type">string</span></td>
+            <td></td>
         </tr>
     </tbody>
 </table>
@@ -536,24 +549,29 @@ Info for a specific pet
         <tr>
             <th>Name</th>
             <th>Type</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td><code>category</code></td>
             <td><span class="string-type">string</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>id</code></td>
             <td><span class="integer-type">integer</span>(<span class="int64-format format">int64</span>)</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>name</code></td>
             <td><span class="string-type">string</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>tag</code></td>
             <td><span class="string-type">string</span></td>
+            <td></td>
         </tr>
     </tbody>
 </table>
