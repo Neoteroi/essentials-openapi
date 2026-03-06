@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add OAS 3.1 support, cross-version warnings, and fix nullable spacing, by @dcode.
 - Fix MARKDOWN style table separators to use minimum 3 hyphens (issue #39), reported by @michael-nok.
-- Add support for displaying descriptions of schema properties, requested by @Maia-Everett.
+- Fix [#45](https://github.com/Neoteroi/essentials-openapi/issues/45): add support for displaying descriptions of schema properties, reported by @Maia-Everett.
 
 ## [1.3.0] - 2025-11-19
 
