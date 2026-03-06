@@ -1,4 +1,3 @@
-import os
 import socket
 from multiprocessing import Process
 from time import sleep
@@ -15,7 +14,6 @@ app = Flask(__name__, static_url_path="", static_folder="res")
 
 def start_server():
     app.run(host="127.0.0.1", port=44777)
-
 
 
 def _wait_for_server(host, port, timeout=10.0):
