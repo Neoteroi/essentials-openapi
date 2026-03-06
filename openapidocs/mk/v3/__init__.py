@@ -237,6 +237,13 @@ class OpenAPIV3DocumentationHandler:
         $ref fields MUST be used in the specification to reference those parts as
         follows from the JSON Schema definitions.
         """
+        if isinstance(data.get("swagger"), str) and data["swagger"].startswith("2"):
+            raise ValueError(
+                "Swagger 2.0 specifications are not supported. "
+                "Please convert your specification to OpenAPI 3.x first. "
+                "You can use the online converter at https://converter.swagger.io/"
+            )
+
         if "components" not in data:
             data["components"] = {}
 
