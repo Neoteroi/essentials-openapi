@@ -7,13 +7,13 @@
 
 ### <span class="http-{{http_method.lower()}}">{{http_method.upper()}}</span> {{path | route | safe}}
 {% if "summary" in operation -%}
-{{operation.summary | wordwrap(80)}}
+{{operation.summary}}
 {%- endif -%}
 
 {%- if operation.description and operation.summary != operation.description %}
 
 ??? note "{{texts.description.title()}}"
-    {{operation.description | wordwrap(76) | indent(4)}}
+    {{operation.description | indent(4)}}
 {% endif %}
 
 {%- with parameters = handler.get_parameters(operation) -%}

@@ -3,6 +3,6 @@
 ```json
 {{handler.write_content_example(example, content_type) | safe}}
 ```
-{% if example.auto_generated %}_{{texts.auto_generated_example_note | wordwrap(80)}}_{% endif -%}
+{% if example.auto_generated %}_{{texts.auto_generated_example_note}}_{% endif -%}
 {% endif %}
 {% endfor %}

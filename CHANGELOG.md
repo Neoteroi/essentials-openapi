@@ -15,6 +15,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   never supported as there was never a `/mk/v2/` namespace, intentionally).
 - Fix [#35](https://github.com/Neoteroi/essentials-openapi/issues/35): group response
   codes in a tab group on MkDocs output, reported by @Andre601.
+- Fix [#47](https://github.com/Neoteroi/essentials-openapi/issues/47): remove `wordwrap`
+  filters from all templates as they break links and mermaid chart code blocks in
+  descriptions, reported by @ElementalWarrior.
 
 ## [1.3.0] - 2025-11-19
 

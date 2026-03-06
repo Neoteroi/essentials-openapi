@@ -159,8 +159,7 @@ Invite a user
 Retrieve all users
 
 ??? note "Description"
-    Retrieve all users from your instance. Only available for the instance
-    owner.
+    Retrieve all users from your instance. Only available for the instance owner.
 
 
 **Input parameters**

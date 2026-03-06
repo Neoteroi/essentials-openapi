@@ -7,13 +7,13 @@
 
 ### {{http_method.upper()}} {{path | safe}}
 {% if "summary" in operation -%}
-{{operation.summary | wordwrap(80)}}
+{{operation.summary}}
 {%- endif -%}
 
 {%- if operation.description and operation.summary != operation.description %}
 
 **{{texts.description.title()}}**
-{{operation.description | wordwrap(80)}}
+{{operation.description}}
 
 {%- endif -%}
 

@@ -7,8 +7,7 @@ Most likely, it is not desirable to edit this file by hand!
 
 # Software Platform API v1
 
-Optional multiline or single-line description in
-[CommonMark](http://commonmark.org/help/) or HTML.
+Optional multiline or single-line description in [CommonMark](http://commonmark.org/help/) or HTML.
 
 ---
 
@@ -33,8 +32,7 @@ Optional multiline or single-line description in
 Initializes a file upload operation.
 
 **Description**
-The client receives a Shared Access Signature that can be used to upload a file
-directly to the Azure Storage Blob Service.
+The client receives a Shared Access Signature that can be used to upload a file directly to the Azure Storage Blob Service.
 
 **Input parameters**
 
@@ -98,8 +96,7 @@ _Other accepted types: application/*+json, application/json-patch+json, text/jso
     "token": "string"
 }
 ```
-_This example has been generated automatically from the schema and it is not
-accurate. Refer to the schema for more information._
+_This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information._
 
 _Other possible types: text/json, text/plain_
 
@@ -237,8 +234,7 @@ Gets the list of categories supported by the system.
     }
 ]
 ```
-_This example has been generated automatically from the schema and it is not
-accurate. Refer to the schema for more information._
+_This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information._
 
 _Other possible types: text/json, text/plain_
 
@@ -260,8 +256,7 @@ _Other possible types: text/json, text/plain_
 
 
 ### GET /api/countries
-Gets a list of countries of the World with English dislay names and ISO country
-codes.
+Gets a list of countries of the World with English dislay names and ISO country codes.
 
 **Input parameters**
 
@@ -282,8 +277,7 @@ codes.
     }
 ]
 ```
-_This example has been generated automatically from the schema and it is not
-accurate. Refer to the schema for more information._
+_This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information._
 
 _Other possible types: text/json, text/plain_
 
@@ -301,8 +295,7 @@ _Other possible types: text/json, text/plain_
 
 
 ### GET /api/system-countries
-Gets a list of countries supported by the system, with English dislay names and
-ISO country codes.
+Gets a list of countries supported by the system, with English dislay names and ISO country codes.
 
 **Input parameters**
 
@@ -323,8 +316,7 @@ ISO country codes.
     }
 ]
 ```
-_This example has been generated automatically from the schema and it is not
-accurate. Refer to the schema for more information._
+_This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information._
 
 _Other possible types: text/json, text/plain_
 
@@ -452,8 +444,7 @@ Gets a paginated set of downloads records.
     "total": 26
 }
 ```
-_This example has been generated automatically from the schema and it is not
-accurate. Refer to the schema for more information._
+_This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information._
 
 _Other possible types: text/json, text/plain_
 
@@ -505,8 +496,7 @@ API health check
     "regionName": "string"
 }
 ```
-_This example has been generated automatically from the schema and it is not
-accurate. Refer to the schema for more information._
+_This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information._
 
 _Other possible types: text/json, text/plain_
 
@@ -579,8 +569,7 @@ _Other possible types: text/json, text/plain_
     "signature": "string"
 }
 ```
-_This example has been generated automatically from the schema and it is not
-accurate. Refer to the schema for more information._
+_This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information._
 
 _Other possible types: text/json, text/plain_
 
@@ -632,8 +621,7 @@ Returns information about the API itself.
     "contactEmail": "string"
 }
 ```
-_This example has been generated automatically from the schema and it is not
-accurate. Refer to the schema for more information._
+_This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information._
 
 _Other possible types: text/json, text/plain_
 
@@ -769,8 +757,7 @@ Returns details about a release by id.
     "organizations": null
 }
 ```
-_This example has been generated automatically from the schema and it is not
-accurate. Refer to the schema for more information._
+_This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information._
 
 _Other possible types: text/json, text/plain_
 
@@ -898,8 +885,7 @@ Deletes a release by id.
     ]
 }
 ```
-_This example has been generated automatically from the schema and it is not
-accurate. Refer to the schema for more information._
+_This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information._
 _Other accepted types: application/*+json, application/json-patch+json, text/json_
 
 **Schema of the request body**
@@ -1038,8 +1024,7 @@ _Other accepted types: application/*+json, application/json-patch+json, text/jso
     "organizations": null
 }
 ```
-_This example has been generated automatically from the schema and it is not
-accurate. Refer to the schema for more information._
+_This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information._
 
 _Other possible types: text/json, text/plain_
 
@@ -1226,8 +1211,7 @@ _Other possible types: text/json, text/plain_
     "total": 26
 }
 ```
-_This example has been generated automatically from the schema and it is not
-accurate. Refer to the schema for more information._
+_This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information._
 
 _Other possible types: text/json, text/plain_
 
@@ -1278,8 +1262,7 @@ _Other possible types: text/json, text/plain_
     ]
 }
 ```
-_This example has been generated automatically from the schema and it is not
-accurate. Refer to the schema for more information._
+_This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information._
 _Other accepted types: application/*+json, application/json-patch+json, text/json_
 
 **Schema of the request body**
@@ -1326,8 +1309,7 @@ _Other accepted types: application/*+json, application/json-patch+json, text/jso
     "id": "00000000-0000-0000-0000-000000000000"
 }
 ```
-_This example has been generated automatically from the schema and it is not
-accurate. Refer to the schema for more information._
+_This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information._
 
 _Other possible types: text/json, text/plain_
 
@@ -1373,8 +1355,7 @@ _Other possible types: text/json, text/plain_
     }
 ]
 ```
-_This example has been generated automatically from the schema and it is not
-accurate. Refer to the schema for more information._
+_This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information._
 
 _Other possible types: text/json, text/plain_
 
@@ -1416,8 +1397,7 @@ _Other possible types: text/json, text/plain_
     }
 ]
 ```
-_This example has been generated automatically from the schema and it is not
-accurate. Refer to the schema for more information._
+_This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information._
 
 _Other possible types: text/json, text/plain_
 
@@ -1520,8 +1500,7 @@ _Other possible types: text/json, text/plain_
     }
 ]
 ```
-_This example has been generated automatically from the schema and it is not
-accurate. Refer to the schema for more information._
+_This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information._
 
 _Other possible types: text/json, text/plain_
 
@@ -1558,8 +1537,7 @@ _Other possible types: text/json, text/plain_
     "url": "string"
 }
 ```
-_This example has been generated automatically from the schema and it is not
-accurate. Refer to the schema for more information._
+_This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information._
 
 _Other possible types: text/json, text/plain_
 
@@ -1600,8 +1578,7 @@ _Other possible types: text/json, text/plain_
     "uniqueDownloads": 26
 }
 ```
-_This example has been generated automatically from the schema and it is not
-accurate. Refer to the schema for more information._
+_This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information._
 
 _Other possible types: text/json, text/plain_
 
@@ -1646,8 +1623,7 @@ _Other possible types: text/json, text/plain_
     }
 ]
 ```
-_This example has been generated automatically from the schema and it is not
-accurate. Refer to the schema for more information._
+_This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information._
 _Other accepted types: application/*+json, application/json-patch+json, text/json_
 
 **Schema of the request body**
@@ -1757,8 +1733,7 @@ _Other accepted types: application/*+json, application/json-patch+json, text/jso
     "organizations": null
 }
 ```
-_This example has been generated automatically from the schema and it is not
-accurate. Refer to the schema for more information._
+_This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information._
 
 _Other possible types: text/json, text/plain_
 
@@ -1869,8 +1844,7 @@ _Other possible types: text/json, text/plain_
     }
 ]
 ```
-_This example has been generated automatically from the schema and it is not
-accurate. Refer to the schema for more information._
+_This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information._
 _Other accepted types: application/*+json, application/json-patch+json, text/json_
 
 **Schema of the request body**
@@ -1980,8 +1954,7 @@ _Other accepted types: application/*+json, application/json-patch+json, text/jso
     "organizations": null
 }
 ```
-_This example has been generated automatically from the schema and it is not
-accurate. Refer to the schema for more information._
+_This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information._
 
 _Other possible types: text/json, text/plain_
 
@@ -2095,8 +2068,7 @@ _Other possible types: text/json, text/plain_
     ]
 }
 ```
-_This example has been generated automatically from the schema and it is not
-accurate. Refer to the schema for more information._
+_This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information._
 _Other accepted types: application/*+json, application/json-patch+json, text/json_
 
 **Schema of the request body**
@@ -2212,8 +2184,7 @@ _Other accepted types: application/*+json, application/json-patch+json, text/jso
     "organizations": null
 }
 ```
-_This example has been generated automatically from the schema and it is not
-accurate. Refer to the schema for more information._
+_This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information._
 
 _Other possible types: text/json, text/plain_
 
@@ -2322,8 +2293,7 @@ _Other possible types: text/json, text/plain_
     "00000000-0000-0000-0000-000000000000"
 ]
 ```
-_This example has been generated automatically from the schema and it is not
-accurate. Refer to the schema for more information._
+_This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information._
 _Other accepted types: application/*+json, application/json-patch+json, text/json_
 
 **Schema of the request body**
@@ -2434,8 +2404,7 @@ _Other accepted types: application/*+json, application/json-patch+json, text/jso
     "organizations": null
 }
 ```
-_This example has been generated automatically from the schema and it is not
-accurate. Refer to the schema for more information._
+_This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information._
 
 _Other possible types: text/json, text/plain_
 
@@ -2628,8 +2597,7 @@ _Other possible types: text/json, text/plain_
     "organizations": null
 }
 ```
-_This example has been generated automatically from the schema and it is not
-accurate. Refer to the schema for more information._
+_This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information._
 
 _Other possible types: text/json, text/plain_
 
@@ -2739,8 +2707,7 @@ _Other possible types: text/json, text/plain_
     "sendEmailNotifications": true
 }
 ```
-_This example has been generated automatically from the schema and it is not
-accurate. Refer to the schema for more information._
+_This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information._
 _Other accepted types: application/*+json, application/json-patch+json, text/json_
 
 **Schema of the request body**
@@ -2856,8 +2823,7 @@ _Other accepted types: application/*+json, application/json-patch+json, text/jso
     "organizations": null
 }
 ```
-_This example has been generated automatically from the schema and it is not
-accurate. Refer to the schema for more information._
+_This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information._
 
 _Other possible types: text/json, text/plain_
 
@@ -3389,8 +3355,7 @@ This base error type is used for all raised exceptions.
     "message": "string"
 }
 ```
-_This example has been generated automatically from the schema and it is not
-accurate. Refer to the schema for more information._
+_This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information._
 
 
 **Schema of the response body**
