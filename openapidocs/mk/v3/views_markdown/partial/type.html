@@ -2,7 +2,7 @@
 {%- with props = handler.get_properties(definition) -%}
 {% if props %}
 | {{texts.name}} | {{texts.type}} |
-| -- | -- |
+| --- | --- |
 {%- for name, schema in props %}
 | {{name}} | {% include "partial/schema-repr.html" %} |
 {%- endfor -%}
