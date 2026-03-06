@@ -43,6 +43,7 @@ Optional multiline or single-line description in
 
 ## <span class="api-tag">Blobs</span>
 
+
 <hr class="operation-separator" />
 
 ### <span class="http-post">POST</span> /api/blobs/initialize-upload
@@ -216,6 +217,7 @@ Initializes a file upload operation.
 
 ## <span class="api-tag">Categories</span>
 
+
 <hr class="operation-separator" />
 
 ### <span class="http-get">GET</span> /api/categories
@@ -349,6 +351,7 @@ Gets the list of categories supported by the system.
 
 ## <span class="api-tag">Countries</span>
 
+
 <hr class="operation-separator" />
 
 ### <span class="http-get">GET</span> /api/countries
@@ -409,6 +412,7 @@ codes.
             }
         }
         ```
+
 
 
 
@@ -478,6 +482,7 @@ ISO country codes.
 
 
 ## <span class="api-tag">Downloads</span>
+
 
 <hr class="operation-separator" />
 
@@ -690,6 +695,7 @@ Gets a paginated set of downloads records.
 
 ## <span class="api-tag">Health</span>
 
+
 <hr class="operation-separator" />
 
 ### <span class="http-get">GET</span> /api/health
@@ -764,6 +770,7 @@ API health check
 
 
 ## <span class="api-tag">Professionals</span>
+
 
 <hr class="operation-separator" />
 
@@ -861,6 +868,7 @@ API health check
 
 ## <span class="api-tag">Info</span>
 
+
 <hr class="operation-separator" />
 
 ### <span class="http-get">GET</span> /api/info
@@ -936,6 +944,7 @@ Returns information about the API itself.
 
 
 ## <span class="api-tag">Releases</span>
+
 
 <hr class="operation-separator" />
 
@@ -1159,6 +1168,7 @@ Returns details about a release by id.
         ```
 
 
+
 <hr class="operation-separator" />
 
 ### <span class="http-delete">DELETE</span> /api/releases/<span class="route-param">{releaseId}</span>
@@ -1200,6 +1210,7 @@ Deletes a release by id.
 <p class="response-title">
     <strong>Response <span class="response-code code-200">200</span>&nbsp;<span class="status-phrase">OK</span></strong>
 </p>
+
 <hr class="operation-separator" />
 
 ### <span class="http-patch">PATCH</span> /api/releases/<span class="route-param">{releaseId}</span>
@@ -1487,6 +1498,7 @@ Deletes a release by id.
 
 
 
+
 <hr class="operation-separator" />
 
 ### <span class="http-get">GET</span> /api/releases
@@ -1683,6 +1695,7 @@ Deletes a release by id.
         ```
 
 
+
 <hr class="operation-separator" />
 
 ### <span class="http-post">POST</span> /api/releases
@@ -1799,6 +1812,7 @@ Deletes a release by id.
 
 
 
+
 <hr class="operation-separator" />
 
 ### <span class="http-get">GET</span> /api/current-releases
@@ -1864,6 +1878,7 @@ Deletes a release by id.
 
 
 
+
 <hr class="operation-separator" />
 
 ### <span class="http-get">GET</span> /api/orgs/current-releases
@@ -1926,6 +1941,7 @@ Deletes a release by id.
             }
         }
         ```
+
 
 
 
@@ -2062,6 +2078,7 @@ Deletes a release by id.
 
 
 
+
 <hr class="operation-separator" />
 
 ### <span class="http-get">GET</span> /api/releases/<span class="route-param">{releaseId}</span>/file/<span class="route-param">{nodeId}</span>
@@ -2140,6 +2157,7 @@ Deletes a release by id.
 
 
 
+
 <hr class="operation-separator" />
 
 ### <span class="http-get">GET</span> /api/releases/<span class="route-param">{releaseId}</span>/file/<span class="route-param">{nodeId}</span>/downloads
@@ -2215,6 +2233,7 @@ Deletes a release by id.
             "additionalProperties": false
         }
         ```
+
 
 
 
@@ -2473,6 +2492,7 @@ Deletes a release by id.
         ```
 
 
+
 <hr class="operation-separator" />
 
 ### <span class="http-delete">DELETE</span> /api/releases/<span class="route-param">{releaseId}</span>/files
@@ -2723,6 +2743,7 @@ Deletes a release by id.
             "additionalProperties": false
         }
         ```
+
 
 
 
@@ -2987,6 +3008,7 @@ Deletes a release by id.
         ```
 
 
+
 <hr class="operation-separator" />
 
 ### <span class="http-delete">DELETE</span> /api/releases/<span class="route-param">{releaseId}</span>/orgs
@@ -3239,6 +3261,7 @@ Deletes a release by id.
 
 
 
+
 <hr class="operation-separator" />
 
 ### <span class="http-post">POST</span> /api/releases/<span class="route-param">{releaseId}</span>/clone
@@ -3459,6 +3482,7 @@ Deletes a release by id.
             "additionalProperties": false
         }
         ```
+
 
 
 
@@ -3734,36 +3758,44 @@ Deletes a release by id.
         <tr>
             <th>Name</th>
             <th>Type</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td><code>creationTime</code></td>
             <td><span class="string-type">string</span>(<span class="date-time-format format">date-time</span>)</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>description</code></td>
             <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>eTag</code></td>
             <td><span class="string-type">string</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>id</code></td>
             <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>name</code></td>
             <td><span class="string-type">string</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>releases</code></td>
             <td>Array&lt;<a href="#release" class="ref-link">Release</a>&gt;</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>updateTime</code></td>
             <td><span class="string-type">string</span>(<span class="date-time-format format">date-time</span>)</td>
+            <td></td>
         </tr>
     </tbody>
 </table>
@@ -3777,20 +3809,24 @@ Deletes a release by id.
         <tr>
             <th>Name</th>
             <th>Type</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td><code>countryCode</code></td>
             <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>id</code></td>
             <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>name</code></td>
             <td><span class="string-type">string</span></td>
+            <td></td>
         </tr>
     </tbody>
 </table>
@@ -3804,12 +3840,14 @@ Deletes a release by id.
         <tr>
             <th>Name</th>
             <th>Type</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td><code>items</code></td>
             <td>Array&lt;<a href="#organizationboundinput" class="ref-link">OrganizationBoundInput</a>&gt;</td>
+            <td></td>
         </tr>
     </tbody>
 </table>
@@ -3823,24 +3861,29 @@ Deletes a release by id.
         <tr>
             <th>Name</th>
             <th>Type</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td><code>categoryId</code></td>
             <td><span class="string-type">string</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>countries</code></td>
             <td>Array&lt;<span class="string-type">string</span>&gt;</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>description</code></td>
             <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>name</code></td>
             <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
+            <td></td>
         </tr>
     </tbody>
 </table>
@@ -3854,24 +3897,29 @@ Deletes a release by id.
         <tr>
             <th>Name</th>
             <th>Type</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td><code>fileId</code></td>
             <td><span class="string-type">string</span>(<span class="uuid-format format">uuid</span>)</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>fileName</code></td>
             <td><span class="string-type">string</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>fileSize</code></td>
             <td><span class="integer-type">integer</span>(<span class="int32-format format">int32</span>)</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>fileType</code></td>
             <td><span class="string-type">string</span></td>
+            <td></td>
         </tr>
     </tbody>
 </table>
@@ -3885,12 +3933,14 @@ Deletes a release by id.
         <tr>
             <th>Name</th>
             <th>Type</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td><code>id</code></td>
             <td><span class="string-type">string</span>(<span class="uuid-format format">uuid</span>)</td>
+            <td></td>
         </tr>
     </tbody>
 </table>
@@ -3904,32 +3954,39 @@ Deletes a release by id.
         <tr>
             <th>Name</th>
             <th>Type</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td><code>categoryId</code></td>
             <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>countryCode</code></td>
             <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>countryName</code></td>
             <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>publishTime</code></td>
             <td><span class="string-type">string</span>(<span class="date-time-format format">date-time</span>)</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>releaseId</code></td>
             <td><span class="string-type">string</span>(<span class="uuid-format format">uuid</span>)</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>releaseName</code></td>
             <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
+            <td></td>
         </tr>
     </tbody>
 </table>
@@ -3943,12 +4000,14 @@ Deletes a release by id.
         <tr>
             <th>Name</th>
             <th>Type</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td><code>id</code></td>
             <td><span class="string-type">string</span>(<span class="uuid-format format">uuid</span>)</td>
+            <td></td>
         </tr>
     </tbody>
 </table>
@@ -3962,12 +4021,14 @@ Deletes a release by id.
         <tr>
             <th>Name</th>
             <th>Type</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td><code>uniqueDownloads</code></td>
             <td><span class="integer-type">integer</span>(<span class="int32-format format">int32</span>)</td>
+            <td></td>
         </tr>
     </tbody>
 </table>
@@ -3981,12 +4042,14 @@ Deletes a release by id.
         <tr>
             <th>Name</th>
             <th>Type</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td><code>url</code></td>
             <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
+            <td></td>
         </tr>
     </tbody>
 </table>
@@ -4000,16 +4063,19 @@ Deletes a release by id.
         <tr>
             <th>Name</th>
             <th>Type</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td><code>code</code></td>
             <td><span class="integer-type">integer</span>(<span class="int32-format format">int32</span>)</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>message</code></td>
             <td><span class="string-type">string</span></td>
+            <td></td>
         </tr>
     </tbody>
 </table>
@@ -4023,20 +4089,24 @@ Deletes a release by id.
         <tr>
             <th>Name</th>
             <th>Type</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td><code>alive</code></td>
             <td><span class="boolean-type">boolean</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>regionName</code></td>
             <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>timestamp</code></td>
             <td><span class="string-type">string</span>(<span class="date-time-format format">date-time</span>)</td>
+            <td></td>
         </tr>
     </tbody>
 </table>
@@ -4050,24 +4120,29 @@ Deletes a release by id.
         <tr>
             <th>Name</th>
             <th>Type</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td><code>fileName</code></td>
             <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>fileSize</code></td>
             <td><span class="integer-type">integer</span>(<span class="int32-format format">int32</span>)</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>fileType</code></td>
             <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>releaseId</code></td>
             <td><span class="string-type">string</span>(<span class="uuid-format format">uuid</span>)</td>
+            <td></td>
         </tr>
     </tbody>
 </table>
@@ -4081,24 +4156,29 @@ Deletes a release by id.
         <tr>
             <th>Name</th>
             <th>Type</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td><code>baseURL</code></td>
             <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>fileId</code></td>
             <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>fileName</code></td>
             <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>token</code></td>
             <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
+            <td></td>
         </tr>
     </tbody>
 </table>
@@ -4112,20 +4192,24 @@ Deletes a release by id.
         <tr>
             <th>Name</th>
             <th>Type</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td><code>buildNumber</code></td>
             <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>contactEmail</code></td>
             <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>version</code></td>
             <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
+            <td></td>
         </tr>
     </tbody>
 </table>
@@ -4139,44 +4223,54 @@ Deletes a release by id.
         <tr>
             <th>Name</th>
             <th>Type</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td><code>creationTime</code></td>
             <td><span class="string-type">string</span>(<span class="date-time-format format">date-time</span>)</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>eTag</code></td>
             <td><span class="string-type">string</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>extension</code></td>
             <td><span class="string-type">string</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>icon</code></td>
             <td><span class="string-type">string</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>id</code></td>
             <td><span class="string-type">string</span>(<span class="uuid-format format">uuid</span>)</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>name</code></td>
             <td><span class="string-type">string</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>size</code></td>
             <td><span class="integer-type">integer</span>(<span class="int32-format format">int32</span>)</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>type</code></td>
             <td><span class="string-type">string</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>updateTime</code></td>
             <td><span class="string-type">string</span>(<span class="date-time-format format">date-time</span>)</td>
+            <td></td>
         </tr>
     </tbody>
 </table>
@@ -4190,16 +4284,19 @@ Deletes a release by id.
         <tr>
             <th>Name</th>
             <th>Type</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td><code>id</code></td>
             <td><span class="string-type">string</span>(<span class="uuid-format format">uuid</span>)</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>name</code></td>
             <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
+            <td></td>
         </tr>
     </tbody>
 </table>
@@ -4213,16 +4310,19 @@ Deletes a release by id.
         <tr>
             <th>Name</th>
             <th>Type</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td><code>membership</code></td>
             <td>Array&lt;<a href="#professionalmembership" class="ref-link">ProfessionalMembership</a>&gt;</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>signature</code></td>
             <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
+            <td></td>
         </tr>
     </tbody>
 </table>
@@ -4236,52 +4336,64 @@ Deletes a release by id.
         <tr>
             <th>Name</th>
             <th>Type</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td><code>brandNames</code></td>
             <td>Array&lt;<span class="string-type">string</span>&gt;</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>categoryId</code></td>
             <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>id</code></td>
             <td><span class="string-type">string</span>(<span class="uuid-format format">uuid</span>)</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>marketCodes</code></td>
             <td>Array&lt;<span class="string-type">string</span>&gt;</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>organizationBrands</code></td>
             <td>Array&lt;<span class="string-type">string</span>(<span class="uuid-format format">uuid</span>)&gt;</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>organizationId</code></td>
             <td><span class="string-type">string</span>(<span class="uuid-format format">uuid</span>)</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>organizationMarkets</code></td>
             <td>Array&lt;<span class="string-type">string</span>(<span class="uuid-format format">uuid</span>)&gt;</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>organizationName</code></td>
             <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>organizationNumber</code></td>
             <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>role</code></td>
             <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>scope</code></td>
             <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
+            <td></td>
         </tr>
     </tbody>
 </table>
@@ -4295,16 +4407,19 @@ Deletes a release by id.
         <tr>
             <th>Name</th>
             <th>Type</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td><code>eTag</code></td>
             <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>sendEmailNotifications</code></td>
             <td><span class="boolean-type">boolean</span></td>
+            <td></td>
         </tr>
     </tbody>
 </table>
@@ -4318,64 +4433,79 @@ Deletes a release by id.
         <tr>
             <th>Name</th>
             <th>Type</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td><code>category</code></td>
             <td><a href="#category" class="ref-link">Category</a></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>categoryId</code></td>
             <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>countries</code></td>
             <td>Array&lt;<a href="#releasecountry" class="ref-link">ReleaseCountry</a>&gt;</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>creationTime</code></td>
             <td><span class="string-type">string</span>(<span class="date-time-format format">date-time</span>)</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>description</code></td>
             <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>draft</code></td>
             <td><span class="boolean-type">boolean</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>eTag</code></td>
             <td><span class="string-type">string</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>history</code></td>
             <td>Array&lt;<a href="#releasehistory" class="ref-link">ReleaseHistory</a>&gt;</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>id</code></td>
             <td><span class="string-type">string</span>(<span class="uuid-format format">uuid</span>)</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>name</code></td>
             <td><span class="string-type">string</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>nodes</code></td>
             <td>Array&lt;<a href="#releasenode" class="ref-link">ReleaseNode</a>&gt;</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>organizations</code></td>
             <td>Array&lt;<a href="#releaseorganization" class="ref-link">ReleaseOrganization</a>&gt;</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>requestedNotification</code></td>
             <td><span class="boolean-type">boolean</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>updateTime</code></td>
             <td><span class="string-type">string</span>(<span class="date-time-format format">date-time</span>)</td>
+            <td></td>
         </tr>
     </tbody>
 </table>
@@ -4389,24 +4519,29 @@ Deletes a release by id.
         <tr>
             <th>Name</th>
             <th>Type</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td><code>country</code></td>
             <td><a href="#country" class="ref-link">Country</a></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>countryId</code></td>
             <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>release</code></td>
             <td><a href="#release" class="ref-link">Release</a></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>releaseId</code></td>
             <td><span class="string-type">string</span>(<span class="uuid-format format">uuid</span>)</td>
+            <td></td>
         </tr>
     </tbody>
 </table>
@@ -4420,36 +4555,44 @@ Deletes a release by id.
         <tr>
             <th>Name</th>
             <th>Type</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td><code>data</code></td>
             <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>description</code></td>
             <td><span class="string-type">string</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>id</code></td>
             <td><span class="string-type">string</span>(<span class="uuid-format format">uuid</span>)</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>release</code></td>
             <td><a href="#release" class="ref-link">Release</a></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>releaseId</code></td>
             <td><span class="string-type">string</span>(<span class="uuid-format format">uuid</span>)</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>timeStamp</code></td>
             <td><span class="string-type">string</span>(<span class="date-time-format format">date-time</span>)</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>user</code></td>
             <td><span class="string-type">string</span></td>
+            <td></td>
         </tr>
     </tbody>
 </table>
@@ -4463,28 +4606,34 @@ Deletes a release by id.
         <tr>
             <th>Name</th>
             <th>Type</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td><code>id</code></td>
             <td><span class="string-type">string</span>(<span class="uuid-format format">uuid</span>)</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>node</code></td>
             <td><a href="#nodeinfo" class="ref-link">NodeInfo</a></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>nodeId</code></td>
             <td><span class="string-type">string</span>(<span class="uuid-format format">uuid</span>)</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>release</code></td>
             <td><a href="#release" class="ref-link">Release</a></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>releaseId</code></td>
             <td><span class="string-type">string</span>(<span class="uuid-format format">uuid</span>)</td>
+            <td></td>
         </tr>
     </tbody>
 </table>
@@ -4498,44 +4647,54 @@ Deletes a release by id.
         <tr>
             <th>Name</th>
             <th>Type</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td><code>accessGrantedByOrganizationId</code></td>
             <td><span class="string-type">string</span>(<span class="uuid-format format">uuid</span>) &#124; <span class="null-type">null</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>id</code></td>
             <td><span class="string-type">string</span>(<span class="uuid-format format">uuid</span>)</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>node</code></td>
             <td><a href="#nodeinfo" class="ref-link">NodeInfo</a></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>nodeId</code></td>
             <td><span class="string-type">string</span>(<span class="uuid-format format">uuid</span>)</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>release</code></td>
             <td><a href="#release" class="ref-link">Release</a></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>releaseId</code></td>
             <td><span class="string-type">string</span>(<span class="uuid-format format">uuid</span>)</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>timeStamp</code></td>
             <td><span class="string-type">string</span>(<span class="date-time-format format">date-time</span>)</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>userEmail</code></td>
             <td><span class="string-type">string</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>userId</code></td>
             <td><span class="string-type">string</span></td>
+            <td></td>
         </tr>
     </tbody>
 </table>
@@ -4549,16 +4708,19 @@ Deletes a release by id.
         <tr>
             <th>Name</th>
             <th>Type</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td><code>items</code></td>
             <td>Array&lt;<a href="#releasenodedownload" class="ref-link">ReleaseNodeDownload</a>&gt;</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>total</code></td>
             <td><span class="integer-type">integer</span>(<span class="int64-format format">int64</span>)</td>
+            <td></td>
         </tr>
     </tbody>
 </table>
@@ -4572,24 +4734,29 @@ Deletes a release by id.
         <tr>
             <th>Name</th>
             <th>Type</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td><code>displayName</code></td>
             <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>organizationId</code></td>
             <td><span class="string-type">string</span>(<span class="uuid-format format">uuid</span>)</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>release</code></td>
             <td><a href="#release" class="ref-link">Release</a></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>releaseId</code></td>
             <td><span class="string-type">string</span>(<span class="uuid-format format">uuid</span>)</td>
+            <td></td>
         </tr>
     </tbody>
 </table>
@@ -4603,16 +4770,19 @@ Deletes a release by id.
         <tr>
             <th>Name</th>
             <th>Type</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td><code>items</code></td>
             <td>Array&lt;<a href="#release" class="ref-link">Release</a>&gt;</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>total</code></td>
             <td><span class="integer-type">integer</span>(<span class="int64-format format">int64</span>)</td>
+            <td></td>
         </tr>
     </tbody>
 </table>
@@ -4626,32 +4796,39 @@ Deletes a release by id.
         <tr>
             <th>Name</th>
             <th>Type</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td><code>categoryId</code></td>
             <td><span class="string-type">string</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>countries</code></td>
             <td>Array&lt;<span class="string-type">string</span>&gt;</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>description</code></td>
             <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>eTag</code></td>
             <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>id</code></td>
             <td><span class="string-type">string</span>(<span class="uuid-format format">uuid</span>)</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>name</code></td>
             <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
+            <td></td>
         </tr>
     </tbody>
 </table>

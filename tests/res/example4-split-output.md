@@ -34,6 +34,7 @@ split Public API
 
 ## <span class="api-tag">User</span>
 
+
 <hr class="operation-separator" />
 
 ### <span class="http-post">POST</span> /users
@@ -157,6 +158,7 @@ Invite a user
     <strong>Response <span class="response-code code-401">401</span>&nbsp;<span class="status-phrase">Unauthorized</span></strong>
 </p>
 <div class="common-response"><p>Refer to the common response description: <a href="#unauthorized" class="ref-link">Unauthorized</a>.</p></div>
+
 <hr class="operation-separator" />
 
 ### <span class="http-get">GET</span> /users
@@ -270,6 +272,7 @@ Retrieve all users
 </p>
 <div class="common-response"><p>Refer to the common response description: <a href="#unauthorized" class="ref-link">Unauthorized</a>.</p></div>
 
+
 <hr class="operation-separator" />
 
 ### <span class="http-get">GET</span> /users/<span class="route-param">{identifier}</span>
@@ -321,6 +324,7 @@ Get user by ID/Email
     <strong>Response <span class="response-code code-401">401</span>&nbsp;<span class="status-phrase">Unauthorized</span></strong>
 </p>
 <div class="common-response"><p>Refer to the common response description: <a href="#unauthorized" class="ref-link">Unauthorized</a>.</p></div>
+
 <hr class="operation-separator" />
 
 ### <span class="http-delete">DELETE</span> /users/<span class="route-param">{identifier}</span>
@@ -395,20 +399,24 @@ Delete user by ID/Email
         <tr>
             <th>Name</th>
             <th>Type</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td><code>code</code></td>
             <td><span class="string-type">string</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>description</code></td>
             <td><span class="string-type">string</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>message</code></td>
             <td><span class="string-type">string</span></td>
+            <td></td>
         </tr>
     </tbody>
 </table>
@@ -422,28 +430,34 @@ Delete user by ID/Email
         <tr>
             <th>Name</th>
             <th>Type</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td><code>createdAt</code></td>
             <td><span class="string-type">string</span>(<span class="date-time-format format">date-time</span>)</td>
+            <td>Time the role was created.</td>
         </tr>
         <tr>
             <td><code>id</code></td>
             <td><span class="number-type">number</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>name</code></td>
             <td><span class="string-type">string</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>scope</code></td>
             <td><span class="string-type">string</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>updatedAt</code></td>
             <td><span class="string-type">string</span>(<span class="date-time-format format">date-time</span>)</td>
+            <td>Last time the role was updaded.</td>
         </tr>
     </tbody>
 </table>
@@ -457,16 +471,19 @@ Delete user by ID/Email
         <tr>
             <th>Name</th>
             <th>Type</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td><code>data</code></td>
             <td>Array&lt;<a href="#userinformation" class="ref-link">UserInformation</a>&gt;</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>nextCursor</code></td>
             <td><span class="string-type">string</span> &#124; <span class="null-type">null</span></td>
+            <td>Paginate through users by setting the cursor parameter to a nextCursor attribute returned by a previous request. Default value fetches the first "page" of the collection.</td>
         </tr>
     </tbody>
 </table>
@@ -480,40 +497,49 @@ Delete user by ID/Email
         <tr>
             <th>Name</th>
             <th>Type</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td><code>createdAt</code></td>
             <td><span class="string-type">string</span>(<span class="date-time-format format">date-time</span>)</td>
+            <td>Time the user was created.</td>
         </tr>
         <tr>
             <td><code>email</code></td>
             <td><span class="string-type">string</span>(<span class="email-format format">email</span>)</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>firstName</code></td>
             <td><span class="string-type">string</span></td>
+            <td>User's first name</td>
         </tr>
         <tr>
             <td><code>globalRole</code></td>
             <td><a href="#roleinformation" class="ref-link">RoleInformation</a></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>id</code></td>
             <td><span class="string-type">string</span></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>isPending</code></td>
             <td><span class="boolean-type">boolean</span></td>
+            <td>Whether the user finished setting up their account in response to the invitation (true) or not (false).</td>
         </tr>
         <tr>
             <td><code>lastName</code></td>
             <td><span class="string-type">string</span></td>
+            <td>User's last name</td>
         </tr>
         <tr>
             <td><code>updatedAt</code></td>
             <td><span class="string-type">string</span>(<span class="date-time-format format">date-time</span>)</td>
+            <td>Last time the user was updated.</td>
         </tr>
     </tbody>
 </table>
