@@ -124,13 +124,10 @@ Initializes a file upload operation.
         ```
 
 
-
-<p class="response-title">
-    <strong>Response <span class="response-code code-200">200</span>&nbsp;<span class="status-phrase">OK</span></strong>
-</p>
-
-=== "application/json"
+=== "200 OK"
     
+    === "application/json"
+        
     
     ```json
     {
@@ -142,76 +139,70 @@ Initializes a file upload operation.
     ```
     <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
 
-    <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
+        <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
-    ??? hint "Schema of the response body"
-        ```json
-        {
-            "type": "object",
-            "properties": {
-                "baseURL": {
-                    "type": "string",
-                    "nullable": true
+        ??? hint "Schema of the response body"
+            ```json
+            {
+                "type": "object",
+                "properties": {
+                    "baseURL": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "fileId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "fileName": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "token": {
+                        "type": "string",
+                        "nullable": true
+                    }
                 },
-                "fileId": {
-                    "type": "string",
-                    "nullable": true
-                },
-                "fileName": {
-                    "type": "string",
-                    "nullable": true
-                },
-                "token": {
-                    "type": "string",
-                    "nullable": true
-                }
-            },
-            "additionalProperties": false
-        }
-        ```
+                "additionalProperties": false
+            }
+            ```
+    
+    
+    <div class="response-section">
+        <p class="response-headers sub-section-title">Response headers</p>
 
-
-<div class="response-section">
-    <p class="response-headers sub-section-title">Response headers</p>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Schema</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><code>X-Rate-Limit-Limit</code></td>
-                <td>The number of allowed requests in the current period</td>
-                <td><span class="integer-type">integer</span></td>
-            </tr>
-            <tr>
-                <td><code>X-Rate-Limit-Remaining</code></td>
-                <td>The number of remaining requests in the current period</td>
-                <td><span class="integer-type">integer</span></td>
-            </tr>
-            <tr>
-                <td><code>X-Rate-Limit-Reset</code></td>
-                <td>The number of seconds left in the current period</td>
-                <td><span class="integer-type">integer</span></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-
-<p class="response-title">
-    <strong>Response <span class="response-code code-400">400</span>&nbsp;<span class="status-phrase">Bad Request</span></strong>
-</p>
-<div class="common-response"><p>Refer to the common response description: <a href="#illegalinput" class="ref-link">IllegalInput</a>.</p></div>
-
-<p class="response-title">
-    <strong>Response <span class="response-code code-401">401</span>&nbsp;<span class="status-phrase">Unauthorized</span></strong>
-</p>
-<div class="common-response"><p>Refer to the common response description: <a href="#unauthorized" class="ref-link">Unauthorized</a>.</p></div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Schema</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>X-Rate-Limit-Limit</code></td>
+                    <td>The number of allowed requests in the current period</td>
+                    <td><span class="integer-type">integer</span></td>
+                </tr>
+                <tr>
+                    <td><code>X-Rate-Limit-Remaining</code></td>
+                    <td>The number of remaining requests in the current period</td>
+                    <td><span class="integer-type">integer</span></td>
+                </tr>
+                <tr>
+                    <td><code>X-Rate-Limit-Reset</code></td>
+                    <td>The number of seconds left in the current period</td>
+                    <td><span class="integer-type">integer</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+=== "400 Bad Request"
+    <div class="common-response"><p>Refer to the common response description: <a href="#illegalinput" class="ref-link">IllegalInput</a>.</p></div>
+=== "401 Unauthorized"
+    <div class="common-response"><p>Refer to the common response description: <a href="#unauthorized" class="ref-link">Unauthorized</a>.</p></div>
 
 
 
@@ -247,13 +238,10 @@ Gets the list of categories supported by the system.
         </tr>
     </tbody>
 </table>
-
-<p class="response-title">
-    <strong>Response <span class="response-code code-200">200</span>&nbsp;<span class="status-phrase">OK</span></strong>
-</p>
-
-=== "application/json"
+=== "200 OK"
     
+    === "application/json"
+        
     
     ```json
     [
@@ -333,19 +321,19 @@ Gets the list of categories supported by the system.
     ```
     <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
 
-    <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
+        <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
-    ??? hint "Schema of the response body"
-        ```json
-        {
-            "type": "array",
-            "items": {
-                "$ref": "#/components/schemas/Category"
+        ??? hint "Schema of the response body"
+            ```json
+            {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/Category"
+                }
             }
-        }
-        ```
-
-
+            ```
+    
+    
 
 
 
@@ -382,13 +370,10 @@ codes.
         </tr>
     </tbody>
 </table>
-
-<p class="response-title">
-    <strong>Response <span class="response-code code-200">200</span>&nbsp;<span class="status-phrase">OK</span></strong>
-</p>
-
-=== "application/json"
+=== "200 OK"
     
+    === "application/json"
+        
     
     ```json
     [
@@ -401,19 +386,19 @@ codes.
     ```
     <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
 
-    <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
+        <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
-    ??? hint "Schema of the response body"
-        ```json
-        {
-            "type": "array",
-            "items": {
-                "$ref": "#/components/schemas/Country"
+        ??? hint "Schema of the response body"
+            ```json
+            {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/Country"
+                }
             }
-        }
-        ```
-
-
+            ```
+    
+    
 
 
 <hr class="operation-separator" />
@@ -446,13 +431,10 @@ ISO country codes.
         </tr>
     </tbody>
 </table>
-
-<p class="response-title">
-    <strong>Response <span class="response-code code-200">200</span>&nbsp;<span class="status-phrase">OK</span></strong>
-</p>
-
-=== "application/json"
+=== "200 OK"
     
+    === "application/json"
+        
     
     ```json
     [
@@ -465,19 +447,19 @@ ISO country codes.
     ```
     <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
 
-    <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
+        <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
-    ??? hint "Schema of the response body"
-        ```json
-        {
-            "type": "array",
-            "items": {
-                "$ref": "#/components/schemas/Country"
+        ??? hint "Schema of the response body"
+            ```json
+            {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/Country"
+                }
             }
-        }
-        ```
-
-
+            ```
+    
+    
 
 
 
@@ -569,13 +551,10 @@ Gets a paginated set of downloads records.
         </tr>
     </tbody>
 </table>
-
-<p class="response-title">
-    <strong>Response <span class="response-code code-200">200</span>&nbsp;<span class="status-phrase">OK</span></strong>
-</p>
-
-=== "application/json"
+=== "200 OK"
     
+    === "application/json"
+        
     
     ```json
     {
@@ -666,30 +645,30 @@ Gets a paginated set of downloads records.
     ```
     <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
 
-    <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
+        <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
-    ??? hint "Schema of the response body"
-        ```json
-        {
-            "type": "object",
-            "properties": {
-                "items": {
-                    "type": "array",
+        ??? hint "Schema of the response body"
+            ```json
+            {
+                "type": "object",
+                "properties": {
                     "items": {
-                        "$ref": "#/components/schemas/ReleaseNodeDownload"
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ReleaseNodeDownload"
+                        },
+                        "nullable": true
                     },
-                    "nullable": true
+                    "total": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
                 },
-                "total": {
-                    "type": "integer",
-                    "format": "int64"
-                }
-            },
-            "additionalProperties": false
-        }
-        ```
-
-
+                "additionalProperties": false
+            }
+            ```
+    
+    
 
 
 
@@ -725,13 +704,10 @@ API health check
         </tr>
     </tbody>
 </table>
-
-<p class="response-title">
-    <strong>Response <span class="response-code code-200">200</span>&nbsp;<span class="status-phrase">OK</span></strong>
-</p>
-
-=== "application/json"
+=== "200 OK"
     
+    === "application/json"
+        
     
     ```json
     {
@@ -742,30 +718,30 @@ API health check
     ```
     <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
 
-    <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
+        <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
-    ??? hint "Schema of the response body"
-        ```json
-        {
-            "type": "object",
-            "properties": {
-                "alive": {
-                    "type": "boolean"
+        ??? hint "Schema of the response body"
+            ```json
+            {
+                "type": "object",
+                "properties": {
+                    "alive": {
+                        "type": "boolean"
+                    },
+                    "timestamp": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "regionName": {
+                        "type": "string",
+                        "nullable": true
+                    }
                 },
-                "timestamp": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "regionName": {
-                    "type": "string",
-                    "nullable": true
-                }
-            },
-            "additionalProperties": false
-        }
-        ```
-
-
+                "additionalProperties": false
+            }
+            ```
+    
+    
 
 
 
@@ -801,13 +777,10 @@ API health check
         </tr>
     </tbody>
 </table>
-
-<p class="response-title">
-    <strong>Response <span class="response-code code-200">200</span>&nbsp;<span class="status-phrase">OK</span></strong>
-</p>
-
-=== "application/json"
+=== "200 OK"
     
+    === "application/json"
+        
     
     ```json
     {
@@ -839,30 +812,30 @@ API health check
     ```
     <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
 
-    <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
+        <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
-    ??? hint "Schema of the response body"
-        ```json
-        {
-            "type": "object",
-            "properties": {
-                "membership": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/components/schemas/ProfessionalMembership"
+        ??? hint "Schema of the response body"
+            ```json
+            {
+                "type": "object",
+                "properties": {
+                    "membership": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ProfessionalMembership"
+                        },
+                        "nullable": true
                     },
-                    "nullable": true
+                    "signature": {
+                        "type": "string",
+                        "nullable": true
+                    }
                 },
-                "signature": {
-                    "type": "string",
-                    "nullable": true
-                }
-            },
-            "additionalProperties": false
-        }
-        ```
-
-
+                "additionalProperties": false
+            }
+            ```
+    
+    
 
 
 
@@ -898,13 +871,10 @@ Returns information about the API itself.
         </tr>
     </tbody>
 </table>
-
-<p class="response-title">
-    <strong>Response <span class="response-code code-200">200</span>&nbsp;<span class="status-phrase">OK</span></strong>
-</p>
-
-=== "application/json"
+=== "200 OK"
     
+    === "application/json"
+        
     
     ```json
     {
@@ -915,31 +885,31 @@ Returns information about the API itself.
     ```
     <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
 
-    <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
+        <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
-    ??? hint "Schema of the response body"
-        ```json
-        {
-            "type": "object",
-            "properties": {
-                "version": {
-                    "type": "string",
-                    "nullable": true
+        ??? hint "Schema of the response body"
+            ```json
+            {
+                "type": "object",
+                "properties": {
+                    "version": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "buildNumber": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "contactEmail": {
+                        "type": "string",
+                        "nullable": true
+                    }
                 },
-                "buildNumber": {
-                    "type": "string",
-                    "nullable": true
-                },
-                "contactEmail": {
-                    "type": "string",
-                    "nullable": true
-                }
-            },
-            "additionalProperties": false
-        }
-        ```
-
-
+                "additionalProperties": false
+            }
+            ```
+    
+    
 
 
 
@@ -983,13 +953,10 @@ Returns details about a release by id.
         </tr>
     </tbody>
 </table>
-
-<p class="response-title">
-    <strong>Response <span class="response-code code-200">200</span>&nbsp;<span class="status-phrase">OK</span></strong>
-</p>
-
-=== "application/json"
+=== "200 OK"
     
+    === "application/json"
+        
     
     ```json
     {
@@ -1082,92 +1049,92 @@ Returns details about a release by id.
     ```
     <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
 
-    <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
+        <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
-    ??? hint "Schema of the response body"
-        ```json
-        {
-            "required": [
-                "creationTime",
-                "draft",
-                "eTag",
-                "name",
-                "updateTime"
-            ],
-            "type": "object",
-            "properties": {
-                "eTag": {
-                    "maxLength": 50,
-                    "minLength": 0,
-                    "type": "string"
-                },
-                "creationTime": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "updateTime": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "id": {
-                    "type": "string",
-                    "format": "uuid"
-                },
-                "name": {
-                    "maxLength": 250,
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string",
-                    "nullable": true
-                },
-                "draft": {
-                    "type": "boolean"
-                },
-                "requestedNotification": {
-                    "type": "boolean"
-                },
-                "categoryId": {
-                    "type": "string",
-                    "nullable": true
-                },
-                "category": {
-                    "$ref": "#/components/schemas/Category"
-                },
-                "nodes": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/components/schemas/ReleaseNode"
+        ??? hint "Schema of the response body"
+            ```json
+            {
+                "required": [
+                    "creationTime",
+                    "draft",
+                    "eTag",
+                    "name",
+                    "updateTime"
+                ],
+                "type": "object",
+                "properties": {
+                    "eTag": {
+                        "maxLength": 50,
+                        "minLength": 0,
+                        "type": "string"
                     },
-                    "nullable": true
-                },
-                "countries": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/components/schemas/ReleaseCountry"
+                    "creationTime": {
+                        "type": "string",
+                        "format": "date-time"
                     },
-                    "nullable": true
-                },
-                "history": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/components/schemas/ReleaseHistory"
+                    "updateTime": {
+                        "type": "string",
+                        "format": "date-time"
                     },
-                    "nullable": true
-                },
-                "organizations": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/components/schemas/ReleaseOrganization"
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
                     },
-                    "nullable": true
-                }
-            },
-            "additionalProperties": false
-        }
-        ```
-
-
+                    "name": {
+                        "maxLength": 250,
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "draft": {
+                        "type": "boolean"
+                    },
+                    "requestedNotification": {
+                        "type": "boolean"
+                    },
+                    "categoryId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "category": {
+                        "$ref": "#/components/schemas/Category"
+                    },
+                    "nodes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ReleaseNode"
+                        },
+                        "nullable": true
+                    },
+                    "countries": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ReleaseCountry"
+                        },
+                        "nullable": true
+                    },
+                    "history": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ReleaseHistory"
+                        },
+                        "nullable": true
+                    },
+                    "organizations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ReleaseOrganization"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            }
+            ```
+    
+    
 
 <hr class="operation-separator" />
 
@@ -1206,10 +1173,7 @@ Deletes a release by id.
         </tr>
     </tbody>
 </table>
-
-<p class="response-title">
-    <strong>Response <span class="response-code code-200">200</span>&nbsp;<span class="status-phrase">OK</span></strong>
-</p>
+=== "200 OK"
 
 <hr class="operation-separator" />
 
@@ -1312,13 +1276,10 @@ Deletes a release by id.
         ```
 
 
-
-<p class="response-title">
-    <strong>Response <span class="response-code code-200">200</span>&nbsp;<span class="status-phrase">OK</span></strong>
-</p>
-
-=== "application/json"
+=== "200 OK"
     
+    === "application/json"
+        
     
     ```json
     {
@@ -1411,92 +1372,92 @@ Deletes a release by id.
     ```
     <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
 
-    <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
+        <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
-    ??? hint "Schema of the response body"
-        ```json
-        {
-            "required": [
-                "creationTime",
-                "draft",
-                "eTag",
-                "name",
-                "updateTime"
-            ],
-            "type": "object",
-            "properties": {
-                "eTag": {
-                    "maxLength": 50,
-                    "minLength": 0,
-                    "type": "string"
-                },
-                "creationTime": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "updateTime": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "id": {
-                    "type": "string",
-                    "format": "uuid"
-                },
-                "name": {
-                    "maxLength": 250,
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string",
-                    "nullable": true
-                },
-                "draft": {
-                    "type": "boolean"
-                },
-                "requestedNotification": {
-                    "type": "boolean"
-                },
-                "categoryId": {
-                    "type": "string",
-                    "nullable": true
-                },
-                "category": {
-                    "$ref": "#/components/schemas/Category"
-                },
-                "nodes": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/components/schemas/ReleaseNode"
+        ??? hint "Schema of the response body"
+            ```json
+            {
+                "required": [
+                    "creationTime",
+                    "draft",
+                    "eTag",
+                    "name",
+                    "updateTime"
+                ],
+                "type": "object",
+                "properties": {
+                    "eTag": {
+                        "maxLength": 50,
+                        "minLength": 0,
+                        "type": "string"
                     },
-                    "nullable": true
-                },
-                "countries": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/components/schemas/ReleaseCountry"
+                    "creationTime": {
+                        "type": "string",
+                        "format": "date-time"
                     },
-                    "nullable": true
-                },
-                "history": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/components/schemas/ReleaseHistory"
+                    "updateTime": {
+                        "type": "string",
+                        "format": "date-time"
                     },
-                    "nullable": true
-                },
-                "organizations": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/components/schemas/ReleaseOrganization"
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
                     },
-                    "nullable": true
-                }
-            },
-            "additionalProperties": false
-        }
-        ```
-
-
+                    "name": {
+                        "maxLength": 250,
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "draft": {
+                        "type": "boolean"
+                    },
+                    "requestedNotification": {
+                        "type": "boolean"
+                    },
+                    "categoryId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "category": {
+                        "$ref": "#/components/schemas/Category"
+                    },
+                    "nodes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ReleaseNode"
+                        },
+                        "nullable": true
+                    },
+                    "countries": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ReleaseCountry"
+                        },
+                        "nullable": true
+                    },
+                    "history": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ReleaseHistory"
+                        },
+                        "nullable": true
+                    },
+                    "organizations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ReleaseOrganization"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            }
+            ```
+    
+    
 
 
 <hr class="operation-separator" />
@@ -1584,13 +1545,10 @@ Deletes a release by id.
         </tr>
     </tbody>
 </table>
-
-<p class="response-title">
-    <strong>Response <span class="response-code code-200">200</span>&nbsp;<span class="status-phrase">OK</span></strong>
-</p>
-
-=== "application/json"
+=== "200 OK"
     
+    === "application/json"
+        
     
     ```json
     {
@@ -1671,30 +1629,30 @@ Deletes a release by id.
     ```
     <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
 
-    <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
+        <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
-    ??? hint "Schema of the response body"
-        ```json
-        {
-            "type": "object",
-            "properties": {
-                "items": {
-                    "type": "array",
+        ??? hint "Schema of the response body"
+            ```json
+            {
+                "type": "object",
+                "properties": {
                     "items": {
-                        "$ref": "#/components/schemas/Release"
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Release"
+                        },
+                        "nullable": true
                     },
-                    "nullable": true
+                    "total": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
                 },
-                "total": {
-                    "type": "integer",
-                    "format": "int64"
-                }
-            },
-            "additionalProperties": false
-        }
-        ```
-
-
+                "additionalProperties": false
+            }
+            ```
+    
+    
 
 <hr class="operation-separator" />
 
@@ -1779,13 +1737,10 @@ Deletes a release by id.
         ```
 
 
-
-<p class="response-title">
-    <strong>Response <span class="response-code code-200">200</span>&nbsp;<span class="status-phrase">OK</span></strong>
-</p>
-
-=== "application/json"
+=== "200 OK"
     
+    === "application/json"
+        
     
     ```json
     {
@@ -1794,23 +1749,23 @@ Deletes a release by id.
     ```
     <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
 
-    <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
+        <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
-    ??? hint "Schema of the response body"
-        ```json
-        {
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "format": "uuid"
-                }
-            },
-            "additionalProperties": false
-        }
-        ```
-
-
+        ??? hint "Schema of the response body"
+            ```json
+            {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                },
+                "additionalProperties": false
+            }
+            ```
+    
+    
 
 
 <hr class="operation-separator" />
@@ -1842,13 +1797,10 @@ Deletes a release by id.
         </tr>
     </tbody>
 </table>
-
-<p class="response-title">
-    <strong>Response <span class="response-code code-200">200</span>&nbsp;<span class="status-phrase">OK</span></strong>
-</p>
-
-=== "application/json"
+=== "200 OK"
     
+    === "application/json"
+        
     
     ```json
     [
@@ -1864,19 +1816,19 @@ Deletes a release by id.
     ```
     <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
 
-    <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
+        <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
-    ??? hint "Schema of the response body"
-        ```json
-        {
-            "type": "array",
-            "items": {
-                "$ref": "#/components/schemas/CurrentRelease"
+        ??? hint "Schema of the response body"
+            ```json
+            {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/CurrentRelease"
+                }
             }
-        }
-        ```
-
-
+            ```
+    
+    
 
 
 <hr class="operation-separator" />
@@ -1908,13 +1860,10 @@ Deletes a release by id.
         </tr>
     </tbody>
 </table>
-
-<p class="response-title">
-    <strong>Response <span class="response-code code-200">200</span>&nbsp;<span class="status-phrase">OK</span></strong>
-</p>
-
-=== "application/json"
+=== "200 OK"
     
+    === "application/json"
+        
     
     ```json
     [
@@ -1930,19 +1879,19 @@ Deletes a release by id.
     ```
     <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
 
-    <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
+        <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
-    ??? hint "Schema of the response body"
-        ```json
-        {
-            "type": "array",
-            "items": {
-                "$ref": "#/components/schemas/CurrentRelease"
+        ??? hint "Schema of the response body"
+            ```json
+            {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/CurrentRelease"
+                }
             }
-        }
-        ```
-
-
+            ```
+    
+    
 
 
 <hr class="operation-separator" />
@@ -1982,13 +1931,10 @@ Deletes a release by id.
         </tr>
     </tbody>
 </table>
-
-<p class="response-title">
-    <strong>Response <span class="response-code code-200">200</span>&nbsp;<span class="status-phrase">OK</span></strong>
-</p>
-
-=== "application/json"
+=== "200 OK"
     
+    === "application/json"
+        
     
     ```json
     [
@@ -2064,19 +2010,19 @@ Deletes a release by id.
     ```
     <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
 
-    <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
+        <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
-    ??? hint "Schema of the response body"
-        ```json
-        {
-            "type": "array",
-            "items": {
-                "$ref": "#/components/schemas/ReleaseHistory"
+        ??? hint "Schema of the response body"
+            ```json
+            {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/ReleaseHistory"
+                }
             }
-        }
-        ```
-
-
+            ```
+    
+    
 
 
 <hr class="operation-separator" />
@@ -2124,13 +2070,10 @@ Deletes a release by id.
         </tr>
     </tbody>
 </table>
-
-<p class="response-title">
-    <strong>Response <span class="response-code code-200">200</span>&nbsp;<span class="status-phrase">OK</span></strong>
-</p>
-
-=== "application/json"
+=== "200 OK"
     
+    === "application/json"
+        
     
     ```json
     {
@@ -2139,23 +2082,23 @@ Deletes a release by id.
     ```
     <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
 
-    <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
+        <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
-    ??? hint "Schema of the response body"
-        ```json
-        {
-            "type": "object",
-            "properties": {
-                "url": {
-                    "type": "string",
-                    "nullable": true
-                }
-            },
-            "additionalProperties": false
-        }
-        ```
-
-
+        ??? hint "Schema of the response body"
+            ```json
+            {
+                "type": "object",
+                "properties": {
+                    "url": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            }
+            ```
+    
+    
 
 
 <hr class="operation-separator" />
@@ -2203,13 +2146,10 @@ Deletes a release by id.
         </tr>
     </tbody>
 </table>
-
-<p class="response-title">
-    <strong>Response <span class="response-code code-200">200</span>&nbsp;<span class="status-phrase">OK</span></strong>
-</p>
-
-=== "application/json"
+=== "200 OK"
     
+    === "application/json"
+        
     
     ```json
     {
@@ -2218,23 +2158,23 @@ Deletes a release by id.
     ```
     <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
 
-    <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
+        <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
-    ??? hint "Schema of the response body"
-        ```json
-        {
-            "type": "object",
-            "properties": {
-                "uniqueDownloads": {
-                    "type": "integer",
-                    "format": "int32"
-                }
-            },
-            "additionalProperties": false
-        }
-        ```
-
-
+        ??? hint "Schema of the response body"
+            ```json
+            {
+                "type": "object",
+                "properties": {
+                    "uniqueDownloads": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "additionalProperties": false
+            }
+            ```
+    
+    
 
 
 <hr class="operation-separator" />
@@ -2307,13 +2247,10 @@ Deletes a release by id.
         ```
 
 
-
-<p class="response-title">
-    <strong>Response <span class="response-code code-200">200</span>&nbsp;<span class="status-phrase">OK</span></strong>
-</p>
-
-=== "application/json"
+=== "200 OK"
     
+    === "application/json"
+        
     
     ```json
     {
@@ -2406,92 +2343,92 @@ Deletes a release by id.
     ```
     <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
 
-    <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
+        <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
-    ??? hint "Schema of the response body"
-        ```json
-        {
-            "required": [
-                "creationTime",
-                "draft",
-                "eTag",
-                "name",
-                "updateTime"
-            ],
-            "type": "object",
-            "properties": {
-                "eTag": {
-                    "maxLength": 50,
-                    "minLength": 0,
-                    "type": "string"
-                },
-                "creationTime": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "updateTime": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "id": {
-                    "type": "string",
-                    "format": "uuid"
-                },
-                "name": {
-                    "maxLength": 250,
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string",
-                    "nullable": true
-                },
-                "draft": {
-                    "type": "boolean"
-                },
-                "requestedNotification": {
-                    "type": "boolean"
-                },
-                "categoryId": {
-                    "type": "string",
-                    "nullable": true
-                },
-                "category": {
-                    "$ref": "#/components/schemas/Category"
-                },
-                "nodes": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/components/schemas/ReleaseNode"
+        ??? hint "Schema of the response body"
+            ```json
+            {
+                "required": [
+                    "creationTime",
+                    "draft",
+                    "eTag",
+                    "name",
+                    "updateTime"
+                ],
+                "type": "object",
+                "properties": {
+                    "eTag": {
+                        "maxLength": 50,
+                        "minLength": 0,
+                        "type": "string"
                     },
-                    "nullable": true
-                },
-                "countries": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/components/schemas/ReleaseCountry"
+                    "creationTime": {
+                        "type": "string",
+                        "format": "date-time"
                     },
-                    "nullable": true
-                },
-                "history": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/components/schemas/ReleaseHistory"
+                    "updateTime": {
+                        "type": "string",
+                        "format": "date-time"
                     },
-                    "nullable": true
-                },
-                "organizations": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/components/schemas/ReleaseOrganization"
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
                     },
-                    "nullable": true
-                }
-            },
-            "additionalProperties": false
-        }
-        ```
-
-
+                    "name": {
+                        "maxLength": 250,
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "draft": {
+                        "type": "boolean"
+                    },
+                    "requestedNotification": {
+                        "type": "boolean"
+                    },
+                    "categoryId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "category": {
+                        "$ref": "#/components/schemas/Category"
+                    },
+                    "nodes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ReleaseNode"
+                        },
+                        "nullable": true
+                    },
+                    "countries": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ReleaseCountry"
+                        },
+                        "nullable": true
+                    },
+                    "history": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ReleaseHistory"
+                        },
+                        "nullable": true
+                    },
+                    "organizations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ReleaseOrganization"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            }
+            ```
+    
+    
 
 <hr class="operation-separator" />
 
@@ -2560,13 +2497,10 @@ Deletes a release by id.
         ```
 
 
-
-<p class="response-title">
-    <strong>Response <span class="response-code code-200">200</span>&nbsp;<span class="status-phrase">OK</span></strong>
-</p>
-
-=== "application/json"
+=== "200 OK"
     
+    === "application/json"
+        
     
     ```json
     {
@@ -2659,92 +2593,92 @@ Deletes a release by id.
     ```
     <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
 
-    <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
+        <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
-    ??? hint "Schema of the response body"
-        ```json
-        {
-            "required": [
-                "creationTime",
-                "draft",
-                "eTag",
-                "name",
-                "updateTime"
-            ],
-            "type": "object",
-            "properties": {
-                "eTag": {
-                    "maxLength": 50,
-                    "minLength": 0,
-                    "type": "string"
-                },
-                "creationTime": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "updateTime": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "id": {
-                    "type": "string",
-                    "format": "uuid"
-                },
-                "name": {
-                    "maxLength": 250,
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string",
-                    "nullable": true
-                },
-                "draft": {
-                    "type": "boolean"
-                },
-                "requestedNotification": {
-                    "type": "boolean"
-                },
-                "categoryId": {
-                    "type": "string",
-                    "nullable": true
-                },
-                "category": {
-                    "$ref": "#/components/schemas/Category"
-                },
-                "nodes": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/components/schemas/ReleaseNode"
+        ??? hint "Schema of the response body"
+            ```json
+            {
+                "required": [
+                    "creationTime",
+                    "draft",
+                    "eTag",
+                    "name",
+                    "updateTime"
+                ],
+                "type": "object",
+                "properties": {
+                    "eTag": {
+                        "maxLength": 50,
+                        "minLength": 0,
+                        "type": "string"
                     },
-                    "nullable": true
-                },
-                "countries": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/components/schemas/ReleaseCountry"
+                    "creationTime": {
+                        "type": "string",
+                        "format": "date-time"
                     },
-                    "nullable": true
-                },
-                "history": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/components/schemas/ReleaseHistory"
+                    "updateTime": {
+                        "type": "string",
+                        "format": "date-time"
                     },
-                    "nullable": true
-                },
-                "organizations": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/components/schemas/ReleaseOrganization"
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
                     },
-                    "nullable": true
-                }
-            },
-            "additionalProperties": false
-        }
-        ```
-
-
+                    "name": {
+                        "maxLength": 250,
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "draft": {
+                        "type": "boolean"
+                    },
+                    "requestedNotification": {
+                        "type": "boolean"
+                    },
+                    "categoryId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "category": {
+                        "$ref": "#/components/schemas/Category"
+                    },
+                    "nodes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ReleaseNode"
+                        },
+                        "nullable": true
+                    },
+                    "countries": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ReleaseCountry"
+                        },
+                        "nullable": true
+                    },
+                    "history": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ReleaseHistory"
+                        },
+                        "nullable": true
+                    },
+                    "organizations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ReleaseOrganization"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            }
+            ```
+    
+    
 
 
 <hr class="operation-separator" />
@@ -2823,13 +2757,10 @@ Deletes a release by id.
         ```
 
 
-
-<p class="response-title">
-    <strong>Response <span class="response-code code-200">200</span>&nbsp;<span class="status-phrase">OK</span></strong>
-</p>
-
-=== "application/json"
+=== "200 OK"
     
+    === "application/json"
+        
     
     ```json
     {
@@ -2922,92 +2853,92 @@ Deletes a release by id.
     ```
     <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
 
-    <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
+        <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
-    ??? hint "Schema of the response body"
-        ```json
-        {
-            "required": [
-                "creationTime",
-                "draft",
-                "eTag",
-                "name",
-                "updateTime"
-            ],
-            "type": "object",
-            "properties": {
-                "eTag": {
-                    "maxLength": 50,
-                    "minLength": 0,
-                    "type": "string"
-                },
-                "creationTime": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "updateTime": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "id": {
-                    "type": "string",
-                    "format": "uuid"
-                },
-                "name": {
-                    "maxLength": 250,
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string",
-                    "nullable": true
-                },
-                "draft": {
-                    "type": "boolean"
-                },
-                "requestedNotification": {
-                    "type": "boolean"
-                },
-                "categoryId": {
-                    "type": "string",
-                    "nullable": true
-                },
-                "category": {
-                    "$ref": "#/components/schemas/Category"
-                },
-                "nodes": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/components/schemas/ReleaseNode"
+        ??? hint "Schema of the response body"
+            ```json
+            {
+                "required": [
+                    "creationTime",
+                    "draft",
+                    "eTag",
+                    "name",
+                    "updateTime"
+                ],
+                "type": "object",
+                "properties": {
+                    "eTag": {
+                        "maxLength": 50,
+                        "minLength": 0,
+                        "type": "string"
                     },
-                    "nullable": true
-                },
-                "countries": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/components/schemas/ReleaseCountry"
+                    "creationTime": {
+                        "type": "string",
+                        "format": "date-time"
                     },
-                    "nullable": true
-                },
-                "history": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/components/schemas/ReleaseHistory"
+                    "updateTime": {
+                        "type": "string",
+                        "format": "date-time"
                     },
-                    "nullable": true
-                },
-                "organizations": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/components/schemas/ReleaseOrganization"
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
                     },
-                    "nullable": true
-                }
-            },
-            "additionalProperties": false
-        }
-        ```
-
-
+                    "name": {
+                        "maxLength": 250,
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "draft": {
+                        "type": "boolean"
+                    },
+                    "requestedNotification": {
+                        "type": "boolean"
+                    },
+                    "categoryId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "category": {
+                        "$ref": "#/components/schemas/Category"
+                    },
+                    "nodes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ReleaseNode"
+                        },
+                        "nullable": true
+                    },
+                    "countries": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ReleaseCountry"
+                        },
+                        "nullable": true
+                    },
+                    "history": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ReleaseHistory"
+                        },
+                        "nullable": true
+                    },
+                    "organizations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ReleaseOrganization"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            }
+            ```
+    
+    
 
 <hr class="operation-separator" />
 
@@ -3075,13 +3006,10 @@ Deletes a release by id.
         ```
 
 
-
-<p class="response-title">
-    <strong>Response <span class="response-code code-200">200</span>&nbsp;<span class="status-phrase">OK</span></strong>
-</p>
-
-=== "application/json"
+=== "200 OK"
     
+    === "application/json"
+        
     
     ```json
     {
@@ -3174,92 +3102,92 @@ Deletes a release by id.
     ```
     <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
 
-    <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
+        <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
-    ??? hint "Schema of the response body"
-        ```json
-        {
-            "required": [
-                "creationTime",
-                "draft",
-                "eTag",
-                "name",
-                "updateTime"
-            ],
-            "type": "object",
-            "properties": {
-                "eTag": {
-                    "maxLength": 50,
-                    "minLength": 0,
-                    "type": "string"
-                },
-                "creationTime": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "updateTime": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "id": {
-                    "type": "string",
-                    "format": "uuid"
-                },
-                "name": {
-                    "maxLength": 250,
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string",
-                    "nullable": true
-                },
-                "draft": {
-                    "type": "boolean"
-                },
-                "requestedNotification": {
-                    "type": "boolean"
-                },
-                "categoryId": {
-                    "type": "string",
-                    "nullable": true
-                },
-                "category": {
-                    "$ref": "#/components/schemas/Category"
-                },
-                "nodes": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/components/schemas/ReleaseNode"
+        ??? hint "Schema of the response body"
+            ```json
+            {
+                "required": [
+                    "creationTime",
+                    "draft",
+                    "eTag",
+                    "name",
+                    "updateTime"
+                ],
+                "type": "object",
+                "properties": {
+                    "eTag": {
+                        "maxLength": 50,
+                        "minLength": 0,
+                        "type": "string"
                     },
-                    "nullable": true
-                },
-                "countries": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/components/schemas/ReleaseCountry"
+                    "creationTime": {
+                        "type": "string",
+                        "format": "date-time"
                     },
-                    "nullable": true
-                },
-                "history": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/components/schemas/ReleaseHistory"
+                    "updateTime": {
+                        "type": "string",
+                        "format": "date-time"
                     },
-                    "nullable": true
-                },
-                "organizations": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/components/schemas/ReleaseOrganization"
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
                     },
-                    "nullable": true
-                }
-            },
-            "additionalProperties": false
-        }
-        ```
-
-
+                    "name": {
+                        "maxLength": 250,
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "draft": {
+                        "type": "boolean"
+                    },
+                    "requestedNotification": {
+                        "type": "boolean"
+                    },
+                    "categoryId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "category": {
+                        "$ref": "#/components/schemas/Category"
+                    },
+                    "nodes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ReleaseNode"
+                        },
+                        "nullable": true
+                    },
+                    "countries": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ReleaseCountry"
+                        },
+                        "nullable": true
+                    },
+                    "history": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ReleaseHistory"
+                        },
+                        "nullable": true
+                    },
+                    "organizations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ReleaseOrganization"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            }
+            ```
+    
+    
 
 
 <hr class="operation-separator" />
@@ -3299,13 +3227,10 @@ Deletes a release by id.
         </tr>
     </tbody>
 </table>
-
-<p class="response-title">
-    <strong>Response <span class="response-code code-200">200</span>&nbsp;<span class="status-phrase">OK</span></strong>
-</p>
-
-=== "application/json"
+=== "200 OK"
     
+    === "application/json"
+        
     
     ```json
     {
@@ -3398,92 +3323,92 @@ Deletes a release by id.
     ```
     <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
 
-    <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
+        <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
-    ??? hint "Schema of the response body"
-        ```json
-        {
-            "required": [
-                "creationTime",
-                "draft",
-                "eTag",
-                "name",
-                "updateTime"
-            ],
-            "type": "object",
-            "properties": {
-                "eTag": {
-                    "maxLength": 50,
-                    "minLength": 0,
-                    "type": "string"
-                },
-                "creationTime": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "updateTime": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "id": {
-                    "type": "string",
-                    "format": "uuid"
-                },
-                "name": {
-                    "maxLength": 250,
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string",
-                    "nullable": true
-                },
-                "draft": {
-                    "type": "boolean"
-                },
-                "requestedNotification": {
-                    "type": "boolean"
-                },
-                "categoryId": {
-                    "type": "string",
-                    "nullable": true
-                },
-                "category": {
-                    "$ref": "#/components/schemas/Category"
-                },
-                "nodes": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/components/schemas/ReleaseNode"
+        ??? hint "Schema of the response body"
+            ```json
+            {
+                "required": [
+                    "creationTime",
+                    "draft",
+                    "eTag",
+                    "name",
+                    "updateTime"
+                ],
+                "type": "object",
+                "properties": {
+                    "eTag": {
+                        "maxLength": 50,
+                        "minLength": 0,
+                        "type": "string"
                     },
-                    "nullable": true
-                },
-                "countries": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/components/schemas/ReleaseCountry"
+                    "creationTime": {
+                        "type": "string",
+                        "format": "date-time"
                     },
-                    "nullable": true
-                },
-                "history": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/components/schemas/ReleaseHistory"
+                    "updateTime": {
+                        "type": "string",
+                        "format": "date-time"
                     },
-                    "nullable": true
-                },
-                "organizations": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/components/schemas/ReleaseOrganization"
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
                     },
-                    "nullable": true
-                }
-            },
-            "additionalProperties": false
-        }
-        ```
-
-
+                    "name": {
+                        "maxLength": 250,
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "draft": {
+                        "type": "boolean"
+                    },
+                    "requestedNotification": {
+                        "type": "boolean"
+                    },
+                    "categoryId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "category": {
+                        "$ref": "#/components/schemas/Category"
+                    },
+                    "nodes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ReleaseNode"
+                        },
+                        "nullable": true
+                    },
+                    "countries": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ReleaseCountry"
+                        },
+                        "nullable": true
+                    },
+                    "history": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ReleaseHistory"
+                        },
+                        "nullable": true
+                    },
+                    "organizations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ReleaseOrganization"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            }
+            ```
+    
+    
 
 
 <hr class="operation-separator" />
@@ -3558,13 +3483,10 @@ Deletes a release by id.
         ```
 
 
-
-<p class="response-title">
-    <strong>Response <span class="response-code code-200">200</span>&nbsp;<span class="status-phrase">OK</span></strong>
-</p>
-
-=== "application/json"
+=== "200 OK"
     
+    === "application/json"
+        
     
     ```json
     {
@@ -3657,92 +3579,92 @@ Deletes a release by id.
     ```
     <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
 
-    <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
+        <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
-    ??? hint "Schema of the response body"
-        ```json
-        {
-            "required": [
-                "creationTime",
-                "draft",
-                "eTag",
-                "name",
-                "updateTime"
-            ],
-            "type": "object",
-            "properties": {
-                "eTag": {
-                    "maxLength": 50,
-                    "minLength": 0,
-                    "type": "string"
-                },
-                "creationTime": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "updateTime": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "id": {
-                    "type": "string",
-                    "format": "uuid"
-                },
-                "name": {
-                    "maxLength": 250,
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string",
-                    "nullable": true
-                },
-                "draft": {
-                    "type": "boolean"
-                },
-                "requestedNotification": {
-                    "type": "boolean"
-                },
-                "categoryId": {
-                    "type": "string",
-                    "nullable": true
-                },
-                "category": {
-                    "$ref": "#/components/schemas/Category"
-                },
-                "nodes": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/components/schemas/ReleaseNode"
+        ??? hint "Schema of the response body"
+            ```json
+            {
+                "required": [
+                    "creationTime",
+                    "draft",
+                    "eTag",
+                    "name",
+                    "updateTime"
+                ],
+                "type": "object",
+                "properties": {
+                    "eTag": {
+                        "maxLength": 50,
+                        "minLength": 0,
+                        "type": "string"
                     },
-                    "nullable": true
-                },
-                "countries": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/components/schemas/ReleaseCountry"
+                    "creationTime": {
+                        "type": "string",
+                        "format": "date-time"
                     },
-                    "nullable": true
-                },
-                "history": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/components/schemas/ReleaseHistory"
+                    "updateTime": {
+                        "type": "string",
+                        "format": "date-time"
                     },
-                    "nullable": true
-                },
-                "organizations": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/components/schemas/ReleaseOrganization"
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
                     },
-                    "nullable": true
-                }
-            },
-            "additionalProperties": false
-        }
-        ```
-
-
+                    "name": {
+                        "maxLength": 250,
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "draft": {
+                        "type": "boolean"
+                    },
+                    "requestedNotification": {
+                        "type": "boolean"
+                    },
+                    "categoryId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "category": {
+                        "$ref": "#/components/schemas/Category"
+                    },
+                    "nodes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ReleaseNode"
+                        },
+                        "nullable": true
+                    },
+                    "countries": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ReleaseCountry"
+                        },
+                        "nullable": true
+                    },
+                    "history": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ReleaseHistory"
+                        },
+                        "nullable": true
+                    },
+                    "organizations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ReleaseOrganization"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            }
+            ```
+    
+    
 
 
 

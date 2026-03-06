@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.3.1] - 2026-03-??
+## [1.4.0] - 2026-03-??
 
 - Add OAS 3.1 support, cross-version warnings, and fix nullable spacing, by @dcode.
 - Fix MARKDOWN style table separators to use minimum 3 hyphens (issue #39), reported by @michael-nok.
@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix [#30](https://github.com/Neoteroi/essentials-openapi/issues/30): raise an error
   when trying to generate output from an older Swagger v2 specification file (these were
   never supported as there was never a `/mk/v2/` namespace, intentionally).
+- Fix [#35](https://github.com/Neoteroi/essentials-openapi/issues/35): group response
+  codes in a tab group on MkDocs output, reported by @Andre601.
 
 ## [1.3.0] - 2025-11-19
 

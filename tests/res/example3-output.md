@@ -63,13 +63,10 @@ List all pets
         </tr>
     </tbody>
 </table>
-
-<p class="response-title">
-    <strong>Response <span class="response-code code-200">200</span>&nbsp;<span class="status-phrase">OK</span></strong>
-</p>
-
-=== "application/json"
+=== "200 OK"
     
+    === "application/json"
+        
     
     ```json
     [
@@ -83,47 +80,44 @@ List all pets
     ```
     <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
 
-    
+        
 
-    ??? hint "Schema of the response body"
-        ```json
-        {
-            "type": "array",
-            "items": {
-                "$ref": "#/components/schemas/Pet"
+        ??? hint "Schema of the response body"
+            ```json
+            {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/Pet"
+                }
             }
-        }
-        ```
-
-
-<div class="response-section">
-    <p class="response-headers sub-section-title">Response headers</p>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Schema</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><code>x-next</code></td>
-                <td>A link to the next page of responses</td>
-                <td><span class="string-type">string</span></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-
-<p class="response-title">
-    <strong>Other responses</strong>
-</p>
-
-=== "application/json"
+            ```
     
+    
+    <div class="response-section">
+        <p class="response-headers sub-section-title">Response headers</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Schema</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>x-next</code></td>
+                    <td>A link to the next page of responses</td>
+                    <td><span class="string-type">string</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+=== "Other responses"
+    
+    === "application/json"
+        
     
     ```json
     {
@@ -133,45 +127,39 @@ List all pets
     ```
     <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
 
-    
+        
 
-    ??? hint "Schema of the response body"
-        ```json
-        {
-            "type": "object",
-            "required": [
-                "code",
-                "message"
-            ],
-            "properties": {
-                "code": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "message": {
-                    "type": "string"
+        ??? hint "Schema of the response body"
+            ```json
+            {
+                "type": "object",
+                "required": [
+                    "code",
+                    "message"
+                ],
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
                 }
             }
-        }
-        ```
-
-
+            ```
+    
+    
 
 <hr class="operation-separator" />
 
 ### <span class="http-post">POST</span> /pets
 Create a pet
-
-<p class="response-title">
-    <strong>Response <span class="response-code code-201">201</span>&nbsp;<span class="status-phrase">Created</span></strong>
-</p>
-
-<p class="response-title">
-    <strong>Other responses</strong>
-</p>
-
-=== "application/json"
+=== "201 Created"
+=== "Other responses"
     
+    === "application/json"
+        
     
     ```json
     {
@@ -181,29 +169,29 @@ Create a pet
     ```
     <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
 
-    
+        
 
-    ??? hint "Schema of the response body"
-        ```json
-        {
-            "type": "object",
-            "required": [
-                "code",
-                "message"
-            ],
-            "properties": {
-                "code": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "message": {
-                    "type": "string"
+        ??? hint "Schema of the response body"
+            ```json
+            {
+                "type": "object",
+                "required": [
+                    "code",
+                    "message"
+                ],
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
                 }
             }
-        }
-        ```
-
-
+            ```
+    
+    
 
 
 <hr class="operation-separator" />
@@ -235,13 +223,10 @@ Info for a specific pet
         </tr>
     </tbody>
 </table>
-
-<p class="response-title">
-    <strong>Response <span class="response-code code-200">200</span>&nbsp;<span class="status-phrase">OK</span></strong>
-</p>
-
-=== "application/json"
+=== "200 OK"
     
+    === "application/json"
+        
     
     ```json
     {
@@ -253,47 +238,44 @@ Info for a specific pet
     ```
     <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
 
-    
+        
 
-    ??? hint "Schema of the response body"
-        ```json
-        {
-            "type": "object",
-            "required": [
-                "id",
-                "name"
-            ],
-            "properties": {
-                "id": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "tag": {
-                    "type": "string"
-                },
-                "category": {
-                    "type": "string",
-                    "enum": [
-                        "One",
-                        "Two",
-                        "Three"
-                    ]
+        ??? hint "Schema of the response body"
+            ```json
+            {
+                "type": "object",
+                "required": [
+                    "id",
+                    "name"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "tag": {
+                        "type": "string"
+                    },
+                    "category": {
+                        "type": "string",
+                        "enum": [
+                            "One",
+                            "Two",
+                            "Three"
+                        ]
+                    }
                 }
             }
-        }
-        ```
-
-
-
-<p class="response-title">
-    <strong>Other responses</strong>
-</p>
-
-=== "application/json"
+            ```
     
+    
+=== "Other responses"
+    
+    === "application/json"
+        
     
     ```json
     {
@@ -303,29 +285,29 @@ Info for a specific pet
     ```
     <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
 
-    
+        
 
-    ??? hint "Schema of the response body"
-        ```json
-        {
-            "type": "object",
-            "required": [
-                "code",
-                "message"
-            ],
-            "properties": {
-                "code": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "message": {
-                    "type": "string"
+        ??? hint "Schema of the response body"
+            ```json
+            {
+                "type": "object",
+                "required": [
+                    "code",
+                    "message"
+                ],
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
                 }
             }
-        }
-        ```
-
-
+            ```
+    
+    
 
 <hr class="operation-separator" />
 
@@ -354,10 +336,7 @@ Info for a specific pet
         ```
 
 
-
-<p class="response-title">
-    <strong>Response <span class="response-code code-200">200</span>&nbsp;<span class="status-phrase">OK</span></strong>
-</p>
+=== "200 OK"
 
 
 
