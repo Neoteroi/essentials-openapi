@@ -58,7 +58,9 @@ def test_swagger2_raises_not_supported():
     Swagger 2.0 specs should raise a clear ValueError instead of silently
     producing empty output.
     """
-    with pytest.raises(ValueError, match="Swagger 2.0 specifications are not supported"):
+    with pytest.raises(
+        ValueError, match="Swagger 2.0 specifications are not supported"
+    ):
         OpenAPIV3DocumentationHandler({"swagger": "2.0", "info": {}, "paths": {}})
 
 
