@@ -140,6 +140,11 @@ def get_example_from_schema(schema) -> Any:
     if isinstance(examples, list) and examples:
         return examples[0]
 
+    # enum without explicit type - return the first value directly
+    enum = schema.get("enum")
+    if isinstance(enum, list) and enum:
+        return enum[0]
+
     # does it have a type?
     handlers_types: List[Type[SchemaExampleHandler]] = list(
         get_subclasses(SchemaExampleHandler)
