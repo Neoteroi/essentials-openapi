@@ -172,7 +172,6 @@ class OpenAPIExample1(TestItem):
         info:
             title: Cats API
             version: 1.0.0
-        jsonSchemaDialect: https://json-schema.org/draft/2020-12/schema
         paths:
             /:
                 summary: summary
@@ -214,7 +213,6 @@ class OpenAPIExample1(TestItem):
                 "title": "Cats API",
                 "version": "1.0.0"
             },
-            "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
             "paths": {
                 "/": {
                     "summary": "summary"
@@ -613,7 +611,6 @@ class OpenAPIExample3(TestItem):
         info:
             title: Weather API
             version: 0.0.0-alpha
-        jsonSchemaDialect: https://json-schema.org/draft/2020-12/schema
         paths:
             /weather:
                 summary: Call current weather data for one location
@@ -683,7 +680,6 @@ class OpenAPIExample3(TestItem):
                 "title": "Weather API",
                 "version": "0.0.0-alpha"
             },
-            "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
             "paths": {
                 "/weather": {
                     "summary": "Call current weather data for one location",
@@ -831,7 +827,6 @@ openapi: 3.1.0
 info:
     title: Example API
     version: 0.0.0-alpha
-jsonSchemaDialect: https://json-schema.org/draft/2020-12/schema
 paths:
     /:
         summary: Test the example snake_case properness
@@ -869,7 +864,6 @@ paths:
         "title": "Example API",
         "version": "0.0.0-alpha"
     },
-    "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
     "paths": {
         "/": {
             "summary": "Test the example snake_case properness",
@@ -976,7 +970,6 @@ openapi: 3.1.0
 info:
     title: Example API
     version: 0.0.0-alpha
-jsonSchemaDialect: https://json-schema.org/draft/2020-12/schema
 paths:
     /:
         summary: Test the example snake_case properness
@@ -1022,7 +1015,6 @@ paths:
         "title": "Example API",
         "version": "0.0.0-alpha"
     },
-    "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
     "paths": {
         "/": {
             "summary": "Test the example snake_case properness",
@@ -1153,7 +1145,6 @@ openapi: 3.1.0
 info:
     title: Example API
     version: 0.0.0-alpha
-jsonSchemaDialect: https://json-schema.org/draft/2020-12/schema
 paths:
     /:
         summary: Test the example snake_case properness
@@ -1208,7 +1199,6 @@ paths:
         "title": "Example API",
         "version": "0.0.0-alpha"
     },
-    "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
     "paths": {
         "/": {
             "summary": "Test the example snake_case properness",
@@ -1399,7 +1389,6 @@ openapi: 3.1.0
 info:
     title: Example API
     version: 0.0.0-alpha
-jsonSchemaDialect: https://json-schema.org/draft/2020-12/schema
 paths:
     /:
         description: Lorem ipsum dolor sit amet
@@ -1499,7 +1488,6 @@ components:
         "title": "Example API",
         "version": "0.0.0-alpha"
     },
-    "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
     "paths": {
         "/": {
             "description": "Lorem ipsum dolor sit amet",
@@ -1697,7 +1685,6 @@ openapi: 3.1.0
 info:
     title: Example API
     version: 0.0.0-alpha
-jsonSchemaDialect: https://json-schema.org/draft/2020-12/schema
 paths:
     /:
         summary: Test the example snake_case properness
@@ -1743,7 +1730,6 @@ paths:
         "title": "Example API",
         "version": "0.0.0-alpha"
     },
-    "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
     "paths": {
         "/": {
             "summary": "Test the example snake_case properness",
@@ -1880,7 +1866,6 @@ class ServerExample1(TestItem):
     def yaml(self) -> str:
         return """
         openapi: 3.1.0
-        jsonSchemaDialect: https://json-schema.org/draft/2020-12/schema
         servers:
         -   url: https://{username}.gigantic-server.com:{port}/{basePath}
             description: The production API server
@@ -1902,7 +1887,6 @@ class ServerExample1(TestItem):
         return """
         {
             "openapi": "3.1.0",
-            "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
             "servers": [
                 {
                     "url": "https://{username}.gigantic-server.com:{port}/{basePath}",

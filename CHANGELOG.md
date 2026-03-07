@@ -21,6 +21,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix [#49](https://github.com/Neoteroi/essentials-openapi/issues/49): support `$ref`
   values of the form `file.yaml#/fragment/path` (external file with JSON Pointer
   fragment), reported by @mbklein.
+- Fix [#55](https://github.com/Neoteroi/essentials-openapi/issues/55): `jsonSchemaDialect`
+  is not required and should not have a default value.
 
 ## [1.3.0] - 2025-11-19
 

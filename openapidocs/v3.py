@@ -957,8 +957,8 @@ class OpenAPI(OpenAPIRoot):
     Attributes:
         openapi (str): The semantic version number of the OpenAPI Specification version.
         info (Info | None): Metadata about the API.
-        json_schema_dialect (str): The default value for the $schema keyword within Schema Objects contained
-                                  within this OAS document.
+        json_schema_dialect (str | None): The default value for the $schema keyword within Schema Objects contained
+                                  within this OAS document. Optional; if omitted, the dialect is not declared.
         paths (dict[str, PathItem] | None): The available paths and operations for the API.
         servers (list[Server] | None): An array of Server Objects that provide connectivity information
                                         to a target server.
@@ -971,7 +971,7 @@ class OpenAPI(OpenAPIRoot):
 
     openapi: str = "3.1.0"
     info: Info | None = None
-    json_schema_dialect: str = "https://json-schema.org/draft/2020-12/schema"
+    json_schema_dialect: str | None = None
     paths: dict[str, PathItem] | None = None
     servers: list[Server] | None = None
     components: Components | None = None
