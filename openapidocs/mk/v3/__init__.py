@@ -305,7 +305,10 @@ class OpenAPIV3DocumentationHandler:
                     # Strip the leading '/' then split on '/'.
                     keys = fragment.lstrip("/").split("/")
                     for key in keys:
-                        if not isinstance(sub_fragment, dict) or key not in sub_fragment:
+                        if (
+                            not isinstance(sub_fragment, dict)
+                            or key not in sub_fragment
+                        ):
                             raise OpenAPIDocumentationHandlerError(
                                 f"Cannot resolve fragment '{fragment}' in {referred_file}: "
                                 f"key '{key}' not found."
