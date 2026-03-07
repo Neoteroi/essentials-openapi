@@ -163,9 +163,34 @@ class TestGetExampleFromSchemaOas31:
         assert get_example_from_schema({"type": ["null"]}) is None
 
 
-# ---------------------------------------------------------------------------
-# OpenAPIV3DocumentationHandler — OAS 3.1 rendering
-# ---------------------------------------------------------------------------
+class TestGetExampleFromSchemaAnnotations:
+    """Tests for JSON Schema draft 6+ examples array and enum handling."""
+
+    @pytest.mark.parametrize(
+        "schema, expected",
+        [
+            # examples array (JSON Schema draft 6+) - first value should be used
+            ({"type": "string", "examples": ["A-DSP", "MON 1"]}, "A-DSP"),
+            ({"type": "integer", "examples": [42, 99]}, 42),
+            ({"type": "number", "examples": [3.14, 2.71]}, 3.14),
+            ({"type": "boolean", "examples": [False, True]}, False),
+            # example (singular) takes precedence over examples (plural)
+            (
+                {"type": "string", "example": "override", "examples": ["A-DSP"]},
+                "override",
+            ),
+            # empty examples list falls through to type handler
+            ({"type": "string", "examples": []}, "string"),
+            # enum on non-string types
+            ({"type": "integer", "enum": [1, 2, 3]}, 1),
+            ({"type": "number", "enum": [1.5, 2.5]}, 1.5),
+            ({"type": "boolean", "enum": [False]}, False),
+            # enum on string (pre-existing behaviour still works)
+            ({"type": "string", "enum": ["active", "inactive"]}, "active"),
+        ],
+    )
+    def test_examples_and_enum(self, schema, expected):
+        assert get_example_from_schema(schema) == expected
 
 
 class TestOas31DocumentationHandler:

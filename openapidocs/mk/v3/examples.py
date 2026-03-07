@@ -35,6 +35,10 @@ class ScalarExampleHandler(SchemaExampleHandler):
     formats: Dict[str, Callable[[], Any]]
 
     def get_example(self, schema) -> str:
+        enum = schema.get("enum")
+        if isinstance(enum, list) and enum:
+            return enum[0]
+
         format = schema.get("format")
 
         if format and format in self.formats:
@@ -55,12 +59,6 @@ class StringExampleHandler(ScalarExampleHandler):
         "byte": lambda: "TG9yZW0gaXBzdW0gZG9sb3Igc2l0IGFtZXQ=",
         "binary": lambda: "TG9yZW0gaXBzdW0gZG9sb3Igc2l0IGFtZXQ=",
     }
-
-    def get_example(self, schema) -> str:
-        enum = schema.get("enum")
-        if isinstance(enum, list):
-            return enum[0]
-        return super().get_example(schema)
 
 
 class IntegerExampleHandler(ScalarExampleHandler):
@@ -137,6 +135,10 @@ def get_example_from_schema(schema) -> Any:
 
     if "example" in schema:
         return schema["example"]
+
+    examples = schema.get("examples")
+    if isinstance(examples, list) and examples:
+        return examples[0]
 
     # does it have a type?
     handlers_types: List[Type[SchemaExampleHandler]] = list(

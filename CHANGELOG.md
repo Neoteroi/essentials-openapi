@@ -26,6 +26,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix [#60](https://github.com/Neoteroi/essentials-openapi/issues/60): resolve `$ref`
   values in response headers pointing to `#/components/headers/...` to avoid
   `UndefinedError` when rendering response tables, reported by @copiousfreetime.
+- Fix [#64](https://github.com/Neoteroi/essentials-openapi/issues/64): use `examples`
+  array (JSON Schema draft 6+) as a fallback for auto-generated response examples;
+  also use `enum` values as examples for all scalar types (integer, number, boolean),
+  reported by @jan-ldwg.
 
 ## [1.3.0] - 2025-11-19
 
