@@ -27,31 +27,14 @@
     {% endwith -%}
     {% endif -%}
     {%- if definition.headers %}
-    <div class="response-section">
-        <p class="response-headers sub-section-title">{{texts.response_headers}}</p>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>{{texts.name}}</th>
-                    <th>{{texts.description}}</th>
-                    <th>{{texts.schema}}</th>
-                </tr>
-            </thead>
-            <tbody>
-                {%- for header_name, header_definition in handler.get_response_headers(definition).items() %}
-                <tr>
-                    <td><code>{{header_name}}</code></td>
-                    <td>{{header_definition.description}}</td>
-                    <td>
-                        {%- with schema = header_definition.schema %}
-                        {%- include "partial/schema-repr.html" -%}
-                        {% endwith -%}
-                    </td>
-                </tr>
-                {%- endfor %}
-            </tbody>
-        </table>
-    </div>
+    **{{texts.response_headers}}**
+
+    | {{texts.name}} | {{texts.description}} | {{texts.schema}} |
+    | --- | --- | --- |
+    {%- for header_name, header_definition in handler.get_response_headers(definition).items() %}
+    | `{{header_name}}` | {{header_definition.description or ""}} | {%- with schema = header_definition.schema %}{%- include "partial/schema-repr.html" -%}{%- endwith %} |
+    {%- endfor %}
+
     {% endif -%}
 {%- endfor -%}

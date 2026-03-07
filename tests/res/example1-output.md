@@ -166,36 +166,15 @@ Initializes a file upload operation.
             ```
     
     
-    <div class="response-section">
-        <p class="response-headers sub-section-title">Response headers</p>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Schema</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><code>X-Rate-Limit-Limit</code></td>
-                    <td>The number of allowed requests in the current period</td>
-                    <td><span class="integer-type">integer</span></td>
-                </tr>
-                <tr>
-                    <td><code>X-Rate-Limit-Remaining</code></td>
-                    <td>The number of remaining requests in the current period</td>
-                    <td><span class="integer-type">integer</span></td>
-                </tr>
-                <tr>
-                    <td><code>X-Rate-Limit-Reset</code></td>
-                    <td>The number of seconds left in the current period</td>
-                    <td><span class="integer-type">integer</span></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    **Response headers**
+
+    | Name | Description | Schema |
+    | --- | --- | --- |
+    | `X-Rate-Limit-Limit` | The number of allowed requests in the current period |<span class="integer-type">integer</span> |
+    | `X-Rate-Limit-Remaining` | The number of remaining requests in the current period |<span class="integer-type">integer</span> |
+    | `X-Rate-Limit-Reset` | The number of seconds left in the current period |<span class="integer-type">integer</span> |
+
     
 === "400 Bad Request"
     <div class="common-response"><p>Refer to the common response description: <a href="#illegalinput" class="ref-link">IllegalInput</a>.</p></div>

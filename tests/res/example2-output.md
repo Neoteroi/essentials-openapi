@@ -109,26 +109,13 @@ List all pets
             ```
     
     
-    <div class="response-section">
-        <p class="response-headers sub-section-title">Response headers</p>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Schema</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><code>x-next</code></td>
-                    <td>A link to the next page of responses</td>
-                    <td><span class="string-type">string</span></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    **Response headers**
+
+    | Name | Description | Schema |
+    | --- | --- | --- |
+    | `x-next` | A link to the next page of responses |<span class="string-type">string</span> |
+
     
 === "Other responses"
     
