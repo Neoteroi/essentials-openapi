@@ -7,6 +7,10 @@ on:
         description: "Publish artifacts (Y|N)"
         required: true
         default: "N"
+      publish_to_test_pypi:
+        description: "Publish to TEST PyPi (Y|N)"
+        required: true
+        default: "N"
   release:
     types: [published]
   push:
@@ -109,6 +113,7 @@ jobs:
         run: |
           cd dist
           twine upload -r testpypi dist/*
+        if: github.event_name == 'workflow_dispatch' && github.event.inputs.publish_to_test_pypi == 'Y'
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.test_pypi_password }}
