@@ -187,6 +187,9 @@ class TestGetExampleFromSchemaAnnotations:
             ({"type": "boolean", "enum": [False]}, False),
             # enum on string (pre-existing behaviour still works)
             ({"type": "string", "enum": ["active", "inactive"]}, "active"),
+            # enum without explicit type (valid JSON Schema)
+            ({"enum": ["active", "inactive"]}, "active"),
+            ({"enum": [1, 2, 3]}, 1),
         ],
     )
     def test_examples_and_enum(self, schema, expected):
