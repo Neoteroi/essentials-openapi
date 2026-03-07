@@ -607,6 +607,19 @@ class OpenAPIV3DocumentationHandler:
 
         return results
 
+    def get_response_headers(self, response_definition: dict) -> dict:
+        """
+        Returns the headers of a response definition, resolving any $ref values
+        so that the template can access fields like schema and description directly.
+        """
+        headers = response_definition.get("headers")
+        if not headers:
+            return {}
+        return {
+            name: self._resolve_opt_ref(header_def)
+            for name, header_def in headers.items()
+        }
+
     def write(self) -> str:
         return self._writer.write(
             self.doc,
