@@ -126,17 +126,17 @@ Initializes a file upload operation.
     
     === "application/json"
         
-    
-    ```json
-    {
-        "baseURL": "string",
-        "fileId": "string",
-        "fileName": "string",
-        "token": "string"
-    }
-    ```
-    <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
-
+        
+        ```json
+        {
+            "baseURL": "string",
+            "fileId": "string",
+            "fileName": "string",
+            "token": "string"
+        }
+        ```
+        <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
+        
         <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
         ??? hint "Schema of the response body"
@@ -240,85 +240,85 @@ Gets the list of categories supported by the system.
     
     === "application/json"
         
-    
-    ```json
-    [
-        {
-            "eTag": "string",
-            "creationTime": "2022-04-13T15:42:05.901Z",
-            "updateTime": "2022-04-13T15:42:05.901Z",
-            "id": "string",
-            "name": "string",
-            "description": "string",
-            "releases": [
-                {
-                    "eTag": "string",
-                    "creationTime": "2022-04-13T15:42:05.901Z",
-                    "updateTime": "2022-04-13T15:42:05.901Z",
-                    "id": "00000000-0000-0000-0000-000000000000",
-                    "name": "string",
-                    "description": "string",
-                    "draft": true,
-                    "requestedNotification": true,
-                    "categoryId": "string",
-                    "category": null,
-                    "nodes": [
-                        {
-                            "id": "00000000-0000-0000-0000-000000000000",
-                            "nodeId": "00000000-0000-0000-0000-000000000000",
-                            "releaseId": "00000000-0000-0000-0000-000000000000",
-                            "node": {
-                                "eTag": "string",
-                                "creationTime": "2022-04-13T15:42:05.901Z",
-                                "updateTime": "2022-04-13T15:42:05.901Z",
+        
+        ```json
+        [
+            {
+                "eTag": "string",
+                "creationTime": "2022-04-13T15:42:05.901Z",
+                "updateTime": "2022-04-13T15:42:05.901Z",
+                "id": "string",
+                "name": "string",
+                "description": "string",
+                "releases": [
+                    {
+                        "eTag": "string",
+                        "creationTime": "2022-04-13T15:42:05.901Z",
+                        "updateTime": "2022-04-13T15:42:05.901Z",
+                        "id": "00000000-0000-0000-0000-000000000000",
+                        "name": "string",
+                        "description": "string",
+                        "draft": true,
+                        "requestedNotification": true,
+                        "categoryId": "string",
+                        "category": null,
+                        "nodes": [
+                            {
                                 "id": "00000000-0000-0000-0000-000000000000",
-                                "name": "string",
-                                "extension": "string",
-                                "type": "string",
-                                "icon": "string",
-                                "size": 26
-                            },
-                            "release": null
-                        }
-                    ],
-                    "countries": [
-                        {
-                            "countryId": "string",
-                            "releaseId": "00000000-0000-0000-0000-000000000000",
-                            "country": {
-                                "id": "string",
-                                "name": "string",
-                                "countryCode": "string"
-                            },
-                            "release": null
-                        }
-                    ],
-                    "history": [
-                        {
-                            "id": "00000000-0000-0000-0000-000000000000",
-                            "user": "string",
-                            "description": "string",
-                            "data": "string",
-                            "timeStamp": "2022-04-13T15:42:05.901Z",
-                            "releaseId": "00000000-0000-0000-0000-000000000000",
-                            "release": null
-                        }
-                    ],
-                    "organizations": [
-                        {
-                            "organizationId": "00000000-0000-0000-0000-000000000000",
-                            "releaseId": "00000000-0000-0000-0000-000000000000",
-                            "displayName": "string",
-                            "release": null
-                        }
-                    ]
-                }
-            ]
-        }
-    ]
-    ```
-    <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
-
+                                "nodeId": "00000000-0000-0000-0000-000000000000",
+                                "releaseId": "00000000-0000-0000-0000-000000000000",
+                                "node": {
+                                    "eTag": "string",
+                                    "creationTime": "2022-04-13T15:42:05.901Z",
+                                    "updateTime": "2022-04-13T15:42:05.901Z",
+                                    "id": "00000000-0000-0000-0000-000000000000",
+                                    "name": "string",
+                                    "extension": "string",
+                                    "type": "string",
+                                    "icon": "string",
+                                    "size": 26
+                                },
+                                "release": null
+                            }
+                        ],
+                        "countries": [
+                            {
+                                "countryId": "string",
+                                "releaseId": "00000000-0000-0000-0000-000000000000",
+                                "country": {
+                                    "id": "string",
+                                    "name": "string",
+                                    "countryCode": "string"
+                                },
+                                "release": null
+                            }
+                        ],
+                        "history": [
+                            {
+                                "id": "00000000-0000-0000-0000-000000000000",
+                                "user": "string",
+                                "description": "string",
+                                "data": "string",
+                                "timeStamp": "2022-04-13T15:42:05.901Z",
+                                "releaseId": "00000000-0000-0000-0000-000000000000",
+                                "release": null
+                            }
+                        ],
+                        "organizations": [
+                            {
+                                "organizationId": "00000000-0000-0000-0000-000000000000",
+                                "releaseId": "00000000-0000-0000-0000-000000000000",
+                                "displayName": "string",
+                                "release": null
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+        ```
+        <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
+        
         <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
         ??? hint "Schema of the response body"
@@ -371,18 +371,18 @@ Gets a list of countries of the World with English dislay names and ISO country 
     
     === "application/json"
         
-    
-    ```json
-    [
-        {
-            "id": "string",
-            "name": "string",
-            "countryCode": "string"
-        }
-    ]
-    ```
-    <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
-
+        
+        ```json
+        [
+            {
+                "id": "string",
+                "name": "string",
+                "countryCode": "string"
+            }
+        ]
+        ```
+        <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
+        
         <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
         ??? hint "Schema of the response body"
@@ -431,18 +431,18 @@ Gets a list of countries supported by the system, with English dislay names and 
     
     === "application/json"
         
-    
-    ```json
-    [
-        {
-            "id": "string",
-            "name": "string",
-            "countryCode": "string"
-        }
-    ]
-    ```
-    <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
-
+        
+        ```json
+        [
+            {
+                "id": "string",
+                "name": "string",
+                "countryCode": "string"
+            }
+        ]
+        ```
+        <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
+        
         <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
         ??? hint "Schema of the response body"
@@ -551,96 +551,96 @@ Gets a paginated set of downloads records.
     
     === "application/json"
         
-    
-    ```json
-    {
-        "items": [
-            {
-                "id": "00000000-0000-0000-0000-000000000000",
-                "nodeId": "00000000-0000-0000-0000-000000000000",
-                "releaseId": "00000000-0000-0000-0000-000000000000",
-                "userEmail": "string",
-                "userId": "string",
-                "node": {
-                    "eTag": "string",
-                    "creationTime": "2022-04-13T15:42:05.901Z",
-                    "updateTime": "2022-04-13T15:42:05.901Z",
+        
+        ```json
+        {
+            "items": [
+                {
                     "id": "00000000-0000-0000-0000-000000000000",
-                    "name": "string",
-                    "extension": "string",
-                    "type": "string",
-                    "icon": "string",
-                    "size": 26
-                },
-                "release": {
-                    "eTag": "string",
-                    "creationTime": "2022-04-13T15:42:05.901Z",
-                    "updateTime": "2022-04-13T15:42:05.901Z",
-                    "id": "00000000-0000-0000-0000-000000000000",
-                    "name": "string",
-                    "description": "string",
-                    "draft": true,
-                    "requestedNotification": true,
-                    "categoryId": "string",
-                    "category": {
+                    "nodeId": "00000000-0000-0000-0000-000000000000",
+                    "releaseId": "00000000-0000-0000-0000-000000000000",
+                    "userEmail": "string",
+                    "userId": "string",
+                    "node": {
                         "eTag": "string",
                         "creationTime": "2022-04-13T15:42:05.901Z",
                         "updateTime": "2022-04-13T15:42:05.901Z",
-                        "id": "string",
+                        "id": "00000000-0000-0000-0000-000000000000",
+                        "name": "string",
+                        "extension": "string",
+                        "type": "string",
+                        "icon": "string",
+                        "size": 26
+                    },
+                    "release": {
+                        "eTag": "string",
+                        "creationTime": "2022-04-13T15:42:05.901Z",
+                        "updateTime": "2022-04-13T15:42:05.901Z",
+                        "id": "00000000-0000-0000-0000-000000000000",
                         "name": "string",
                         "description": "string",
-                        "releases": null
-                    },
-                    "nodes": [
-                        {
-                            "id": "00000000-0000-0000-0000-000000000000",
-                            "nodeId": "00000000-0000-0000-0000-000000000000",
-                            "releaseId": "00000000-0000-0000-0000-000000000000",
-                            "node": null,
-                            "release": null
-                        }
-                    ],
-                    "countries": [
-                        {
-                            "countryId": "string",
-                            "releaseId": "00000000-0000-0000-0000-000000000000",
-                            "country": {
-                                "id": "string",
-                                "name": "string",
-                                "countryCode": "string"
-                            },
-                            "release": null
-                        }
-                    ],
-                    "history": [
-                        {
-                            "id": "00000000-0000-0000-0000-000000000000",
-                            "user": "string",
+                        "draft": true,
+                        "requestedNotification": true,
+                        "categoryId": "string",
+                        "category": {
+                            "eTag": "string",
+                            "creationTime": "2022-04-13T15:42:05.901Z",
+                            "updateTime": "2022-04-13T15:42:05.901Z",
+                            "id": "string",
+                            "name": "string",
                             "description": "string",
-                            "data": "string",
-                            "timeStamp": "2022-04-13T15:42:05.901Z",
-                            "releaseId": "00000000-0000-0000-0000-000000000000",
-                            "release": null
-                        }
-                    ],
-                    "organizations": [
-                        {
-                            "organizationId": "00000000-0000-0000-0000-000000000000",
-                            "releaseId": "00000000-0000-0000-0000-000000000000",
-                            "displayName": "string",
-                            "release": null
-                        }
-                    ]
-                },
-                "timeStamp": "2022-04-13T15:42:05.901Z",
-                "accessGrantedByOrganizationId": "00000000-0000-0000-0000-000000000000"
-            }
-        ],
-        "total": 26
-    }
-    ```
-    <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
-
+                            "releases": null
+                        },
+                        "nodes": [
+                            {
+                                "id": "00000000-0000-0000-0000-000000000000",
+                                "nodeId": "00000000-0000-0000-0000-000000000000",
+                                "releaseId": "00000000-0000-0000-0000-000000000000",
+                                "node": null,
+                                "release": null
+                            }
+                        ],
+                        "countries": [
+                            {
+                                "countryId": "string",
+                                "releaseId": "00000000-0000-0000-0000-000000000000",
+                                "country": {
+                                    "id": "string",
+                                    "name": "string",
+                                    "countryCode": "string"
+                                },
+                                "release": null
+                            }
+                        ],
+                        "history": [
+                            {
+                                "id": "00000000-0000-0000-0000-000000000000",
+                                "user": "string",
+                                "description": "string",
+                                "data": "string",
+                                "timeStamp": "2022-04-13T15:42:05.901Z",
+                                "releaseId": "00000000-0000-0000-0000-000000000000",
+                                "release": null
+                            }
+                        ],
+                        "organizations": [
+                            {
+                                "organizationId": "00000000-0000-0000-0000-000000000000",
+                                "releaseId": "00000000-0000-0000-0000-000000000000",
+                                "displayName": "string",
+                                "release": null
+                            }
+                        ]
+                    },
+                    "timeStamp": "2022-04-13T15:42:05.901Z",
+                    "accessGrantedByOrganizationId": "00000000-0000-0000-0000-000000000000"
+                }
+            ],
+            "total": 26
+        }
+        ```
+        <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
+        
         <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
         ??? hint "Schema of the response body"
@@ -704,16 +704,16 @@ API health check
     
     === "application/json"
         
-    
-    ```json
-    {
-        "alive": true,
-        "timestamp": "2022-04-13T15:42:05.901Z",
-        "regionName": "string"
-    }
-    ```
-    <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
-
+        
+        ```json
+        {
+            "alive": true,
+            "timestamp": "2022-04-13T15:42:05.901Z",
+            "regionName": "string"
+        }
+        ```
+        <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
+        
         <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
         ??? hint "Schema of the response body"
@@ -777,37 +777,37 @@ API health check
     
     === "application/json"
         
-    
-    ```json
-    {
-        "membership": [
-            {
-                "id": "00000000-0000-0000-0000-000000000000",
-                "organizationName": "string",
-                "organizationNumber": "string",
-                "organizationId": "00000000-0000-0000-0000-000000000000",
-                "categoryId": "string",
-                "role": "string",
-                "organizationBrands": [
-                    "00000000-0000-0000-0000-000000000000"
-                ],
-                "organizationMarkets": [
-                    "00000000-0000-0000-0000-000000000000"
-                ],
-                "brandNames": [
-                    "string"
-                ],
-                "marketCodes": [
-                    "string"
-                ],
-                "scope": "string"
-            }
-        ],
-        "signature": "string"
-    }
-    ```
-    <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
-
+        
+        ```json
+        {
+            "membership": [
+                {
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "organizationName": "string",
+                    "organizationNumber": "string",
+                    "organizationId": "00000000-0000-0000-0000-000000000000",
+                    "categoryId": "string",
+                    "role": "string",
+                    "organizationBrands": [
+                        "00000000-0000-0000-0000-000000000000"
+                    ],
+                    "organizationMarkets": [
+                        "00000000-0000-0000-0000-000000000000"
+                    ],
+                    "brandNames": [
+                        "string"
+                    ],
+                    "marketCodes": [
+                        "string"
+                    ],
+                    "scope": "string"
+                }
+            ],
+            "signature": "string"
+        }
+        ```
+        <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
+        
         <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
         ??? hint "Schema of the response body"
@@ -871,16 +871,16 @@ Returns information about the API itself.
     
     === "application/json"
         
-    
-    ```json
-    {
-        "version": "string",
-        "buildNumber": "string",
-        "contactEmail": "string"
-    }
-    ```
-    <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
-
+        
+        ```json
+        {
+            "version": "string",
+            "buildNumber": "string",
+            "contactEmail": "string"
+        }
+        ```
+        <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
+        
         <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
         ??? hint "Schema of the response body"
@@ -953,98 +953,98 @@ Returns details about a release by id.
     
     === "application/json"
         
-    
-    ```json
-    {
-        "eTag": "string",
-        "creationTime": "2022-04-13T15:42:05.901Z",
-        "updateTime": "2022-04-13T15:42:05.901Z",
-        "id": "00000000-0000-0000-0000-000000000000",
-        "name": "string",
-        "description": "string",
-        "draft": true,
-        "requestedNotification": true,
-        "categoryId": "string",
-        "category": {
+        
+        ```json
+        {
             "eTag": "string",
             "creationTime": "2022-04-13T15:42:05.901Z",
             "updateTime": "2022-04-13T15:42:05.901Z",
-            "id": "string",
+            "id": "00000000-0000-0000-0000-000000000000",
             "name": "string",
             "description": "string",
-            "releases": [
-                {
-                    "eTag": "string",
-                    "creationTime": "2022-04-13T15:42:05.901Z",
-                    "updateTime": "2022-04-13T15:42:05.901Z",
-                    "id": "00000000-0000-0000-0000-000000000000",
-                    "name": "string",
-                    "description": "string",
-                    "draft": true,
-                    "requestedNotification": true,
-                    "categoryId": "string",
-                    "category": null,
-                    "nodes": [
-                        {
-                            "id": "00000000-0000-0000-0000-000000000000",
-                            "nodeId": "00000000-0000-0000-0000-000000000000",
-                            "releaseId": "00000000-0000-0000-0000-000000000000",
-                            "node": {
-                                "eTag": "string",
-                                "creationTime": "2022-04-13T15:42:05.901Z",
-                                "updateTime": "2022-04-13T15:42:05.901Z",
+            "draft": true,
+            "requestedNotification": true,
+            "categoryId": "string",
+            "category": {
+                "eTag": "string",
+                "creationTime": "2022-04-13T15:42:05.901Z",
+                "updateTime": "2022-04-13T15:42:05.901Z",
+                "id": "string",
+                "name": "string",
+                "description": "string",
+                "releases": [
+                    {
+                        "eTag": "string",
+                        "creationTime": "2022-04-13T15:42:05.901Z",
+                        "updateTime": "2022-04-13T15:42:05.901Z",
+                        "id": "00000000-0000-0000-0000-000000000000",
+                        "name": "string",
+                        "description": "string",
+                        "draft": true,
+                        "requestedNotification": true,
+                        "categoryId": "string",
+                        "category": null,
+                        "nodes": [
+                            {
                                 "id": "00000000-0000-0000-0000-000000000000",
-                                "name": "string",
-                                "extension": "string",
-                                "type": "string",
-                                "icon": "string",
-                                "size": 26
-                            },
-                            "release": null
-                        }
-                    ],
-                    "countries": [
-                        {
-                            "countryId": "string",
-                            "releaseId": "00000000-0000-0000-0000-000000000000",
-                            "country": {
-                                "id": "string",
-                                "name": "string",
-                                "countryCode": "string"
-                            },
-                            "release": null
-                        }
-                    ],
-                    "history": [
-                        {
-                            "id": "00000000-0000-0000-0000-000000000000",
-                            "user": "string",
-                            "description": "string",
-                            "data": "string",
-                            "timeStamp": "2022-04-13T15:42:05.901Z",
-                            "releaseId": "00000000-0000-0000-0000-000000000000",
-                            "release": null
-                        }
-                    ],
-                    "organizations": [
-                        {
-                            "organizationId": "00000000-0000-0000-0000-000000000000",
-                            "releaseId": "00000000-0000-0000-0000-000000000000",
-                            "displayName": "string",
-                            "release": null
-                        }
-                    ]
-                }
-            ]
-        },
-        "nodes": null,
-        "countries": null,
-        "history": null,
-        "organizations": null
-    }
-    ```
-    <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
-
+                                "nodeId": "00000000-0000-0000-0000-000000000000",
+                                "releaseId": "00000000-0000-0000-0000-000000000000",
+                                "node": {
+                                    "eTag": "string",
+                                    "creationTime": "2022-04-13T15:42:05.901Z",
+                                    "updateTime": "2022-04-13T15:42:05.901Z",
+                                    "id": "00000000-0000-0000-0000-000000000000",
+                                    "name": "string",
+                                    "extension": "string",
+                                    "type": "string",
+                                    "icon": "string",
+                                    "size": 26
+                                },
+                                "release": null
+                            }
+                        ],
+                        "countries": [
+                            {
+                                "countryId": "string",
+                                "releaseId": "00000000-0000-0000-0000-000000000000",
+                                "country": {
+                                    "id": "string",
+                                    "name": "string",
+                                    "countryCode": "string"
+                                },
+                                "release": null
+                            }
+                        ],
+                        "history": [
+                            {
+                                "id": "00000000-0000-0000-0000-000000000000",
+                                "user": "string",
+                                "description": "string",
+                                "data": "string",
+                                "timeStamp": "2022-04-13T15:42:05.901Z",
+                                "releaseId": "00000000-0000-0000-0000-000000000000",
+                                "release": null
+                            }
+                        ],
+                        "organizations": [
+                            {
+                                "organizationId": "00000000-0000-0000-0000-000000000000",
+                                "releaseId": "00000000-0000-0000-0000-000000000000",
+                                "displayName": "string",
+                                "release": null
+                            }
+                        ]
+                    }
+                ]
+            },
+            "nodes": null,
+            "countries": null,
+            "history": null,
+            "organizations": null
+        }
+        ```
+        <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
+        
         <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
         ??? hint "Schema of the response body"
@@ -1276,98 +1276,98 @@ Deletes a release by id.
     
     === "application/json"
         
-    
-    ```json
-    {
-        "eTag": "string",
-        "creationTime": "2022-04-13T15:42:05.901Z",
-        "updateTime": "2022-04-13T15:42:05.901Z",
-        "id": "00000000-0000-0000-0000-000000000000",
-        "name": "string",
-        "description": "string",
-        "draft": true,
-        "requestedNotification": true,
-        "categoryId": "string",
-        "category": {
+        
+        ```json
+        {
             "eTag": "string",
             "creationTime": "2022-04-13T15:42:05.901Z",
             "updateTime": "2022-04-13T15:42:05.901Z",
-            "id": "string",
+            "id": "00000000-0000-0000-0000-000000000000",
             "name": "string",
             "description": "string",
-            "releases": [
-                {
-                    "eTag": "string",
-                    "creationTime": "2022-04-13T15:42:05.901Z",
-                    "updateTime": "2022-04-13T15:42:05.901Z",
-                    "id": "00000000-0000-0000-0000-000000000000",
-                    "name": "string",
-                    "description": "string",
-                    "draft": true,
-                    "requestedNotification": true,
-                    "categoryId": "string",
-                    "category": null,
-                    "nodes": [
-                        {
-                            "id": "00000000-0000-0000-0000-000000000000",
-                            "nodeId": "00000000-0000-0000-0000-000000000000",
-                            "releaseId": "00000000-0000-0000-0000-000000000000",
-                            "node": {
-                                "eTag": "string",
-                                "creationTime": "2022-04-13T15:42:05.901Z",
-                                "updateTime": "2022-04-13T15:42:05.901Z",
+            "draft": true,
+            "requestedNotification": true,
+            "categoryId": "string",
+            "category": {
+                "eTag": "string",
+                "creationTime": "2022-04-13T15:42:05.901Z",
+                "updateTime": "2022-04-13T15:42:05.901Z",
+                "id": "string",
+                "name": "string",
+                "description": "string",
+                "releases": [
+                    {
+                        "eTag": "string",
+                        "creationTime": "2022-04-13T15:42:05.901Z",
+                        "updateTime": "2022-04-13T15:42:05.901Z",
+                        "id": "00000000-0000-0000-0000-000000000000",
+                        "name": "string",
+                        "description": "string",
+                        "draft": true,
+                        "requestedNotification": true,
+                        "categoryId": "string",
+                        "category": null,
+                        "nodes": [
+                            {
                                 "id": "00000000-0000-0000-0000-000000000000",
-                                "name": "string",
-                                "extension": "string",
-                                "type": "string",
-                                "icon": "string",
-                                "size": 26
-                            },
-                            "release": null
-                        }
-                    ],
-                    "countries": [
-                        {
-                            "countryId": "string",
-                            "releaseId": "00000000-0000-0000-0000-000000000000",
-                            "country": {
-                                "id": "string",
-                                "name": "string",
-                                "countryCode": "string"
-                            },
-                            "release": null
-                        }
-                    ],
-                    "history": [
-                        {
-                            "id": "00000000-0000-0000-0000-000000000000",
-                            "user": "string",
-                            "description": "string",
-                            "data": "string",
-                            "timeStamp": "2022-04-13T15:42:05.901Z",
-                            "releaseId": "00000000-0000-0000-0000-000000000000",
-                            "release": null
-                        }
-                    ],
-                    "organizations": [
-                        {
-                            "organizationId": "00000000-0000-0000-0000-000000000000",
-                            "releaseId": "00000000-0000-0000-0000-000000000000",
-                            "displayName": "string",
-                            "release": null
-                        }
-                    ]
-                }
-            ]
-        },
-        "nodes": null,
-        "countries": null,
-        "history": null,
-        "organizations": null
-    }
-    ```
-    <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
-
+                                "nodeId": "00000000-0000-0000-0000-000000000000",
+                                "releaseId": "00000000-0000-0000-0000-000000000000",
+                                "node": {
+                                    "eTag": "string",
+                                    "creationTime": "2022-04-13T15:42:05.901Z",
+                                    "updateTime": "2022-04-13T15:42:05.901Z",
+                                    "id": "00000000-0000-0000-0000-000000000000",
+                                    "name": "string",
+                                    "extension": "string",
+                                    "type": "string",
+                                    "icon": "string",
+                                    "size": 26
+                                },
+                                "release": null
+                            }
+                        ],
+                        "countries": [
+                            {
+                                "countryId": "string",
+                                "releaseId": "00000000-0000-0000-0000-000000000000",
+                                "country": {
+                                    "id": "string",
+                                    "name": "string",
+                                    "countryCode": "string"
+                                },
+                                "release": null
+                            }
+                        ],
+                        "history": [
+                            {
+                                "id": "00000000-0000-0000-0000-000000000000",
+                                "user": "string",
+                                "description": "string",
+                                "data": "string",
+                                "timeStamp": "2022-04-13T15:42:05.901Z",
+                                "releaseId": "00000000-0000-0000-0000-000000000000",
+                                "release": null
+                            }
+                        ],
+                        "organizations": [
+                            {
+                                "organizationId": "00000000-0000-0000-0000-000000000000",
+                                "releaseId": "00000000-0000-0000-0000-000000000000",
+                                "displayName": "string",
+                                "release": null
+                            }
+                        ]
+                    }
+                ]
+            },
+            "nodes": null,
+            "countries": null,
+            "history": null,
+            "organizations": null
+        }
+        ```
+        <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
+        
         <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
         ??? hint "Schema of the response body"
@@ -1545,86 +1545,86 @@ Deletes a release by id.
     
     === "application/json"
         
-    
-    ```json
-    {
-        "items": [
-            {
-                "eTag": "string",
-                "creationTime": "2022-04-13T15:42:05.901Z",
-                "updateTime": "2022-04-13T15:42:05.901Z",
-                "id": "00000000-0000-0000-0000-000000000000",
-                "name": "string",
-                "description": "string",
-                "draft": true,
-                "requestedNotification": true,
-                "categoryId": "string",
-                "category": {
+        
+        ```json
+        {
+            "items": [
+                {
                     "eTag": "string",
                     "creationTime": "2022-04-13T15:42:05.901Z",
                     "updateTime": "2022-04-13T15:42:05.901Z",
-                    "id": "string",
+                    "id": "00000000-0000-0000-0000-000000000000",
                     "name": "string",
                     "description": "string",
-                    "releases": null
-                },
-                "nodes": [
-                    {
-                        "id": "00000000-0000-0000-0000-000000000000",
-                        "nodeId": "00000000-0000-0000-0000-000000000000",
-                        "releaseId": "00000000-0000-0000-0000-000000000000",
-                        "node": {
-                            "eTag": "string",
-                            "creationTime": "2022-04-13T15:42:05.901Z",
-                            "updateTime": "2022-04-13T15:42:05.901Z",
-                            "id": "00000000-0000-0000-0000-000000000000",
-                            "name": "string",
-                            "extension": "string",
-                            "type": "string",
-                            "icon": "string",
-                            "size": 26
-                        },
-                        "release": null
-                    }
-                ],
-                "countries": [
-                    {
-                        "countryId": "string",
-                        "releaseId": "00000000-0000-0000-0000-000000000000",
-                        "country": {
-                            "id": "string",
-                            "name": "string",
-                            "countryCode": "string"
-                        },
-                        "release": null
-                    }
-                ],
-                "history": [
-                    {
-                        "id": "00000000-0000-0000-0000-000000000000",
-                        "user": "string",
+                    "draft": true,
+                    "requestedNotification": true,
+                    "categoryId": "string",
+                    "category": {
+                        "eTag": "string",
+                        "creationTime": "2022-04-13T15:42:05.901Z",
+                        "updateTime": "2022-04-13T15:42:05.901Z",
+                        "id": "string",
+                        "name": "string",
                         "description": "string",
-                        "data": "string",
-                        "timeStamp": "2022-04-13T15:42:05.901Z",
-                        "releaseId": "00000000-0000-0000-0000-000000000000",
-                        "release": null
-                    }
-                ],
-                "organizations": [
-                    {
-                        "organizationId": "00000000-0000-0000-0000-000000000000",
-                        "releaseId": "00000000-0000-0000-0000-000000000000",
-                        "displayName": "string",
-                        "release": null
-                    }
-                ]
-            }
-        ],
-        "total": 26
-    }
-    ```
-    <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
-
+                        "releases": null
+                    },
+                    "nodes": [
+                        {
+                            "id": "00000000-0000-0000-0000-000000000000",
+                            "nodeId": "00000000-0000-0000-0000-000000000000",
+                            "releaseId": "00000000-0000-0000-0000-000000000000",
+                            "node": {
+                                "eTag": "string",
+                                "creationTime": "2022-04-13T15:42:05.901Z",
+                                "updateTime": "2022-04-13T15:42:05.901Z",
+                                "id": "00000000-0000-0000-0000-000000000000",
+                                "name": "string",
+                                "extension": "string",
+                                "type": "string",
+                                "icon": "string",
+                                "size": 26
+                            },
+                            "release": null
+                        }
+                    ],
+                    "countries": [
+                        {
+                            "countryId": "string",
+                            "releaseId": "00000000-0000-0000-0000-000000000000",
+                            "country": {
+                                "id": "string",
+                                "name": "string",
+                                "countryCode": "string"
+                            },
+                            "release": null
+                        }
+                    ],
+                    "history": [
+                        {
+                            "id": "00000000-0000-0000-0000-000000000000",
+                            "user": "string",
+                            "description": "string",
+                            "data": "string",
+                            "timeStamp": "2022-04-13T15:42:05.901Z",
+                            "releaseId": "00000000-0000-0000-0000-000000000000",
+                            "release": null
+                        }
+                    ],
+                    "organizations": [
+                        {
+                            "organizationId": "00000000-0000-0000-0000-000000000000",
+                            "releaseId": "00000000-0000-0000-0000-000000000000",
+                            "displayName": "string",
+                            "release": null
+                        }
+                    ]
+                }
+            ],
+            "total": 26
+        }
+        ```
+        <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
+        
         <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
         ??? hint "Schema of the response body"
@@ -1737,14 +1737,14 @@ Deletes a release by id.
     
     === "application/json"
         
-    
-    ```json
-    {
-        "id": "00000000-0000-0000-0000-000000000000"
-    }
-    ```
-    <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
-
+        
+        ```json
+        {
+            "id": "00000000-0000-0000-0000-000000000000"
+        }
+        ```
+        <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
+        
         <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
         ??? hint "Schema of the response body"
@@ -1797,21 +1797,21 @@ Deletes a release by id.
     
     === "application/json"
         
-    
-    ```json
-    [
-        {
-            "releaseId": "00000000-0000-0000-0000-000000000000",
-            "releaseName": "string",
-            "publishTime": "2022-04-13T15:42:05.901Z",
-            "countryCode": "string",
-            "countryName": "string",
-            "categoryId": "string"
-        }
-    ]
-    ```
-    <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
-
+        
+        ```json
+        [
+            {
+                "releaseId": "00000000-0000-0000-0000-000000000000",
+                "releaseName": "string",
+                "publishTime": "2022-04-13T15:42:05.901Z",
+                "countryCode": "string",
+                "countryName": "string",
+                "categoryId": "string"
+            }
+        ]
+        ```
+        <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
+        
         <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
         ??? hint "Schema of the response body"
@@ -1860,21 +1860,21 @@ Deletes a release by id.
     
     === "application/json"
         
-    
-    ```json
-    [
-        {
-            "releaseId": "00000000-0000-0000-0000-000000000000",
-            "releaseName": "string",
-            "publishTime": "2022-04-13T15:42:05.901Z",
-            "countryCode": "string",
-            "countryName": "string",
-            "categoryId": "string"
-        }
-    ]
-    ```
-    <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
-
+        
+        ```json
+        [
+            {
+                "releaseId": "00000000-0000-0000-0000-000000000000",
+                "releaseName": "string",
+                "publishTime": "2022-04-13T15:42:05.901Z",
+                "countryCode": "string",
+                "countryName": "string",
+                "categoryId": "string"
+            }
+        ]
+        ```
+        <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
+        
         <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
         ??? hint "Schema of the response body"
@@ -1931,81 +1931,81 @@ Deletes a release by id.
     
     === "application/json"
         
-    
-    ```json
-    [
-        {
-            "id": "00000000-0000-0000-0000-000000000000",
-            "user": "string",
-            "description": "string",
-            "data": "string",
-            "timeStamp": "2022-04-13T15:42:05.901Z",
-            "releaseId": "00000000-0000-0000-0000-000000000000",
-            "release": {
-                "eTag": "string",
-                "creationTime": "2022-04-13T15:42:05.901Z",
-                "updateTime": "2022-04-13T15:42:05.901Z",
+        
+        ```json
+        [
+            {
                 "id": "00000000-0000-0000-0000-000000000000",
-                "name": "string",
+                "user": "string",
                 "description": "string",
-                "draft": true,
-                "requestedNotification": true,
-                "categoryId": "string",
-                "category": {
+                "data": "string",
+                "timeStamp": "2022-04-13T15:42:05.901Z",
+                "releaseId": "00000000-0000-0000-0000-000000000000",
+                "release": {
                     "eTag": "string",
                     "creationTime": "2022-04-13T15:42:05.901Z",
                     "updateTime": "2022-04-13T15:42:05.901Z",
-                    "id": "string",
+                    "id": "00000000-0000-0000-0000-000000000000",
                     "name": "string",
                     "description": "string",
-                    "releases": null
-                },
-                "nodes": [
-                    {
-                        "id": "00000000-0000-0000-0000-000000000000",
-                        "nodeId": "00000000-0000-0000-0000-000000000000",
-                        "releaseId": "00000000-0000-0000-0000-000000000000",
-                        "node": {
-                            "eTag": "string",
-                            "creationTime": "2022-04-13T15:42:05.901Z",
-                            "updateTime": "2022-04-13T15:42:05.901Z",
+                    "draft": true,
+                    "requestedNotification": true,
+                    "categoryId": "string",
+                    "category": {
+                        "eTag": "string",
+                        "creationTime": "2022-04-13T15:42:05.901Z",
+                        "updateTime": "2022-04-13T15:42:05.901Z",
+                        "id": "string",
+                        "name": "string",
+                        "description": "string",
+                        "releases": null
+                    },
+                    "nodes": [
+                        {
                             "id": "00000000-0000-0000-0000-000000000000",
-                            "name": "string",
-                            "extension": "string",
-                            "type": "string",
-                            "icon": "string",
-                            "size": 26
-                        },
-                        "release": null
-                    }
-                ],
-                "countries": [
-                    {
-                        "countryId": "string",
-                        "releaseId": "00000000-0000-0000-0000-000000000000",
-                        "country": {
-                            "id": "string",
-                            "name": "string",
-                            "countryCode": "string"
-                        },
-                        "release": null
-                    }
-                ],
-                "history": null,
-                "organizations": [
-                    {
-                        "organizationId": "00000000-0000-0000-0000-000000000000",
-                        "releaseId": "00000000-0000-0000-0000-000000000000",
-                        "displayName": "string",
-                        "release": null
-                    }
-                ]
+                            "nodeId": "00000000-0000-0000-0000-000000000000",
+                            "releaseId": "00000000-0000-0000-0000-000000000000",
+                            "node": {
+                                "eTag": "string",
+                                "creationTime": "2022-04-13T15:42:05.901Z",
+                                "updateTime": "2022-04-13T15:42:05.901Z",
+                                "id": "00000000-0000-0000-0000-000000000000",
+                                "name": "string",
+                                "extension": "string",
+                                "type": "string",
+                                "icon": "string",
+                                "size": 26
+                            },
+                            "release": null
+                        }
+                    ],
+                    "countries": [
+                        {
+                            "countryId": "string",
+                            "releaseId": "00000000-0000-0000-0000-000000000000",
+                            "country": {
+                                "id": "string",
+                                "name": "string",
+                                "countryCode": "string"
+                            },
+                            "release": null
+                        }
+                    ],
+                    "history": null,
+                    "organizations": [
+                        {
+                            "organizationId": "00000000-0000-0000-0000-000000000000",
+                            "releaseId": "00000000-0000-0000-0000-000000000000",
+                            "displayName": "string",
+                            "release": null
+                        }
+                    ]
+                }
             }
-        }
-    ]
-    ```
-    <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
-
+        ]
+        ```
+        <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
+        
         <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
         ??? hint "Schema of the response body"
@@ -2070,14 +2070,14 @@ Deletes a release by id.
     
     === "application/json"
         
-    
-    ```json
-    {
-        "url": "string"
-    }
-    ```
-    <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
-
+        
+        ```json
+        {
+            "url": "string"
+        }
+        ```
+        <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
+        
         <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
         ??? hint "Schema of the response body"
@@ -2146,14 +2146,14 @@ Deletes a release by id.
     
     === "application/json"
         
-    
-    ```json
-    {
-        "uniqueDownloads": 26
-    }
-    ```
-    <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
-
+        
+        ```json
+        {
+            "uniqueDownloads": 26
+        }
+        ```
+        <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
+        
         <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
         ??? hint "Schema of the response body"
@@ -2247,98 +2247,98 @@ Deletes a release by id.
     
     === "application/json"
         
-    
-    ```json
-    {
-        "eTag": "string",
-        "creationTime": "2022-04-13T15:42:05.901Z",
-        "updateTime": "2022-04-13T15:42:05.901Z",
-        "id": "00000000-0000-0000-0000-000000000000",
-        "name": "string",
-        "description": "string",
-        "draft": true,
-        "requestedNotification": true,
-        "categoryId": "string",
-        "category": {
+        
+        ```json
+        {
             "eTag": "string",
             "creationTime": "2022-04-13T15:42:05.901Z",
             "updateTime": "2022-04-13T15:42:05.901Z",
-            "id": "string",
+            "id": "00000000-0000-0000-0000-000000000000",
             "name": "string",
             "description": "string",
-            "releases": [
-                {
-                    "eTag": "string",
-                    "creationTime": "2022-04-13T15:42:05.901Z",
-                    "updateTime": "2022-04-13T15:42:05.901Z",
-                    "id": "00000000-0000-0000-0000-000000000000",
-                    "name": "string",
-                    "description": "string",
-                    "draft": true,
-                    "requestedNotification": true,
-                    "categoryId": "string",
-                    "category": null,
-                    "nodes": [
-                        {
-                            "id": "00000000-0000-0000-0000-000000000000",
-                            "nodeId": "00000000-0000-0000-0000-000000000000",
-                            "releaseId": "00000000-0000-0000-0000-000000000000",
-                            "node": {
-                                "eTag": "string",
-                                "creationTime": "2022-04-13T15:42:05.901Z",
-                                "updateTime": "2022-04-13T15:42:05.901Z",
+            "draft": true,
+            "requestedNotification": true,
+            "categoryId": "string",
+            "category": {
+                "eTag": "string",
+                "creationTime": "2022-04-13T15:42:05.901Z",
+                "updateTime": "2022-04-13T15:42:05.901Z",
+                "id": "string",
+                "name": "string",
+                "description": "string",
+                "releases": [
+                    {
+                        "eTag": "string",
+                        "creationTime": "2022-04-13T15:42:05.901Z",
+                        "updateTime": "2022-04-13T15:42:05.901Z",
+                        "id": "00000000-0000-0000-0000-000000000000",
+                        "name": "string",
+                        "description": "string",
+                        "draft": true,
+                        "requestedNotification": true,
+                        "categoryId": "string",
+                        "category": null,
+                        "nodes": [
+                            {
                                 "id": "00000000-0000-0000-0000-000000000000",
-                                "name": "string",
-                                "extension": "string",
-                                "type": "string",
-                                "icon": "string",
-                                "size": 26
-                            },
-                            "release": null
-                        }
-                    ],
-                    "countries": [
-                        {
-                            "countryId": "string",
-                            "releaseId": "00000000-0000-0000-0000-000000000000",
-                            "country": {
-                                "id": "string",
-                                "name": "string",
-                                "countryCode": "string"
-                            },
-                            "release": null
-                        }
-                    ],
-                    "history": [
-                        {
-                            "id": "00000000-0000-0000-0000-000000000000",
-                            "user": "string",
-                            "description": "string",
-                            "data": "string",
-                            "timeStamp": "2022-04-13T15:42:05.901Z",
-                            "releaseId": "00000000-0000-0000-0000-000000000000",
-                            "release": null
-                        }
-                    ],
-                    "organizations": [
-                        {
-                            "organizationId": "00000000-0000-0000-0000-000000000000",
-                            "releaseId": "00000000-0000-0000-0000-000000000000",
-                            "displayName": "string",
-                            "release": null
-                        }
-                    ]
-                }
-            ]
-        },
-        "nodes": null,
-        "countries": null,
-        "history": null,
-        "organizations": null
-    }
-    ```
-    <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
-
+                                "nodeId": "00000000-0000-0000-0000-000000000000",
+                                "releaseId": "00000000-0000-0000-0000-000000000000",
+                                "node": {
+                                    "eTag": "string",
+                                    "creationTime": "2022-04-13T15:42:05.901Z",
+                                    "updateTime": "2022-04-13T15:42:05.901Z",
+                                    "id": "00000000-0000-0000-0000-000000000000",
+                                    "name": "string",
+                                    "extension": "string",
+                                    "type": "string",
+                                    "icon": "string",
+                                    "size": 26
+                                },
+                                "release": null
+                            }
+                        ],
+                        "countries": [
+                            {
+                                "countryId": "string",
+                                "releaseId": "00000000-0000-0000-0000-000000000000",
+                                "country": {
+                                    "id": "string",
+                                    "name": "string",
+                                    "countryCode": "string"
+                                },
+                                "release": null
+                            }
+                        ],
+                        "history": [
+                            {
+                                "id": "00000000-0000-0000-0000-000000000000",
+                                "user": "string",
+                                "description": "string",
+                                "data": "string",
+                                "timeStamp": "2022-04-13T15:42:05.901Z",
+                                "releaseId": "00000000-0000-0000-0000-000000000000",
+                                "release": null
+                            }
+                        ],
+                        "organizations": [
+                            {
+                                "organizationId": "00000000-0000-0000-0000-000000000000",
+                                "releaseId": "00000000-0000-0000-0000-000000000000",
+                                "displayName": "string",
+                                "release": null
+                            }
+                        ]
+                    }
+                ]
+            },
+            "nodes": null,
+            "countries": null,
+            "history": null,
+            "organizations": null
+        }
+        ```
+        <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
+        
         <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
         ??? hint "Schema of the response body"
@@ -2497,98 +2497,98 @@ Deletes a release by id.
     
     === "application/json"
         
-    
-    ```json
-    {
-        "eTag": "string",
-        "creationTime": "2022-04-13T15:42:05.901Z",
-        "updateTime": "2022-04-13T15:42:05.901Z",
-        "id": "00000000-0000-0000-0000-000000000000",
-        "name": "string",
-        "description": "string",
-        "draft": true,
-        "requestedNotification": true,
-        "categoryId": "string",
-        "category": {
+        
+        ```json
+        {
             "eTag": "string",
             "creationTime": "2022-04-13T15:42:05.901Z",
             "updateTime": "2022-04-13T15:42:05.901Z",
-            "id": "string",
+            "id": "00000000-0000-0000-0000-000000000000",
             "name": "string",
             "description": "string",
-            "releases": [
-                {
-                    "eTag": "string",
-                    "creationTime": "2022-04-13T15:42:05.901Z",
-                    "updateTime": "2022-04-13T15:42:05.901Z",
-                    "id": "00000000-0000-0000-0000-000000000000",
-                    "name": "string",
-                    "description": "string",
-                    "draft": true,
-                    "requestedNotification": true,
-                    "categoryId": "string",
-                    "category": null,
-                    "nodes": [
-                        {
-                            "id": "00000000-0000-0000-0000-000000000000",
-                            "nodeId": "00000000-0000-0000-0000-000000000000",
-                            "releaseId": "00000000-0000-0000-0000-000000000000",
-                            "node": {
-                                "eTag": "string",
-                                "creationTime": "2022-04-13T15:42:05.901Z",
-                                "updateTime": "2022-04-13T15:42:05.901Z",
+            "draft": true,
+            "requestedNotification": true,
+            "categoryId": "string",
+            "category": {
+                "eTag": "string",
+                "creationTime": "2022-04-13T15:42:05.901Z",
+                "updateTime": "2022-04-13T15:42:05.901Z",
+                "id": "string",
+                "name": "string",
+                "description": "string",
+                "releases": [
+                    {
+                        "eTag": "string",
+                        "creationTime": "2022-04-13T15:42:05.901Z",
+                        "updateTime": "2022-04-13T15:42:05.901Z",
+                        "id": "00000000-0000-0000-0000-000000000000",
+                        "name": "string",
+                        "description": "string",
+                        "draft": true,
+                        "requestedNotification": true,
+                        "categoryId": "string",
+                        "category": null,
+                        "nodes": [
+                            {
                                 "id": "00000000-0000-0000-0000-000000000000",
-                                "name": "string",
-                                "extension": "string",
-                                "type": "string",
-                                "icon": "string",
-                                "size": 26
-                            },
-                            "release": null
-                        }
-                    ],
-                    "countries": [
-                        {
-                            "countryId": "string",
-                            "releaseId": "00000000-0000-0000-0000-000000000000",
-                            "country": {
-                                "id": "string",
-                                "name": "string",
-                                "countryCode": "string"
-                            },
-                            "release": null
-                        }
-                    ],
-                    "history": [
-                        {
-                            "id": "00000000-0000-0000-0000-000000000000",
-                            "user": "string",
-                            "description": "string",
-                            "data": "string",
-                            "timeStamp": "2022-04-13T15:42:05.901Z",
-                            "releaseId": "00000000-0000-0000-0000-000000000000",
-                            "release": null
-                        }
-                    ],
-                    "organizations": [
-                        {
-                            "organizationId": "00000000-0000-0000-0000-000000000000",
-                            "releaseId": "00000000-0000-0000-0000-000000000000",
-                            "displayName": "string",
-                            "release": null
-                        }
-                    ]
-                }
-            ]
-        },
-        "nodes": null,
-        "countries": null,
-        "history": null,
-        "organizations": null
-    }
-    ```
-    <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
-
+                                "nodeId": "00000000-0000-0000-0000-000000000000",
+                                "releaseId": "00000000-0000-0000-0000-000000000000",
+                                "node": {
+                                    "eTag": "string",
+                                    "creationTime": "2022-04-13T15:42:05.901Z",
+                                    "updateTime": "2022-04-13T15:42:05.901Z",
+                                    "id": "00000000-0000-0000-0000-000000000000",
+                                    "name": "string",
+                                    "extension": "string",
+                                    "type": "string",
+                                    "icon": "string",
+                                    "size": 26
+                                },
+                                "release": null
+                            }
+                        ],
+                        "countries": [
+                            {
+                                "countryId": "string",
+                                "releaseId": "00000000-0000-0000-0000-000000000000",
+                                "country": {
+                                    "id": "string",
+                                    "name": "string",
+                                    "countryCode": "string"
+                                },
+                                "release": null
+                            }
+                        ],
+                        "history": [
+                            {
+                                "id": "00000000-0000-0000-0000-000000000000",
+                                "user": "string",
+                                "description": "string",
+                                "data": "string",
+                                "timeStamp": "2022-04-13T15:42:05.901Z",
+                                "releaseId": "00000000-0000-0000-0000-000000000000",
+                                "release": null
+                            }
+                        ],
+                        "organizations": [
+                            {
+                                "organizationId": "00000000-0000-0000-0000-000000000000",
+                                "releaseId": "00000000-0000-0000-0000-000000000000",
+                                "displayName": "string",
+                                "release": null
+                            }
+                        ]
+                    }
+                ]
+            },
+            "nodes": null,
+            "countries": null,
+            "history": null,
+            "organizations": null
+        }
+        ```
+        <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
+        
         <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
         ??? hint "Schema of the response body"
@@ -2757,98 +2757,98 @@ Deletes a release by id.
     
     === "application/json"
         
-    
-    ```json
-    {
-        "eTag": "string",
-        "creationTime": "2022-04-13T15:42:05.901Z",
-        "updateTime": "2022-04-13T15:42:05.901Z",
-        "id": "00000000-0000-0000-0000-000000000000",
-        "name": "string",
-        "description": "string",
-        "draft": true,
-        "requestedNotification": true,
-        "categoryId": "string",
-        "category": {
+        
+        ```json
+        {
             "eTag": "string",
             "creationTime": "2022-04-13T15:42:05.901Z",
             "updateTime": "2022-04-13T15:42:05.901Z",
-            "id": "string",
+            "id": "00000000-0000-0000-0000-000000000000",
             "name": "string",
             "description": "string",
-            "releases": [
-                {
-                    "eTag": "string",
-                    "creationTime": "2022-04-13T15:42:05.901Z",
-                    "updateTime": "2022-04-13T15:42:05.901Z",
-                    "id": "00000000-0000-0000-0000-000000000000",
-                    "name": "string",
-                    "description": "string",
-                    "draft": true,
-                    "requestedNotification": true,
-                    "categoryId": "string",
-                    "category": null,
-                    "nodes": [
-                        {
-                            "id": "00000000-0000-0000-0000-000000000000",
-                            "nodeId": "00000000-0000-0000-0000-000000000000",
-                            "releaseId": "00000000-0000-0000-0000-000000000000",
-                            "node": {
-                                "eTag": "string",
-                                "creationTime": "2022-04-13T15:42:05.901Z",
-                                "updateTime": "2022-04-13T15:42:05.901Z",
+            "draft": true,
+            "requestedNotification": true,
+            "categoryId": "string",
+            "category": {
+                "eTag": "string",
+                "creationTime": "2022-04-13T15:42:05.901Z",
+                "updateTime": "2022-04-13T15:42:05.901Z",
+                "id": "string",
+                "name": "string",
+                "description": "string",
+                "releases": [
+                    {
+                        "eTag": "string",
+                        "creationTime": "2022-04-13T15:42:05.901Z",
+                        "updateTime": "2022-04-13T15:42:05.901Z",
+                        "id": "00000000-0000-0000-0000-000000000000",
+                        "name": "string",
+                        "description": "string",
+                        "draft": true,
+                        "requestedNotification": true,
+                        "categoryId": "string",
+                        "category": null,
+                        "nodes": [
+                            {
                                 "id": "00000000-0000-0000-0000-000000000000",
-                                "name": "string",
-                                "extension": "string",
-                                "type": "string",
-                                "icon": "string",
-                                "size": 26
-                            },
-                            "release": null
-                        }
-                    ],
-                    "countries": [
-                        {
-                            "countryId": "string",
-                            "releaseId": "00000000-0000-0000-0000-000000000000",
-                            "country": {
-                                "id": "string",
-                                "name": "string",
-                                "countryCode": "string"
-                            },
-                            "release": null
-                        }
-                    ],
-                    "history": [
-                        {
-                            "id": "00000000-0000-0000-0000-000000000000",
-                            "user": "string",
-                            "description": "string",
-                            "data": "string",
-                            "timeStamp": "2022-04-13T15:42:05.901Z",
-                            "releaseId": "00000000-0000-0000-0000-000000000000",
-                            "release": null
-                        }
-                    ],
-                    "organizations": [
-                        {
-                            "organizationId": "00000000-0000-0000-0000-000000000000",
-                            "releaseId": "00000000-0000-0000-0000-000000000000",
-                            "displayName": "string",
-                            "release": null
-                        }
-                    ]
-                }
-            ]
-        },
-        "nodes": null,
-        "countries": null,
-        "history": null,
-        "organizations": null
-    }
-    ```
-    <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
-
+                                "nodeId": "00000000-0000-0000-0000-000000000000",
+                                "releaseId": "00000000-0000-0000-0000-000000000000",
+                                "node": {
+                                    "eTag": "string",
+                                    "creationTime": "2022-04-13T15:42:05.901Z",
+                                    "updateTime": "2022-04-13T15:42:05.901Z",
+                                    "id": "00000000-0000-0000-0000-000000000000",
+                                    "name": "string",
+                                    "extension": "string",
+                                    "type": "string",
+                                    "icon": "string",
+                                    "size": 26
+                                },
+                                "release": null
+                            }
+                        ],
+                        "countries": [
+                            {
+                                "countryId": "string",
+                                "releaseId": "00000000-0000-0000-0000-000000000000",
+                                "country": {
+                                    "id": "string",
+                                    "name": "string",
+                                    "countryCode": "string"
+                                },
+                                "release": null
+                            }
+                        ],
+                        "history": [
+                            {
+                                "id": "00000000-0000-0000-0000-000000000000",
+                                "user": "string",
+                                "description": "string",
+                                "data": "string",
+                                "timeStamp": "2022-04-13T15:42:05.901Z",
+                                "releaseId": "00000000-0000-0000-0000-000000000000",
+                                "release": null
+                            }
+                        ],
+                        "organizations": [
+                            {
+                                "organizationId": "00000000-0000-0000-0000-000000000000",
+                                "releaseId": "00000000-0000-0000-0000-000000000000",
+                                "displayName": "string",
+                                "release": null
+                            }
+                        ]
+                    }
+                ]
+            },
+            "nodes": null,
+            "countries": null,
+            "history": null,
+            "organizations": null
+        }
+        ```
+        <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
+        
         <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
         ??? hint "Schema of the response body"
@@ -3006,98 +3006,98 @@ Deletes a release by id.
     
     === "application/json"
         
-    
-    ```json
-    {
-        "eTag": "string",
-        "creationTime": "2022-04-13T15:42:05.901Z",
-        "updateTime": "2022-04-13T15:42:05.901Z",
-        "id": "00000000-0000-0000-0000-000000000000",
-        "name": "string",
-        "description": "string",
-        "draft": true,
-        "requestedNotification": true,
-        "categoryId": "string",
-        "category": {
+        
+        ```json
+        {
             "eTag": "string",
             "creationTime": "2022-04-13T15:42:05.901Z",
             "updateTime": "2022-04-13T15:42:05.901Z",
-            "id": "string",
+            "id": "00000000-0000-0000-0000-000000000000",
             "name": "string",
             "description": "string",
-            "releases": [
-                {
-                    "eTag": "string",
-                    "creationTime": "2022-04-13T15:42:05.901Z",
-                    "updateTime": "2022-04-13T15:42:05.901Z",
-                    "id": "00000000-0000-0000-0000-000000000000",
-                    "name": "string",
-                    "description": "string",
-                    "draft": true,
-                    "requestedNotification": true,
-                    "categoryId": "string",
-                    "category": null,
-                    "nodes": [
-                        {
-                            "id": "00000000-0000-0000-0000-000000000000",
-                            "nodeId": "00000000-0000-0000-0000-000000000000",
-                            "releaseId": "00000000-0000-0000-0000-000000000000",
-                            "node": {
-                                "eTag": "string",
-                                "creationTime": "2022-04-13T15:42:05.901Z",
-                                "updateTime": "2022-04-13T15:42:05.901Z",
+            "draft": true,
+            "requestedNotification": true,
+            "categoryId": "string",
+            "category": {
+                "eTag": "string",
+                "creationTime": "2022-04-13T15:42:05.901Z",
+                "updateTime": "2022-04-13T15:42:05.901Z",
+                "id": "string",
+                "name": "string",
+                "description": "string",
+                "releases": [
+                    {
+                        "eTag": "string",
+                        "creationTime": "2022-04-13T15:42:05.901Z",
+                        "updateTime": "2022-04-13T15:42:05.901Z",
+                        "id": "00000000-0000-0000-0000-000000000000",
+                        "name": "string",
+                        "description": "string",
+                        "draft": true,
+                        "requestedNotification": true,
+                        "categoryId": "string",
+                        "category": null,
+                        "nodes": [
+                            {
                                 "id": "00000000-0000-0000-0000-000000000000",
-                                "name": "string",
-                                "extension": "string",
-                                "type": "string",
-                                "icon": "string",
-                                "size": 26
-                            },
-                            "release": null
-                        }
-                    ],
-                    "countries": [
-                        {
-                            "countryId": "string",
-                            "releaseId": "00000000-0000-0000-0000-000000000000",
-                            "country": {
-                                "id": "string",
-                                "name": "string",
-                                "countryCode": "string"
-                            },
-                            "release": null
-                        }
-                    ],
-                    "history": [
-                        {
-                            "id": "00000000-0000-0000-0000-000000000000",
-                            "user": "string",
-                            "description": "string",
-                            "data": "string",
-                            "timeStamp": "2022-04-13T15:42:05.901Z",
-                            "releaseId": "00000000-0000-0000-0000-000000000000",
-                            "release": null
-                        }
-                    ],
-                    "organizations": [
-                        {
-                            "organizationId": "00000000-0000-0000-0000-000000000000",
-                            "releaseId": "00000000-0000-0000-0000-000000000000",
-                            "displayName": "string",
-                            "release": null
-                        }
-                    ]
-                }
-            ]
-        },
-        "nodes": null,
-        "countries": null,
-        "history": null,
-        "organizations": null
-    }
-    ```
-    <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
-
+                                "nodeId": "00000000-0000-0000-0000-000000000000",
+                                "releaseId": "00000000-0000-0000-0000-000000000000",
+                                "node": {
+                                    "eTag": "string",
+                                    "creationTime": "2022-04-13T15:42:05.901Z",
+                                    "updateTime": "2022-04-13T15:42:05.901Z",
+                                    "id": "00000000-0000-0000-0000-000000000000",
+                                    "name": "string",
+                                    "extension": "string",
+                                    "type": "string",
+                                    "icon": "string",
+                                    "size": 26
+                                },
+                                "release": null
+                            }
+                        ],
+                        "countries": [
+                            {
+                                "countryId": "string",
+                                "releaseId": "00000000-0000-0000-0000-000000000000",
+                                "country": {
+                                    "id": "string",
+                                    "name": "string",
+                                    "countryCode": "string"
+                                },
+                                "release": null
+                            }
+                        ],
+                        "history": [
+                            {
+                                "id": "00000000-0000-0000-0000-000000000000",
+                                "user": "string",
+                                "description": "string",
+                                "data": "string",
+                                "timeStamp": "2022-04-13T15:42:05.901Z",
+                                "releaseId": "00000000-0000-0000-0000-000000000000",
+                                "release": null
+                            }
+                        ],
+                        "organizations": [
+                            {
+                                "organizationId": "00000000-0000-0000-0000-000000000000",
+                                "releaseId": "00000000-0000-0000-0000-000000000000",
+                                "displayName": "string",
+                                "release": null
+                            }
+                        ]
+                    }
+                ]
+            },
+            "nodes": null,
+            "countries": null,
+            "history": null,
+            "organizations": null
+        }
+        ```
+        <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
+        
         <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
         ??? hint "Schema of the response body"
@@ -3227,98 +3227,98 @@ Deletes a release by id.
     
     === "application/json"
         
-    
-    ```json
-    {
-        "eTag": "string",
-        "creationTime": "2022-04-13T15:42:05.901Z",
-        "updateTime": "2022-04-13T15:42:05.901Z",
-        "id": "00000000-0000-0000-0000-000000000000",
-        "name": "string",
-        "description": "string",
-        "draft": true,
-        "requestedNotification": true,
-        "categoryId": "string",
-        "category": {
+        
+        ```json
+        {
             "eTag": "string",
             "creationTime": "2022-04-13T15:42:05.901Z",
             "updateTime": "2022-04-13T15:42:05.901Z",
-            "id": "string",
+            "id": "00000000-0000-0000-0000-000000000000",
             "name": "string",
             "description": "string",
-            "releases": [
-                {
-                    "eTag": "string",
-                    "creationTime": "2022-04-13T15:42:05.901Z",
-                    "updateTime": "2022-04-13T15:42:05.901Z",
-                    "id": "00000000-0000-0000-0000-000000000000",
-                    "name": "string",
-                    "description": "string",
-                    "draft": true,
-                    "requestedNotification": true,
-                    "categoryId": "string",
-                    "category": null,
-                    "nodes": [
-                        {
-                            "id": "00000000-0000-0000-0000-000000000000",
-                            "nodeId": "00000000-0000-0000-0000-000000000000",
-                            "releaseId": "00000000-0000-0000-0000-000000000000",
-                            "node": {
-                                "eTag": "string",
-                                "creationTime": "2022-04-13T15:42:05.901Z",
-                                "updateTime": "2022-04-13T15:42:05.901Z",
+            "draft": true,
+            "requestedNotification": true,
+            "categoryId": "string",
+            "category": {
+                "eTag": "string",
+                "creationTime": "2022-04-13T15:42:05.901Z",
+                "updateTime": "2022-04-13T15:42:05.901Z",
+                "id": "string",
+                "name": "string",
+                "description": "string",
+                "releases": [
+                    {
+                        "eTag": "string",
+                        "creationTime": "2022-04-13T15:42:05.901Z",
+                        "updateTime": "2022-04-13T15:42:05.901Z",
+                        "id": "00000000-0000-0000-0000-000000000000",
+                        "name": "string",
+                        "description": "string",
+                        "draft": true,
+                        "requestedNotification": true,
+                        "categoryId": "string",
+                        "category": null,
+                        "nodes": [
+                            {
                                 "id": "00000000-0000-0000-0000-000000000000",
-                                "name": "string",
-                                "extension": "string",
-                                "type": "string",
-                                "icon": "string",
-                                "size": 26
-                            },
-                            "release": null
-                        }
-                    ],
-                    "countries": [
-                        {
-                            "countryId": "string",
-                            "releaseId": "00000000-0000-0000-0000-000000000000",
-                            "country": {
-                                "id": "string",
-                                "name": "string",
-                                "countryCode": "string"
-                            },
-                            "release": null
-                        }
-                    ],
-                    "history": [
-                        {
-                            "id": "00000000-0000-0000-0000-000000000000",
-                            "user": "string",
-                            "description": "string",
-                            "data": "string",
-                            "timeStamp": "2022-04-13T15:42:05.901Z",
-                            "releaseId": "00000000-0000-0000-0000-000000000000",
-                            "release": null
-                        }
-                    ],
-                    "organizations": [
-                        {
-                            "organizationId": "00000000-0000-0000-0000-000000000000",
-                            "releaseId": "00000000-0000-0000-0000-000000000000",
-                            "displayName": "string",
-                            "release": null
-                        }
-                    ]
-                }
-            ]
-        },
-        "nodes": null,
-        "countries": null,
-        "history": null,
-        "organizations": null
-    }
-    ```
-    <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
-
+                                "nodeId": "00000000-0000-0000-0000-000000000000",
+                                "releaseId": "00000000-0000-0000-0000-000000000000",
+                                "node": {
+                                    "eTag": "string",
+                                    "creationTime": "2022-04-13T15:42:05.901Z",
+                                    "updateTime": "2022-04-13T15:42:05.901Z",
+                                    "id": "00000000-0000-0000-0000-000000000000",
+                                    "name": "string",
+                                    "extension": "string",
+                                    "type": "string",
+                                    "icon": "string",
+                                    "size": 26
+                                },
+                                "release": null
+                            }
+                        ],
+                        "countries": [
+                            {
+                                "countryId": "string",
+                                "releaseId": "00000000-0000-0000-0000-000000000000",
+                                "country": {
+                                    "id": "string",
+                                    "name": "string",
+                                    "countryCode": "string"
+                                },
+                                "release": null
+                            }
+                        ],
+                        "history": [
+                            {
+                                "id": "00000000-0000-0000-0000-000000000000",
+                                "user": "string",
+                                "description": "string",
+                                "data": "string",
+                                "timeStamp": "2022-04-13T15:42:05.901Z",
+                                "releaseId": "00000000-0000-0000-0000-000000000000",
+                                "release": null
+                            }
+                        ],
+                        "organizations": [
+                            {
+                                "organizationId": "00000000-0000-0000-0000-000000000000",
+                                "releaseId": "00000000-0000-0000-0000-000000000000",
+                                "displayName": "string",
+                                "release": null
+                            }
+                        ]
+                    }
+                ]
+            },
+            "nodes": null,
+            "countries": null,
+            "history": null,
+            "organizations": null
+        }
+        ```
+        <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
+        
         <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
         ??? hint "Schema of the response body"
@@ -3483,98 +3483,98 @@ Deletes a release by id.
     
     === "application/json"
         
-    
-    ```json
-    {
-        "eTag": "string",
-        "creationTime": "2022-04-13T15:42:05.901Z",
-        "updateTime": "2022-04-13T15:42:05.901Z",
-        "id": "00000000-0000-0000-0000-000000000000",
-        "name": "string",
-        "description": "string",
-        "draft": true,
-        "requestedNotification": true,
-        "categoryId": "string",
-        "category": {
+        
+        ```json
+        {
             "eTag": "string",
             "creationTime": "2022-04-13T15:42:05.901Z",
             "updateTime": "2022-04-13T15:42:05.901Z",
-            "id": "string",
+            "id": "00000000-0000-0000-0000-000000000000",
             "name": "string",
             "description": "string",
-            "releases": [
-                {
-                    "eTag": "string",
-                    "creationTime": "2022-04-13T15:42:05.901Z",
-                    "updateTime": "2022-04-13T15:42:05.901Z",
-                    "id": "00000000-0000-0000-0000-000000000000",
-                    "name": "string",
-                    "description": "string",
-                    "draft": true,
-                    "requestedNotification": true,
-                    "categoryId": "string",
-                    "category": null,
-                    "nodes": [
-                        {
-                            "id": "00000000-0000-0000-0000-000000000000",
-                            "nodeId": "00000000-0000-0000-0000-000000000000",
-                            "releaseId": "00000000-0000-0000-0000-000000000000",
-                            "node": {
-                                "eTag": "string",
-                                "creationTime": "2022-04-13T15:42:05.901Z",
-                                "updateTime": "2022-04-13T15:42:05.901Z",
+            "draft": true,
+            "requestedNotification": true,
+            "categoryId": "string",
+            "category": {
+                "eTag": "string",
+                "creationTime": "2022-04-13T15:42:05.901Z",
+                "updateTime": "2022-04-13T15:42:05.901Z",
+                "id": "string",
+                "name": "string",
+                "description": "string",
+                "releases": [
+                    {
+                        "eTag": "string",
+                        "creationTime": "2022-04-13T15:42:05.901Z",
+                        "updateTime": "2022-04-13T15:42:05.901Z",
+                        "id": "00000000-0000-0000-0000-000000000000",
+                        "name": "string",
+                        "description": "string",
+                        "draft": true,
+                        "requestedNotification": true,
+                        "categoryId": "string",
+                        "category": null,
+                        "nodes": [
+                            {
                                 "id": "00000000-0000-0000-0000-000000000000",
-                                "name": "string",
-                                "extension": "string",
-                                "type": "string",
-                                "icon": "string",
-                                "size": 26
-                            },
-                            "release": null
-                        }
-                    ],
-                    "countries": [
-                        {
-                            "countryId": "string",
-                            "releaseId": "00000000-0000-0000-0000-000000000000",
-                            "country": {
-                                "id": "string",
-                                "name": "string",
-                                "countryCode": "string"
-                            },
-                            "release": null
-                        }
-                    ],
-                    "history": [
-                        {
-                            "id": "00000000-0000-0000-0000-000000000000",
-                            "user": "string",
-                            "description": "string",
-                            "data": "string",
-                            "timeStamp": "2022-04-13T15:42:05.901Z",
-                            "releaseId": "00000000-0000-0000-0000-000000000000",
-                            "release": null
-                        }
-                    ],
-                    "organizations": [
-                        {
-                            "organizationId": "00000000-0000-0000-0000-000000000000",
-                            "releaseId": "00000000-0000-0000-0000-000000000000",
-                            "displayName": "string",
-                            "release": null
-                        }
-                    ]
-                }
-            ]
-        },
-        "nodes": null,
-        "countries": null,
-        "history": null,
-        "organizations": null
-    }
-    ```
-    <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
-
+                                "nodeId": "00000000-0000-0000-0000-000000000000",
+                                "releaseId": "00000000-0000-0000-0000-000000000000",
+                                "node": {
+                                    "eTag": "string",
+                                    "creationTime": "2022-04-13T15:42:05.901Z",
+                                    "updateTime": "2022-04-13T15:42:05.901Z",
+                                    "id": "00000000-0000-0000-0000-000000000000",
+                                    "name": "string",
+                                    "extension": "string",
+                                    "type": "string",
+                                    "icon": "string",
+                                    "size": 26
+                                },
+                                "release": null
+                            }
+                        ],
+                        "countries": [
+                            {
+                                "countryId": "string",
+                                "releaseId": "00000000-0000-0000-0000-000000000000",
+                                "country": {
+                                    "id": "string",
+                                    "name": "string",
+                                    "countryCode": "string"
+                                },
+                                "release": null
+                            }
+                        ],
+                        "history": [
+                            {
+                                "id": "00000000-0000-0000-0000-000000000000",
+                                "user": "string",
+                                "description": "string",
+                                "data": "string",
+                                "timeStamp": "2022-04-13T15:42:05.901Z",
+                                "releaseId": "00000000-0000-0000-0000-000000000000",
+                                "release": null
+                            }
+                        ],
+                        "organizations": [
+                            {
+                                "organizationId": "00000000-0000-0000-0000-000000000000",
+                                "releaseId": "00000000-0000-0000-0000-000000000000",
+                                "displayName": "string",
+                                "release": null
+                            }
+                        ]
+                    }
+                ]
+            },
+            "nodes": null,
+            "countries": null,
+            "history": null,
+            "organizations": null
+        }
+        ```
+        <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
+        
         <em class="small-note alt-types">Other possible types: text/json, text/plain</em>
 
         ??? hint "Schema of the response body"

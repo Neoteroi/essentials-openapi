@@ -114,29 +114,29 @@ Invite a user
     
     === "application/json"
         
-    
-    ```json
-    [
-        {
-            "id": "123e4567-e89b-12d3-a456-426614174000",
-            "email": "john.doe@company.com",
-            "firstName": "john",
-            "lastName": "Doe",
-            "isPending": true,
-            "createdAt": "2022-04-13T15:42:05.901Z",
-            "updatedAt": "2022-04-13T15:42:05.901Z",
-            "globalRole": {
-                "id": 1,
-                "name": "owner",
-                "scope": "global",
+        
+        ```json
+        [
+            {
+                "id": "123e4567-e89b-12d3-a456-426614174000",
+                "email": "john.doe@company.com",
+                "firstName": "john",
+                "lastName": "Doe",
+                "isPending": true,
                 "createdAt": "2022-04-13T15:42:05.901Z",
-                "updatedAt": "2022-04-13T15:42:05.901Z"
+                "updatedAt": "2022-04-13T15:42:05.901Z",
+                "globalRole": {
+                    "id": 1,
+                    "name": "owner",
+                    "scope": "global",
+                    "createdAt": "2022-04-13T15:42:05.901Z",
+                    "updatedAt": "2022-04-13T15:42:05.901Z"
+                }
             }
-        }
-    ]
-    ```
-    <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
-
+        ]
+        ```
+        <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
+        
         
 
         ??? hint "Schema of the response body"
@@ -206,32 +206,32 @@ Retrieve all users
     
     === "application/json"
         
-    
-    ```json
-    {
-        "data": [
-            {
-                "id": "123e4567-e89b-12d3-a456-426614174000",
-                "email": "john.doe@company.com",
-                "firstName": "john",
-                "lastName": "Doe",
-                "isPending": true,
-                "createdAt": "2022-04-13T15:42:05.901Z",
-                "updatedAt": "2022-04-13T15:42:05.901Z",
-                "globalRole": {
-                    "id": 1,
-                    "name": "owner",
-                    "scope": "global",
+        
+        ```json
+        {
+            "data": [
+                {
+                    "id": "123e4567-e89b-12d3-a456-426614174000",
+                    "email": "john.doe@company.com",
+                    "firstName": "john",
+                    "lastName": "Doe",
+                    "isPending": true,
                     "createdAt": "2022-04-13T15:42:05.901Z",
-                    "updatedAt": "2022-04-13T15:42:05.901Z"
+                    "updatedAt": "2022-04-13T15:42:05.901Z",
+                    "globalRole": {
+                        "id": 1,
+                        "name": "owner",
+                        "scope": "global",
+                        "createdAt": "2022-04-13T15:42:05.901Z",
+                        "updatedAt": "2022-04-13T15:42:05.901Z"
+                    }
                 }
-            }
-        ],
-        "nextCursor": "MTIzZTQ1NjctZTg5Yi0xMmQzLWE0NTYtNDI2NjE0MTc0MDA"
-    }
-    ```
-    <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
-
+            ],
+            "nextCursor": "MTIzZTQ1NjctZTg5Yi0xMmQzLWE0NTYtNDI2NjE0MTc0MDA"
+        }
+        ```
+        <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
+        
         
 
         ??? hint "Schema of the response body"

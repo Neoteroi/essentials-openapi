@@ -83,19 +83,19 @@ List all pets
     
     === "application/json"
         
-    
-    ```json
-    [
-        {
-            "id": 26,
-            "name": "string",
-            "tag": "string",
-            "category": "One"
-        }
-    ]
-    ```
-    <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
-
+        
+        ```json
+        [
+            {
+                "id": 26,
+                "name": "string",
+                "tag": "string",
+                "category": "One"
+            }
+        ]
+        ```
+        <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
+        
         
 
         ??? hint "Schema of the response body"
@@ -134,15 +134,15 @@ List all pets
     
     === "application/json"
         
-    
-    ```json
-    {
-        "code": 26,
-        "message": "string"
-    }
-    ```
-    <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
-
+        
+        ```json
+        {
+            "code": 26,
+            "message": "string"
+        }
+        ```
+        <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
+        
         
 
         ??? hint "Schema of the response body"
@@ -209,15 +209,15 @@ Create a pet
     
     === "application/json"
         
-    
-    ```json
-    {
-        "code": 26,
-        "message": "string"
-    }
-    ```
-    <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
-
+        
+        ```json
+        {
+            "code": 26,
+            "message": "string"
+        }
+        ```
+        <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
+        
         
 
         ??? hint "Schema of the response body"
@@ -292,17 +292,17 @@ Info for a specific pet
     
     === "application/json"
         
-    
-    ```json
-    {
-        "id": 26,
-        "name": "string",
-        "tag": "string",
-        "category": "One"
-    }
-    ```
-    <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
-
+        
+        ```json
+        {
+            "id": 26,
+            "name": "string",
+            "tag": "string",
+            "category": "One"
+        }
+        ```
+        <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
+        
         
 
         ??? hint "Schema of the response body"
@@ -341,15 +341,15 @@ Info for a specific pet
     
     === "application/json"
         
-    
-    ```json
-    {
-        "code": 26,
-        "message": "string"
-    }
-    ```
-    <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
-
+        
+        ```json
+        {
+            "code": 26,
+            "message": "string"
+        }
+        ```
+        <span class="small-note">⚠️</span>&nbsp;<em class="small-note warning">This example has been generated automatically from the schema and it is not accurate. Refer to the schema for more information.</em>
+        
         
 
         ??? hint "Schema of the response body"
