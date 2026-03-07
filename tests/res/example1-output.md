@@ -121,6 +121,8 @@ Initializes a file upload operation.
         }
         ```
 
+<p class="responses-title"><strong>Responses</strong></p>
+
 
 === "200 OK"
     
@@ -214,7 +216,9 @@ Gets the list of categories supported by the system.
             <td>Access token issued by Azure Active Directory.</td>
         </tr>
     </tbody>
-</table>
+</table><p class="responses-title"><strong>Responses</strong></p>
+
+
 === "200 OK"
     
     === "application/json"
@@ -345,7 +349,9 @@ Gets a list of countries of the World with English dislay names and ISO country 
             <td>Access token issued by Azure Active Directory.</td>
         </tr>
     </tbody>
-</table>
+</table><p class="responses-title"><strong>Responses</strong></p>
+
+
 === "200 OK"
     
     === "application/json"
@@ -405,7 +411,9 @@ Gets a list of countries supported by the system, with English dislay names and 
             <td>Access token issued by Azure Active Directory.</td>
         </tr>
     </tbody>
-</table>
+</table><p class="responses-title"><strong>Responses</strong></p>
+
+
 === "200 OK"
     
     === "application/json"
@@ -525,7 +533,9 @@ Gets a paginated set of downloads records.
             <td></td>
         </tr>
     </tbody>
-</table>
+</table><p class="responses-title"><strong>Responses</strong></p>
+
+
 === "200 OK"
     
     === "application/json"
@@ -678,7 +688,9 @@ API health check
             <td>Access token issued by Azure Active Directory.</td>
         </tr>
     </tbody>
-</table>
+</table><p class="responses-title"><strong>Responses</strong></p>
+
+
 === "200 OK"
     
     === "application/json"
@@ -751,7 +763,9 @@ API health check
             <td>Access token issued by Azure Active Directory.</td>
         </tr>
     </tbody>
-</table>
+</table><p class="responses-title"><strong>Responses</strong></p>
+
+
 === "200 OK"
     
     === "application/json"
@@ -845,7 +859,9 @@ Returns information about the API itself.
             <td>Access token issued by Azure Active Directory.</td>
         </tr>
     </tbody>
-</table>
+</table><p class="responses-title"><strong>Responses</strong></p>
+
+
 === "200 OK"
     
     === "application/json"
@@ -927,7 +943,9 @@ Returns details about a release by id.
             <td></td>
         </tr>
     </tbody>
-</table>
+</table><p class="responses-title"><strong>Responses</strong></p>
+
+
 === "200 OK"
     
     === "application/json"
@@ -1147,7 +1165,9 @@ Deletes a release by id.
             <td></td>
         </tr>
     </tbody>
-</table>
+</table><p class="responses-title"><strong>Responses</strong></p>
+
+
 === "200 OK"
 
 <hr class="operation-separator" />
@@ -1249,6 +1269,8 @@ Deletes a release by id.
             "additionalProperties": false
         }
         ```
+
+<p class="responses-title"><strong>Responses</strong></p>
 
 
 === "200 OK"
@@ -1519,7 +1541,9 @@ Deletes a release by id.
             <td></td>
         </tr>
     </tbody>
-</table>
+</table><p class="responses-title"><strong>Responses</strong></p>
+
+
 === "200 OK"
     
     === "application/json"
@@ -1711,6 +1735,8 @@ Deletes a release by id.
         }
         ```
 
+<p class="responses-title"><strong>Responses</strong></p>
+
 
 === "200 OK"
     
@@ -1771,7 +1797,9 @@ Deletes a release by id.
             <td>Access token issued by Azure Active Directory.</td>
         </tr>
     </tbody>
-</table>
+</table><p class="responses-title"><strong>Responses</strong></p>
+
+
 === "200 OK"
     
     === "application/json"
@@ -1834,7 +1862,9 @@ Deletes a release by id.
             <td>Access token issued by Azure Active Directory.</td>
         </tr>
     </tbody>
-</table>
+</table><p class="responses-title"><strong>Responses</strong></p>
+
+
 === "200 OK"
     
     === "application/json"
@@ -1905,7 +1935,9 @@ Deletes a release by id.
             <td></td>
         </tr>
     </tbody>
-</table>
+</table><p class="responses-title"><strong>Responses</strong></p>
+
+
 === "200 OK"
     
     === "application/json"
@@ -2044,7 +2076,9 @@ Deletes a release by id.
             <td></td>
         </tr>
     </tbody>
-</table>
+</table><p class="responses-title"><strong>Responses</strong></p>
+
+
 === "200 OK"
     
     === "application/json"
@@ -2120,7 +2154,9 @@ Deletes a release by id.
             <td></td>
         </tr>
     </tbody>
-</table>
+</table><p class="responses-title"><strong>Responses</strong></p>
+
+
 === "200 OK"
     
     === "application/json"
@@ -2220,6 +2256,8 @@ Deletes a release by id.
             "nullable": true
         }
         ```
+
+<p class="responses-title"><strong>Responses</strong></p>
 
 
 === "200 OK"
@@ -2470,6 +2508,8 @@ Deletes a release by id.
             "nullable": true
         }
         ```
+
+<p class="responses-title"><strong>Responses</strong></p>
 
 
 === "200 OK"
@@ -2731,6 +2771,8 @@ Deletes a release by id.
         }
         ```
 
+<p class="responses-title"><strong>Responses</strong></p>
+
 
 === "200 OK"
     
@@ -2980,6 +3022,8 @@ Deletes a release by id.
         }
         ```
 
+<p class="responses-title"><strong>Responses</strong></p>
+
 
 === "200 OK"
     
@@ -3201,7 +3245,9 @@ Deletes a release by id.
             <td></td>
         </tr>
     </tbody>
-</table>
+</table><p class="responses-title"><strong>Responses</strong></p>
+
+
 === "200 OK"
     
     === "application/json"
@@ -3456,6 +3502,8 @@ Deletes a release by id.
             "additionalProperties": false
         }
         ```
+
+<p class="responses-title"><strong>Responses</strong></p>
 
 
 === "200 OK"

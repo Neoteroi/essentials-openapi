@@ -109,6 +109,8 @@ Invite a user
         }
         ```
 
+<p class="responses-title"><strong>Responses</strong></p>
+
 
 === "200 OK"
     
@@ -201,7 +203,9 @@ Retrieve all users
             <td>The maximum number of items to return.</td>
         </tr>
     </tbody>
-</table>
+</table><p class="responses-title"><strong>Responses</strong></p>
+
+
 === "200 OK"
     
     === "application/json"
@@ -300,7 +304,9 @@ Get user by ID/Email
             <td>The ID or email of the user.</td>
         </tr>
     </tbody>
-</table>
+</table><p class="responses-title"><strong>Responses</strong></p>
+
+
 === "200 OK"
     <div class="common-response"><p>Refer to the common response description: <a href="#userinformation" class="ref-link">UserInformation</a>.</p></div>
 === "401 Unauthorized"
@@ -354,7 +360,9 @@ Delete user by ID/Email
             <td>ID of the user to transfer workflows and credentials to. Must not be equal to the to-be-deleted user.</td>
         </tr>
     </tbody>
-</table>
+</table><p class="responses-title"><strong>Responses</strong></p>
+
+
 === "200 OK"
     <div class="common-response"><p>Refer to the common response description: <a href="#userinformation" class="ref-link">UserInformation</a>.</p></div>
 === "401 Unauthorized"

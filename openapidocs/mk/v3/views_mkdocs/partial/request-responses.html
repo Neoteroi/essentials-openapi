@@ -1,3 +1,5 @@
+<p class="responses-title"><strong>{{texts.responses}}</strong></p>
+
 {% for code, definition in operation.responses.items() %}
 === "{% if code == "default" %}{{texts.other_responses}}{% else %}{{code}}{% with phrase = get_http_status_phrase(code) %}{% if phrase %} {{ phrase }}{% endif %}{% endwith %}{% endif %}"
     {%- if is_reference(definition) -%}
