@@ -62,7 +62,9 @@ List all pets
             <td>How many items to return at one time (max 100)</td>
         </tr>
     </tbody>
-</table>
+</table><p class="responses-title"><strong>Responses</strong></p>
+
+
 === "200 OK"
     
     === "application/json"
@@ -141,7 +143,9 @@ List all pets
 <hr class="operation-separator" />
 
 ### <span class="http-post">POST</span> /pets
-Create a pet
+Create a pet<p class="responses-title"><strong>Responses</strong></p>
+
+
 === "201 Created"
 === "Other responses"
     
@@ -209,7 +213,9 @@ Info for a specific pet
             <td>The id of the pet to retrieve</td>
         </tr>
     </tbody>
-</table>
+</table><p class="responses-title"><strong>Responses</strong></p>
+
+
 === "200 OK"
     
     === "application/json"
@@ -321,6 +327,8 @@ Info for a specific pet
             ]
         }
         ```
+
+<p class="responses-title"><strong>Responses</strong></p>
 
 
 === "200 OK"
