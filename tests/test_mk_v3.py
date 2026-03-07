@@ -84,6 +84,22 @@ def test_swagger2_raises_not_supported():
         OpenAPIV3DocumentationHandler({"swagger": "2.0", "info": {}, "paths": {}})
 
 
+def test_v3_response_header_ref():
+    """
+    Regression test for https://github.com/Neoteroi/essentials-openapi/issues/60
+    Response headers that use $ref to #/components/headers/... should be resolved
+    without raising an UndefinedError.
+    """
+    data = get_file_yaml("example9-openapi.yaml")
+    handler = OpenAPIV3DocumentationHandler(data)
+    output = handler.write()
+
+    assert "Current-Page" in output
+    assert "The current page of total pages this response represents." in output
+    assert "X-Rate-Limit" in output
+    assert "Rate limit per hour" in output
+
+
 @pytest.mark.parametrize(
     "input,expected_result",
     [

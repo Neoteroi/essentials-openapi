@@ -1,0 +1,42 @@
+---
+openapi: 3.0.0
+info:
+  title: Header Ref Example
+  version: v1
+paths:
+  /pets:
+    get:
+      summary: List all pets
+      operationId: listPets
+      tags:
+        - Pets
+      responses:
+        "200":
+          description: A paged array of pets
+          headers:
+            Current-Page:
+              $ref: '#/components/headers/current-page'
+            X-Rate-Limit:
+              description: Rate limit per hour
+              schema:
+                type: integer
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+components:
+  headers:
+    current-page:
+      description: The current page of total pages this response represents.
+      example: '1'
+      style: simple
+      schema:
+        type: string
+      required: true

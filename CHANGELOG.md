@@ -23,6 +23,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   fragment), reported by @mbklein.
 - Fix [#55](https://github.com/Neoteroi/essentials-openapi/issues/55): `jsonSchemaDialect`
   is not required and should not have a default value.
+- Fix [#60](https://github.com/Neoteroi/essentials-openapi/issues/60): resolve `$ref`
+  values in response headers pointing to `#/components/headers/...` to avoid
+  `UndefinedError` when rendering response tables, reported by @copiousfreetime.
 
 ## [1.3.0] - 2025-11-19
 

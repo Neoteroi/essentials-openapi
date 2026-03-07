@@ -32,7 +32,7 @@
                 </tr>
             </thead>
             <tbody>
-                {%- for header_name, header_definition in definition.headers.items() %}
+                {%- for header_name, header_definition in handler.get_response_headers(definition).items() %}
                 <tr>
                     <td><code>{{header_name}}</code></td>
                     <td>{{header_definition.description}}</td>
