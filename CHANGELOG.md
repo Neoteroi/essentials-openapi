@@ -18,6 +18,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix [#47](https://github.com/Neoteroi/essentials-openapi/issues/47): remove `wordwrap`
   filters from all templates as they break links and mermaid chart code blocks in
   descriptions, reported by @ElementalWarrior.
+- Fix [#49](https://github.com/Neoteroi/essentials-openapi/issues/49): support `$ref`
+  values of the form `file.yaml#/fragment/path` (external file with JSON Pointer
+  fragment), reported by @mbklein.
 
 ## [1.3.0] - 2025-11-19
 

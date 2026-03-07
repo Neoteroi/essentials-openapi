@@ -41,6 +41,26 @@ def test_v3_markdown_gen_split_file():
     assert compatible_str(html, expected_result)
 
 
+def test_v3_external_ref_with_fragment():
+    """
+    Regression test for https://github.com/Neoteroi/essentials-openapi/issues/49
+    $ref values of the form 'file.yaml#/path/to/item' should resolve the fragment
+    within the external file rather than failing with a file-not-found error.
+    """
+    source = get_resource_file_path("spec-fragments/openapi.yaml")
+    data = get_file_yaml("spec-fragments/openapi.yaml")
+
+    handler = OpenAPIV3DocumentationHandler(data, source=source)
+    output = handler.write()
+
+    # Parameters resolved from types.yaml#/components/parameters/...
+    assert "<code>page</code>" in output
+    assert "<code>size</code>" in output
+    # Response resolved from types.yaml#/components/responses/SearchResponse
+    assert '=== "200 OK"' in output
+    assert '"total"' in output
+
+
 def test_file_ref_raises_for_missing_file():
     with pytest.raises(OpenAPIFileNotFoundError):
         OpenAPIV3DocumentationHandler(

@@ -1,0 +1,19 @@
+---
+openapi: 3.0.0
+info:
+  title: Fragment Refs API
+  description: API using external $ref with fragment pointers
+  version: v1
+paths:
+  /collections:
+    get:
+      operationId: getCollections
+      summary: Get collections
+      tags:
+        - Collection
+      parameters:
+        - $ref: "./types.yaml#/components/parameters/page"
+        - $ref: "./types.yaml#/components/parameters/size"
+      responses:
+        "200":
+          $ref: "./types.yaml#/components/responses/SearchResponse"

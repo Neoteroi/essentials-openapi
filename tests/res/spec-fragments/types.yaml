@@ -1,0 +1,33 @@
+---
+components:
+  parameters:
+    page:
+      name: page
+      in: query
+      description: Page number
+      required: false
+      schema:
+        type: integer
+        default: 1
+    size:
+      name: size
+      in: query
+      description: Page size
+      required: false
+      schema:
+        type: integer
+        default: 20
+  responses:
+    SearchResponse:
+      description: Successful search response
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              total:
+                type: integer
+              items:
+                type: array
+                items:
+                  type: object

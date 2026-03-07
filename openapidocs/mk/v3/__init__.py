@@ -275,18 +275,46 @@ class OpenAPIV3DocumentationHandler:
         Handles a dictionary containing a $ref property, resolving the reference if it
         is to a file. This is used to read specification files when they are split into
         multiple items.
+
+        Supports three forms:
+        - ``#/internal/ref``                    — internal ref, left as-is
+        - ``path/to/file.yaml``                 — entire external file
+        - ``path/to/file.yaml#/fragment/path``  — fragment within an external file
         """
         assert isinstance(obj, dict)
         if "$ref" in obj:
             reference = obj["$ref"]
             if isinstance(reference, str) and not reference.startswith("#/"):
-                referred_file = Path(os.path.abspath(source_path / reference))
+                # Split off an optional JSON Pointer fragment (#/...)
+                if "#" in reference:
+                    file_part, fragment = reference.split("#", 1)
+                else:
+                    file_part, fragment = reference, ""
+
+                referred_file = Path(os.path.abspath(source_path / file_part))
 
                 if referred_file.exists():
                     logger.debug("Handling $ref source: %s", reference)
                 else:
                     raise OpenAPIFileNotFoundError(reference, referred_file)
+
                 sub_fragment = read_from_source(str(referred_file))
+
+                if fragment:
+                    # Resolve the JSON Pointer (RFC 6901) into the loaded data.
+                    # Strip the leading '/' then split on '/'.
+                    keys = fragment.lstrip("/").split("/")
+                    for key in keys:
+                        if (
+                            not isinstance(sub_fragment, dict)
+                            or key not in sub_fragment
+                        ):
+                            raise OpenAPIDocumentationHandlerError(
+                                f"Cannot resolve fragment '{fragment}' in {referred_file}: "
+                                f"key '{key}' not found."
+                            )
+                        sub_fragment = sub_fragment[key]
+
                 return self._transform_data(sub_fragment, referred_file.parent)
             else:
                 return obj
